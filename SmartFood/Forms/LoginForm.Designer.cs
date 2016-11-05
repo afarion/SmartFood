@@ -34,6 +34,8 @@
             this.LoginLabel = new System.Windows.Forms.Label();
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.LoginButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.labelRole = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // LoginComboBox
@@ -52,7 +54,7 @@
             // 
             // PasswordTextBox
             // 
-            this.PasswordTextBox.Location = new System.Drawing.Point(22, 74);
+            this.PasswordTextBox.Location = new System.Drawing.Point(22, 105);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.PasswordChar = '*';
             this.PasswordTextBox.Size = new System.Drawing.Size(227, 20);
@@ -61,7 +63,7 @@
             // LoginLabel
             // 
             this.LoginLabel.AutoSize = true;
-            this.LoginLabel.Location = new System.Drawing.Point(22, 7);
+            this.LoginLabel.Location = new System.Drawing.Point(19, 50);
             this.LoginLabel.Name = "LoginLabel";
             this.LoginLabel.Size = new System.Drawing.Size(38, 13);
             this.LoginLabel.TabIndex = 2;
@@ -70,7 +72,7 @@
             // PasswordLabel
             // 
             this.PasswordLabel.AutoSize = true;
-            this.PasswordLabel.Location = new System.Drawing.Point(22, 54);
+            this.PasswordLabel.Location = new System.Drawing.Point(19, 89);
             this.PasswordLabel.Name = "PasswordLabel";
             this.PasswordLabel.Size = new System.Drawing.Size(45, 13);
             this.PasswordLabel.TabIndex = 3;
@@ -78,7 +80,7 @@
             // 
             // LoginButton
             // 
-            this.LoginButton.Location = new System.Drawing.Point(103, 100);
+            this.LoginButton.Location = new System.Drawing.Point(174, 131);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(75, 23);
             this.LoginButton.TabIndex = 4;
@@ -86,16 +88,35 @@
             this.LoginButton.UseVisualStyleBackColor = true;
             this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(22, 66);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(227, 20);
+            this.textBox1.TabIndex = 5;
+            // 
+            // labelRole
+            // 
+            this.labelRole.AutoSize = true;
+            this.labelRole.Location = new System.Drawing.Point(19, 9);
+            this.labelRole.Name = "labelRole";
+            this.labelRole.Size = new System.Drawing.Size(32, 13);
+            this.labelRole.TabIndex = 6;
+            this.labelRole.Text = "Роль";
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(276, 134);
+            this.ClientSize = new System.Drawing.Size(277, 164);
+            this.Controls.Add(this.labelRole);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.PasswordLabel);
             this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.PasswordTextBox);
             this.Controls.Add(this.LoginComboBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginForm";
             this.Text = "SmartFood";
@@ -111,6 +132,8 @@
         private System.Windows.Forms.Label LoginLabel;
         private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.Button LoginButton;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label labelRole;
     }
 }
 
