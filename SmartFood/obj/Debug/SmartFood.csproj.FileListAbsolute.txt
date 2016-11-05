@@ -1,0 +1,11 @@
+c:\users\irdis\documents\visual studio 2015\Projects\SmartFood\SmartFood\bin\Debug\SmartFood.exe.config
+C:\Users\Irdis\Documents\Visual Studio 2015\Projects\SmartFood\SmartFood\bin\Debug\SmartFood.exe
+C:\Users\Irdis\Documents\Visual Studio 2015\Projects\SmartFood\SmartFood\bin\Debug\SmartFood.pdb
+C:\Users\Irdis\Documents\Visual Studio 2015\Projects\SmartFood\SmartFood\obj\Debug\SmartFood.LoginForm.resources
+C:\Users\Irdis\Documents\Visual Studio 2015\Projects\SmartFood\SmartFood\obj\Debug\SmartFood.Properties.Resources.resources
+C:\Users\Irdis\Documents\Visual Studio 2015\Projects\SmartFood\SmartFood\obj\Debug\SmartFood.csproj.GenerateResource.Cache
+C:\Users\Irdis\Documents\Visual Studio 2015\Projects\SmartFood\SmartFood\obj\Debug\SmartFood.exe
+C:\Users\Irdis\Documents\Visual Studio 2015\Projects\SmartFood\SmartFood\obj\Debug\SmartFood.pdb
+C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\bin\Debug\SmartFood.exe.config
+C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.exe
+C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.pdb
