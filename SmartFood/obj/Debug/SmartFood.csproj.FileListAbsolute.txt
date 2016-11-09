@@ -15,3 +15,5 @@ C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.LoginForm.re
 C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Properties.Resources.resources
 C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.csproj.GenerateResource.Cache
 C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.CashierForm.resources
+C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.csprojResolveAssemblyReference.cache
+C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.NewOrderForm.resources
