@@ -264,7 +264,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "OrderForm";
-            this.Text = "SmartFood";
+            this.Text = "Заказ";
+            this.Load += new System.EventHandler(this.OrderForm_Load);
             this.groupBoxClient.ResumeLayout(false);
             this.groupBoxClient.PerformLayout();
             this.groupBoxOrder.ResumeLayout(false);

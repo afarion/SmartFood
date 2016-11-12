@@ -9,16 +9,11 @@ using System.Windows.Forms;
 
 namespace SmartFood.Forms
 {
-    public partial class OrderForm : Form
+    public partial class NewConsumbleForm : Form
     {
-        public OrderForm()
+        public NewConsumbleForm()
         {
             InitializeComponent();
-        }
-
-        private void OrderForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

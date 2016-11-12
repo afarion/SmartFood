@@ -15,5 +15,9 @@ C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.LoginForm.re
 C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Properties.Resources.resources
 C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.csproj.GenerateResource.Cache
 C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.CashierForm.resources
-C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.csprojResolveAssemblyReference.cache
-C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.NewOrderForm.resources
+C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AdminForm.resources
+C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.CustomerDetailsForm.resources
+C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.OrderForm.resources
+C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.ConsumbleArrivalForm.resources
+C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.NewConsumbleForm.resources
+C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.ConsumbleWriteOffForm.resources
