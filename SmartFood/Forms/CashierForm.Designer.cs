@@ -128,7 +128,6 @@
             this.Name = "CashierForm";
             this.Text = "Касир";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CashierForm_FormClosed);
-            this.Load += new System.EventHandler(this.CashierForm_Load);
             this.Shown += new System.EventHandler(this.CashierForm_Shown);
             this.Move += new System.EventHandler(this.CashierForm_Move);
             ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).EndInit();

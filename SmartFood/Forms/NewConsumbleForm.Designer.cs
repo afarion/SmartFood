@@ -37,11 +37,13 @@
             this.labelPrice = new System.Windows.Forms.Label();
             this.buttonOk = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.textBoxMeasurement = new System.Windows.Forms.TextBox();
+            this.labelMeasurement = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(102, 9);
+            this.textBoxName.Location = new System.Drawing.Point(137, 9);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(165, 20);
             this.textBoxName.TabIndex = 0;
@@ -49,14 +51,14 @@
             // comboBoxType
             // 
             this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Location = new System.Drawing.Point(102, 35);
+            this.comboBoxType.Location = new System.Drawing.Point(137, 35);
             this.comboBoxType.Name = "comboBoxType";
             this.comboBoxType.Size = new System.Drawing.Size(165, 21);
             this.comboBoxType.TabIndex = 1;
             // 
             // textBoxPrice
             // 
-            this.textBoxPrice.Location = new System.Drawing.Point(102, 62);
+            this.textBoxPrice.Location = new System.Drawing.Point(137, 88);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(165, 20);
             this.textBoxPrice.TabIndex = 2;
@@ -82,7 +84,7 @@
             // labelPrice
             // 
             this.labelPrice.AutoSize = true;
-            this.labelPrice.Location = new System.Drawing.Point(13, 65);
+            this.labelPrice.Location = new System.Drawing.Point(13, 91);
             this.labelPrice.Name = "labelPrice";
             this.labelPrice.Size = new System.Drawing.Size(33, 13);
             this.labelPrice.TabIndex = 5;
@@ -90,7 +92,7 @@
             // 
             // buttonOk
             // 
-            this.buttonOk.Location = new System.Drawing.Point(192, 88);
+            this.buttonOk.Location = new System.Drawing.Point(227, 114);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 6;
@@ -99,18 +101,36 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(111, 88);
+            this.buttonCancel.Location = new System.Drawing.Point(137, 114);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 7;
             this.buttonCancel.Text = "Отменить";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
+            // textBoxMeasurement
+            // 
+            this.textBoxMeasurement.Location = new System.Drawing.Point(137, 62);
+            this.textBoxMeasurement.Name = "textBoxMeasurement";
+            this.textBoxMeasurement.Size = new System.Drawing.Size(165, 20);
+            this.textBoxMeasurement.TabIndex = 8;
+            // 
+            // labelMeasurement
+            // 
+            this.labelMeasurement.AutoSize = true;
+            this.labelMeasurement.Location = new System.Drawing.Point(12, 65);
+            this.labelMeasurement.Name = "labelMeasurement";
+            this.labelMeasurement.Size = new System.Drawing.Size(109, 13);
+            this.labelMeasurement.TabIndex = 9;
+            this.labelMeasurement.Text = "Единица измерения";
+            // 
             // NewConsumbleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(287, 125);
+            this.ClientSize = new System.Drawing.Size(314, 145);
+            this.Controls.Add(this.labelMeasurement);
+            this.Controls.Add(this.textBoxMeasurement);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.labelPrice);
@@ -140,5 +160,7 @@
         private System.Windows.Forms.Label labelPrice;
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.TextBox textBoxMeasurement;
+        private System.Windows.Forms.Label labelMeasurement;
     }
 }

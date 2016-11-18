@@ -43,11 +43,6 @@ namespace SmartFood.Forms
             this.Location = new Point(0, 0);
         }
 
-        private void CashierForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void CashierForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();

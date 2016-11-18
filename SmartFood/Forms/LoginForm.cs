@@ -1,4 +1,5 @@
-﻿using SmartFood.Forms;
+﻿using SmartFood.Core;
+using SmartFood.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,7 @@ namespace SmartFood
         {
             InitializeComponent();
             instance = this;
+            //LoginCore.LogIn();
         }
 
         private void LoginButton_Click(object sender, EventArgs e)

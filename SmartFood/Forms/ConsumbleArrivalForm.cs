@@ -15,10 +15,5 @@ namespace SmartFood.Forms
         {
             InitializeComponent();
         }
-
-        private void ConsumbleArrivalForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

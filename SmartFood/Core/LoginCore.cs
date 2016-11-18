@@ -5,13 +5,16 @@ using System.Text;
 
 namespace SmartFood.Core
 {
-    public sealed class LoginCore
+    public class LoginCore : CoreBase
     {
-        private static readonly Lazy<LoginCore> lazy = new Lazy<LoginCore>(() => new LoginCore());
-        public static LoginCore instance {get { return lazy.Value; }}
-        private LoginCore()
+        public static void LogIn()
         {
-
+            apiURI = "http://195.138.83.164:8080/v1/auth/login/";
+            param = new Dictionary<string, string>();
+            param.Add("type","1");
+            param.Add("login", "admin");
+            param.Add("pass", "admin");
+            string message = SendRequest();
         }
     }
 }

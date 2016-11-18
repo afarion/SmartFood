@@ -162,9 +162,9 @@
             this.labelAdress.AutoSize = true;
             this.labelAdress.Location = new System.Drawing.Point(6, 64);
             this.labelAdress.Name = "labelAdress";
-            this.labelAdress.Size = new System.Drawing.Size(44, 13);
+            this.labelAdress.Size = new System.Drawing.Size(38, 13);
             this.labelAdress.TabIndex = 5;
-            this.labelAdress.Text = "Адресс";
+            this.labelAdress.Text = "Адрес";
             // 
             // groupBoxOrder
             // 

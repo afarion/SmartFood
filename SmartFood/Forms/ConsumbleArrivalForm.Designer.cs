@@ -166,7 +166,6 @@
             this.MinimizeBox = false;
             this.Name = "ConsumbleArrivalForm";
             this.Text = "ConsumbleArrivalForm";
-            this.Load += new System.EventHandler(this.ConsumbleArrivalForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
