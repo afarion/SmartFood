@@ -70,33 +70,33 @@
             this.groupBoxCostPrice = new System.Windows.Forms.GroupBox();
             this.dataGridViewCostPrice = new System.Windows.Forms.DataGridView();
             this.buttonClear = new System.Windows.Forms.Button();
-            this.buttonAddAkkConsumbles = new System.Windows.Forms.Button();
+            this.buttonAddAllConsumbles = new System.Windows.Forms.Button();
             this.comboBoxSelectConsumble = new System.Windows.Forms.ComboBox();
             this.buttonSelectConsumble = new System.Windows.Forms.Button();
             this.tabPageGoods = new System.Windows.Forms.TabPage();
-            this.tabPageAcounts = new System.Windows.Forms.TabPage();
-            this.tabPageClients = new System.Windows.Forms.TabPage();
-            this.tabPageEmployees = new System.Windows.Forms.TabPage();
-            this.tabPageSuppliers = new System.Windows.Forms.TabPage();
-            this.buttonAddGood = new System.Windows.Forms.Button();
-            this.buttonDeleteGood = new System.Windows.Forms.Button();
-            this.buttonEditGood = new System.Windows.Forms.Button();
             this.dataGridViewGoods = new System.Windows.Forms.DataGridView();
-            this.buttonAddAcount = new System.Windows.Forms.Button();
-            this.buttonEditAcount = new System.Windows.Forms.Button();
-            this.buttonDeleteAcount = new System.Windows.Forms.Button();
+            this.buttonEditGood = new System.Windows.Forms.Button();
+            this.buttonDeleteGood = new System.Windows.Forms.Button();
+            this.buttonAddGood = new System.Windows.Forms.Button();
+            this.tabPageAcounts = new System.Windows.Forms.TabPage();
             this.dataGridViewAcount = new System.Windows.Forms.DataGridView();
-            this.buttonAddClient = new System.Windows.Forms.Button();
-            this.buttonEditClient = new System.Windows.Forms.Button();
+            this.buttonDeleteAcount = new System.Windows.Forms.Button();
+            this.buttonEditAcount = new System.Windows.Forms.Button();
+            this.buttonAddAcount = new System.Windows.Forms.Button();
+            this.tabPageClients = new System.Windows.Forms.TabPage();
             this.dataGridViewClients = new System.Windows.Forms.DataGridView();
-            this.buttonAddEmploye = new System.Windows.Forms.Button();
-            this.buttonDeleteEmploye = new System.Windows.Forms.Button();
-            this.buttonEditEmploye = new System.Windows.Forms.Button();
+            this.buttonEditClient = new System.Windows.Forms.Button();
+            this.buttonAddClient = new System.Windows.Forms.Button();
+            this.tabPageEmployees = new System.Windows.Forms.TabPage();
             this.dataGridViewEmployees = new System.Windows.Forms.DataGridView();
-            this.buttonAddSupplier = new System.Windows.Forms.Button();
-            this.buttoDeleteSupplier = new System.Windows.Forms.Button();
-            this.buttonEditSupplier = new System.Windows.Forms.Button();
+            this.buttonEditEmploye = new System.Windows.Forms.Button();
+            this.buttonDeleteEmploye = new System.Windows.Forms.Button();
+            this.buttonAddEmploye = new System.Windows.Forms.Button();
+            this.tabPageSuppliers = new System.Windows.Forms.TabPage();
             this.dataGridViewSuppliers = new System.Windows.Forms.DataGridView();
+            this.buttonEditSupplier = new System.Windows.Forms.Button();
+            this.buttoDeleteSupplier = new System.Windows.Forms.Button();
+            this.buttonAddSupplier = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPageConsumables.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsumbles)).BeginInit();
@@ -109,14 +109,14 @@
             this.groupBoxCostPrice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCostPrice)).BeginInit();
             this.tabPageGoods.SuspendLayout();
-            this.tabPageAcounts.SuspendLayout();
-            this.tabPageClients.SuspendLayout();
-            this.tabPageEmployees.SuspendLayout();
-            this.tabPageSuppliers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGoods)).BeginInit();
+            this.tabPageAcounts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAcount)).BeginInit();
+            this.tabPageClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).BeginInit();
+            this.tabPageEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).BeginInit();
+            this.tabPageSuppliers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSuppliers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -493,7 +493,7 @@
             // 
             this.groupBoxCostPrice.Controls.Add(this.dataGridViewCostPrice);
             this.groupBoxCostPrice.Controls.Add(this.buttonClear);
-            this.groupBoxCostPrice.Controls.Add(this.buttonAddAkkConsumbles);
+            this.groupBoxCostPrice.Controls.Add(this.buttonAddAllConsumbles);
             this.groupBoxCostPrice.Controls.Add(this.comboBoxSelectConsumble);
             this.groupBoxCostPrice.Controls.Add(this.buttonSelectConsumble);
             this.groupBoxCostPrice.Location = new System.Drawing.Point(370, 7);
@@ -520,14 +520,14 @@
             this.buttonClear.Text = "Очистить";
             this.buttonClear.UseVisualStyleBackColor = true;
             // 
-            // buttonAddAkkConsumbles
+            // buttonAddAllConsumbles
             // 
-            this.buttonAddAkkConsumbles.Location = new System.Drawing.Point(87, 563);
-            this.buttonAddAkkConsumbles.Name = "buttonAddAkkConsumbles";
-            this.buttonAddAkkConsumbles.Size = new System.Drawing.Size(89, 23);
-            this.buttonAddAkkConsumbles.TabIndex = 2;
-            this.buttonAddAkkConsumbles.Text = "Добавить все";
-            this.buttonAddAkkConsumbles.UseVisualStyleBackColor = true;
+            this.buttonAddAllConsumbles.Location = new System.Drawing.Point(87, 563);
+            this.buttonAddAllConsumbles.Name = "buttonAddAllConsumbles";
+            this.buttonAddAllConsumbles.Size = new System.Drawing.Size(89, 23);
+            this.buttonAddAllConsumbles.TabIndex = 2;
+            this.buttonAddAllConsumbles.Text = "Добавить все";
+            this.buttonAddAllConsumbles.UseVisualStyleBackColor = true;
             // 
             // comboBoxSelectConsumble
             // 
@@ -560,6 +560,41 @@
             this.tabPageGoods.Text = "Товары";
             this.tabPageGoods.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewGoods
+            // 
+            this.dataGridViewGoods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewGoods.Location = new System.Drawing.Point(7, 7);
+            this.dataGridViewGoods.Name = "dataGridViewGoods";
+            this.dataGridViewGoods.Size = new System.Drawing.Size(1416, 563);
+            this.dataGridViewGoods.TabIndex = 3;
+            // 
+            // buttonEditGood
+            // 
+            this.buttonEditGood.Location = new System.Drawing.Point(1168, 576);
+            this.buttonEditGood.Name = "buttonEditGood";
+            this.buttonEditGood.Size = new System.Drawing.Size(93, 23);
+            this.buttonEditGood.TabIndex = 2;
+            this.buttonEditGood.Text = "Редактировать";
+            this.buttonEditGood.UseVisualStyleBackColor = true;
+            // 
+            // buttonDeleteGood
+            // 
+            this.buttonDeleteGood.Location = new System.Drawing.Point(1267, 576);
+            this.buttonDeleteGood.Name = "buttonDeleteGood";
+            this.buttonDeleteGood.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeleteGood.TabIndex = 1;
+            this.buttonDeleteGood.Text = "Удалить";
+            this.buttonDeleteGood.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddGood
+            // 
+            this.buttonAddGood.Location = new System.Drawing.Point(1348, 576);
+            this.buttonAddGood.Name = "buttonAddGood";
+            this.buttonAddGood.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddGood.TabIndex = 0;
+            this.buttonAddGood.Text = "Добавить";
+            this.buttonAddGood.UseVisualStyleBackColor = true;
+            // 
             // tabPageAcounts
             // 
             this.tabPageAcounts.Controls.Add(this.dataGridViewAcount);
@@ -574,6 +609,42 @@
             this.tabPageAcounts.Text = "Акаунты";
             this.tabPageAcounts.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewAcount
+            // 
+            this.dataGridViewAcount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAcount.Location = new System.Drawing.Point(7, 7);
+            this.dataGridViewAcount.Name = "dataGridViewAcount";
+            this.dataGridViewAcount.Size = new System.Drawing.Size(1416, 563);
+            this.dataGridViewAcount.TabIndex = 3;
+            // 
+            // buttonDeleteAcount
+            // 
+            this.buttonDeleteAcount.Location = new System.Drawing.Point(1267, 576);
+            this.buttonDeleteAcount.Name = "buttonDeleteAcount";
+            this.buttonDeleteAcount.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeleteAcount.TabIndex = 2;
+            this.buttonDeleteAcount.Text = "Удалить";
+            this.buttonDeleteAcount.UseVisualStyleBackColor = true;
+            // 
+            // buttonEditAcount
+            // 
+            this.buttonEditAcount.Location = new System.Drawing.Point(1168, 576);
+            this.buttonEditAcount.Name = "buttonEditAcount";
+            this.buttonEditAcount.Size = new System.Drawing.Size(93, 23);
+            this.buttonEditAcount.TabIndex = 1;
+            this.buttonEditAcount.Text = "Редактировать";
+            this.buttonEditAcount.UseVisualStyleBackColor = true;
+            this.buttonEditAcount.Click += new System.EventHandler(this.buttonEditAcount_Click);
+            // 
+            // buttonAddAcount
+            // 
+            this.buttonAddAcount.Location = new System.Drawing.Point(1348, 576);
+            this.buttonAddAcount.Name = "buttonAddAcount";
+            this.buttonAddAcount.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddAcount.TabIndex = 0;
+            this.buttonAddAcount.Text = "Добавить";
+            this.buttonAddAcount.UseVisualStyleBackColor = true;
+            // 
             // tabPageClients
             // 
             this.tabPageClients.Controls.Add(this.dataGridViewClients);
@@ -586,6 +657,32 @@
             this.tabPageClients.TabIndex = 5;
             this.tabPageClients.Text = "Клиенты";
             this.tabPageClients.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewClients
+            // 
+            this.dataGridViewClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewClients.Location = new System.Drawing.Point(7, 7);
+            this.dataGridViewClients.Name = "dataGridViewClients";
+            this.dataGridViewClients.Size = new System.Drawing.Size(1416, 563);
+            this.dataGridViewClients.TabIndex = 3;
+            // 
+            // buttonEditClient
+            // 
+            this.buttonEditClient.Location = new System.Drawing.Point(1249, 576);
+            this.buttonEditClient.Name = "buttonEditClient";
+            this.buttonEditClient.Size = new System.Drawing.Size(93, 23);
+            this.buttonEditClient.TabIndex = 2;
+            this.buttonEditClient.Text = "Редактировать";
+            this.buttonEditClient.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddClient
+            // 
+            this.buttonAddClient.Location = new System.Drawing.Point(1348, 576);
+            this.buttonAddClient.Name = "buttonAddClient";
+            this.buttonAddClient.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddClient.TabIndex = 1;
+            this.buttonAddClient.Text = "Добавить";
+            this.buttonAddClient.UseVisualStyleBackColor = true;
             // 
             // tabPageEmployees
             // 
@@ -601,6 +698,41 @@
             this.tabPageEmployees.Text = "Сотрудники";
             this.tabPageEmployees.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewEmployees
+            // 
+            this.dataGridViewEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEmployees.Location = new System.Drawing.Point(7, 7);
+            this.dataGridViewEmployees.Name = "dataGridViewEmployees";
+            this.dataGridViewEmployees.Size = new System.Drawing.Size(1416, 563);
+            this.dataGridViewEmployees.TabIndex = 5;
+            // 
+            // buttonEditEmploye
+            // 
+            this.buttonEditEmploye.Location = new System.Drawing.Point(1168, 576);
+            this.buttonEditEmploye.Name = "buttonEditEmploye";
+            this.buttonEditEmploye.Size = new System.Drawing.Size(93, 23);
+            this.buttonEditEmploye.TabIndex = 4;
+            this.buttonEditEmploye.Text = "Редактировать";
+            this.buttonEditEmploye.UseVisualStyleBackColor = true;
+            // 
+            // buttonDeleteEmploye
+            // 
+            this.buttonDeleteEmploye.Location = new System.Drawing.Point(1267, 576);
+            this.buttonDeleteEmploye.Name = "buttonDeleteEmploye";
+            this.buttonDeleteEmploye.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeleteEmploye.TabIndex = 3;
+            this.buttonDeleteEmploye.Text = "Удалить";
+            this.buttonDeleteEmploye.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddEmploye
+            // 
+            this.buttonAddEmploye.Location = new System.Drawing.Point(1348, 576);
+            this.buttonAddEmploye.Name = "buttonAddEmploye";
+            this.buttonAddEmploye.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddEmploye.TabIndex = 1;
+            this.buttonAddEmploye.Text = "Добавить";
+            this.buttonAddEmploye.UseVisualStyleBackColor = true;
+            // 
             // tabPageSuppliers
             // 
             this.tabPageSuppliers.Controls.Add(this.dataGridViewSuppliers);
@@ -615,155 +747,13 @@
             this.tabPageSuppliers.Text = "Поставщики";
             this.tabPageSuppliers.UseVisualStyleBackColor = true;
             // 
-            // buttonAddGood
+            // dataGridViewSuppliers
             // 
-            this.buttonAddGood.Location = new System.Drawing.Point(1348, 576);
-            this.buttonAddGood.Name = "buttonAddGood";
-            this.buttonAddGood.Size = new System.Drawing.Size(75, 23);
-            this.buttonAddGood.TabIndex = 0;
-            this.buttonAddGood.Text = "Добавить";
-            this.buttonAddGood.UseVisualStyleBackColor = true;
-            // 
-            // buttonDeleteGood
-            // 
-            this.buttonDeleteGood.Location = new System.Drawing.Point(1267, 576);
-            this.buttonDeleteGood.Name = "buttonDeleteGood";
-            this.buttonDeleteGood.Size = new System.Drawing.Size(75, 23);
-            this.buttonDeleteGood.TabIndex = 1;
-            this.buttonDeleteGood.Text = "Удалить";
-            this.buttonDeleteGood.UseVisualStyleBackColor = true;
-            // 
-            // buttonEditGood
-            // 
-            this.buttonEditGood.Location = new System.Drawing.Point(1168, 576);
-            this.buttonEditGood.Name = "buttonEditGood";
-            this.buttonEditGood.Size = new System.Drawing.Size(93, 23);
-            this.buttonEditGood.TabIndex = 2;
-            this.buttonEditGood.Text = "Редактировать";
-            this.buttonEditGood.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewGoods
-            // 
-            this.dataGridViewGoods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewGoods.Location = new System.Drawing.Point(7, 7);
-            this.dataGridViewGoods.Name = "dataGridViewGoods";
-            this.dataGridViewGoods.Size = new System.Drawing.Size(1416, 563);
-            this.dataGridViewGoods.TabIndex = 3;
-            // 
-            // buttonAddAcount
-            // 
-            this.buttonAddAcount.Location = new System.Drawing.Point(1348, 576);
-            this.buttonAddAcount.Name = "buttonAddAcount";
-            this.buttonAddAcount.Size = new System.Drawing.Size(75, 23);
-            this.buttonAddAcount.TabIndex = 0;
-            this.buttonAddAcount.Text = "Добавить";
-            this.buttonAddAcount.UseVisualStyleBackColor = true;
-            // 
-            // buttonEditAcount
-            // 
-            this.buttonEditAcount.Location = new System.Drawing.Point(1168, 576);
-            this.buttonEditAcount.Name = "buttonEditAcount";
-            this.buttonEditAcount.Size = new System.Drawing.Size(93, 23);
-            this.buttonEditAcount.TabIndex = 1;
-            this.buttonEditAcount.Text = "Редактировать";
-            this.buttonEditAcount.UseVisualStyleBackColor = true;
-            this.buttonEditAcount.Click += new System.EventHandler(this.buttonEditAcount_Click);
-            // 
-            // buttonDeleteAcount
-            // 
-            this.buttonDeleteAcount.Location = new System.Drawing.Point(1267, 576);
-            this.buttonDeleteAcount.Name = "buttonDeleteAcount";
-            this.buttonDeleteAcount.Size = new System.Drawing.Size(75, 23);
-            this.buttonDeleteAcount.TabIndex = 2;
-            this.buttonDeleteAcount.Text = "Удалить";
-            this.buttonDeleteAcount.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewAcount
-            // 
-            this.dataGridViewAcount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAcount.Location = new System.Drawing.Point(7, 7);
-            this.dataGridViewAcount.Name = "dataGridViewAcount";
-            this.dataGridViewAcount.Size = new System.Drawing.Size(1416, 563);
-            this.dataGridViewAcount.TabIndex = 3;
-            // 
-            // buttonAddClient
-            // 
-            this.buttonAddClient.Location = new System.Drawing.Point(1348, 576);
-            this.buttonAddClient.Name = "buttonAddClient";
-            this.buttonAddClient.Size = new System.Drawing.Size(75, 23);
-            this.buttonAddClient.TabIndex = 1;
-            this.buttonAddClient.Text = "Добавить";
-            this.buttonAddClient.UseVisualStyleBackColor = true;
-            // 
-            // buttonEditClient
-            // 
-            this.buttonEditClient.Location = new System.Drawing.Point(1249, 576);
-            this.buttonEditClient.Name = "buttonEditClient";
-            this.buttonEditClient.Size = new System.Drawing.Size(93, 23);
-            this.buttonEditClient.TabIndex = 2;
-            this.buttonEditClient.Text = "Редактировать";
-            this.buttonEditClient.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewClients
-            // 
-            this.dataGridViewClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewClients.Location = new System.Drawing.Point(7, 7);
-            this.dataGridViewClients.Name = "dataGridViewClients";
-            this.dataGridViewClients.Size = new System.Drawing.Size(1416, 563);
-            this.dataGridViewClients.TabIndex = 3;
-            // 
-            // buttonAddEmploye
-            // 
-            this.buttonAddEmploye.Location = new System.Drawing.Point(1348, 576);
-            this.buttonAddEmploye.Name = "buttonAddEmploye";
-            this.buttonAddEmploye.Size = new System.Drawing.Size(75, 23);
-            this.buttonAddEmploye.TabIndex = 1;
-            this.buttonAddEmploye.Text = "Добавить";
-            this.buttonAddEmploye.UseVisualStyleBackColor = true;
-            // 
-            // buttonDeleteEmploye
-            // 
-            this.buttonDeleteEmploye.Location = new System.Drawing.Point(1267, 576);
-            this.buttonDeleteEmploye.Name = "buttonDeleteEmploye";
-            this.buttonDeleteEmploye.Size = new System.Drawing.Size(75, 23);
-            this.buttonDeleteEmploye.TabIndex = 3;
-            this.buttonDeleteEmploye.Text = "Удалить";
-            this.buttonDeleteEmploye.UseVisualStyleBackColor = true;
-            // 
-            // buttonEditEmploye
-            // 
-            this.buttonEditEmploye.Location = new System.Drawing.Point(1168, 576);
-            this.buttonEditEmploye.Name = "buttonEditEmploye";
-            this.buttonEditEmploye.Size = new System.Drawing.Size(93, 23);
-            this.buttonEditEmploye.TabIndex = 4;
-            this.buttonEditEmploye.Text = "Редактировать";
-            this.buttonEditEmploye.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewEmployees
-            // 
-            this.dataGridViewEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEmployees.Location = new System.Drawing.Point(7, 7);
-            this.dataGridViewEmployees.Name = "dataGridViewEmployees";
-            this.dataGridViewEmployees.Size = new System.Drawing.Size(1416, 563);
-            this.dataGridViewEmployees.TabIndex = 5;
-            // 
-            // buttonAddSupplier
-            // 
-            this.buttonAddSupplier.Location = new System.Drawing.Point(1348, 576);
-            this.buttonAddSupplier.Name = "buttonAddSupplier";
-            this.buttonAddSupplier.Size = new System.Drawing.Size(75, 23);
-            this.buttonAddSupplier.TabIndex = 0;
-            this.buttonAddSupplier.Text = "Добавить";
-            this.buttonAddSupplier.UseVisualStyleBackColor = true;
-            // 
-            // buttoDeleteSupplier
-            // 
-            this.buttoDeleteSupplier.Location = new System.Drawing.Point(1267, 576);
-            this.buttoDeleteSupplier.Name = "buttoDeleteSupplier";
-            this.buttoDeleteSupplier.Size = new System.Drawing.Size(75, 23);
-            this.buttoDeleteSupplier.TabIndex = 1;
-            this.buttoDeleteSupplier.Text = "Удалить";
-            this.buttoDeleteSupplier.UseVisualStyleBackColor = true;
+            this.dataGridViewSuppliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSuppliers.Location = new System.Drawing.Point(7, 7);
+            this.dataGridViewSuppliers.Name = "dataGridViewSuppliers";
+            this.dataGridViewSuppliers.Size = new System.Drawing.Size(1416, 563);
+            this.dataGridViewSuppliers.TabIndex = 3;
             // 
             // buttonEditSupplier
             // 
@@ -774,13 +764,23 @@
             this.buttonEditSupplier.Text = "Редактировать";
             this.buttonEditSupplier.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewSuppliers
+            // buttoDeleteSupplier
             // 
-            this.dataGridViewSuppliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSuppliers.Location = new System.Drawing.Point(7, 7);
-            this.dataGridViewSuppliers.Name = "dataGridViewSuppliers";
-            this.dataGridViewSuppliers.Size = new System.Drawing.Size(1416, 563);
-            this.dataGridViewSuppliers.TabIndex = 3;
+            this.buttoDeleteSupplier.Location = new System.Drawing.Point(1267, 576);
+            this.buttoDeleteSupplier.Name = "buttoDeleteSupplier";
+            this.buttoDeleteSupplier.Size = new System.Drawing.Size(75, 23);
+            this.buttoDeleteSupplier.TabIndex = 1;
+            this.buttoDeleteSupplier.Text = "Удалить";
+            this.buttoDeleteSupplier.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddSupplier
+            // 
+            this.buttonAddSupplier.Location = new System.Drawing.Point(1348, 576);
+            this.buttonAddSupplier.Name = "buttonAddSupplier";
+            this.buttonAddSupplier.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddSupplier.TabIndex = 0;
+            this.buttonAddSupplier.Text = "Добавить";
+            this.buttonAddSupplier.UseVisualStyleBackColor = true;
             // 
             // AdminForm
             // 
@@ -810,14 +810,14 @@
             this.groupBoxCostPrice.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCostPrice)).EndInit();
             this.tabPageGoods.ResumeLayout(false);
-            this.tabPageAcounts.ResumeLayout(false);
-            this.tabPageClients.ResumeLayout(false);
-            this.tabPageEmployees.ResumeLayout(false);
-            this.tabPageSuppliers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGoods)).EndInit();
+            this.tabPageAcounts.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAcount)).EndInit();
+            this.tabPageClients.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).EndInit();
+            this.tabPageEmployees.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).EndInit();
+            this.tabPageSuppliers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSuppliers)).EndInit();
             this.ResumeLayout(false);
 
@@ -859,7 +859,7 @@
         private System.Windows.Forms.GroupBox groupBoxCostPrice;
         private System.Windows.Forms.DataGridView dataGridViewCostPrice;
         private System.Windows.Forms.Button buttonClear;
-        private System.Windows.Forms.Button buttonAddAkkConsumbles;
+        private System.Windows.Forms.Button buttonAddAllConsumbles;
         private System.Windows.Forms.ComboBox comboBoxSelectConsumble;
         private System.Windows.Forms.Button buttonSelectConsumble;
         private System.Windows.Forms.TextBox textBoxDiffForThisMonth;

@@ -153,6 +153,47 @@ namespace SmartFood.Forms
             tmpPoint.Y = tabPageConsumables.Top + 10;
             groupBoxReport.Location = tmpPoint;
             groupBoxReport.Height = tabPageConsumables.Height - 50;
+            tmpPoint.X = groupBoxReport.Width - buttonPrint.Width - 10;
+            tmpPoint.Y = groupBoxReport.Height - buttonPrint.Height - 10;
+            buttonPrint.Location = tmpPoint;
+
+            tmpPoint.X = buttonPrint.Location.X - buttonSave.Width - 10;
+            buttonSave.Location = tmpPoint;
+
+            int tmpHeight = tabPageConsumables.Height - 50;
+            tmpPoint.X = tabPageConsumables.Left + 10;
+            tmpPoint.Y = tabPageConsumables.Top + 10;
+            groupBoxCurrentReport.Location = tmpPoint;
+            groupBoxCurrentReport.Height = tmpHeight;
+
+
+            tmpPoint.X = groupBoxCurrentReport.Location.X + groupBoxCurrentReport.Width + 10;
+            tmpPoint.Y = tabPageConsumables.Top + 10;
+            int tmpWidth = groupBoxReport.Location.X - tmpPoint.X - 10;
+            groupBoxCostPrice.Location = tmpPoint;
+            groupBoxCostPrice.Width = tmpWidth;
+            groupBoxCostPrice.Height = tmpHeight;
+
+            tmpPoint.X = 10;
+            tmpPoint.Y = groupBoxCurrentReport.Height - buttonClear.Height - 10;
+            buttonClear.Location = tmpPoint;
+
+            tmpPoint.X = buttonClear.Location.X + buttonClear.Width + 10;
+            buttonAddAllConsumbles.Location = tmpPoint;
+
+            tmpPoint.X = groupBoxCostPrice.Width - buttonSelectConsumble.Width - 10;
+            buttonSelectConsumble.Location = tmpPoint;
+
+            tmpPoint.X = buttonAddAllConsumbles.Location.X + buttonAddAllConsumbles.Width + 10;
+            tmpWidth = buttonSelectConsumble.Location.X - tmpPoint.X - 10;
+            comboBoxSelectConsumble.Location = tmpPoint;
+            comboBoxSelectConsumble.Width = tmpWidth;
+
+            tmpWidth = groupBoxCostPrice.Width - 20;
+            tmpHeight = buttonAddAllConsumbles.Location.Y - 30;
+            tmpPoint.X = 10;
+            tmpPoint.Y = 20;
+            dataGridViewCostPrice.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
             this.Refresh();
         }
 

@@ -51,6 +51,19 @@ namespace SmartFood.Core
                         loggedUserSID = data.sid;
                         loggedUserTYPE = data.type;
                         break;
+                    case System.Net.HttpStatusCode.Unauthorized://401
+                        MessageBox.Show("С вашего аккаунта был выполнен вход с другого устройства. Приложение будет закрыто", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Application.Exit();
+                        break;
+                    case System.Net.HttpStatusCode.Forbidden://403
+                        MessageBox.Show("У вас нет прав для совершения этого действия", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case System.Net.HttpStatusCode.NotFound://404
+                        MessageBox.Show("Реквест не найден", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case System.Net.HttpStatusCode.BadRequest://404
+                        MessageBox.Show("Ошибка входа. Проверьте правильность введенных данных и повторите попытку", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
                     default:
                         throw new Exception("Неизвестный статус код ошмбки " + response.StatusCode);
                 }
