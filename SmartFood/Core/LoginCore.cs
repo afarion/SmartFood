@@ -7,14 +7,15 @@ namespace SmartFood.Core
 {
     public class LoginCore : CoreBase
     {
-        public static void LogIn()
-        {
-            apiURI = "http://195.138.83.164:8080/v1/auth/login/";
-            param = new Dictionary<string, string>();
-            param.Add("type","1");
-            param.Add("login", "admin");
-            param.Add("pass", "admin");
-            string message = SendRequest();
+        public static void LogIn(long role, string login, string password)
+        {            
+            string uriPostfix = "auth/login/";
+            Dictionary<string,string> param = new Dictionary<string, string>();
+            param.Add("type",role.ToString());
+            param.Add("login", login);
+            param.Add("pass", password);
+            SendAuthRequest(uriPostfix, param);
+
         }
     }
 }
