@@ -1,0 +1,28 @@
+REQUEST:
+/v1/auth/login/
+
+==========
+GET:
+Array
+(
+)
+
+==========
+POST:
+Array
+(
+    [type] => 1
+    [login] => admin
+    [pass] => admin
+)
+
+==========
+RESPONSE:
+Array
+(
+    [id] => 1
+    [type] => 1
+    [login] => admin
+    [sid] => 0f77bb3a590b32cc4aff9a96c7244199d0d5cc2c
+)
+

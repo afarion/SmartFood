@@ -1,0 +1,30 @@
+REQUEST:
+/v1/auth/login/
+
+==========
+GET:
+Array
+(
+)
+
+==========
+POST:
+Array
+(
+    [type] => 1
+    [login] => admin
+    [pass] => 
+)
+
+==========
+RESPONSE:
+Array
+(
+    [error] => Array
+        (
+            [code] => 4
+            [message] => Log in user error
+        )
+
+)
+

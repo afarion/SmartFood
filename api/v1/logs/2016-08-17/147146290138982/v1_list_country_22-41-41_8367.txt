@@ -1,0 +1,34 @@
+REQUEST:
+/v1/list/country/?order=name
+
+==========
+GET:
+Array
+(
+    [order] => name
+    [type] => country
+)
+
+==========
+POST:
+Array
+(
+)
+
+==========
+RESPONSE:
+Array
+(
+    [count] => 1
+    [items] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [name] => USA
+                )
+
+        )
+
+)
+

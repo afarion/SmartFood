@@ -1,0 +1,31 @@
+REQUEST:
+/v1/list/itemtype/?user_id=1&user_type=1&user_sid=9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9
+
+==========
+GET:
+Array
+(
+    [user_id] => 1
+    [user_type] => 1
+    [user_sid] => 9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9
+    [method] => itemtype
+)
+
+==========
+POST:
+Array
+(
+)
+
+==========
+RESPONSE:
+Array
+(
+    [error] => Array
+        (
+            [code] => 30
+            [message] => Wrong user sid
+        )
+
+)
+

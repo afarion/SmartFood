@@ -1,0 +1,29 @@
+REQUEST:
+/v1/auth/login/
+
+==========
+GET:
+Array
+(
+)
+
+==========
+POST:
+Array
+(
+    [email] => test@gmail.com
+    [pass] => 11111
+)
+
+==========
+RESPONSE:
+Array
+(
+    [error] => Array
+        (
+            [code] => 4
+            [message] => Log in user error
+        )
+
+)
+

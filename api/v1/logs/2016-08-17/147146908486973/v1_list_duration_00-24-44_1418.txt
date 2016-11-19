@@ -1,0 +1,70 @@
+REQUEST:
+/v1/list/duration/?order=create
+
+==========
+GET:
+Array
+(
+    [order] => create
+    [type] => duration
+)
+
+==========
+POST:
+Array
+(
+)
+
+==========
+RESPONSE:
+Array
+(
+    [count] => 6
+    [items] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [name] => HalfDay
+                    [multiplier] => 1
+                )
+
+            [1] => Array
+                (
+                    [id] => 2
+                    [name] => 1 Night
+                    [multiplier] => 1
+                )
+
+            [2] => Array
+                (
+                    [id] => 3
+                    [name] => 2 Nights
+                    [multiplier] => 2
+                )
+
+            [3] => Array
+                (
+                    [id] => 4
+                    [name] => 3 Nights
+                    [multiplier] => 3
+                )
+
+            [4] => Array
+                (
+                    [id] => 5
+                    [name] => 4 Nights
+                    [multiplier] => 4
+                )
+
+            [5] => Array
+                (
+                    [id] => 6
+                    [name] => 5 Nights
+                    [multiplier] => 5
+                )
+
+        )
+
+)
+

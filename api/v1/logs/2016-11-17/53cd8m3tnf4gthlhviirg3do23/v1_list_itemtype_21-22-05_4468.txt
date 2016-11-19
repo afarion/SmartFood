@@ -1,0 +1,31 @@
+REQUEST:
+/v1/list/itemtype/?user_id=1&user_type=1&user_sid=2
+
+==========
+GET:
+Array
+(
+    [user_id] => 1
+    [user_type] => 1
+    [user_sid] => 2
+    [type] => itemtype
+)
+
+==========
+POST:
+Array
+(
+)
+
+==========
+RESPONSE:
+Array
+(
+    [error] => Array
+        (
+            [code] => 21
+            [message] => wrong user data
+        )
+
+)
+

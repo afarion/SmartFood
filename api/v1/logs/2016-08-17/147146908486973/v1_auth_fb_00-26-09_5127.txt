@@ -1,0 +1,29 @@
+REQUEST:
+/v1/auth/fb/
+
+==========
+GET:
+Array
+(
+)
+
+==========
+POST:
+Array
+(
+    [fb_id] => 10207672028173456
+    [fb_token] => EAAWWP9HzvZCYBAO2i7t9OVWo28L3pig9RIOvQZCX24FZA8YMOab9YeNuvg5q6ZBZCQTjZBSg4rTbfgoab9gs5gydiYVzGPUX9oDhsW5I7igBtwaJm1SxD1FAtIWMWoehsMhaEyXiEfdNAJA3ZAr4nDiQ8lDcapVzR2CTrYtwHXM8hjyMwK9vSaIF3bNMyr0m3yIfRoGAaAKeZCBVKZCKxsocsoTwHDHEGfUkZD
+)
+
+==========
+RESPONSE:
+Array
+(
+    [error] => Array
+        (
+            [code] => 20
+            [message] => Invalid facebook token
+        )
+
+)
+

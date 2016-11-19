@@ -1,0 +1,60 @@
+REQUEST:
+/v1/search/city/?country=1&order=name&part=id%2Cname%2Ccountry%2Ctax%2Cimage%2Cgps
+
+==========
+GET:
+Array
+(
+    [country] => 1
+    [order] => name
+    [part] => id,name,country,tax,image,gps
+    [type] => city
+)
+
+==========
+POST:
+Array
+(
+)
+
+==========
+RESPONSE:
+Array
+(
+    [count] => 3
+    [items] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 3
+                    [name] => Las Vegas
+                    [country] => 1
+                    [tax] => 8.15
+                    [image] => http://momentodeals.com/images/las_vegas.png
+                    [gps] => 36.169941, -115.139830
+                )
+
+            [1] => Array
+                (
+                    [id] => 1
+                    [name] => Los Angeles
+                    [country] => 1
+                    [tax] => 9
+                    [image] => http://momentodeals.com/images/los_angeles.png
+                    [gps] => 34.052234, -118.243685
+                )
+
+            [2] => Array
+                (
+                    [id] => 2
+                    [name] => San Francisco
+                    [country] => 1
+                    [tax] => 8.75
+                    [image] => http://momentodeals.com/images/san_francisco.png
+                    [gps] => 37.774929, -122.419416
+                )
+
+        )
+
+)
+
