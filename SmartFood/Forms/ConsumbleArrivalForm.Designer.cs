@@ -142,6 +142,7 @@
             this.buttonCancel.TabIndex = 13;
             this.buttonCancel.Text = "Отменить";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // ConsumbleArrivalForm
             // 
@@ -166,6 +167,7 @@
             this.MinimizeBox = false;
             this.Name = "ConsumbleArrivalForm";
             this.Text = "ConsumbleArrivalForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ConsumbleArrivalForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

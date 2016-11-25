@@ -124,6 +124,7 @@
             this.buttonCancel.TabIndex = 9;
             this.buttonCancel.Text = "Отменить";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // AcountDetails
             // 
@@ -147,6 +148,7 @@
             this.MinimizeBox = false;
             this.Name = "AcountDetails";
             this.Text = "AcountDetails";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AcountDetails_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

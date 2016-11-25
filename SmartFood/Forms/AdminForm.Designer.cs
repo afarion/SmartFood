@@ -165,6 +165,7 @@
             this.buttonAddConsumble.TabIndex = 2;
             this.buttonAddConsumble.Text = "Добавить";
             this.buttonAddConsumble.UseVisualStyleBackColor = true;
+            this.buttonAddConsumble.Click += new System.EventHandler(this.buttonAddConsumble_Click);
             // 
             // buttonDelete
             // 
@@ -205,6 +206,7 @@
             this.buttonWriteOff.TabIndex = 6;
             this.buttonWriteOff.Text = "Списание";
             this.buttonWriteOff.UseVisualStyleBackColor = true;
+            this.buttonWriteOff.Click += new System.EventHandler(this.buttonWriteOff_Click);
             // 
             // buttonArrivial
             // 
@@ -214,6 +216,7 @@
             this.buttonArrivial.TabIndex = 5;
             this.buttonArrivial.Text = "Приход";
             this.buttonArrivial.UseVisualStyleBackColor = true;
+            this.buttonArrivial.Click += new System.EventHandler(this.buttonArrivial_Click);
             // 
             // dataGridViewArrival
             // 
@@ -576,6 +579,7 @@
             this.buttonEditGood.TabIndex = 2;
             this.buttonEditGood.Text = "Редактировать";
             this.buttonEditGood.UseVisualStyleBackColor = true;
+            this.buttonEditGood.Click += new System.EventHandler(this.buttonEditGood_Click);
             // 
             // buttonDeleteGood
             // 
@@ -594,6 +598,7 @@
             this.buttonAddGood.TabIndex = 0;
             this.buttonAddGood.Text = "Добавить";
             this.buttonAddGood.UseVisualStyleBackColor = true;
+            this.buttonAddGood.Click += new System.EventHandler(this.buttonAddGood_Click);
             // 
             // tabPageAcounts
             // 
@@ -644,6 +649,7 @@
             this.buttonAddAcount.TabIndex = 0;
             this.buttonAddAcount.Text = "Добавить";
             this.buttonAddAcount.UseVisualStyleBackColor = true;
+            this.buttonAddAcount.Click += new System.EventHandler(this.buttonAddAcount_Click);
             // 
             // tabPageClients
             // 
@@ -683,6 +689,7 @@
             this.buttonAddClient.TabIndex = 1;
             this.buttonAddClient.Text = "Добавить";
             this.buttonAddClient.UseVisualStyleBackColor = true;
+            this.buttonAddClient.Click += new System.EventHandler(this.buttonAddClient_Click);
             // 
             // tabPageEmployees
             // 
@@ -732,6 +739,7 @@
             this.buttonAddEmploye.TabIndex = 1;
             this.buttonAddEmploye.Text = "Добавить";
             this.buttonAddEmploye.UseVisualStyleBackColor = true;
+            this.buttonAddEmploye.Click += new System.EventHandler(this.buttonAddEmploye_Click);
             // 
             // tabPageSuppliers
             // 
@@ -781,6 +789,7 @@
             this.buttonAddSupplier.TabIndex = 0;
             this.buttonAddSupplier.Text = "Добавить";
             this.buttonAddSupplier.UseVisualStyleBackColor = true;
+            this.buttonAddSupplier.Click += new System.EventHandler(this.buttonAddSupplier_Click);
             // 
             // AdminForm
             // 

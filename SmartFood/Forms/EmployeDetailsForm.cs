@@ -15,5 +15,16 @@ namespace SmartFood.Forms
         {
             InitializeComponent();
         }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            AdminForm.instance.Enabled = true;
+            this.Close();
+        }
+
+        private void EmployeDetailsForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            AdminForm.instance.Enabled = true;
+        }
     }
 }

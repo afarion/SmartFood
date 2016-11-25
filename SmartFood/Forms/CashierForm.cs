@@ -11,9 +11,11 @@ namespace SmartFood.Forms
 {
     public partial class CashierForm : Form
     {
+        public static CashierForm instance;
         public CashierForm()
         {
             InitializeComponent();
+            instance = this;
         }
 
         private void CashierForm_Shown(object sender, EventArgs e)
@@ -46,6 +48,14 @@ namespace SmartFood.Forms
         private void CashierForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void CreateOrderButton_Click(object sender, EventArgs e)
+        {
+            OrderForm modalForm = new OrderForm();
+            modalForm.StartPosition = FormStartPosition.CenterScreen;
+            this.Enabled = false;
+            modalForm.Show();
         }
     }
 }

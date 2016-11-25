@@ -1,6 +1,6 @@
 ﻿namespace SmartFood.Forms
 {
-    partial class NewGoodForm
+    partial class GoodDetailsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewGoodForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GoodDetailsForm));
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.labelName = new System.Windows.Forms.Label();
             this.buttonOk = new System.Windows.Forms.Button();
@@ -73,6 +73,7 @@
             this.buttonCancel.TabIndex = 3;
             this.buttonCancel.Text = "Отменить";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonAddConsumble
             // 
@@ -107,7 +108,7 @@
             this.textBoxPrice.Size = new System.Drawing.Size(237, 20);
             this.textBoxPrice.TabIndex = 7;
             // 
-            // NewGoodForm
+            // GoodDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -124,8 +125,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "NewGoodForm";
-            this.Text = "NewGoodForm";
+            this.Name = "GoodDetailsForm";
+            this.Text = "GoodDetailsForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GoodDetailsForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsumbles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

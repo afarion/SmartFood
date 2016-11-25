@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace SmartFood.Forms
 {
-    public partial class NewConsumbleForm : Form
+    public partial class GoodDetailsForm : Form
     {
-        public NewConsumbleForm()
+        public GoodDetailsForm()
         {
             InitializeComponent();
         }
@@ -22,7 +22,7 @@ namespace SmartFood.Forms
             this.Close();
         }
 
-        private void NewConsumbleForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void GoodDetailsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             AdminForm.instance.Enabled = true;
         }

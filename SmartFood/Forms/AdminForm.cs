@@ -11,6 +11,7 @@ namespace SmartFood.Forms
 {
     public partial class AdminForm : Form
     {
+        public static AdminForm instance;
         public AdminForm()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace SmartFood.Forms
             tabPageClients.Enter += new System.EventHandler(this.TabPageClients_Enter);
             tabPageEmployees.Enter += new System.EventHandler(this.TabPageEmployees_Enter);
             tabPageSuppliers.Enter += new System.EventHandler(this.TabPageSuppliers_Enter);
+            instance = this;
         }
 
         private void AdminForm_Shown(object sender, EventArgs e)
@@ -159,6 +161,7 @@ namespace SmartFood.Forms
 
             tmpPoint.X = buttonPrint.Location.X - buttonSave.Width - 10;
             buttonSave.Location = tmpPoint;
+            comboBoxType.Width = monthCalendarFrom.Width;
 
             int tmpHeight = tabPageConsumables.Height - 50;
             tmpPoint.X = tabPageConsumables.Left + 10;
@@ -251,6 +254,75 @@ namespace SmartFood.Forms
         private void buttonEditAcount_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonAddConsumble_Click(object sender, EventArgs e)
+        {
+            NewConsumbleForm modalForm = new NewConsumbleForm();
+            modalForm.StartPosition = FormStartPosition.CenterScreen;
+            this.Enabled = false;
+            modalForm.Show();
+        }
+
+        private void buttonArrivial_Click(object sender, EventArgs e)
+        {
+            ConsumbleArrivalForm modalForm = new ConsumbleArrivalForm();
+            modalForm.StartPosition = FormStartPosition.CenterScreen;
+            this.Enabled = false;
+            modalForm.Show();
+        }
+
+        private void buttonWriteOff_Click(object sender, EventArgs e)
+        {
+            ConsumbleWriteOffForm modalForm = new ConsumbleWriteOffForm();
+            modalForm.StartPosition = FormStartPosition.CenterScreen;
+            this.Enabled = false;
+            modalForm.Show();
+        }
+
+        private void buttonEditGood_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAddGood_Click(object sender, EventArgs e)
+        {
+            GoodDetailsForm modalForm = new GoodDetailsForm();
+            modalForm.StartPosition = FormStartPosition.CenterScreen;
+            this.Enabled = false;
+            modalForm.Show();
+        }
+
+        private void buttonAddAcount_Click(object sender, EventArgs e)
+        {
+            AcountDetails modalForm = new AcountDetails();
+            modalForm.StartPosition = FormStartPosition.CenterScreen;
+            this.Enabled = false;
+            modalForm.Show();
+        }
+
+        private void buttonAddClient_Click(object sender, EventArgs e)
+        {
+            ClientDetailsForm modalForm = new ClientDetailsForm();
+            modalForm.StartPosition = FormStartPosition.CenterScreen;
+            this.Enabled = false;
+            modalForm.Show();
+        }
+
+        private void buttonAddEmploye_Click(object sender, EventArgs e)
+        {
+            EmployeDetailsForm modalForm = new EmployeDetailsForm();
+            modalForm.StartPosition = FormStartPosition.CenterScreen;
+            this.Enabled = false;
+            modalForm.Show();
+        }
+
+        private void buttonAddSupplier_Click(object sender, EventArgs e)
+        {
+            SupplierDetailsForm modalForm = new SupplierDetailsForm();
+            modalForm.StartPosition = FormStartPosition.CenterScreen;
+            this.Enabled = false;
+            modalForm.Show();
         }
     }
 }

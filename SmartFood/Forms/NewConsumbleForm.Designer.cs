@@ -107,6 +107,7 @@
             this.buttonCancel.TabIndex = 7;
             this.buttonCancel.Text = "Отменить";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // textBoxMeasurement
             // 
@@ -145,6 +146,7 @@
             this.MinimizeBox = false;
             this.Name = "NewConsumbleForm";
             this.Text = "NewConsumbleForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NewConsumbleForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
