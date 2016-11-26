@@ -83,6 +83,7 @@
             this.buttonClientDetails.TabIndex = 17;
             this.buttonClientDetails.Text = "Детали";
             this.buttonClientDetails.UseVisualStyleBackColor = true;
+            this.buttonClientDetails.Click += new System.EventHandler(this.buttonClientDetails_Click);
             // 
             // comboBoxAdress
             // 
@@ -200,6 +201,7 @@
             this.buttonCancel.TabIndex = 20;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonOK
             // 
@@ -265,6 +267,7 @@
             this.MinimizeBox = false;
             this.Name = "OrderForm";
             this.Text = "Заказ";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OrderForm_FormClosed);
             this.Load += new System.EventHandler(this.OrderForm_Load);
             this.groupBoxClient.ResumeLayout(false);
             this.groupBoxClient.PerformLayout();

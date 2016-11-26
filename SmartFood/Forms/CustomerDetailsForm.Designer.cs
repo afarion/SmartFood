@@ -94,6 +94,7 @@
             this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "Отменить";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // textBoxCurrentDiscount
             // 
@@ -218,6 +219,7 @@
             this.MinimizeBox = false;
             this.Name = "CustomerDetailsForm";
             this.Text = "Информация о клиенте";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CustomerDetailsForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

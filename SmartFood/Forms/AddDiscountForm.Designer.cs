@@ -87,6 +87,7 @@
             this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // AddDiscountForm
             // 
@@ -105,6 +106,7 @@
             this.MinimizeBox = false;
             this.Name = "AddDiscountForm";
             this.Text = "AddDiscountForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddDiscountForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -161,6 +161,7 @@
             this.buttonCancel.TabIndex = 13;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonAddDiscount
             // 
@@ -170,6 +171,7 @@
             this.buttonAddDiscount.TabIndex = 14;
             this.buttonAddDiscount.Text = "Добавить скидку";
             this.buttonAddDiscount.UseVisualStyleBackColor = true;
+            this.buttonAddDiscount.Click += new System.EventHandler(this.buttonAddDiscount_Click);
             // 
             // ClientDetailsForm
             // 
@@ -197,6 +199,7 @@
             this.MinimizeBox = false;
             this.Name = "ClientDetailsForm";
             this.Text = "ClientDetailsForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ClientDetailsForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

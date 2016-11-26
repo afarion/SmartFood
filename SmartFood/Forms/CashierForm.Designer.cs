@@ -57,6 +57,7 @@
             this.CreateOrderButton.TabIndex = 1;
             this.CreateOrderButton.Text = "Новый заказ";
             this.CreateOrderButton.UseVisualStyleBackColor = true;
+            this.CreateOrderButton.Click += new System.EventHandler(this.CreateOrderButton_Click);
             // 
             // buttonSearchOrder
             // 
