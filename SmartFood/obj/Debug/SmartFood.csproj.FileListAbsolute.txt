@@ -72,9 +72,14 @@ D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.CustomerDetailsForm.r
 D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.EmployeDetailsForm.resources
 D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.LoginForm.resources
 D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.NewConsumbleForm.resources
-D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.NewGoodForm.resources
 D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.OrderForm.resources
 D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.SupplierDetailsForm.resources
 D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Properties.Resources.resources
 D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.csproj.GenerateResource.Cache
 C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.GoodDetailsForm.resources
+D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.GoodDetailsForm.resources
+D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.ConsumbleCategorieForm.resources
+D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.ConsumbleTypeForm.resources
+D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddConsumbleCategorieForm.resources
+D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddConsumbleTypeForm.resources
+D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.csprojResolveAssemblyReference.cache

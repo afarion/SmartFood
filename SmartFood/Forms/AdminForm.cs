@@ -216,6 +216,14 @@ namespace SmartFood.Forms
             tmpPoint.X = tabPageConsumables.Left + 10;
             tmpPoint.Y = tabPageConsumables.Top + 10;
             dataGridViewConsumbles.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
+
+            tmpPoint.Y = tabPageConsumables.Height - buttonAddConsumble.Height - 10;
+            buttonConsumbleTypes.Size = buttonAddConsumble.Size;
+            buttonConsumbleTypes.Location = tmpPoint;
+
+            tmpPoint.X = buttonConsumbleTypes.Location.X + buttonConsumbleTypes.Width + 10;
+            buttonConsumbleCategories.Size = buttonAddConsumble.Size;
+            buttonConsumbleCategories.Location = tmpPoint;
             this.Refresh();
         }
 
@@ -320,6 +328,22 @@ namespace SmartFood.Forms
         private void buttonAddSupplier_Click(object sender, EventArgs e)
         {
             SupplierDetailsForm modalForm = new SupplierDetailsForm();
+            modalForm.StartPosition = FormStartPosition.CenterScreen;
+            this.Enabled = false;
+            modalForm.Show();
+        }
+
+        private void buttonConsumbleCategories_Click(object sender, EventArgs e)
+        {
+            ConsumbleCategorieForm modalForm = new ConsumbleCategorieForm();
+            modalForm.StartPosition = FormStartPosition.CenterScreen;
+            this.Enabled = false;
+            modalForm.Show();
+        }
+
+        private void buttonConsumbleTypes_Click(object sender, EventArgs e)
+        {
+            ConsumbleTypeForm modalForm = new ConsumbleTypeForm();
             modalForm.StartPosition = FormStartPosition.CenterScreen;
             this.Enabled = false;
             modalForm.Show();
