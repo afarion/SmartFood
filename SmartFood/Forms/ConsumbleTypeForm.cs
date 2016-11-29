@@ -32,6 +32,7 @@ namespace SmartFood.Forms
             dataGridViewConsumbleTypes.AllowUserToAddRows = false;
             dataGridViewConsumbleTypes.Columns[0].ReadOnly = true;
             dataGridViewConsumbleTypes.RowHeadersVisible = false;
+            dataGridViewConsumbleTypes.EditMode = DataGridViewEditMode.EditOnEnter;
             selectedRow = 0;
             selectColumn = 0;
             DownloadConsumbleTypes();
