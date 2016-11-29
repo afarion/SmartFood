@@ -31,6 +31,7 @@ namespace SmartFood.Forms
             dataGridViewConsumbleTypes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewConsumbleTypes.AllowUserToAddRows = false;
             dataGridViewConsumbleTypes.Columns[0].ReadOnly = true;
+            dataGridViewConsumbleTypes.RowHeadersVisible = false;
             selectedRow = 0;
             selectColumn = 0;
             DownloadConsumbleTypes();
