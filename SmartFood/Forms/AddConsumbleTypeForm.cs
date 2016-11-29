@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartFood.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,6 +26,18 @@ namespace SmartFood.Forms
         {
             this.Close();
             ConsumbleTypeForm.instance.Enabled = true;
+        }
+
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxName.Text))
+                ErrorsViewWrapper.ShowError("Введите имя");
+            else
+            {
+                ConsumblesTypesCore.AddConsumbleType(textBoxName.Text);
+                ConsumbleTypeForm.instance.DownloadConsumbleTypes();
+                this.Close();
+            }
         }
     }
 }

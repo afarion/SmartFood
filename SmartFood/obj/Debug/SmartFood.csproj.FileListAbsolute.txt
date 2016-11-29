@@ -83,3 +83,7 @@ D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.ConsumbleTypeForm.res
 D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddConsumbleCategorieForm.resources
 D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddConsumbleTypeForm.resources
 D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.csprojResolveAssemblyReference.cache
+C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddConsumbleCategorieForm.resources
+C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddConsumbleTypeForm.resources
+C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.ConsumbleCategorieForm.resources
+C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.ConsumbleTypeForm.resources
