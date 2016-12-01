@@ -8,14 +8,15 @@ namespace SmartFood.Core.Serialisation
     [Serializable]
     public class ConsumbleCategories
     {
-        public List<ConsumbleCategorie> categories;
+        public List<ConsumbleCategorie> items;
     }
 
     [Serializable]
     public class ConsumbleCategorie
     {
-        public long ID;
+        public long id;
         public string name;
+        public int id_type;
         public int visible;
     }
 }

@@ -31,6 +31,5 @@ namespace SmartFood.Core
             param.Add("visible", visible);
             return SendEditRequest(UriPostfix.CONSUMBLE_TYPES, param);
         }
-
     }
 }

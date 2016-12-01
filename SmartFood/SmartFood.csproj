@@ -76,6 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\ConsumbleCategorieCore.cs" />
     <Compile Include="Core\Serialisation\AuthUserData.cs" />
     <Compile Include="Core\ComboBoxItem.cs" />
     <Compile Include="Core\CoreBase.cs" />

@@ -9,5 +9,6 @@ namespace SmartFood.Core
     {
         public const string AUTHENTICATION = "auth/";
         public const string CONSUMBLE_TYPES = "itemtype/";
+        public const string CONSUMBLE_CATEGORIES = "itemcategory/";
     }
 }

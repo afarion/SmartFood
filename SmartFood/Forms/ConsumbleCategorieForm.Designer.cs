@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsumbleCategorieForm));
             this.buttonAdd = new System.Windows.Forms.Button();
-            this.buttonDelete = new System.Windows.Forms.Button();
             this.dataGridViewConsumbleCategories = new System.Windows.Forms.DataGridView();
             this.comboBoxConsumbleTypes = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsumbleCategories)).BeginInit();
@@ -45,15 +44,6 @@
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
-            // 
-            // buttonDelete
-            // 
-            this.buttonDelete.Location = new System.Drawing.Point(255, 478);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(112, 35);
-            this.buttonDelete.TabIndex = 2;
-            this.buttonDelete.Text = "Удалить";
-            this.buttonDelete.UseVisualStyleBackColor = true;
             // 
             // dataGridViewConsumbleCategories
             // 
@@ -71,6 +61,7 @@
             this.comboBoxConsumbleTypes.Name = "comboBoxConsumbleTypes";
             this.comboBoxConsumbleTypes.Size = new System.Drawing.Size(468, 28);
             this.comboBoxConsumbleTypes.TabIndex = 4;
+            this.comboBoxConsumbleTypes.SelectionChangeCommitted += new System.EventHandler(this.comboBoxConsumbleTypes_SelectionChangeCommitted);
             // 
             // ConsumbleCategorieForm
             // 
@@ -79,7 +70,6 @@
             this.ClientSize = new System.Drawing.Size(497, 525);
             this.Controls.Add(this.comboBoxConsumbleTypes);
             this.Controls.Add(this.dataGridViewConsumbleCategories);
-            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonAdd);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -96,7 +86,6 @@
         #endregion
 
         private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.DataGridView dataGridViewConsumbleCategories;
         private System.Windows.Forms.ComboBox comboBoxConsumbleTypes;
     }
