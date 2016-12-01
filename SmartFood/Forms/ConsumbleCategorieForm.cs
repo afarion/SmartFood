@@ -109,8 +109,17 @@ namespace SmartFood.Forms
                         dataGridViewConsumbleCategories.CellValueChanged += DataGridViewConsumbleCategories_CellValueChanged;
                         updateFlag = true;
                     }
-                    if(dataGridViewConsumbleCategories.Rows.Count >0)
-                        dataGridViewConsumbleCategories.CurrentCell = dataGridViewConsumbleCategories.Rows[selectedRow].Cells[selectColumn];
+                    if (dataGridViewConsumbleCategories.Rows.Count > 0)
+                    {
+                        try
+                        {
+                            dataGridViewConsumbleCategories.CurrentCell = dataGridViewConsumbleCategories.Rows[selectedRow].Cells[selectColumn];
+                        }
+                        catch
+                        {
+                            dataGridViewConsumbleCategories.CurrentCell = dataGridViewConsumbleCategories.Rows[0].Cells[0];
+                        }
+                    }
                 });
             }
             catch { }
