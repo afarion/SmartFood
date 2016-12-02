@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartFood.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,6 +25,8 @@ namespace SmartFood.Forms
             tabPageEmployees.Enter += new System.EventHandler(this.TabPageEmployees_Enter);
             tabPageSuppliers.Enter += new System.EventHandler(this.TabPageSuppliers_Enter);
             instance = this;
+
+            MeasuresCore.GetMeasures();
         }
 
         private void AdminForm_Shown(object sender, EventArgs e)

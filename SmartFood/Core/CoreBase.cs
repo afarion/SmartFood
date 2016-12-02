@@ -23,7 +23,7 @@ namespace SmartFood.Core
             apiUri = ConfigurationManager.AppSettings["ApiUri"];
         }
 
-        public static bool SendRequest<T>(string uriPostfix, Dictionary<string, string> param, out T result)
+        public static bool SendGetRequest<T>(string uriPostfix, Dictionary<string, string> param, out T result)
         {
             try
             {
@@ -52,6 +52,35 @@ namespace SmartFood.Core
                 result = default(T);
                 ErrorsViewWrapper.ShowError("Авторизация не удалась. Ошибка: " + ex.Message, "Ошибка");
                 return false;                
+            }
+        }
+
+        public static bool SendEditRequest(string uriPostfix, Dictionary<string, string> param)
+        {
+            try
+            {
+                param.Add("user_id", loggedUserID.ToString());
+                param.Add("user_type", loggedUserTYPE.ToString());
+                param.Add("user_sid", loggedUserSID.ToString());
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(apiUri + uriPostfix);
+                FormUrlEncodedContent content = new FormUrlEncodedContent(param);
+                HttpResponseMessage response = client.PostAsync(apiUri + uriPostfix, content).Result;
+                string resultContent = response.Content.ReadAsStringAsync().Result;
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    return true;
+                }
+                else
+                {
+                    ProcessErrors(response);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorsViewWrapper.ShowError("Авторизация не удалась. Ошибка: " + ex.Message, "Ошибка");
+                return false;
             }
         }
 
