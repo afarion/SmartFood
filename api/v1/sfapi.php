@@ -93,14 +93,7 @@ class SmartFoodApi
         {
             case "view":
             {
-                //Check user permissions
-                if(isset($this->config[$method]["permission"]))
-                {
-                    if(!isset($this->config[$method]["permission"][$userType]) 
-                    || !isset($this->config[$method]["permission"][$userType][0])
-                    || !$this->config[$method]["permission"][$userType][0])
-                        $this->ShowError("perm"); 
-                }
+                $this->CheckUserPermissions($method, $userType, 0);
                 
                 $response = $this->GetResponseData($method, $request);
                 
@@ -118,10 +111,18 @@ class SmartFoodApi
             }
             case "edit":
             {
+                $this->CheckUserPermissions($method, $userType, 1);
+                
+                $this->UpdateObject($method, $request);
+                
                 break;
             }
             case "add":
             {
+                $this->CheckUserPermissions($method, $userType, 2);
+                
+                $this->InsertObject($method, $request);
+                
                 break;
             }
             case "remove":
@@ -136,6 +137,162 @@ class SmartFoodApi
         }
         
         
+    }
+    
+    private function CheckUserPermissions($method, $userType, $key)
+    {
+        if(isset($this->config[$method]["permission"]))
+        {
+            if(!isset($this->config[$method]["permission"][$userType]) 
+            || !isset($this->config[$method]["permission"][$userType][$key])
+            || !$this->config[$method]["permission"][$userType][$key])
+                $this->ShowError("perm"); 
+        }
+    }
+    
+    private function InsertObject($method, $request)
+    {
+        //Unknown method (not exist in config file)
+        if(!isset($this->config[$method]))
+            $this->ShowError("method");
+        
+        $methodConfig = $this->config[$method];
+        
+        if(!isset($methodConfig["fields"]))
+            $this->ShowError("request");
+        
+        $insertFields = array();
+        $insertValues = array();
+        
+        foreach($methodConfig["fields"] as $fieldName => $fieldConfig)
+        {
+            $fieldType  = $fieldConfig["type"];
+            $fieldDef   = $fieldConfig["default"];
+            
+            if(!isset($request[$fieldName]) && $fieldDef === false)
+                $this->ShowError("request");
+                
+            $fieldValue = $fieldDef;
+            if(isset($request[$fieldName]))
+                $fieldValue = $request[$fieldName];
+            
+            $insertFields[] = $fieldName;
+            $insertValues[] = $this->FormatField($fieldValue, $fieldType);
+        }
+        
+        if(count($insertFields) <= 0)
+            $this->ShowError("request");
+        
+        $table = $methodConfig["table"];
+        
+        $query = "INSERT INTO $table (".join(",", $insertFields).") VALUES (".join(",", $insertValues).")";
+        
+        $this->ExecuteNonQuery($query);
+        
+        $newId = mysql_insert_id();
+        
+        if(intval($newId) <= 0)
+            $this->ShowError("insert");
+        
+        $response = array("success" => $newId);
+        
+        $this->ShowJson($response);
+    }
+    
+    private function UpdateObject($method, $request)
+    {
+        //Unknown method (not exist in config file)
+        if(!isset($this->config[$method]))
+            $this->ShowError("method");
+        
+        $methodConfig = $this->config[$method];
+        
+        if(!isset($methodConfig["fields"]))
+            $this->ShowError("request");
+        
+        if(!isset($_POST["id"]))
+            $this->ShowError("request");
+        
+        $id = intval($_POST["id"]);
+        
+        if($id <= 0)
+            $this->ShowError("request");
+        
+        $updateValues = array();
+        
+        foreach($methodConfig["fields"] as $fieldName => $fieldConfig)
+        {
+            $fieldType  = $fieldConfig["type"];
+            $fieldEdit  = $fieldConfig["editable"];
+            
+            if(!isset($request[$fieldName]))
+                continue;
+                
+            if(!$fieldEdit)
+                $this->ShowError("request");
+                
+            $fieldValue = $this->FormatField($request[$fieldName], $fieldType);
+            
+            $updateValues[] = "$fieldName = $fieldValue";
+        }
+        
+        if(count($updateValues) <= 0)
+        {
+            $this->ShowError("request");
+        }
+        
+        $table = $methodConfig["table"];
+        
+        $query = "UPDATE $table SET ".join(",", $updateValues)." WHERE id = $id";
+        
+        $this->ExecuteNonQuery($query);
+        
+        $response = array("success" => $id);
+        
+        $this->ShowJson($response);
+    }
+    
+    private function FormatField($value, $type)
+    {
+        switch($type)
+        {
+            case "int":
+            {
+                if($value != "NULL")
+                    $value = intval($value);
+                
+                break;
+            }
+            case "float":
+            {
+                if($value != "NULL")
+                {
+                    $value = str_replace(",", ".", $value);
+                    $value = floatval($value);
+                }
+                
+                break;
+            }
+            case "date":
+            {
+                if($value != "NOW()" && $value != "NULL")
+                    $value = "'$value'";
+                
+                break;
+            }
+            case "text":
+            {
+                if($value != "NULL")
+                {
+                    $value = $this->MySqlScreening($value);
+                    $value = "'$value'";
+                }
+                
+                break;
+            }
+        }
+        
+        return $value;
     }
     
     public function GetResponseData($method, $request, $relKey = "", $relIds = "")
@@ -280,6 +437,7 @@ class SmartFoodApi
             $where = "1";
             
             //Generate where string for query
+            /*
             if(isset($request["filters"]) && is_array($request["filters"]))
             {
                 foreach($request["filters"] as $key => $val)
@@ -323,6 +481,53 @@ class SmartFoodApi
                         $where .= $this->GetFilterWhere($filterData["field"], $filterData["type"], $val, $table);
                     }
                 }
+            }
+            */
+            
+            if(isset($methodConfig["filters"]))
+            {
+                foreach($methodConfig["filters"] as $key => $filterData)
+                {
+                    if(!isset($request[$key]))
+                        continue;
+                        
+                    $val = $request[$key];
+                        
+                    if(isset($filterData["related"]))
+                    {
+                        $relData = $filterData["related"];
+                        
+                        $relTable = $relData[0];
+                        $relField = $relData[1];
+                        $relKey   = $relData[2];
+                        
+                        $relWhere = $this->GetFilterWhere($filterData["field"], $filterData["type"], $val, $relTable);
+                        
+                        if(isset($relData[3]))
+                            $relWhere .= $relData[3];
+                        
+                        $relQuery = "SELECT $relField as id FROM $relTable WHERE 1 $relWhere";
+                        
+                        $relRows = $this->GetRowsByQuery($relQuery);
+                        
+                        $relIds = array();
+                        foreach($relRows as $relItem)
+                        {
+                            $relIds[$relItem["id"]] = $relItem["id"];
+                        }
+                        
+                        $relStr = "0";
+                        if(count($relIds) > 0)
+                            $relStr = join(",", $relIds);
+                        
+                        $where .= $this->GetFilterWhere("id", "in_array", $relStr, $table);
+                    }
+                    else
+                    {
+                        $where .= $this->GetFilterWhere($filterData["field"], $filterData["type"], $val, $table);
+                    }
+                }
+                
             }
             
             //If related request, add to query relation field
@@ -958,7 +1163,7 @@ class SmartFoodApi
         
         $statusCode = $errors[$key]["status_code"];
         
-        $error = array("error" => array("code" => $errors[$key]["code"], "message" => $errors[$key]["message"]));
+        $error = array("code" => $errors[$key]["code"], "message" => $errors[$key]["message"]);
         
         $this->ShowJson($error, $statusCode);
         

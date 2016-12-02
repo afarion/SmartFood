@@ -10,18 +10,20 @@ function GetConfigArray()
             
             "permission" => array( 
                 //          view    edit    add     remove
-                1 => array( true,   false,  false,  false),  //Администратор
+                1 => array( true,   true,   true,   false),  //Администратор
                 2 => array( true,   false,  false,  false),  //Оператор
                 3 => array( true,   false,  false,  false),  //Повар
             ),
         
             "part" => array(
-                "id"    => array( "field" => "id",      "type" => "key",    "required" => true ),
-                "name"  => array( "field" => "name",    "type" => "text",   "required" => true ),
+                "id"        => array( "field" => "id",          "type" => "key",    "required" => true ),
+                "name"      => array( "field" => "name",        "type" => "text",   "required" => true ),
+                "visible"   => array( "field" => "visible",     "type" => "int",    "required" => true ),
             ),
             
-            "show_only" => array(
-                "visible > 0"
+            "fields" => array(
+                "name"          => array( "type" => "text",   "default" => false,   "editable" => true ),
+                "visible"       => array( "type" => "flag",   "default" => 1,       "editable" => true ),
             ),
         
             "order" => array(
@@ -37,18 +39,26 @@ function GetConfigArray()
             
             "permission" => array( 
                 //          view    edit    add     remove
-                1 => array( true,   false,  false,  false),  //Администратор
+                1 => array( true,   true,   true,   false),  //Администратор
                 2 => array( true,   false,  false,  false),  //Оператор
                 3 => array( true,   false,  false,  false),  //Повар
             ),
         
             "part" => array(
-                "id"    => array( "field" => "id",      "type" => "key",    "required" => true ),
-                "name"  => array( "field" => "name",    "type" => "text",   "required" => true ),
+                "id"        => array( "field" => "id",      "type" => "key",    "required" => true ),
+                "name"      => array( "field" => "name",    "type" => "text",   "required" => true ),
+                "id_type"   => array( "field" => "id_type", "type" => "int",    "required" => true ),
+                "visible"   => array( "field" => "visible", "type" => "int",    "required" => true ),
             ),
             
-            "show_only" => array(
-                "visible > 0"
+            "fields" => array(
+                "name"          => array( "type" => "text",   "default" => false,   "editable" => true ),
+                "id_type"       => array( "type" => "int",    "default" => false,   "editable" => true ),
+                "visible"       => array( "type" => "flag",   "default" => 1,       "editable" => true ),
+            ),
+            
+            "filters" => array(
+                "type"   => array( "field" => "id_type",  "type" => "int_equals" ),
             ),
         
             "order" => array(
@@ -92,99 +102,148 @@ function GetConfigArray()
             
             "permission" => array( 
                 //          view    edit    add     remove
-                1 => array( true,   true,   true,   true),  //Администратор
-                2 => array( true,   true,   true,   true),  //Оператор
-                3 => array( true,   true,   true,   true),  //Повар
+                1 => array( true,   true,   true,   false),  //Администратор
+                2 => array( true,   false,  false,  false),  //Оператор
+                3 => array( true,   false,  false,  false),  //Повар
             ),
-        
-            "part" => array(
-                "id"    => array( "field" => "id",      "type" => "key",    "required" => true ),
-                "name"  => array( "field" => "name",    "type" => "text",   "required" => true ),
-            ),
-        
-            "order" => array(
-                "name"      => "tcountry.name",
-                "create"    => "tcountry.id",
-            ),
-        ),
-    
-    /*
-        "country" => array(
-        
-            "table" => "tcountry",
-        
-            "part" => array(
-                "id"    => array( "field" => "id",      "type" => "key",    "required" => true ),
-                "name"  => array( "field" => "name",    "type" => "text",   "required" => true ),
-            ),
-        
-            "order" => array(
-                "name"      => "tcountry.name",
-                "create"    => "tcountry.id",
-            ),
-        ),
-        
-        "city" => array(
-            
-            "table" => "tcity",
-            
-            "part" => array(
-                "id"        => array( "field" => "id",          "type" => "key",    "required" => true ),
-                "name"      => array( "field" => "name",        "type" => "text",   "required" => true ),
-                "country"   => array( "field" => "id_country",  "type" => "int",    "required" => false ),
-                "tax"       => array( "field" => "tax",         "type" => "int",    "required" => false ),
-                "image"     => array( "field" => "img",         "type" => "image",  "required" => false ),
-                
-                "lat"       => array( "field" => "lat",         "type" => "text",   "required" => false ),
-                "lon"       => array( "field" => "lon",         "type" => "text",   "required" => false ),
-                
-                "gps"       => array( "field" => "concat(tcity.lat,', ',tcity.lon)",     "type" => "concat", "required" => false ),
-            ),
-            
-            "filters" => array(
-                "q"         => array( "field" => "name",        "type" => "text_contains" ),
-                "country"   => array( "field" => "id_country",  "type" => "int_equals" ),
-            ),
-            
-            "order" => array(
-                "name"      => "tcity.name",
-                "create"    => "tcity.id",
-            ),
-        
-        ),
-        
-        "duration" => array(
-        
-            "table" => "tduration",
         
             "part" => array(
                 "id"            => array( "field" => "id",          "type" => "key",    "required" => true ),
                 "name"          => array( "field" => "name",        "type" => "text",   "required" => true ),
-                "multiplier"    => array( "field" => "multiplier",  "type" => "text",   "required" => true ),
+                
+                "id_type"       => array( "field" => "id_type",     "type" => "int",    "required" => true ),
+                "id_category"   => array( "field" => "id_category", "type" => "int",    "required" => true ),
+                "id_unit"       => array( "field" => "id_unit",     "type" => "int",    "required" => true ),
+                
+                "amount"        => array( "field" => "amount",      "type" => "float",  "required" => true ),
+                "price"         => array( "field" => "price",       "type" => "float",  "required" => true ),
+                "visible"       => array( "field" => "visible",     "type" => "int",    "required" => true ),
+                
+                "type"          => array( "field" => "id_type",     "type" => "table",  "required" => false, "join" => array("titemtype", "name", "id") ),
+                "category"      => array( "field" => "id_category", "type" => "table",  "required" => false, "join" => array("titemcategory", "name", "id") ),
+                "unit"          => array( "field" => "id_unit",     "type" => "table",  "required" => false, "join" => array("tunit", "abbr", "id") ),
             ),
             
-            "order" => array(
-                "name"      => "tduration.name",
-                "create"    => "tduration.id",
+            "fields" => array(
+                "name"          => array( "type" => "text",   "default" => false,   "editable" => true ),
+                "id_type"       => array( "type" => "int",    "default" => false,   "editable" => true ),
+                "id_category"   => array( "type" => "int",    "default" => false,   "editable" => true ),
+                "id_unit"       => array( "type" => "int",    "default" => false,   "editable" => true ),
+                //"amount"        => array( "type" => "float",  "default" => 0,       "editable" => true ),
+                "price"         => array( "type" => "float",  "default" => 0,       "editable" => false ),
+                "visible"       => array( "type" => "flag",   "default" => 1,       "editable" => true ),
+            ),
+            
+            "filters" => array(
+                "type"      => array( "field" => "id_type",     "type" => "int_equals" ),
+                "category"  => array( "field" => "id_category", "type" => "int_equals" ),
             ),
         
+            "order" => array(
+                "priority"      => "titem.priority desc, titem.id",
+                "name"          => "titem.name",
+                "amount"        => "titem.amount",
+                "price"         => "titem.price",
+                "price_desc"    => "titem.price desc",
+                "create"        => "titem.id",
+            ),
         ),
         
-        "roomtype" => array(
+        "provider" => array(
         
-            "table" => "troomtype",
+            "table" => "tprovider",
+            
+            "permission" => array( 
+                //          view    edit    add     remove
+                1 => array( true,   true,   true,   false),  //Администратор
+                2 => array( true,   false,  false,  false),  //Оператор
+                3 => array( true,   false,  false,  false),  //Повар
+            ),
+        
+            "part" => array(
+                "id"        => array( "field" => "id",          "type" => "key",    "required" => true ),
+                "name"      => array( "field" => "name",        "type" => "text",   "required" => true ),
+                "notes"     => array( "field" => "notes",       "type" => "text",   "required" => true ),
+                "visible"   => array( "field" => "visible",     "type" => "int",    "required" => true ),
+            ),
+            
+            "fields" => array(
+                "name"          => array( "type" => "text",   "default" => false,   "editable" => true ),
+                "notes"         => array( "type" => "text",   "default" => "",      "editable" => true ),
+                "visible"       => array( "type" => "flag",   "default" => 1,       "editable" => true ),
+            ),
+        
+            "order" => array(
+                "priority"  => "tprovider.priority desc, tprovider.id",
+                "name"      => "tprovider.name",
+                "create"    => "tprovider.id",
+            ),
+        ),
+        
+        "employeetype" => array(
+        
+            "table" => "temployeetype",
+            
+            "permission" => array( 
+                //          view    edit    add     remove
+                1 => array( true,   false,  false,  false),  //Администратор
+                2 => array( true,   false,  false,  false),  //Оператор
+                3 => array( true,   false,  false,  false),  //Повар
+            ),
         
             "part" => array(
                 "id"    => array( "field" => "id",      "type" => "key",    "required" => true ),
                 "name"  => array( "field" => "name",    "type" => "text",   "required" => true ),
             ),
+            
+            "show_only" => array(
+                "visible > 0"
+            ),
         
             "order" => array(
-                "name"      => "troomtype.name",
-                "create"    => "troomtype.id",
+                "priority"  => "temployeetype.priority desc, temployeetype.id",
+                "name"      => "temployeetype.name",
+                "create"    => "temployeetype.id",
             ),
         ),
         
+        "employee" => array(
+        
+            "table" => "temployee",
+            
+            "permission" => array( 
+                //          view    edit    add     remove
+                1 => array( true,   true,   true,   false),  //Администратор
+                2 => array( true,   false,  false,  false),  //Оператор
+                3 => array( true,   false,  false,  false),  //Повар
+            ),
+        
+            "part" => array(
+                "id"        => array( "field" => "id",      "type" => "key",    "required" => true ),
+                "name"      => array( "field" => "name",    "type" => "text",   "required" => true ),
+                "id_type"   => array( "field" => "id_type", "type" => "int",    "required" => true ),
+                "visible"   => array( "field" => "visible", "type" => "int",    "required" => true ),
+            ),
+            
+            "fields" => array(
+                "name"          => array( "type" => "text",   "default" => false,   "editable" => true ),
+                "id_type"       => array( "type" => "int",    "default" => false,   "editable" => true ),
+                "visible"       => array( "type" => "flag",   "default" => 1,       "editable" => true ),
+            ),
+            
+            "filters" => array(
+                "type"   => array( "field" => "id_type",  "type" => "int_equals" ),
+            ),
+        
+            "order" => array(
+                "priority"  => "temployee.priority desc, temployee.id",
+                "name"      => "temployee.name",
+                "create"    => "temployee.id",
+            ),
+        ),
+    
+    /*
+
         "hotel" => array(
         
             "table" => "thotel",
@@ -244,96 +303,7 @@ function GetConfigArray()
         
         ),
         
-        "deal" => array(
         
-            "table" => "troomdeal",
-        
-            "part" => array(
-                "id"            => array( "field" => "id",              "type" => "key",    "required" => true ),
-                "name"          => array( "field" => "name",            "type" => "text",   "required" => true ),
-                "hotel"         => array( "field" => "id_hotel",        "type" => "int",    "required" => false ),
-                
-                "duration"      => array( "field" => "id_duration",     "type" => "table",  "required" => false, "join" => array("tduration", "name", "id") ),
-                "roomtype"      => array( "field" => "id_roomtype",     "type" => "table",  "required" => false, "join" => array("troomtype", "name", "id") ),
-                "checkout"      => array( "field" => "id_checkout",     "type" => "table",  "required" => false, "join" => array("tcheckout", "name", "id") ),
-                
-                "price"         => array( "field" => "price",           "type" => "price",  "required" => false ),
-                "tonight_price" => array( "field" => "tonight_price",   "type" => "price",  "required" => false ),
-                "description"   => array( "field" => "description",     "type" => "text",   "required" => false ),
-                
-                "date_finish"   => array( "field" => "date_finish",     "type" => "text",   "required" => false ),
-            ),
-            
-            "relations" => array(
-                "services" => array("method" => "service", "key" => "id_roomdeal"),
-            ),
-            
-            "show_only" => array(
-                "visible > 0",
-                "date_finish > NOW()"
-            ),
-            
-            "filters" => array(
-                "id"    => array( "field" => "id",      "type" => "int_equals" ),
-                "q"     => array( "field" => "name",    "type" => "text_contains" ),
-            ),
-            
-            "order" => array(
-                "name"      => "troomdeal.name",
-                "price"     => "troomdeal.price",
-                "create"    => "troomdeal.date_insert",
-            ),  
-        
-        ),
-        
-        "service" => array(
-        
-            "table" => "troomdealservice",
-        
-            "part" => array(
-                "id"            => array( "field" => "id",              "type" => "key",    "required" => true ),
-                "name"          => array( "field" => "id_service",      "type" => "table",  "required" => true, "join" => array("tservice", "name", "id") ),
-                "deal"          => array( "field" => "id_roomdeal",     "type" => "int",    "required" => false ),
-                "price"         => array( "field" => "price",           "type" => "price",  "required" => false ),
-                "tonight_price" => array( "field" => "tonight_price",   "type" => "price",  "required" => false ),
-                "description"   => array( "field" => "description",     "type" => "text",   "required" => false ),
-            ),
-            
-            "show_only" => array(
-                "visible > 0"
-            ),
-            
-            "order" => array(
-                "name"      => "tservice.name",
-                "price"     => "troomdealservice.price",
-                "create"    => "troomdealservice.date_insert",
-            ),       
-        ),
-        
-        "booking_price" => array(
-            
-            "part" => array(
-                "hotel"         => array( "type" => "int",    "required" => true ),
-                "deal"          => array( "type" => "int",    "required" => true ),
-                "services"      => array( "type" => "text",   "required" => false ),
-            ),
-            
-        ),
-        
-        "booking_order" => array(
-            
-            "part" => array(
-                "user_id"       => array( "type" => "int",    "required" => true ),
-                "hash"          => array( "type" => "text",   "required" => true ),
-                
-                "hotel"         => array( "type" => "int",    "required" => true ),
-                "deal"          => array( "type" => "int",    "required" => true ),
-                "services"      => array( "type" => "text",   "required" => false ),
-                
-                "user_notes"    => array( "type" => "text",   "required" => false ),
-            ),
-            
-        ),
         
         "order" => array(
         
@@ -431,8 +401,10 @@ function GetConfigArray()
             "action"    => array( "code" => 21,     "status_code" => 400,   "message" => "Invalid action" ),
             "user"      => array( "code" => 22,     "status_code" => 400,   "message" => "Invalid user data" ),
             
-            "sid"       => array( "code" => 30,     "status_code" => 401,   "message" => "Wrong user sid" ),
-            "perm"      => array( "code" => 31,     "status_code" => 403,   "message" => "You do not have permission for this action" ),
+            "insert"    => array( "code" => 31,     "status_code" => 400,   "message" => "Insert object error" ),
+            
+            "sid"       => array( "code" => 50,     "status_code" => 401,   "message" => "Wrong user sid" ),
+            "perm"      => array( "code" => 51,     "status_code" => 403,   "message" => "You do not have permission for this action" ),
             
             "undefined" => array( "code" => 100,    "status_code" => 404,   "message" => "Undefined error" ),
             "not_found" => array( "code" => 101,    "status_code" => 404,   "message" => "Item not found" ),

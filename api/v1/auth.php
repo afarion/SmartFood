@@ -285,7 +285,7 @@ class Auth
         
         $statusCode = $errors[$key]["status_code"];
         
-        $error = array("error" => array("code" => $errors[$key]["code"], "message" => $errors[$key]["message"]));
+        $error = array("code" => $errors[$key]["code"], "message" => $errors[$key]["message"]);
         
         $this->ShowJson($error, $statusCode);
         
