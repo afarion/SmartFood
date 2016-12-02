@@ -116,7 +116,7 @@ function GetConfigArray()
                 "id_unit"       => array( "field" => "id_unit",     "type" => "int",    "required" => true ),
                 
                 "amount"        => array( "field" => "amount",      "type" => "float",  "required" => true ),
-                "price"         => array( "field" => "price",       "type" => "float",  "required" => true ),
+                "price"         => array( "field" => "price",       "type" => "price",  "required" => true ),
                 "visible"       => array( "field" => "visible",     "type" => "int",    "required" => true ),
                 
                 "type"          => array( "field" => "id_type",     "type" => "table",  "required" => false, "join" => array("titemtype", "name", "id") ),
@@ -219,15 +219,31 @@ function GetConfigArray()
             ),
         
             "part" => array(
-                "id"        => array( "field" => "id",      "type" => "key",    "required" => true ),
-                "name"      => array( "field" => "name",    "type" => "text",   "required" => true ),
-                "id_type"   => array( "field" => "id_type", "type" => "int",    "required" => true ),
-                "visible"   => array( "field" => "visible", "type" => "int",    "required" => true ),
+                "id"            => array( "field" => "id",          "type" => "key",    "required" => true ),
+                "id_type"       => array( "field" => "id_type",     "type" => "int",    "required" => true ),
+                "first_name"    => array( "field" => "first_name",  "type" => "text",   "required" => true ),
+                "last_name"     => array( "field" => "last_name",   "type" => "text",   "required" => true ),
+                "phone"         => array( "field" => "phone",       "type" => "text",   "required" => true ),
+                "phone_ex"      => array( "field" => "phone_ex",    "type" => "text",   "required" => true ),
+                "skype"         => array( "field" => "skype",       "type" => "text",   "required" => true ),
+                "address"       => array( "field" => "address",     "type" => "text",   "required" => true ),
+                "email"         => array( "field" => "email",       "type" => "text",   "required" => true ),
+                "birthday"      => array( "field" => "birthday",    "type" => "date",   "required" => true ),
+                "comment"       => array( "field" => "comment",     "type" => "text",   "required" => true ),
+                "visible"       => array( "field" => "visible",     "type" => "int",    "required" => true ),
             ),
             
             "fields" => array(
-                "name"          => array( "type" => "text",   "default" => false,   "editable" => true ),
                 "id_type"       => array( "type" => "int",    "default" => false,   "editable" => true ),
+                "first_name"    => array( "type" => "text",   "default" => false,   "editable" => true ),
+                "last_name"     => array( "type" => "text",   "default" => false,   "editable" => true ),
+                "phone"         => array( "type" => "text",   "default" => "NULL",  "editable" => true ),
+                "phone_ex"      => array( "type" => "text",   "default" => "NULL",  "editable" => true ),
+                "skype"         => array( "type" => "text",   "default" => "NULL",  "editable" => true ),
+                "address"       => array( "type" => "text",   "default" => "NULL",  "editable" => true ),
+                "email"         => array( "type" => "text",   "default" => "NULL",  "editable" => true ),
+                "birthday"      => array( "type" => "date",   "default" => "NULL",  "editable" => true ),
+                "comment"       => array( "type" => "text",   "default" => "NULL",  "editable" => true ),
                 "visible"       => array( "type" => "flag",   "default" => 1,       "editable" => true ),
             ),
             
@@ -241,7 +257,119 @@ function GetConfigArray()
                 "create"    => "temployee.id",
             ),
         ),
-    
+
+        "user" => array(
+        
+            "table" => "tuser",
+            
+            "permission" => array( 
+                //          view    edit    add     remove
+                1 => array( true,   true,   true,   false),  //Администратор
+                2 => array( true,   false,  false,  false),  //Оператор
+                3 => array( true,   false,  false,  false),  //Повар
+            ),
+        
+            "part" => array(
+                "id"                => array( "field" => "id",              "type" => "key",    "required" => true ),
+                "name"              => array( "field" => "name",            "type" => "text",   "required" => true ),
+                "phone"             => array( "field" => "phone",           "type" => "text",   "required" => true ),
+                "email"             => array( "field" => "email",           "type" => "text",   "required" => true ),
+                "discount_fixed"    => array( "field" => "discount_fixed",  "type" => "int",    "required" => true ),
+                "discount_stored"   => array( "field" => "discount_stored", "type" => "int",    "required" => true ),
+                "total_balance"     => array( "field" => "total_balance",   "type" => "price",  "required" => true ),
+                "comment"           => array( "field" => "comment",         "type" => "text",   "required" => true ),
+                "visible"           => array( "field" => "visible",         "type" => "int",    "required" => true ),
+            ),
+            
+            "fields" => array(
+                "name"              => array( "type" => "text",     "default" => false,   "editable" => true ),
+                "phone"             => array( "type" => "text",     "default" => "NULL",  "editable" => true ),
+                "email"             => array( "type" => "text",     "default" => "NULL",  "editable" => true ),
+                "discount_fixed"    => array( "type" => "int",      "default" => "NULL",  "editable" => true ),
+                "discount_stored"   => array( "type" => "int",      "default" => "NULL",  "editable" => false ),
+                "total_balance"     => array( "type" => "float",    "default" => "NULL",  "editable" => false ),
+                "comment"           => array( "type" => "text",     "default" => "NULL",  "editable" => true ),
+                "visible"           => array( "type" => "flag",     "default" => 1,       "editable" => true ),
+            ),
+            
+            "order" => array(
+                "create"    => "tuser.id",
+                "name"      => "tuser.name",
+            ),
+        ),  
+        
+        "useraddress" => array(
+        
+            "table" => "tuseraddress",
+            
+            "permission" => array( 
+                //          view    edit    add     remove
+                1 => array( true,   true,   true,   false),  //Администратор
+                2 => array( true,   false,  false,  false),  //Оператор
+                3 => array( true,   false,  false,  false),  //Повар
+            ),
+        
+            "part" => array(
+                "id"        => array( "field" => "id",      "type" => "key",    "required" => true ),
+                "address"   => array( "field" => "address", "type" => "text",   "required" => true ),
+                "id_user"   => array( "field" => "id_user", "type" => "int",    "required" => true ),
+                "visible"   => array( "field" => "visible", "type" => "int",    "required" => true ),
+            ),
+            
+            "fields" => array(
+                "address"       => array( "type" => "text",   "default" => false,   "editable" => true ),
+                "id_user"       => array( "type" => "int",    "default" => false,   "editable" => true ),
+                "visible"       => array( "type" => "flag",   "default" => 1,       "editable" => true ),
+            ),
+            
+            "filters" => array(
+                "user"   => array( "field" => "id_user",  "type" => "int_equals" ),
+            ),
+        
+            "order" => array(
+                "priority"  => "tuseraddress.priority desc, tuseraddress.id",
+                "create"    => "titemcategory.id",
+            ),
+        ),
+        
+        "admin" => array(
+        
+            "table" => "tadmin",
+            
+            "permission" => array( 
+                //          view    edit    add     remove
+                1 => array( true,   true,   true,   false),  //Администратор
+                2 => array( true,   false,  false,  false),  //Оператор
+                3 => array( true,   false,  false,  false),  //Повар
+            ),
+        
+            "part" => array(
+                "id"            => array( "field" => "id",          "type" => "key",    "required" => true ),
+                "id_type"       => array( "field" => "id_type",     "type" => "int",    "required" => true ),
+                "id_employee"   => array( "field" => "id_employee", "type" => "int",    "required" => true ),
+                "login"         => array( "field" => "login",       "type" => "text",   "required" => true ),
+                "visible"       => array( "field" => "visible",     "type" => "int",    "required" => true ),
+            ),
+            
+            "fields" => array(
+                "id_type"       => array( "type" => "int",    "default" => false,   "editable" => true ),
+                "id_employee"   => array( "type" => "int",    "default" => false,   "editable" => true ),
+                "login"         => array( "type" => "text",   "default" => false,   "editable" => true ),
+                "pass"          => array( "type" => "pass",   "default" => false,   "editable" => true ),
+                "visible"       => array( "type" => "flag",   "default" => 1,       "editable" => true ),
+            ),
+            
+            "filters" => array(
+                "type"      => array( "field" => "id_type",     "type" => "int_equals" ),
+                "employee"  => array( "field" => "id_employee", "type" => "int_equals" ),
+            ),
+        
+            "order" => array(
+                "create"    => "tadmin.id",
+                "name"      => "tadmin.name",
+            ),
+        ),
+          
     /*
 
         "hotel" => array(
