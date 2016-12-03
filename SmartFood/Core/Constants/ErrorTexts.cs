@@ -25,6 +25,9 @@ namespace SmartFood.Core.Constants
         public const string ENTER_LOGIN = "Введите логин";
         public const string ENTER_PASSWORD = "Введите пароль";
         public const string ENTER_LOGIN_AND_PASSWORD = "Введите логин и пароль";
+        public const string ENTER_PRICE = "Введите цену";
+        public const string ENTER_NAME_AND_PRICE = "Введите имя и цену";
+        public const string INCORRECT_PRICE = "Неправильная цена";
 
     }
 }

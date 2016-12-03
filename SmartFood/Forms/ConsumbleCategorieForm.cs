@@ -32,7 +32,7 @@ namespace SmartFood.Forms
             dataGridViewConsumbleCategories.Columns.Add(column);
 
             column = new DataGridViewComboBoxColumn();
-            column.DataSource = ConsumblesTypesCore.consumbleTypes.ToList();
+            column.DataSource = ConsumblesTypesCore.ConsumbleTypes.ToList();
             column.HeaderText = GeneralConstants.TYPE;
             dataGridViewConsumbleCategories.Columns.Add(column);
 
@@ -44,7 +44,7 @@ namespace SmartFood.Forms
             selectedRow = 0;
             selectColumn = 0;
 
-            comboBoxConsumbleTypes.Items.AddRange(ConsumblesTypesCore.consumbleTypes.ToList().ToArray());
+            comboBoxConsumbleTypes.Items.AddRange(ConsumblesTypesCore.ConsumbleTypes.ToList().ToArray());
             try
             {
                 comboBoxConsumbleTypes.SelectedIndex = 0;
@@ -78,7 +78,7 @@ namespace SmartFood.Forms
             long typeID = -1;
             try
             {
-                typeID = ConsumblesTypesCore.consumbleTypes.GetID(comboBoxConsumbleTypes.SelectedItem.ToString());
+                typeID = ConsumblesTypesCore.ConsumbleTypes.GetID(comboBoxConsumbleTypes.SelectedItem.ToString());
                 isOk = true;
             }
             catch
@@ -106,7 +106,7 @@ namespace SmartFood.Forms
                     {
                         int i = 0;
                         DataGridViewRow row = new DataGridViewRow();
-                        dataGridViewConsumbleCategories.Rows.Add(categorie.id, categorie.name, Convert.ToBoolean(categorie.visible) ? GeneralConstants.YES : GeneralConstants.NO, ConsumblesTypesCore.consumbleTypes.GetName(typeId));
+                        dataGridViewConsumbleCategories.Rows.Add(categorie.id, categorie.name, Convert.ToBoolean(categorie.visible) ? GeneralConstants.YES : GeneralConstants.NO, ConsumblesTypesCore.ConsumbleTypes.GetName(typeId));
                         dataGridViewConsumbleCategories.CellValueChanged += DataGridViewConsumbleCategories_CellValueChanged;
                         updateFlag = true;
                     }
@@ -131,7 +131,7 @@ namespace SmartFood.Forms
             if (updateFlag)
             {
                 DataGridViewCellCollection collection = dataGridViewConsumbleCategories.Rows[e.RowIndex].Cells;
-                ConsumbleCategorieCore.EditConsumbleCategorie(collection[0].Value.ToString(), collection[1].Value.ToString(), collection[2].Value.ToString() == GeneralConstants.YES ? "1" : "0", ConsumblesTypesCore.consumbleTypes.GetID(collection[3].Value.ToString()));
+                ConsumbleCategorieCore.EditConsumbleCategorie(collection[0].Value.ToString(), collection[1].Value.ToString(), collection[2].Value.ToString() == GeneralConstants.YES ? "1" : "0", ConsumblesTypesCore.ConsumbleTypes.GetID(collection[3].Value.ToString()));
                 dataGridViewConsumbleCategories.CellValueChanged -= DataGridViewConsumbleCategories_CellValueChanged;
                 updateFlag = false;
                 selectColumn = e.ColumnIndex;

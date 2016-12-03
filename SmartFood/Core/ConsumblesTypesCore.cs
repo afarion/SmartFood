@@ -6,7 +6,7 @@ namespace SmartFood.Core
 {
     public class ConsumblesTypesCore: CoreBase
     {
-        public static ConsumbleTypes consumbleTypes = null;
+        private static ConsumbleTypes consumbleTypes = null;
         public static ConsumbleTypes ConsumbleTypes
         {
             get

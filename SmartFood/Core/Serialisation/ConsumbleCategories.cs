@@ -19,7 +19,7 @@ namespace SmartFood.Core.Serialisation
             return tmpList;
         }
 
-        public long GetID(string typeName)
+        public int GetID(string typeName)
         {
             foreach (var item in items)
             {
@@ -43,7 +43,7 @@ namespace SmartFood.Core.Serialisation
     [Serializable]
     public class ConsumbleCategorie
     {
-        public long id;
+        public int id;
         public string name;
         public int id_type;
         public int visible;
