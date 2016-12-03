@@ -3,7 +3,7 @@ include("../../constants.php");
 header('Content-Type: text/html; charset=utf-8');
 ?>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-<form action="/<?= API_VERSION ?>/employee/" method="post" target="_blank">
+<form action="/<?= API_VERSION ?>/user/" method="post" target="_blank">
     <table>
         <tr>
             <td>user_id</td>
@@ -29,18 +29,8 @@ header('Content-Type: text/html; charset=utf-8');
         </tr>
         
         <tr>
-            <td>id_type</td>
-            <td><input type="text" name="id_type" value=""/></td>
-        </tr>
-        
-        <tr>
-            <td>first_name</td>
-            <td><input type="text" name="first_name" value=""/></td>
-        </tr>
-        
-        <tr>
-            <td>last_name</td>
-            <td><input type="text" name="last_name" value=""/></td>
+            <td>name</td>
+            <td><input type="text" name="name" value=""/></td>
         </tr>
         
         <tr>
@@ -49,28 +39,13 @@ header('Content-Type: text/html; charset=utf-8');
         </tr>
         
         <tr>
-            <td>phone_ex</td>
-            <td><input type="text" name="phone_ex" value=""/></td>
-        </tr>
-        
-        <tr>
-            <td>skype</td>
-            <td><input type="text" name="skype" value=""/></td>
-        </tr>
-        
-        <tr>
-            <td>address</td>
-            <td><input type="text" name="address" value=""/></td>
-        </tr>
-        
-        <tr>
             <td>email</td>
             <td><input type="text" name="email" value=""/></td>
         </tr>
         
         <tr>
-            <td>birthday</td>
-            <td><input type="text" name="birthday" value=""/></td>
+            <td>discount_fixed</td>
+            <td><input type="text" name="discount_fixed" value=""/></td>
         </tr>
         
         <tr>
