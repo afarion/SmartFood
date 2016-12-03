@@ -1,4 +1,5 @@
 ﻿using SmartFood.Core;
+using SmartFood.Core.Constants;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,7 +38,7 @@ namespace SmartFood.Forms
         private void buttonOK_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxName.Text))
-                ErrorsViewWrapper.ShowError("Введите имя");
+                ErrorsViewWrapper.ShowError(ErrorTexts.ENTER_NAME);
             else
             {
                 ConsumbleCategorieCore.AddConsumbleCategorie(textBoxName.Text, ConsumblesTypesCore.consumbleTypes.GetID(comboBoxType.SelectedItem.ToString()));

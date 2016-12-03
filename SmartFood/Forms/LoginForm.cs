@@ -1,4 +1,5 @@
 ﻿using SmartFood.Core;
+using SmartFood.Core.Constants;
 using SmartFood.Forms;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,9 @@ namespace SmartFood
         {
             InitializeComponent();
 
-            comboBoxRole.Items.Add(new ComboBoxItem(1, "Администратор"));
-            comboBoxRole.Items.Add(new ComboBoxItem(2, "Оператор"));
-            comboBoxRole.Items.Add(new ComboBoxItem(3, "Повар"));
+            comboBoxRole.Items.Add(new ComboBoxItem(1, GeneralConstants.ADMINISTRATOR));
+            comboBoxRole.Items.Add(new ComboBoxItem(2, GeneralConstants.OPERATOR));
+            comboBoxRole.Items.Add(new ComboBoxItem(3, GeneralConstants.COOK));
             comboBoxRole.SelectedIndex = 0;
             CoreBase.Init();
             //LoginCore.LogIn();
@@ -61,18 +62,18 @@ namespace SmartFood
                             form.Show();
                             break;
                         default:
-                            MessageBox.Show("Произошла непредвиденая ошибка. Приложение будет закрыто", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            ErrorsViewWrapper.ShowError(ErrorTexts.UNEXPEXTED_ERROR);
                             Application.Exit();
                             break;
                     }
                 }
             }
             else if (!loginSet && !passwordSet)
-                ErrorsViewWrapper.ShowError("Введите логин и пароль");
+                ErrorsViewWrapper.ShowError(ErrorTexts.ENTER_LOGIN_AND_PASSWORD);
             else if(loginSet && !passwordSet)
-                ErrorsViewWrapper.ShowError("Введите пароль");
+                ErrorsViewWrapper.ShowError(ErrorTexts.ENTER_PASSWORD);
             else
-                ErrorsViewWrapper.ShowError("Введите логин");
+                ErrorsViewWrapper.ShowError(ErrorTexts.ENTER_LOGIN);
         }
     }
 }

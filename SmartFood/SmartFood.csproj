@@ -79,19 +79,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Constants\ActionsConstants.cs" />
+    <Compile Include="Core\Constants\ErrorTexts.cs" />
+    <Compile Include="Core\Constants\GeneralConstants.cs" />
+    <Compile Include="Core\ConsumblesCore.cs" />
     <Compile Include="Core\ConsumbleCategorieCore.cs" />
     <Compile Include="Core\MeasuresCore.cs" />
     <Compile Include="Core\Serialisation\AuthUserData.cs" />
     <Compile Include="Core\ComboBoxItem.cs" />
     <Compile Include="Core\CoreBase.cs" />
     <Compile Include="Core\LoginCore.cs" />
-    <Compile Include="Core\Serialisation\Consumble.cs" />
+    <Compile Include="Core\Serialisation\Consumbles.cs" />
     <Compile Include="Core\Serialisation\ConsumbleCategories.cs" />
     <Compile Include="Core\Serialisation\ConsumbleTypes.cs" />
     <Compile Include="Core\ConsumblesTypesCore.cs" />
     <Compile Include="Core\Serialisation\ErrorType.cs" />
     <Compile Include="Core\Serialisation\Measures.cs" />
-    <Compile Include="Core\UriPostfix.cs" />
+    <Compile Include="Core\Constants\UriPostfix.cs" />
     <Compile Include="Forms\AcountDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,7 +213,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Forms\AcountDetails.resx">
       <DependentUpon>AcountDetails.cs</DependentUpon>
     </EmbeddedResource>

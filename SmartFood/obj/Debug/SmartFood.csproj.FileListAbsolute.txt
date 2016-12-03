@@ -131,3 +131,4 @@ E:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.pdb
 D:\Work\smartfood\SmartFood\bin\Debug\SmartFood.exe.config
 D:\Work\smartfood\SmartFood\obj\Debug\SmartFood.exe
 D:\Work\smartfood\SmartFood\obj\Debug\SmartFood.pdb
+D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.csprojResolveAssemblyReference.cache

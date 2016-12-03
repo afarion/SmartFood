@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartFood.Core.Constants;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,9 @@ namespace SmartFood.Core
         public static void LogIn(long role, string login, string password)
         {
             Dictionary<string,string> param = new Dictionary<string, string>();
-            param.Add("type",role.ToString());
-            param.Add("login", login);
-            param.Add("pass", password);
+            param.Add(RequestFields.TYPE, role.ToString());
+            param.Add(RequestFields.LOGIN, login);
+            param.Add(RequestFields.PASSWORD, password);
 
             SendAuthRequest(UriPostfix.AUTHENTICATION, param);
 
