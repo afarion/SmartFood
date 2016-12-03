@@ -973,7 +973,7 @@ function DocConfigArray()
                     "test_file" => "employee_view.php"
                 ),
             
-            "response" => '{"count":3,"items":[{"id":"1","name":"\u0410\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440 \u0424\u0430\u0440\u0438\u043e\u043d","id_type":"1","visible":"1"},{"id":"2","name":"\u0412\u0430\u0434\u0438\u043c \u041f\u0438\u0442\u0435\u043d\u043a\u043e","id_type":"1","visible":"1"},{"id":"3","name":"\u041c\u0430\u0440\u0438\u043d\u0430 \u0424\u0430\u0440\u0438\u043e\u043d","id_type":"1","visible":"1"}]}',
+            "response" => '{"count":3,"items":[{"id":"1","id_type":"1","first_name":"\u0410\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","last_name":"\u0424\u0430\u0440\u0438\u043e\u043d","phone":"0962357575","phone_ex":"0668605699","skype":"aleksairdis","address":null,"email":"farion.alexandr@gmail.com","birthday":"1988-02-21","comment":null,"visible":"1"},{"id":"2","id_type":"1","first_name":"\u0412\u0430\u0434\u0438\u043c","last_name":"\u041f\u0438\u0442\u0435\u043d\u043a\u043e","phone":"0962772096","phone_ex":"0632778763","skype":"\r\nvadim.pitenko","address":null,"email":"vadim.pitenko@gmail.com","birthday":"1989-10-06","comment":null,"visible":"1"},{"id":"3","id_type":"1","first_name":"\u041c\u0430\u0440\u0438\u043d\u0430","last_name":"\u0424\u0430\u0440\u0438\u043e\u043d","phone":"0675573133","phone_ex":null,"skype":"live:marinafarion","address":null,"email":"marinafarion@gmail.com","birthday":"1991-05-29","comment":null,"visible":"1"}]}',
             
         ),
         
@@ -1007,23 +1007,72 @@ function DocConfigArray()
                     "descr" => "Совершаемое действие, в данном случае добавление (add). Обязательное поле."
                 ),
                 
-                "name" => array(
-                    "value" => "",
-                    "type"  => "string", 
-                    "descr" => "Имя сотрудника. Обязательное поле."
-                ),
-                
                 "id_type" => array(
                     "value" => "",
                     "type"  => "int", 
                     "descr" => "ID типа. Обязательное поле."
                 ),
+                
+                "first_name" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Имя сотрудника. Обязательное поле."
+                ),
+                
+                "last_name" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Фамилия сотрудника. Обязательное поле."
+                ),
+                
+                "phone" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Телефон сотрудника."
+                ),
+                
+                "phone_ex" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Дополнительный телефон сотрудника."
+                ),
+                
+                "skype" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Skype сотрудника."
+                ),
+                
+                "address" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Адрес сотрудника."
+                ),
+                
+                "email" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "E-mail сотрудника."
+                ),
+                
+                "birthday" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Дата рождения сотрудника. Формат: YYYY-MM-DD."
+                ),
+                
+                "comment" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Комментарий."
+                ),
+                
             ),
             
             "request_post" => 
                 array(
                     "link" => "employee/",
-                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"add","name":"Иван","id_type":"1"}',
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"add","first_name":"Иван","last_name":"Иванов","id_type":"1"}',
                     "test_file" => "employee_add.php"
                 ),
             
@@ -1067,16 +1116,64 @@ function DocConfigArray()
                     "descr" => "ID редактируемого сотрудника. Обязательное поле."
                 ),
                 
-                "name" => array(
+                "id_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID типа."
+                ),
+                
+                "first_name" => array(
                     "value" => "",
                     "type"  => "string", 
                     "descr" => "Имя сотрудника."
                 ),
                 
-                "id_type" => array(
+                "last_name" => array(
                     "value" => "",
-                    "type"  => "int", 
-                    "descr" => "ID типа."
+                    "type"  => "string", 
+                    "descr" => "Фамилия сотрудника."
+                ),
+                
+                "phone" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Телефон сотрудника."
+                ),
+                
+                "phone_ex" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Дополнительный телефон сотрудника."
+                ),
+                
+                "skype" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Skype сотрудника."
+                ),
+                
+                "address" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Адрес сотрудника."
+                ),
+                
+                "email" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "E-mail сотрудника."
+                ),
+                
+                "birthday" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Дата рождения сотрудника. Формат: YYYY-MM-DD."
+                ),
+                
+                "comment" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Комментарий."
                 ),
                 
                 "visible" => array(
@@ -1089,7 +1186,7 @@ function DocConfigArray()
             "request_post" => 
                 array(
                     "link" => "employee/",
-                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"edit","name":"Андрей","id_type":"1","visible":"1"}',
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"edit","first_name":"Андрей","id_type":"1","visible":"1"}',
                     "test_file" => "employee_edit.php"
                 ),
             
@@ -1097,6 +1194,213 @@ function DocConfigArray()
             
         ),
         
+        // ====================================================================================================
+        // USER
+        
+        "user_view" => array(
+            
+            "name" => "Пользователи. View",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "view",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
+                ),
+                
+                "order" => array(
+                    "value" => "[create|name]",
+                    "type"  => "string", 
+                    "descr" => "Сортировка результатов. Варианты сортировок:<br />create - по дате создания<br />name - по названию" 
+                ),
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "user/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view"}',
+                    "test_file" => "user_view.php"
+                ),
+            
+            "response" => '{"count":3,"items":[{"id":"1","name":"\u0412\u0430\u0441\u044f","phone":"11111","email":"vasya@mail.ru","discount_fixed":"10","discount_stored":null,"total_balance":null,"comment":"\u043a\u0440\u0443\u0442\u043e\u0439 \u0447\u0435\u043b","visible":"1"},{"id":"2","name":"\u041f\u0435\u0442\u044f","phone":"222222","email":"petya@mail.ru","discount_fixed":"5","discount_stored":null,"total_balance":null,"comment":"\u043d\u0435 \u043c\u0435\u043d\u0435\u0435 \u043a\u0440\u0443\u0442","visible":"1"},{"id":"3","name":"\u042d\u0434\u0443\u0430\u0440\u0434","phone":"444","email":"","discount_fixed":"0","discount_stored":null,"total_balance":null,"comment":"\u0442\u0430\u043a\u043e\u0439 \u0441\u0435\u0431\u0435 \u0447\u0435\u043b","visible":"1"}]}',
+            
+        ),
+        
+        "user_add" => array(
+            
+            "name" => "Пользователи. Add",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "add",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае добавление (add). Обязательное поле."
+                ),
+                
+                "name" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Имя пользователя. Обязательное поле."
+                ),
+                
+                "phone" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Телефон пользователя."
+                ),
+                
+                "email" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "E-mail сотрудника."
+                ),
+                
+                "discount_fixed" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Фиксированая скидка."
+                ),
+                
+                "comment" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Комментарий."
+                ),
+                
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "user/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"add","name":"Иван"}',
+                    "test_file" => "user_add.php"
+                ),
+            
+            "response" => '{"success":1}',
+            
+        ),
+        
+        "user_edit" => array(
+            
+            "name" => "Пользователи. Edit",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "edit",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае редактирование (edit). Обязательное поле."
+                ),
+                
+                "id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID редактируемого пользователя. Обязательное поле."
+                ),
+                
+                "name" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Имя пользователя."
+                ),
+                
+                "phone" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Телефон пользователя."
+                ),
+                
+                "email" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "E-mail сотрудника."
+                ),
+                
+                "discount_fixed" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Фиксированая скидка."
+                ),
+                
+                "comment" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Комментарий."
+                ),
+                
+                "visible" => array(
+                    "value" => "0 или 1 ",
+                    "type"  => "flag", 
+                    "descr" => "Видимость сотрудника."
+                ),
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "user/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"edit","name":"Андрей","visible":"1"}',
+                    "test_file" => "user_edit.php"
+                ),
+            
+            "response" => '{"success":1}',
+            
+        ),
     
         /*
         

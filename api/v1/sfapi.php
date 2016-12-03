@@ -263,6 +263,19 @@ class SmartFoodApi
                 
                 break;
             }
+            case "flag":
+            {
+                if($value != "NULL")
+                {
+                    $value = intval($value);
+                    if($value > 0)
+                        $value = 1;
+                    else
+                        $value = 0;
+                }
+                
+                break;
+            }
             case "float":
             {
                 if($value != "NULL")
@@ -289,6 +302,18 @@ class SmartFoodApi
                 }
                 
                 break;
+            }
+            case "pass":
+            {
+                $value = md5($value);
+                $value = "'$value'";
+            
+                break;
+            }
+            default:
+            {
+                $value = $this->MySqlScreening($value);
+                $value = "'$value'";
             }
         }
         
@@ -357,10 +382,12 @@ class SmartFoodApi
                     
                     $fields[] = "$jTable.$jField as $key";
                 }
+                /*
                 else if($data["type"] == "price")
                 {
                     $fields[] = "CAST($table.$field * 100 AS UNSIGNED) as $key";
                 }
+                */
                 else if($data["type"] == "concat")
                 {
                     $fields[] = "$field as $key";
