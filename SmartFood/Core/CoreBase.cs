@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Windows.Forms;
 using SmartFood.Core.Serialisation;
 using SmartFood.Forms;
+using SmartFood.Core.Constants;
 
 namespace SmartFood.Core
 {
@@ -18,18 +19,19 @@ namespace SmartFood.Core
         private static int loggedUserTYPE;
         private static string apiUri = null;
         public static bool isAuthorised = false;
+
         public static void Init()
         {
-            apiUri = ConfigurationManager.AppSettings["ApiUri"];
+            apiUri = ConfigurationManager.AppSettings[RequestFields.API_URI];
         }
 
         public static bool SendGetRequest<T>(string uriPostfix, Dictionary<string, string> param, out T result)
         {
             try
             {
-                param.Add("user_id", loggedUserID.ToString());
-                param.Add("user_type", loggedUserTYPE.ToString());
-                param.Add("user_sid", loggedUserSID.ToString());
+                param.Add(RequestFields.USER_ID, loggedUserID.ToString());
+                param.Add(RequestFields.USER_TYPE, loggedUserTYPE.ToString());
+                param.Add(RequestFields.USER_SID, loggedUserSID.ToString());
                 HttpClient client = new HttpClient();
                 client.BaseAddress = new Uri(apiUri + uriPostfix);
                 FormUrlEncodedContent content = new FormUrlEncodedContent(param);
@@ -50,7 +52,7 @@ namespace SmartFood.Core
             catch (Exception ex)
             {
                 result = default(T);
-                ErrorsViewWrapper.ShowError("Авторизация не удалась. Ошибка: " + ex.Message, "Ошибка");
+                ErrorsViewWrapper.ShowError(ErrorTexts.AUTORITHATION_FAILED + ex.Message);
                 return false;                
             }
         }
@@ -59,9 +61,9 @@ namespace SmartFood.Core
         {
             try
             {
-                param.Add("user_id", loggedUserID.ToString());
-                param.Add("user_type", loggedUserTYPE.ToString());
-                param.Add("user_sid", loggedUserSID.ToString());
+                param.Add(RequestFields.USER_ID, loggedUserID.ToString());
+                param.Add(RequestFields.USER_TYPE, loggedUserTYPE.ToString());
+                param.Add(RequestFields.USER_SID, loggedUserSID.ToString());
                 HttpClient client = new HttpClient();
                 client.BaseAddress = new Uri(apiUri + uriPostfix);
                 FormUrlEncodedContent content = new FormUrlEncodedContent(param);
@@ -79,7 +81,7 @@ namespace SmartFood.Core
             }
             catch (Exception ex)
             {
-                ErrorsViewWrapper.ShowError("Авторизация не удалась. Ошибка: " + ex.Message, "Ошибка");
+                ErrorsViewWrapper.ShowError(ErrorTexts.AUTORITHATION_FAILED + ex.Message);
                 return false;
             }
         }
@@ -104,25 +106,25 @@ namespace SmartFood.Core
                         loggedUserTYPE = data.type;
                         break;
                     case System.Net.HttpStatusCode.Unauthorized://401
-                        ErrorsViewWrapper.ShowError("С вашего аккаунта был выполнен вход с другого устройства. Приложение будет закрыто", "Ошибка авторизации");
+                        ErrorsViewWrapper.ShowError(ErrorTexts.ANOTHER_DEVICE_LOGGED, ErrorTexts.AUTORITHATION_FAILED);
                         Application.Exit();
                         break;
                     case System.Net.HttpStatusCode.Forbidden://403
-                        ErrorsViewWrapper.ShowError("У вас нет прав для совершения этого действия", "Ошибка доступа");
+                        ErrorsViewWrapper.ShowError(ErrorTexts.PERMISSIONS_DENIED, ErrorTexts.ACCESS_DENIED);
                         break;
                     case System.Net.HttpStatusCode.NotFound://404
-                        ErrorsViewWrapper.ShowError("Реквест не найден", "Ошибка");
+                        ErrorsViewWrapper.ShowError(ErrorTexts.REQUEST_NOT_FOUND);
                         break;
                     case System.Net.HttpStatusCode.BadRequest://400
-                        ErrorsViewWrapper.ShowError("Ошибка входа. Проверьте правильность введенных данных и повторите попытку", "Ошибка");
+                        ErrorsViewWrapper.ShowError(ErrorTexts.INCORRECT_CREDENTIALS);
                         break;
                     default:
-                        throw new Exception("Неизвестный статус код ошмбки " + response.StatusCode);
+                        throw new Exception(ErrorTexts.UNKNOWN_STATUS_ERROR + response.StatusCode);
                 }
             }
             catch(Exception ex)
             {
-                ErrorsViewWrapper.ShowError("Авторизация не удалась. Ошибка: " + ex.Message, "Ошибка");
+                ErrorsViewWrapper.ShowError(ErrorTexts.AUTHORITHATION_NOT_SUCCEDED + ex.Message);
             }         
         }
 
@@ -133,20 +135,20 @@ namespace SmartFood.Core
             {
                 case System.Net.HttpStatusCode.BadRequest: //400
                     ErrorType error = new JavaScriptSerializer().Deserialize<ErrorType>(resultContent);
-                    ErrorsViewWrapper.ShowError(string.Format("Ошибка {0}: {1} "), "Неверный запрос");
+                    ErrorsViewWrapper.ShowError(string.Format(ErrorTexts.ERROR_EX, error.code, error.message), ErrorTexts.INCORRECT_REQUEST);
                     break;
                 case System.Net.HttpStatusCode.Unauthorized://401
-                    ErrorsViewWrapper.ShowError("С вашего аккаунта был выполнен вход с другого устройства. Приложение будет закрыто", "Ошибка авторизации");
+                    ErrorsViewWrapper.ShowError(ErrorTexts.ANOTHER_DEVICE_LOGGED, ErrorTexts.AUTHORITHATION_FAILED);
                     Application.Exit();
                     break;
                 case System.Net.HttpStatusCode.Forbidden://403
-                    ErrorsViewWrapper.ShowError("У вас нет прав для совершения этого действия", "Ошибка доступа");
+                    ErrorsViewWrapper.ShowError(ErrorTexts.PERMISSIONS_DENIED, ErrorTexts.ACCESS_DENIED);
                     break;
                 case System.Net.HttpStatusCode.NotFound://404
-                    ErrorsViewWrapper.ShowError("Реквест не найден", "Ошибка");
+                    ErrorsViewWrapper.ShowError(ErrorTexts.REQUEST_NOT_FOUND);
                     break;
                 default:
-                    throw new Exception("Неизвестный статус код ошмбки " + response.StatusCode);
+                    throw new Exception(ErrorTexts.UNKNOWN_STATUS_ERROR + response.StatusCode);
             }
         }
     }

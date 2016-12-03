@@ -1,4 +1,5 @@
 ﻿using SmartFood.Core;
+using SmartFood.Core.Constants;
 using SmartFood.Core.Serialisation;
 using System;
 using System.Collections.Generic;
@@ -23,16 +24,16 @@ namespace SmartFood.Forms
             InitializeComponent();
             DownloadConsumbleTypes();
             instance = this;
-            dataGridViewConsumbleCategories.Columns.Add("newColumnID", "ID");
-            dataGridViewConsumbleCategories.Columns.Add("newColumnName", "Имя");
+            dataGridViewConsumbleCategories.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
+            dataGridViewConsumbleCategories.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.NAME);
             var column = new DataGridViewComboBoxColumn();
-            column.DataSource = new List<string>() { "Да", "Нет" };
-            column.HeaderText = "Видимость";
+            column.DataSource = new List<string>() { GeneralConstants.YES, GeneralConstants.NO };
+            column.HeaderText = GeneralConstants.VISIBILITY;
             dataGridViewConsumbleCategories.Columns.Add(column);
 
             column = new DataGridViewComboBoxColumn();
             column.DataSource = ConsumblesTypesCore.consumbleTypes.ToList();
-            column.HeaderText = "Тип";
+            column.HeaderText = GeneralConstants.TYPE;
             dataGridViewConsumbleCategories.Columns.Add(column);
 
             dataGridViewConsumbleCategories.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -82,7 +83,7 @@ namespace SmartFood.Forms
             }
             catch
             {
-                ErrorsViewWrapper.ShowError("Добавьте вначале тип");
+                ErrorsViewWrapper.ShowError(ErrorTexts.ENTER_TYPE_BEFORE);
             }
             if (isOk)
             {
@@ -105,7 +106,7 @@ namespace SmartFood.Forms
                     {
                         int i = 0;
                         DataGridViewRow row = new DataGridViewRow();
-                        dataGridViewConsumbleCategories.Rows.Add(categorie.id, categorie.name, Convert.ToBoolean(categorie.visible) ? "Да" : "Нет", ConsumblesTypesCore.consumbleTypes.GetName(typeId));
+                        dataGridViewConsumbleCategories.Rows.Add(categorie.id, categorie.name, Convert.ToBoolean(categorie.visible) ? GeneralConstants.YES : GeneralConstants.NO, ConsumblesTypesCore.consumbleTypes.GetName(typeId));
                         dataGridViewConsumbleCategories.CellValueChanged += DataGridViewConsumbleCategories_CellValueChanged;
                         updateFlag = true;
                     }
@@ -130,7 +131,7 @@ namespace SmartFood.Forms
             if (updateFlag)
             {
                 DataGridViewCellCollection collection = dataGridViewConsumbleCategories.Rows[e.RowIndex].Cells;
-                ConsumbleCategorieCore.EditConsumbleCategorie(collection[0].Value.ToString(), collection[1].Value.ToString(), collection[2].Value.ToString() == "Да" ? "1" : "0", ConsumblesTypesCore.consumbleTypes.GetID(collection[3].Value.ToString()));
+                ConsumbleCategorieCore.EditConsumbleCategorie(collection[0].Value.ToString(), collection[1].Value.ToString(), collection[2].Value.ToString() == GeneralConstants.YES ? "1" : "0", ConsumblesTypesCore.consumbleTypes.GetID(collection[3].Value.ToString()));
                 dataGridViewConsumbleCategories.CellValueChanged -= DataGridViewConsumbleCategories_CellValueChanged;
                 updateFlag = false;
                 selectColumn = e.ColumnIndex;

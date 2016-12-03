@@ -1,4 +1,6 @@
 ﻿using SmartFood.Core;
+using SmartFood.Core.Constants;
+using SmartFood.Core.Serialisation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace SmartFood.Forms
@@ -13,6 +16,7 @@ namespace SmartFood.Forms
     public partial class AdminForm : Form
     {
         public static AdminForm instance;
+        private static bool updateFlag = false;
         public AdminForm()
         {
             InitializeComponent();
@@ -26,7 +30,38 @@ namespace SmartFood.Forms
             tabPageSuppliers.Enter += new System.EventHandler(this.TabPageSuppliers_Enter);
             instance = this;
 
-            MeasuresCore.GetMeasures();
+
+            dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
+            dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.NAME);
+            dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_PRICE, GeneralConstants.PRICE);
+            dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_AMOUNT, GeneralConstants.AMOUNT);
+
+            var column = new DataGridViewComboBoxColumn();
+            column.DataSource = MeasuresCore.Measures.ToList();
+            column.HeaderText = GeneralConstants.MEASURING;
+            dataGridViewConsumbles.Columns.Add(column);
+
+            column = new DataGridViewComboBoxColumn();
+            column.DataSource = ConsumblesTypesCore.ConsumbleTypes.ToList();
+            column.HeaderText = GeneralConstants.TYPE;
+            dataGridViewConsumbles.Columns.Add(column);
+
+            column = new DataGridViewComboBoxColumn();
+            column.DataSource = ConsumbleCategorieCore.GetAllExistingCategories().ToList();
+            column.HeaderText = GeneralConstants.CATEGORY;
+            dataGridViewConsumbles.Columns.Add(column);
+
+            column = new DataGridViewComboBoxColumn();
+            column.DataSource = new List<string>() { GeneralConstants.YES, GeneralConstants.NO };
+            column.HeaderText = GeneralConstants.VISIBILITY;
+            dataGridViewConsumbles.Columns.Add(column);
+
+            dataGridViewConsumbles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewConsumbles.AllowUserToAddRows = false;
+            dataGridViewConsumbles.Columns[0].ReadOnly = true;
+            dataGridViewConsumbles.Columns[2].ReadOnly = true;
+            dataGridViewConsumbles.RowHeadersVisible = false;
+            dataGridViewConsumbles.EditMode = DataGridViewEditMode.EditOnEnter;
         }
 
         private void AdminForm_Shown(object sender, EventArgs e)
@@ -41,6 +76,7 @@ namespace SmartFood.Forms
             tabControl.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
             TabPageConsumables_Enter(this, null);
             this.Refresh();
+            UpdateDataGridViewConsumbles();
         }
 
         private void TabPageSuppliers_Enter(object sender, EventArgs e)
@@ -227,7 +263,52 @@ namespace SmartFood.Forms
             tmpPoint.X = buttonConsumbleTypes.Location.X + buttonConsumbleTypes.Width + 10;
             buttonConsumbleCategories.Size = buttonAddConsumble.Size;
             buttonConsumbleCategories.Location = tmpPoint;
+
             this.Refresh();
+        }
+
+        private void UpdateDataGridViewConsumbles()
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        dataGridViewConsumbles.Rows.Clear();
+                        foreach (Consumble consumble in ConsumblesCore.Consumbles.items)
+                        {
+                            DataGridViewRow row = new DataGridViewRow();
+                            dataGridViewConsumbles.Rows.Add(consumble.id,
+                                                            consumble.name,
+                                                            consumble.price,
+                                                            consumble.amount,
+                                                            MeasuresCore.Measures.GetName(consumble.id_unit),
+                                                            ConsumblesTypesCore.ConsumbleTypes.GetName(consumble.id_type),
+                                                            ConsumbleCategorieCore.GetAllExistingCategories().GetName(consumble.id_category),
+                                                            Convert.ToBoolean(consumble.visible) ? GeneralConstants.YES : GeneralConstants.NO);
+                            dataGridViewConsumbles.CellValueChanged += DataGridViewConsumbles_CellValueChanged;
+                            updateFlag = true;
+                            this.Refresh();
+                        }
+                    });
+                }
+                catch { }
+            }).Start();
+        }
+
+        private void DataGridViewConsumbles_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            //if (updateFlag)
+            //{
+            //    DataGridViewCellCollection collection = dataGridViewConsumbles.Rows[e.RowIndex].Cells;
+            //    ConsumbleCategorieCore.EditConsumbleCategorie(collection[0].Value.ToString(), collection[1].Value.ToString(), collection[2].Value.ToString() == GeneralConstants.YES ? "1" : "0", ConsumblesTypesCore.consumbleTypes.GetID(collection[3].Value.ToString()));
+            //    dataGridViewConsumbleCategories.CellValueChanged -= DataGridViewConsumbleCategories_CellValueChanged;
+            //    updateFlag = false;
+            //    selectColumn = e.ColumnIndex;
+            //    selectedRow = e.RowIndex;
+            //    DownloadConsumbleCategories();
+            //}
         }
 
         private void TabPageArrivalAndWriteOff_Enter(object sender, EventArgs e)
