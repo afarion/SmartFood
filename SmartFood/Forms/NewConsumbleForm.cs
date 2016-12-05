@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SmartFood.Core;
+using SmartFood.Core.Constants;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +16,15 @@ namespace SmartFood.Forms
         public NewConsumbleForm()
         {
             InitializeComponent();
+            foreach(string type in ConsumblesTypesCore.ConsumbleTypes.ToList())
+                comboBoxType.Items.Add(type);
+            comboBoxType.SelectedIndex = 0;
+
+            foreach(string measure in MeasuresCore.Measures.ToList())
+                comboBoxMeasuring.Items.Add(measure);
+            comboBoxMeasuring.SelectedIndex = 0;
+
+            comboBoxType_SelectionChangeCommitted(this, null);
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -25,6 +36,58 @@ namespace SmartFood.Forms
         private void NewConsumbleForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             AdminForm.instance.Enabled = true;
+        }
+
+        private void buttonOk_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBoxName.Text) && !string.IsNullOrEmpty(textBoxPrice.Text))
+            {
+                double price = 0;
+                try
+                {
+                   price  = Convert.ToDouble(textBoxPrice.Text);
+                }
+                catch
+                {
+                    ErrorsViewWrapper.ShowError(ErrorTexts.INCORRECT_PRICE);
+                }
+                if(price > 0)
+                {
+                    ConsumblesCore.AddConsumble(textBoxName.Text,
+                                                ConsumblesTypesCore.ConsumbleTypes.GetID(comboBoxType.SelectedItem.ToString()),
+                                                ConsumbleCategorieCore.consumbleCategories.GetID(comboBoxCategory.SelectedItem.ToString()),
+                                                MeasuresCore.Measures.GetID(comboBoxMeasuring.SelectedItem.ToString()),
+                                                0,
+                                                price);                    
+                    AdminForm.instance.UpdateDataGridViewConsumbles();
+                    this.Close();
+                }
+            }
+            else if (string.IsNullOrEmpty(textBoxName.Text) && string.IsNullOrEmpty(textBoxPrice.Text))
+                ErrorsViewWrapper.ShowError(ErrorTexts.ENTER_NAME_AND_PRICE);
+            else if (string.IsNullOrEmpty(textBoxName.Text))
+                ErrorsViewWrapper.ShowError(ErrorTexts.ENTER_NAME);
+            else if (string.IsNullOrEmpty(textBoxPrice.Text))
+                ErrorsViewWrapper.ShowError(ErrorTexts.ENTER_PRICE);
+        }
+
+        private void comboBoxType_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (comboBoxCategory.Items != null)
+                comboBoxCategory.Items.Clear();
+            ConsumbleCategorieCore.GetConsumbleCategorie(ConsumblesTypesCore.ConsumbleTypes.GetID(comboBoxType.SelectedItem.ToString()).ToString());
+            if (ConsumbleCategorieCore.consumbleCategories.items.Count > 0)
+            {
+                foreach (string category in ConsumbleCategorieCore.consumbleCategories.ToList())
+                    comboBoxCategory.Items.Add(category);
+                comboBoxCategory.SelectedIndex = 0;
+            }
+            else
+            {
+                comboBoxCategory.Text = "";
+                comboBoxCategory.Enabled = false;
+            }
+            this.Refresh();
         }
     }
 }

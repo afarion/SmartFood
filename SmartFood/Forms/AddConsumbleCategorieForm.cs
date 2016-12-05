@@ -16,7 +16,7 @@ namespace SmartFood.Forms
         public AddConsumbleCategorieForm(int selectedComboIndex)
         {
             InitializeComponent();
-            comboBoxType.Items.AddRange(ConsumblesTypesCore.consumbleTypes.ToList().ToArray());
+            comboBoxType.Items.AddRange(ConsumblesTypesCore.ConsumbleTypes.ToList().ToArray());
             try
             {
                 comboBoxType.SelectedIndex = selectedComboIndex;
@@ -41,7 +41,7 @@ namespace SmartFood.Forms
                 ErrorsViewWrapper.ShowError(ErrorTexts.ENTER_NAME);
             else
             {
-                ConsumbleCategorieCore.AddConsumbleCategorie(textBoxName.Text, ConsumblesTypesCore.consumbleTypes.GetID(comboBoxType.SelectedItem.ToString()));
+                ConsumbleCategorieCore.AddConsumbleCategorie(textBoxName.Text, ConsumblesTypesCore.ConsumbleTypes.GetID(comboBoxType.SelectedItem.ToString()));
                 ConsumbleCategorieForm.instance.DownloadConsumbleCategories();
                 this.Close();
             }

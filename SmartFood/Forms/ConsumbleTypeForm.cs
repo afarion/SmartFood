@@ -68,7 +68,7 @@ namespace SmartFood.Forms
                 this.Invoke((MethodInvoker)delegate
                 {
                     dataGridViewConsumbleTypes.Rows.Clear();
-                    foreach (ConsumbleType type in ConsumblesTypesCore.consumbleTypes.items)
+                    foreach (ConsumbleType type in ConsumblesTypesCore.ConsumbleTypes.items)
                     {
                         DataGridViewRow row = new DataGridViewRow();
                         dataGridViewConsumbleTypes.Rows.Add(type.id, type.name, Convert.ToBoolean(type.visible) ? GeneralConstants.YES : GeneralConstants.NO);

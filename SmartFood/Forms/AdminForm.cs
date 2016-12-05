@@ -264,7 +264,7 @@ namespace SmartFood.Forms
             this.Refresh();
         }
 
-        private void UpdateDataGridViewConsumbles()
+        public void UpdateDataGridViewConsumbles()
         {
             new Thread(() =>
             {
@@ -273,7 +273,7 @@ namespace SmartFood.Forms
                     this.Invoke((MethodInvoker)delegate
                     {
                         dataGridViewConsumbles.Rows.Clear();
-                        
+                        ConsumblesCore.GetConsumbles();
                         foreach (Consumble consumble in ConsumblesCore.Consumbles.items)
                         {
                             DataGridViewRow row = new DataGridViewRow();

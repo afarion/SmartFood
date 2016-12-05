@@ -43,7 +43,7 @@ namespace SmartFood.Core
         {
             List<ConsumbleCategorie> allCategories = new List<ConsumbleCategorie>();
             ConsumbleCategories tmp = null;
-            foreach (var type in ConsumblesTypesCore.consumbleTypes.items)
+            foreach (var type in ConsumblesTypesCore.ConsumbleTypes.items)
             {
                 Dictionary<string, string> param = new Dictionary<string, string>();
                 param.Add(RequestFields.ACTION, Actions.GET);
