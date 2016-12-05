@@ -570,33 +570,40 @@ class SmartFoodApi
             
             //Generate order by string for query
             $orderBy = "";
-
-            if(isset($request["order"]))
+            
+            if(isset($methodConfig["order"]) && is_array($methodConfig["order"]) && count($methodConfig["order"]) > 0)
             {
-                $orderVal = $request["order"];
+                // By default first
+                $orderParam = array_values($methodConfig["order"])[0];
                 
-                if(isset($methodConfig["order"]) && isset($methodConfig["order"][$orderVal]))
+                // Custom order
+                if(isset($request["order"]))
                 {
-                    if(is_array($methodConfig["order"][$orderVal]))
-                    {
-                        $paramOrderBy       = $methodConfig["order"][$orderVal]["by"];
-                        $paramOrderTable    = $methodConfig["order"][$orderVal]["table"];
-                        
-                        if(isset($methodConfig["order"][$orderVal]["distinct"]) && $methodConfig["order"][$orderVal]["distinct"] == true)
-                            $distinct = " distinct ";
-                        
-                        if(isset($methodConfig["order"][$orderVal]["where"]))
-                            $where .= $methodConfig["order"][$orderVal]["where"];
-                        
-                        if(isset($methodConfig["order"][$orderVal]["join"]))
-                            $join[$paramOrderTable] = $methodConfig["order"][$orderVal]["join"];
-                        
-                        $orderBy = " ORDER BY ".$paramOrderBy;
-                    }
-                    else
-                    {
-                        $orderBy = " ORDER BY ".$methodConfig["order"][$orderVal];
-                    }
+                    $orderVal = $request["order"];
+                    
+                    if(isset($methodConfig["order"][$orderVal]))
+                        $orderParam = $methodConfig["order"][$orderVal];
+                }
+                
+                if(is_array($orderParam))
+                {
+                    $paramOrderBy       = $orderParam["by"];
+                    $paramOrderTable    = $orderParam["table"];
+                    
+                    if(isset($orderParam["distinct"]) && $orderParam["distinct"] == true)
+                        $distinct = " distinct ";
+                    
+                    if(isset($orderParam["where"]))
+                        $where .= $orderParam["where"];
+                    
+                    if(isset($orderParam["join"]))
+                        $join[$paramOrderTable] = $orderParam["join"];
+                    
+                    $orderBy = " ORDER BY ".$paramOrderBy;
+                }
+                else
+                {
+                    $orderBy = " ORDER BY ".$orderParam;
                 }
             }
             

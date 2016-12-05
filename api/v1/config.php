@@ -304,7 +304,7 @@ function GetConfigArray()
             
             "permission" => array( 
                 //          view    edit    add     remove
-                1 => array( true,   true,   true,   false),  //Администратор
+                1 => array( true,   false,  true,   false),  //Администратор
                 2 => array( true,   false,  false,  false),  //Оператор
                 3 => array( true,   false,  false,  false),  //Повар
             ),
@@ -312,14 +312,14 @@ function GetConfigArray()
             "part" => array(
                 "id"        => array( "field" => "id",      "type" => "key",    "required" => true ),
                 "address"   => array( "field" => "address", "type" => "text",   "required" => true ),
-                "id_user"   => array( "field" => "id_user", "type" => "int",    "required" => true ),
-                "visible"   => array( "field" => "visible", "type" => "int",    "required" => true ),
+                //"id_user"   => array( "field" => "id_user", "type" => "int",    "required" => true ),
+                //"visible"   => array( "field" => "visible", "type" => "int",    "required" => true ),
             ),
             
             "fields" => array(
                 "address"       => array( "type" => "text",   "default" => false,   "editable" => true ),
                 "id_user"       => array( "type" => "int",    "default" => false,   "editable" => true ),
-                "visible"       => array( "type" => "flag",   "default" => 1,       "editable" => true ),
+                //"visible"       => array( "type" => "flag",   "default" => 1,       "editable" => true ),
             ),
             
             "filters" => array(

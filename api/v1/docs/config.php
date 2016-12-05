@@ -1199,7 +1199,7 @@ function DocConfigArray()
         
         "user_view" => array(
             
-            "name" => "Пользователи. View",
+            "name" => "Клиенты. View",
             
             "properties" => array(
                 
@@ -1247,7 +1247,7 @@ function DocConfigArray()
         
         "user_add" => array(
             
-            "name" => "Пользователи. Add",
+            "name" => "Клиенты. Add",
             
             "properties" => array(
                 
@@ -1320,7 +1320,7 @@ function DocConfigArray()
         
         "user_edit" => array(
             
-            "name" => "Пользователи. Edit",
+            "name" => "Клиенты. Edit",
             
             "properties" => array(
                 
@@ -1401,101 +1401,316 @@ function DocConfigArray()
             "response" => '{"success":1}',
             
         ),
-    
-        /*
         
+        // ====================================================================================================
+        // USER ADDRESS
         
-        "hotels" => array(
+        "useraddress_view" => array(
             
-            "name" => "Search hotels",
+            "name" => "Адреса клиентов. View",
             
             "properties" => array(
                 
-                "part" => array( 
-                    "value" => "[id, name, rating, email, gps, phone, address, image, poc, short, full, notes]",      
-                    "type"  => "string",    
-                    "descr" => "Part parameter specifies a comma-separated list of one or more search resource properties that the API response will include." 
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
                 ),
                 
-                "deals" => array(
-                    "value" => "[id, name, hotel, price, tonight_price, description, duration, roomtype, checkout, date_finish]",
-                    "type"  => "string", 
-                    "descr" => "Part parameter specifies a comma-separated list of one or more search resource properties that the API response will include to each deal of hotel." 
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
                 ),
                 
-                "services" => array(
-                    "value" => "[id, name, price, tonight_price, description]",
-                    "type"  => "string", 
-                    "descr" => "Part parameter specifies a comma-separated list of one or more search resource properties that the API response will include to each service of each deal." 
-                ),
-                
-                "q" => array(
+                "user_sid" => array(
                     "value" => "",
                     "type"  => "string", 
-                    "descr" => "The q parameter specifies the query term to search for." 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "view",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
+                ),
+                
+                "user" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя."
+                ),
+                
+                "order" => array(
+                    "value" => "[priority|name|create]",
+                    "type"  => "string", 
+                    "descr" => "Сортировка результатов. Варианты сортировок:<br />priority - по приоритету<br />name - по названию<br />create - по дате создания" 
+                ),
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "useraddress/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view","user":"1"}',
+                    "test_file" => "useraddress_view.php"
+                ),
+            
+            "response" => '{"count":3,"items":[{"id":"3","address":"\u0411\u043e\u043b\u044c\u0448\u0430\u044f \u0410\u0440\u043d\u0430\u0443\u0442\u0441\u043a\u0430\u044f, 72\/74"},{"id":"1","address":"\u0414\u0435\u0440\u0438\u0431\u0430\u0441\u043e\u0432\u0441\u043a\u0430\u044f, 1"},{"id":"2","address":"\u041a\u043e\u0441\u043c\u043e\u043d\u0430\u0432\u0442\u043e\u0432, 10"}]}',
+            
+        ),
+        
+        "useraddress_add" => array(
+            
+            "name" => "Адреса клиентов. Add",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "add",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае добавление (add). Обязательное поле."
+                ),
+                
+                "id_user" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "address" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Адрес пользователя. Обязательное поле."
+                ),
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "useraddress/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"add","id_user":"1","address":"Адрес"}',
+                    "test_file" => "useraddress_add.php"
+                ),
+            
+            "response" => '{"success":1}',
+            
+        ),
+        
+        // ====================================================================================================
+        // ADMIN
+        
+        "admin_view" => array(
+            
+            "name" => "Аккаунты. View",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "view",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
+                ),
+                
+                "order" => array(
+                    "value" => "[create|name]",
+                    "type"  => "string", 
+                    "descr" => "Сортировка результатов. Варианты сортировок:<br />create - по дате создания<br />name - по названию" 
+                ),
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "admin/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view"}',
+                    "test_file" => "admin_view.php"
+                ),
+            
+            "response" => '{"count":4,"items":[{"id":"1","id_type":"1","id_employee":"1","login":"admin","visible":"1"},{"id":"2","id_type":"2","id_employee":"1","login":"admin","visible":"1"},{"id":"3","id_type":"3","id_employee":"1","login":"admin","visible":"1"},{"id":"4","id_type":"1","id_employee":"2","login":"vadim","visible":"1"}]}',
+            
+        ),
+        
+        "admin_add" => array(
+            
+            "name" => "Аккаунты. Add",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "add",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае добавление (add). Обязательное поле."
+                ),
+                
+                "id_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID типа аккаунта. Обязательное поле."
+                ),
+                
+                "id_employee" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID сотрудника. Обязательное поле."
+                ),
+                
+                "login" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Логин. Используется при аутентификации. Обязательное поле."
+                ),
+                
+                "pass" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Пароль. Используется при аутентификации. Обязательное поле."
+                ),
+                
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "admin/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"add","id_type":"1","id_employee":"1","login":"new_admin","pass":"12345"}',
+                    "test_file" => "admin_add.php"
+                ),
+            
+            "response" => '{"success":1}',
+            
+        ),
+        
+        "admin_edit" => array(
+            
+            "name" => "Аккаунты. Edit",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "edit",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае редактирование (edit). Обязательное поле."
                 ),
                 
                 "id" => array(
                     "value" => "",
-                    "type"  => "string", 
-                    "descr" => "The id parameter specifies a comma-separated list of the hotels ID(s) for the resource(s) that are being retrieved." 
+                    "type"  => "int", 
+                    "descr" => "ID редактируемого аккаунта. Обязательное поле."
                 ),
                 
-                "city" => array(
+                "id_type" => array(
                     "value" => "",
                     "type"  => "int", 
-                    "descr" => "The city parameter specifies a city ID for the resource(s) that are being retrieved." 
+                    "descr" => "ID типа аккаунта."
                 ),
                 
-                "roomtype" => array(
+                "id_employee" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID сотрудника."
+                ),
+                
+                "login" => array(
                     "value" => "",
                     "type"  => "string", 
-                    "descr" => "The roomtype parameter specifies a comma-separated list of the deal roomtype ID(s) for the resource(s) that are being retrieved. Only hotels with active deals will be included to response." 
+                    "descr" => "Логин. Используется при аутентификации."
                 ),
                 
-                "order" => array(
-                    "value" => "[name|create|rating|price|date]",
+                "pass" => array(
+                    "value" => "",
                     "type"  => "string", 
-                    "descr" => "The order parameter specifies the method that will be used to order resources in the API response.<br />name - order by hotel name.<br />create - order by hotel create date.<br />rating - order by hotel rating. Hotel with maximal rating will be at first place.<br />price - order by minimal deal tonight price. Only hotels with active deals will be included to response.<br />date - order by nearest deal finish date. Only hotels with active deals will be included to response." 
+                    "descr" => "Пароль. Используется при аутентификации."
                 ),
                 
-                "count" => array(
-                    "value" => "",
-                    "type"  => "unsigned int", 
-                    "descr" => "The count parameter specifies the maximum number of items that should be returned in the result set." 
-                ),
-                
-                "offset" => array(
-                    "value" => "",
-                    "type"  => "unsigned int", 
-                    "descr" => "The offset parameter specifies the items start position in the result set." 
-                ),
-                
-                "page" => array(
-                    "value" => "",
-                    "type"  => "unsigned int", 
-                    "descr" => "The page parameter specifies a number of page in the result set." 
+                "visible" => array(
+                    "value" => "0 или 1 ",
+                    "type"  => "flag", 
+                    "descr" => "Видимость аккаунта."
                 ),
             ),
             
-            "request" => 
+            "request_post" => 
                 array(
-                    "link" => "search/hotel/",
-                    "params" => array(
-                        "part" => "rating,email,gps,phone,address,image,poc,short,full,notes",
-                        "deals" => "price,tonight_price,description",
-                        "services" => "price,tonight_price,description",
-                        "q" => "a",
-                        "id" => "1,10",
-                        "order" => "name",
-                    ),
+                    "link" => "admin/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"edit","pass":"11111","visible":"1"}',
+                    "test_file" => "admin_edit.php"
                 ),
             
-            "response" => '{"count":2,"items":[{"id":"1","name":"Grand Budapest","rating":"4","email":"grandbudapest@mail.com","gps":"34.019672, -118.490135","phone":"1234567890","address":null,"image":null,"poc":null,"short":null,"full":null,"notes":"note"},{"id":"10","name":"Hotel In Vegas","rating":"3","email":"vegasedit@mail.com","gps":"123.4567, 234.5677","phone":"4159099099","address":"342 Grand Ave San Francisco CA 94122","image":"10.jpg","poc":null,"short":"Complimentary WiFi\r\n24-hour fitness center with cardio and weight equipment\r\nPets OK\r\n","full":"Spunky, spirited, seriously unique. People tell us staying at Hotel Triton feels a lot like staying with your most fashionable friend. You know, the one with an eclectic apartment just a few steps from Union Square and Chinatown, who\u00e2\u0080\u0099s delighted to share insider tips on things to do and places to go and invites you to meet all sorts of interesting people over late afternoon glass of wine or a cool local microbrew.\r\n\r\nHotel Triton delights with cheerful guestrooms featuring luxurious Frette linens and organic snack bars, funky celebrity-designed suites (ice cream, anyone?) and a no-fee pet policy that makes bringing along your prized pup easy and affordable. Add the yoga mat in every guestroom and the at-the-ready bag butler who\u00e2\u0080\u0099ll happily fetch your shopping bags at any Union Square shop or boutique and we think you\u00e2\u0080\u0099ll agree: you have a new friend in San Francisco.","notes":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."}]}',
-
+            "response" => '{"success":1}',
+            
         ),
-
-        */
+        
+        // ====================================================================================================
+        // ERRORS
         
         "errors" => array(
         
