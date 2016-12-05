@@ -14,9 +14,11 @@ namespace SmartFood.Core.Serialisation
         public List<string> ToList()
         {
             List<string> tmpList = new List<string>();
-            foreach(var item in items)
-                tmpList.Add(item.name);
-
+            foreach (var item in items)
+            {
+                if(item.visible != 0)
+                    tmpList.Add(item.name);
+            }
             return tmpList;
         }
 

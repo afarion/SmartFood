@@ -36,10 +36,10 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(245, 312);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAdd.Location = new System.Drawing.Point(327, 384);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdd.Size = new System.Drawing.Size(100, 28);
             this.buttonAdd.TabIndex = 0;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -48,28 +48,29 @@
             // dataGridViewConsumbleTypes
             // 
             this.dataGridViewConsumbleTypes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewConsumbleTypes.Location = new System.Drawing.Point(9, 8);
-            this.dataGridViewConsumbleTypes.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewConsumbleTypes.Location = new System.Drawing.Point(12, 10);
+            this.dataGridViewConsumbleTypes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewConsumbleTypes.Name = "dataGridViewConsumbleTypes";
             this.dataGridViewConsumbleTypes.RowTemplate.Height = 28;
-            this.dataGridViewConsumbleTypes.Size = new System.Drawing.Size(311, 300);
+            this.dataGridViewConsumbleTypes.Size = new System.Drawing.Size(415, 369);
             this.dataGridViewConsumbleTypes.TabIndex = 2;
             // 
             // ConsumbleTypeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 341);
+            this.ClientSize = new System.Drawing.Size(441, 420);
             this.Controls.Add(this.dataGridViewConsumbleTypes);
             this.Controls.Add(this.buttonAdd);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ConsumbleTypeForm";
             this.Text = "Типы расходников";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ConsumbleTypeForm_FormClosed);
+            this.Load += new System.EventHandler(this.ConsumbleTypeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsumbleTypes)).EndInit();
             this.ResumeLayout(false);
 

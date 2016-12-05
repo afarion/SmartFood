@@ -57,6 +57,7 @@ namespace SmartFood.Forms
             dataGridViewConsumbles.AllowUserToAddRows = false;
             dataGridViewConsumbles.Columns[0].ReadOnly = true;
             dataGridViewConsumbles.Columns[2].ReadOnly = true;
+            dataGridViewConsumbles.Columns[3].ReadOnly = true;
             dataGridViewConsumbles.RowHeadersVisible = false;
             dataGridViewConsumbles.EditMode = DataGridViewEditMode.EditOnEnter;
         }
@@ -302,7 +303,10 @@ namespace SmartFood.Forms
 
                             cell = new DataGridViewComboBoxCell();
                             foreach (var type in ConsumblesTypesCore.ConsumbleTypes.items)
-                                cell.Items.Add(type.name);
+                            {
+                                if(type.visible!=0)
+                                    cell.Items.Add(type.name);
+                            }
                             cell.Value = ConsumblesTypesCore.ConsumbleTypes.GetName(consumble.id_type);
                             row.Cells.Add(cell);
 
@@ -338,16 +342,29 @@ namespace SmartFood.Forms
 
         private void DataGridViewConsumbles_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            //if (updateFlag)
-            //{
-            //    DataGridViewCellCollection collection = dataGridViewConsumbles.Rows[e.RowIndex].Cells;
-            //    ConsumbleCategorieCore.EditConsumbleCategorie(collection[0].Value.ToString(), collection[1].Value.ToString(), collection[2].Value.ToString() == GeneralConstants.YES ? "1" : "0", ConsumblesTypesCore.consumbleTypes.GetID(collection[3].Value.ToString()));
-            //    dataGridViewConsumbleCategories.CellValueChanged -= DataGridViewConsumbleCategories_CellValueChanged;
-            //    updateFlag = false;
-            //    selectColumn = e.ColumnIndex;
-            //    selectedRow = e.RowIndex;
-            //    DownloadConsumbleCategories();
-            //}
+            if (updateFlag)
+            {
+                DataGridViewCellCollection collection = dataGridViewConsumbles.Rows[e.RowIndex].Cells;
+                ConsumbleCategorieCore.GetConsumbleCategorie(ConsumblesTypesCore.ConsumbleTypes.GetID(collection[5].Value.ToString()).ToString());
+                ConsumblesCore.EditConsumble(collection[0].Value.ToString(), 
+                    collection[1].Value.ToString(), 
+                    collection[7].Value.ToString() == GeneralConstants.YES ? "1" : "0", 
+                    ConsumblesTypesCore.ConsumbleTypes.GetID(collection[5].Value.ToString()),
+                    ConsumbleCategorieCore.consumbleCategories.GetID(collection[6].Value.ToString()),
+                    MeasuresCore.Measures.GetID(collection[4].Value.ToString()));
+                dataGridViewConsumbles.CellValueChanged -= DataGridViewConsumbles_CellValueChanged;
+                updateFlag = false;
+                int selectColumn = e.ColumnIndex;
+                int selectedRow = e.RowIndex;
+                dataGridViewConsumbles.Rows.Clear();
+                ConsumblesCore.GetConsumbles();
+                UpdateDataGridViewConsumbles();
+                try
+                {
+                    dataGridViewConsumbles.CurrentCell = dataGridViewConsumbles.Rows[selectedRow].Cells[selectColumn];
+                }
+                catch { }
+            }
         }
 
         private void TabPageArrivalAndWriteOff_Enter(object sender, EventArgs e)

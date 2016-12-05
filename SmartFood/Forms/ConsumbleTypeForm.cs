@@ -17,6 +17,7 @@ namespace SmartFood.Forms
     {
         public static ConsumbleTypeForm instance;
         private static bool updateFlag = false;
+        private int counterUpdates = 0;
         int selectedRow = 0;
         int selectColumn = 0;
         public ConsumbleTypeForm()
@@ -36,12 +37,13 @@ namespace SmartFood.Forms
             dataGridViewConsumbleTypes.EditMode = DataGridViewEditMode.EditOnEnter;
             selectedRow = 0;
             selectColumn = 0;
-            DownloadConsumbleTypes();
         }
 
         private void ConsumbleTypeForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             AdminForm.instance.Enabled = true;
+            if(counterUpdates>1)
+                AdminForm.instance.UpdateDataGridViewConsumbles();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -63,6 +65,7 @@ namespace SmartFood.Forms
 
         private void UpdateDataGridView()
         {
+            
             try
             {
                 this.Invoke((MethodInvoker)delegate
@@ -79,6 +82,7 @@ namespace SmartFood.Forms
                 });
             }
             catch{ }
+            counterUpdates++;
         }
 
         private void DataGridViewConsumbleTypes_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -93,6 +97,11 @@ namespace SmartFood.Forms
                 selectedRow = e.RowIndex;
                 DownloadConsumbleTypes();
             }       
+        }
+
+        private void ConsumbleTypeForm_Load(object sender, EventArgs e)
+        {
+            DownloadConsumbleTypes();
         }
     }
 }
