@@ -20,6 +20,10 @@ namespace SmartFood.Core.Constants
         public const string AMOUNT = "Количество";
         public const string MEASURING = "Единица";
         public const string CATEGORY = "Категория";
+        public const string PHONE = "Телефон";
+        public const string SKYPE = "Skype";
+        public const string EMEIL = "Email";
+        public const string NOTES = "Заметки";
     }
 
 
@@ -32,6 +36,10 @@ namespace SmartFood.Core.Constants
         public const string NEW_COLUMN_AMOUNT= "newColumnAmount";
         public const string NEW_COLUMN_TYPE = "newColumnType";
         public const string NEW_COLUMN_CATEGORY = "newColumnCategory";
+        public const string NEW_COLUMN_PHONE = "newColumnPhone";
+        public const string NEW_COLUMN_SKYPE = "newColumnSkypet";
+        public const string NEW_COLUMN_EMEIL = "newColumnEmail";
+        public const string NEW_COLUMN_NOTES = "newColumnNotes";
     }
 
 }

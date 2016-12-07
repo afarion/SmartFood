@@ -30,5 +30,9 @@ namespace SmartFood.Core.Constants
         public const string ID_MEASURE = "id_unit";
         public const string AMOUNT = "amount";
         public const string PRICE = "price";
+        public const string PHONE = "phone";
+        public const string SKYPE = "skype";
+        public const string EMEIL = "email";
+        public const string NOTES = "notes";
     }
 }

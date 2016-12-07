@@ -31,7 +31,7 @@ namespace SmartFood.Forms
             tabPageSuppliers.Enter += new System.EventHandler(this.TabPageSuppliers_Enter);
             instance = this;
 
-
+            #region dataGridViewConsumbles
             dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
             dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.NAME);
             dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_PRICE, GeneralConstants.PRICE);
@@ -60,6 +60,27 @@ namespace SmartFood.Forms
             dataGridViewConsumbles.Columns[3].ReadOnly = true;
             dataGridViewConsumbles.RowHeadersVisible = false;
             dataGridViewConsumbles.EditMode = DataGridViewEditMode.EditOnEnter;
+            #endregion
+
+            #region dataGridViewSuppliers
+            dataGridViewSuppliers.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
+            dataGridViewSuppliers.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.NAME);
+            dataGridViewSuppliers.Columns.Add(UIConstans.NEW_COLUMN_PHONE, GeneralConstants.PHONE);
+            dataGridViewSuppliers.Columns.Add(UIConstans.NEW_COLUMN_EMEIL, GeneralConstants.EMEIL);
+            dataGridViewSuppliers.Columns.Add(UIConstans.NEW_COLUMN_SKYPE, GeneralConstants.SKYPE);
+            dataGridViewSuppliers.Columns.Add(UIConstans.NEW_COLUMN_NOTES, GeneralConstants.NOTES);
+
+            column = new DataGridViewComboBoxColumn();
+            column.DataSource = new List<string>() { GeneralConstants.YES, GeneralConstants.NO };
+            column.HeaderText = GeneralConstants.VISIBILITY;
+            dataGridViewSuppliers.Columns.Add(column);
+
+            dataGridViewSuppliers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewSuppliers.AllowUserToAddRows = false;
+            dataGridViewSuppliers.Columns[0].ReadOnly = true;
+            dataGridViewSuppliers.RowHeadersVisible = false;
+            dataGridViewSuppliers.EditMode = DataGridViewEditMode.EditOnEnter;
+            #endregion
         }
 
         private void AdminForm_Shown(object sender, EventArgs e)
@@ -96,7 +117,34 @@ namespace SmartFood.Forms
             tmpPoint.X = tabPageConsumables.Left + 10;
             tmpPoint.Y = tabPageConsumables.Top + 10;
             dataGridViewSuppliers.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
+            UpdateDataGridViewSuppliers();
             this.Refresh();
+        }
+
+        public void UpdateDataGridViewSuppliers()
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        dataGridViewSuppliers.Rows.Clear();
+                        foreach (Supplier supplier in SuppliersCore.Suppliers.items)
+                        {
+                            DataGridViewRow row = new DataGridViewRow();
+                            dataGridViewSuppliers.Rows.Add(supplier.id, supplier.name, supplier.phone, supplier.email, supplier.skype, supplier.notes, Convert.ToBoolean(supplier.visible) ? GeneralConstants.YES : GeneralConstants.NO);
+                            dataGridViewSuppliers.CellValueChanged += DataGridViewSuppliers_CellValueChanged; ;
+                            updateFlag = true;
+                        }
+                    });
+                }
+                catch { }
+            }).Start();
+        }
+
+        private void DataGridViewSuppliers_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
         }
 
         private void TabPageEmployees_Enter(object sender, EventArgs e)
@@ -332,7 +380,7 @@ namespace SmartFood.Forms
                             updateFlag = true;
 
                             dataGridViewConsumbles.CellValueChanged += DataGridViewConsumbles_CellValueChanged;
-                            this.Refresh();
+                            //this.Refresh();
                         }
                     });
                 }
