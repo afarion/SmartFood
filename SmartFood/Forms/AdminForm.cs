@@ -81,6 +81,36 @@ namespace SmartFood.Forms
             dataGridViewSuppliers.RowHeadersVisible = false;
             dataGridViewSuppliers.EditMode = DataGridViewEditMode.EditOnEnter;
             #endregion
+
+            #region dataGridViewEmployees
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_FIRST_NAME, GeneralConstants.FIRST_NAME);
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_LAST_NAME, GeneralConstants.LAST_NAME);
+
+            column = new DataGridViewComboBoxColumn();
+            column.DataSource = EmployeesTypesCore.EmployeesTypes.ToList();
+            column.HeaderText = GeneralConstants.ID_TYPE;
+            dataGridViewEmployees.Columns.Add(column);
+
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_PHONE, GeneralConstants.PHONE);
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_PHONE_EX, GeneralConstants.PHONE_EX);
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_SKYPE, GeneralConstants.SKYPE);
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_ADRESS, GeneralConstants.ADRESS);
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_EMEIL, GeneralConstants.EMEIL);
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_BIRTHDAY, GeneralConstants.BIRTHDAY);
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_COMMENT, GeneralConstants.COMMENT);
+
+            column = new DataGridViewComboBoxColumn();
+            column.DataSource = new List<string>() { GeneralConstants.YES, GeneralConstants.NO };
+            column.HeaderText = GeneralConstants.VISIBILITY;
+            dataGridViewEmployees.Columns.Add(column);
+
+            dataGridViewEmployees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewEmployees.AllowUserToAddRows = false;
+            dataGridViewEmployees.Columns[0].ReadOnly = true;
+            dataGridViewEmployees.RowHeadersVisible = false;
+            dataGridViewEmployees.EditMode = DataGridViewEditMode.EditOnEnter;
+            #endregion
         }
 
         private void AdminForm_Shown(object sender, EventArgs e)
@@ -171,7 +201,34 @@ namespace SmartFood.Forms
             tmpPoint.X = tabPageConsumables.Left + 10;
             tmpPoint.Y = tabPageConsumables.Top + 10;
             dataGridViewEmployees.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
+            UpdateDataGridViewEmployees();
             this.Refresh();
+        }
+
+        public void UpdateDataGridViewEmployees()
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        dataGridViewEmployees.Rows.Clear();
+                        foreach (Employee employee in EmployeesCore.Emplyees.items)
+                        {
+                            DataGridViewRow row = new DataGridViewRow();
+                            dataGridViewEmployees.Rows.Add(employee.id, employee.first_name, employee.last_name, EmployeesTypesCore.EmployeesTypes.GetName(employee.id_type), employee.phone, employee.phone_ex, employee.skype, employee.address, employee.email, employee.birthday, employee.comment, Convert.ToBoolean(employee.visible) ? GeneralConstants.YES : GeneralConstants.NO);
+                            dataGridViewEmployees.CellValueChanged += DataGridViewSuppliers_CellValueChanged1; ;
+                            updateFlag = true;
+                        }
+                    });
+                }
+                catch { }
+            }).Start();
+        }
+
+        private void DataGridViewSuppliers_CellValueChanged1(object sender, DataGridViewCellEventArgs e)
+        {
         }
 
         private void TabPageClients_Enter(object sender, EventArgs e)

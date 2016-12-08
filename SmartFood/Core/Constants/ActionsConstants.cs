@@ -34,5 +34,11 @@ namespace SmartFood.Core.Constants
         public const string SKYPE = "skype";
         public const string EMEIL = "email";
         public const string NOTES = "notes";
+        public const string FIRST_NAME = "first_name";
+        public const string LAST_NAME = "last_name";
+        public const string PHONE_EX = "phone_ex";
+        public const string ADRESS = "address";
+        public const string BIRTHDAY = "birthday";
+        public const string COMMENT = "comment";
     }
 }

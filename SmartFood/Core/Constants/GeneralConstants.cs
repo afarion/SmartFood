@@ -24,6 +24,13 @@ namespace SmartFood.Core.Constants
         public const string SKYPE = "Skype";
         public const string EMEIL = "Email";
         public const string NOTES = "Заметки";
+        public const string FIRST_NAME = "Имя";
+        public const string LAST_NAME = "Фамилия";
+        public const string ID_TYPE = "Должность";
+        public const string PHONE_EX = "Телефон 2";
+        public const string ADRESS = "Адресс";
+        public const string BIRTHDAY = "День Рождения";
+        public const string COMMENT = "Коментарий";
     }
 
 
@@ -40,6 +47,13 @@ namespace SmartFood.Core.Constants
         public const string NEW_COLUMN_SKYPE = "newColumnSkypet";
         public const string NEW_COLUMN_EMEIL = "newColumnEmail";
         public const string NEW_COLUMN_NOTES = "newColumnNotes";
+        public const string NEW_COLUMN_FIRST_NAME = "newColumnFirstName";
+        public const string NEW_COLUMN_LAST_NAME = "newColumnLastName";
+        public const string NEW_COLUMN_ID_TYPE = "newColumnLastName";
+        public const string NEW_COLUMN_PHONE_EX = "newColumnPhoneEx";
+        public const string NEW_COLUMN_ADRESS = "newColumnAdress";
+        public const string NEW_COLUMN_BIRTHDAY = "newColumnBirthday";
+        public const string NEW_COLUMN_COMMENT = "newColumnComment";
     }
 
 }

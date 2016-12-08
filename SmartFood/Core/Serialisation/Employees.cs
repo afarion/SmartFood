@@ -8,7 +8,7 @@ namespace SmartFood.Core.Serialisation
     [Serializable]
     public class Employees
     {
-        public List<Emplyee> items;
+        public List<Employee> items;
 
         public List<string> ToList()
         {
@@ -41,7 +41,7 @@ namespace SmartFood.Core.Serialisation
     }
 
     [Serializable]
-    public class Emplyee
+    public class Employee
     {
         public int id;
         public int id_type;
