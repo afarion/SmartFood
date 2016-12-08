@@ -31,20 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SupplierDetailsForm));
             this.labelCompanyName = new System.Windows.Forms.Label();
             this.textBoxCompanyName = new System.Windows.Forms.TextBox();
-            this.textBoxContactPersone = new System.Windows.Forms.TextBox();
-            this.labelContactPersone = new System.Windows.Forms.Label();
             this.textBoxPhone1 = new System.Windows.Forms.TextBox();
-            this.textBoxPhone2 = new System.Windows.Forms.TextBox();
             this.textBoxEmeil = new System.Windows.Forms.TextBox();
             this.textBoxSkype = new System.Windows.Forms.TextBox();
-            this.textBoxAdress = new System.Windows.Forms.TextBox();
-            this.labelPhone1 = new System.Windows.Forms.Label();
-            this.labelPhone2 = new System.Windows.Forms.Label();
+            this.labelPhone = new System.Windows.Forms.Label();
             this.labelEmeil = new System.Windows.Forms.Label();
             this.labelSkype = new System.Windows.Forms.Label();
-            this.labelAdress = new System.Windows.Forms.Label();
             this.buttonOk = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.textBoxNotes = new System.Windows.Forms.TextBox();
+            this.labelNotes = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelCompanyName
@@ -63,79 +59,40 @@
             this.textBoxCompanyName.Size = new System.Drawing.Size(226, 20);
             this.textBoxCompanyName.TabIndex = 1;
             // 
-            // textBoxContactPersone
-            // 
-            this.textBoxContactPersone.Location = new System.Drawing.Point(117, 39);
-            this.textBoxContactPersone.Name = "textBoxContactPersone";
-            this.textBoxContactPersone.Size = new System.Drawing.Size(226, 20);
-            this.textBoxContactPersone.TabIndex = 2;
-            // 
-            // labelContactPersone
-            // 
-            this.labelContactPersone.AutoSize = true;
-            this.labelContactPersone.Location = new System.Drawing.Point(12, 46);
-            this.labelContactPersone.Name = "labelContactPersone";
-            this.labelContactPersone.Size = new System.Drawing.Size(93, 13);
-            this.labelContactPersone.TabIndex = 3;
-            this.labelContactPersone.Text = "Контактное лицо";
-            // 
             // textBoxPhone1
             // 
-            this.textBoxPhone1.Location = new System.Drawing.Point(117, 65);
+            this.textBoxPhone1.Location = new System.Drawing.Point(117, 39);
             this.textBoxPhone1.Name = "textBoxPhone1";
             this.textBoxPhone1.Size = new System.Drawing.Size(226, 20);
             this.textBoxPhone1.TabIndex = 4;
             // 
-            // textBoxPhone2
-            // 
-            this.textBoxPhone2.Location = new System.Drawing.Point(117, 91);
-            this.textBoxPhone2.Name = "textBoxPhone2";
-            this.textBoxPhone2.Size = new System.Drawing.Size(226, 20);
-            this.textBoxPhone2.TabIndex = 5;
-            // 
             // textBoxEmeil
             // 
-            this.textBoxEmeil.Location = new System.Drawing.Point(117, 117);
+            this.textBoxEmeil.Location = new System.Drawing.Point(117, 65);
             this.textBoxEmeil.Name = "textBoxEmeil";
             this.textBoxEmeil.Size = new System.Drawing.Size(226, 20);
             this.textBoxEmeil.TabIndex = 6;
             // 
             // textBoxSkype
             // 
-            this.textBoxSkype.Location = new System.Drawing.Point(117, 143);
+            this.textBoxSkype.Location = new System.Drawing.Point(117, 91);
             this.textBoxSkype.Name = "textBoxSkype";
             this.textBoxSkype.Size = new System.Drawing.Size(226, 20);
             this.textBoxSkype.TabIndex = 7;
             // 
-            // textBoxAdress
+            // labelPhone
             // 
-            this.textBoxAdress.Location = new System.Drawing.Point(117, 169);
-            this.textBoxAdress.Name = "textBoxAdress";
-            this.textBoxAdress.Size = new System.Drawing.Size(226, 20);
-            this.textBoxAdress.TabIndex = 8;
-            // 
-            // labelPhone1
-            // 
-            this.labelPhone1.AutoSize = true;
-            this.labelPhone1.Location = new System.Drawing.Point(12, 72);
-            this.labelPhone1.Name = "labelPhone1";
-            this.labelPhone1.Size = new System.Drawing.Size(61, 13);
-            this.labelPhone1.TabIndex = 9;
-            this.labelPhone1.Text = "Телефон 1";
-            // 
-            // labelPhone2
-            // 
-            this.labelPhone2.AutoSize = true;
-            this.labelPhone2.Location = new System.Drawing.Point(12, 98);
-            this.labelPhone2.Name = "labelPhone2";
-            this.labelPhone2.Size = new System.Drawing.Size(61, 13);
-            this.labelPhone2.TabIndex = 10;
-            this.labelPhone2.Text = "Телефон 2";
+            this.labelPhone.AutoSize = true;
+            this.labelPhone.Location = new System.Drawing.Point(12, 46);
+            this.labelPhone.Name = "labelPhone";
+            this.labelPhone.Size = new System.Drawing.Size(52, 13);
+            this.labelPhone.TabIndex = 9;
+            this.labelPhone.Text = "Телефон";
             // 
             // labelEmeil
             // 
             this.labelEmeil.AutoSize = true;
-            this.labelEmeil.Location = new System.Drawing.Point(12, 124);
+            this.labelEmeil.Location = new System.Drawing.Point(13, 72);
             this.labelEmeil.Name = "labelEmeil";
             this.labelEmeil.Size = new System.Drawing.Size(37, 13);
             this.labelEmeil.TabIndex = 11;
@@ -144,33 +101,25 @@
             // labelSkype
             // 
             this.labelSkype.AutoSize = true;
-            this.labelSkype.Location = new System.Drawing.Point(12, 150);
+            this.labelSkype.Location = new System.Drawing.Point(12, 98);
             this.labelSkype.Name = "labelSkype";
             this.labelSkype.Size = new System.Drawing.Size(37, 13);
             this.labelSkype.TabIndex = 12;
             this.labelSkype.Text = "Skype";
             // 
-            // labelAdress
-            // 
-            this.labelAdress.AutoSize = true;
-            this.labelAdress.Location = new System.Drawing.Point(12, 176);
-            this.labelAdress.Name = "labelAdress";
-            this.labelAdress.Size = new System.Drawing.Size(38, 13);
-            this.labelAdress.TabIndex = 13;
-            this.labelAdress.Text = "Адрес";
-            // 
             // buttonOk
             // 
-            this.buttonOk.Location = new System.Drawing.Point(267, 196);
+            this.buttonOk.Location = new System.Drawing.Point(269, 143);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 14;
             this.buttonOk.Text = "ОК";
             this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(186, 196);
+            this.buttonCancel.Location = new System.Drawing.Point(188, 143);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 15;
@@ -178,25 +127,37 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
+            // textBoxNotes
+            // 
+            this.textBoxNotes.Location = new System.Drawing.Point(118, 117);
+            this.textBoxNotes.Name = "textBoxNotes";
+            this.textBoxNotes.Size = new System.Drawing.Size(226, 20);
+            this.textBoxNotes.TabIndex = 16;
+            // 
+            // labelNotes
+            // 
+            this.labelNotes.AutoSize = true;
+            this.labelNotes.Location = new System.Drawing.Point(12, 124);
+            this.labelNotes.Name = "labelNotes";
+            this.labelNotes.Size = new System.Drawing.Size(51, 13);
+            this.labelNotes.TabIndex = 17;
+            this.labelNotes.Text = "Заметки";
+            // 
             // SupplierDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(356, 231);
+            this.ClientSize = new System.Drawing.Size(355, 174);
+            this.Controls.Add(this.labelNotes);
+            this.Controls.Add(this.textBoxNotes);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOk);
-            this.Controls.Add(this.labelAdress);
             this.Controls.Add(this.labelSkype);
             this.Controls.Add(this.labelEmeil);
-            this.Controls.Add(this.labelPhone2);
-            this.Controls.Add(this.labelPhone1);
-            this.Controls.Add(this.textBoxAdress);
+            this.Controls.Add(this.labelPhone);
             this.Controls.Add(this.textBoxSkype);
             this.Controls.Add(this.textBoxEmeil);
-            this.Controls.Add(this.textBoxPhone2);
             this.Controls.Add(this.textBoxPhone1);
-            this.Controls.Add(this.labelContactPersone);
-            this.Controls.Add(this.textBoxContactPersone);
             this.Controls.Add(this.textBoxCompanyName);
             this.Controls.Add(this.labelCompanyName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -215,19 +176,15 @@
 
         private System.Windows.Forms.Label labelCompanyName;
         private System.Windows.Forms.TextBox textBoxCompanyName;
-        private System.Windows.Forms.TextBox textBoxContactPersone;
-        private System.Windows.Forms.Label labelContactPersone;
         private System.Windows.Forms.TextBox textBoxPhone1;
-        private System.Windows.Forms.TextBox textBoxPhone2;
         private System.Windows.Forms.TextBox textBoxEmeil;
         private System.Windows.Forms.TextBox textBoxSkype;
-        private System.Windows.Forms.TextBox textBoxAdress;
-        private System.Windows.Forms.Label labelPhone1;
-        private System.Windows.Forms.Label labelPhone2;
+        private System.Windows.Forms.Label labelPhone;
         private System.Windows.Forms.Label labelEmeil;
         private System.Windows.Forms.Label labelSkype;
-        private System.Windows.Forms.Label labelAdress;
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.TextBox textBoxNotes;
+        private System.Windows.Forms.Label labelNotes;
     }
 }

@@ -13,5 +13,6 @@ namespace SmartFood.Core
         public const string MEASURES = "unit/";
         public const string CONSUMBLES = "item/";
         public const string SUPPLIERS = "provider/";
+        public const string EMPLOYEES = "employee/";
     }
 }

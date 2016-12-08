@@ -28,6 +28,8 @@ namespace SmartFood.Core.Constants
         public const string ENTER_PRICE = "Введите цену";
         public const string ENTER_NAME_AND_PRICE = "Введите имя и цену";
         public const string INCORRECT_PRICE = "Неправильная цена";
+        public const string ENTER_PHONE = "Введите номер телефон";
+        public const string ENTER_EMEIL = "Введите почту";
 
     }
 }

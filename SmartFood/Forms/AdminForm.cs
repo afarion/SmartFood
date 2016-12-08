@@ -106,14 +106,8 @@ namespace SmartFood.Forms
             tmpPoint.Y = tabPageConsumables.Height - buttonAddSupplier.Height - 10;
             buttonAddSupplier.Location = tmpPoint;
 
-            tmpPoint.X = buttonAddSupplier.Location.X - buttoDeleteSupplier.Width - 10;
-            buttoDeleteSupplier.Location = tmpPoint;
-
-            tmpPoint.X = buttoDeleteSupplier.Location.X - buttonEditSupplier.Width - 10;
-            buttonEditSupplier.Location = tmpPoint;
-
             int tmpWidth = tabPageConsumables.Width - 24;
-            int tmpHeight = buttonEditSupplier.Location.Y - buttonEditSupplier.Height - 20;
+            int tmpHeight = buttonAddSupplier.Location.Y - buttonAddSupplier.Height - 20;
             tmpPoint.X = tabPageConsumables.Left + 10;
             tmpPoint.Y = tabPageConsumables.Top + 10;
             dataGridViewSuppliers.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
@@ -145,6 +139,23 @@ namespace SmartFood.Forms
 
         private void DataGridViewSuppliers_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            if (updateFlag)
+            {
+                DataGridViewCellCollection collection = dataGridViewSuppliers.Rows[e.RowIndex].Cells;
+                ConsumbleCategorieCore.GetConsumbleCategorie(ConsumblesTypesCore.ConsumbleTypes.GetID(collection[5].Value.ToString()).ToString());
+                SuppliersCore.EditSuplier(collection[0].Value.ToString(),
+                    collection[1].Value.ToString(),
+                    collection[2].Value.ToString(),
+                    collection[3].Value.ToString(),
+                    collection[4].Value.ToString(),
+                    collection[5].Value.ToString(),
+                    collection[6].Value.ToString() == GeneralConstants.YES ? "1" : "0");
+                dataGridViewSuppliers.CellValueChanged -= DataGridViewSuppliers_CellValueChanged;
+                updateFlag = false;
+                dataGridViewConsumbles.Rows.Clear();
+                SuppliersCore.GetSuppliers();
+                UpdateDataGridViewConsumbles();
+            }
         }
 
         private void TabPageEmployees_Enter(object sender, EventArgs e)
@@ -155,14 +166,8 @@ namespace SmartFood.Forms
             tmpPoint.Y = tabPageConsumables.Height - buttonAddEmploye.Height - 10;
             buttonAddEmploye.Location = tmpPoint;
 
-            tmpPoint.X = buttonAddEmploye.Location.X - buttonDeleteEmploye.Width - 10;
-            buttonDeleteEmploye.Location = tmpPoint;
-
-            tmpPoint.X = buttonDeleteEmploye.Location.X - buttonEditEmploye.Width - 10;
-            buttonEditEmploye.Location = tmpPoint;
-
             int tmpWidth = tabPageConsumables.Width - 24;
-            int tmpHeight = buttonDeleteEmploye.Location.Y - buttonDeleteEmploye.Height - 20;
+            int tmpHeight = buttonAddEmploye.Location.Y - buttonAddEmploye.Height - 20;
             tmpPoint.X = tabPageConsumables.Left + 10;
             tmpPoint.Y = tabPageConsumables.Top + 10;
             dataGridViewEmployees.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
@@ -176,9 +181,6 @@ namespace SmartFood.Forms
             tmpPoint.X = tabPageConsumables.Width - buttonAddClient.Width - 10;
             tmpPoint.Y = tabPageConsumables.Height - buttonAddClient.Height - 10;
             buttonAddClient.Location = tmpPoint;
-
-            tmpPoint.X = buttonAddClient.Location.X - buttonEditClient.Width - 10;
-            buttonEditClient.Location = tmpPoint;
 
             int tmpWidth = tabPageConsumables.Width - 24;
             int tmpHeight = buttonAddClient.Location.Y - buttonAddClient.Height - 20;
@@ -196,14 +198,8 @@ namespace SmartFood.Forms
             tmpPoint.Y = tabPageConsumables.Height - buttonAddGood.Height - 10;
             buttonAddGood.Location = tmpPoint;
 
-            tmpPoint.X = buttonAddGood.Location.X - buttonDeleteGood.Width - 10;
-            buttonDeleteGood.Location = tmpPoint;
-
-            tmpPoint.X = buttonDeleteGood.Location.X - buttonEditGood.Width - 10;
-            buttonEditGood.Location = tmpPoint;
-
             int tmpWidth = tabPageConsumables.Width - 24;
-            int tmpHeight = buttonDeleteGood.Location.Y - buttonDeleteGood.Height - 20;
+            int tmpHeight = buttonAddGood.Location.Y - buttonAddGood.Height - 20;
             tmpPoint.X = tabPageConsumables.Left + 10;
             tmpPoint.Y = tabPageConsumables.Top + 10;
             dataGridViewGoods.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
@@ -220,9 +216,6 @@ namespace SmartFood.Forms
 
             tmpPoint.X = buttonAddAcount.Location.X - buttonDeleteAcount.Width - 10;
             buttonDeleteAcount.Location = tmpPoint;
-
-            tmpPoint.X = buttonDeleteAcount.Location.X - buttonEditAcount.Width - 10;
-            buttonEditAcount.Location = tmpPoint;
 
             int tmpWidth = tabPageConsumables.Width - 24;
             int tmpHeight = buttonDeleteAcount.Location.Y - buttonDeleteAcount.Height - 20;
@@ -293,11 +286,8 @@ namespace SmartFood.Forms
             tmpPoint.Y = tabPageConsumables.Height - buttonAddConsumble.Height - 10;
             buttonAddConsumble.Location = tmpPoint;
 
-            tmpPoint.X = buttonAddConsumble.Location.X - buttonDelete.Width - 10;
-            buttonDelete.Location = tmpPoint;
-
             int tmpWidth = tabPageConsumables.Width - 24;
-            int tmpHeight = buttonDelete.Location.Y - buttonDelete.Height - 20;
+            int tmpHeight = buttonAddConsumble.Location.Y - buttonAddConsumble.Height - 20;
             tmpPoint.X = tabPageConsumables.Left + 10;
             tmpPoint.Y = tabPageConsumables.Top + 10;
             dataGridViewConsumbles.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);

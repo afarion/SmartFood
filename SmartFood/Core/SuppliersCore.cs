@@ -39,7 +39,7 @@ namespace SmartFood.Core
             return SendEditRequest(UriPostfix.SUPPLIERS, param);
         }
 
-        public static bool EditConsumbleType(string id, string name, string phone, string emeil, string skype, string notes, string visible)
+        public static bool EditSuplier(string id, string name, string phone, string emeil, string skype, string notes, string visible)
         {
             Dictionary<string, string> param = new Dictionary<string, string>();
             param.Add(RequestFields.ACTION, Actions.EDIT);

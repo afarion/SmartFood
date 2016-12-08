@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SmartFood.Core;
+using SmartFood.Core.Constants;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,6 +27,19 @@ namespace SmartFood.Forms
         private void SupplierDetailsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             AdminForm.instance.Enabled = true;
+        }
+
+        private void buttonOk_Click(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(textBoxCompanyName.Text))
+                ErrorsViewWrapper.ShowError(ErrorTexts.ENTER_NAME);
+            else
+            {
+                SuppliersCore.AddSuplier(textBoxCompanyName.Text, textBoxPhone1.Text, textBoxEmeil.Text, textBoxSkype.Text, textBoxNotes.Text);
+                SuppliersCore.GetSuppliers();
+                AdminForm.instance.UpdateDataGridViewSuppliers();
+                this.Close();
+            }
         }
     }
 }
