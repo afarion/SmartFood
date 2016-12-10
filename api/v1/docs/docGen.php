@@ -26,7 +26,7 @@ class DocumentationGenerator
             $items .= "<li><a href=\"?page=$page\">".$data["name"]."</a></li>";
         }
         
-        $text = '<h3>API Requests:</h3><ul class="main_menu">'.$items.'</ul>';
+        $text = '<h3>API '.API_VERSION.' Requests:</h3><ul class="main_menu">'.$items.'</ul>';
         
         return $text;
     }

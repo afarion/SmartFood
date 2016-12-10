@@ -139,6 +139,61 @@ class SmartFoodApi
         
     }
     
+    private function ExecuteCallBack($name, $method, $request)
+    {
+        switch($name)
+        {
+            case "update_purchase":
+                $this->UpdatePurchase($method, $request);
+                break;
+                
+            case "update_outlay":
+                $this->UpdateOutlay($method, $request);
+                break;
+        }
+    }
+    
+    private function UpdatePurchase($method, $request)
+    {
+        if(!isset($request["id_item"]) || !isset($request["amount"]) || !isset($request["price"]))
+            $this->ShowError("request");
+            
+        $id_item    = $this->FormatField($request["id_item"], "int");
+        $amount     = $this->FormatField($request["amount"], "float");
+        $price      = $this->FormatField($request["price"], "float");
+        
+        $priceSingle = $price / $amount;
+        
+        $itemTable = $this->config["item"]["table"];
+        
+        $query = "UPDATE $itemTable SET amount = amount + $amount, price = '$priceSingle' WHERE id = $id_item";
+        
+        $this->ExecuteNonQuery($query);
+    }
+    
+    private function UpdateOutlay($method, $request)
+    {
+        if(!isset($request["id_item"]) || !isset($request["amount"]))
+            $this->ShowError("request");
+            
+        $id_item    = $this->FormatField($request["id_item"], "int");
+        $amount     = $this->FormatField($request["amount"], "float");
+        
+        $itemTable = $this->config["item"]["table"];
+        
+        $currentAmount = $this->GetValueByQuery("SELECT amount FROM $itemTable WHERE id = $id_item", "amount");
+        $currentAmount = $this->FormatField($currentAmount, "float");
+        
+        $resultAmount = $currentAmount - $amount;
+        
+        if($resultAmount < 0)
+            $this->ShowError("amount");
+        
+        $query = "UPDATE $itemTable SET amount = $resultAmount WHERE id = $id_item";
+        
+        $this->ExecuteNonQuery($query);
+    }
+    
     private function CheckUserPermissions($method, $userType, $key)
     {
         if(isset($this->config[$method]["permission"]))
@@ -171,7 +226,7 @@ class SmartFoodApi
             
             if(!isset($request[$fieldName]) && $fieldDef === false)
                 $this->ShowError("request");
-                
+            
             $fieldValue = $fieldDef;
             if(isset($request[$fieldName]))
                 $fieldValue = $request[$fieldName];
@@ -182,6 +237,9 @@ class SmartFoodApi
         
         if(count($insertFields) <= 0)
             $this->ShowError("request");
+        
+        if(isset($methodConfig["add_callback"]))
+            $this->ExecuteCallBack($methodConfig["add_callback"], $method, $request);
         
         $table = $methodConfig["table"];
         
@@ -237,9 +295,10 @@ class SmartFoodApi
         }
         
         if(count($updateValues) <= 0)
-        {
             $this->ShowError("request");
-        }
+        
+        if(isset($methodConfig["edit_callback"]))
+            $this->ExecuteCallBack($methodConfig["edit_callback"], $method, $request);
         
         $table = $methodConfig["table"];
         
@@ -1057,7 +1116,7 @@ class SmartFoodApi
     
     private function LogRequest($data)
     {
-        $key = session_id();
+        //$key = session_id();
         
         $date = date("Y-m-d");
         
@@ -1066,10 +1125,10 @@ class SmartFoodApi
         if(!file_exists($dir))
             mkdir($dir);
             
-        $dir .= "/".$key;
+        //$dir .= "/".$key;
         
-        if(!file_exists($dir))
-            mkdir($dir);
+        //if(!file_exists($dir))
+        //    mkdir($dir);
             
         $fileName = $_SERVER["REQUEST_URI"];
         $fileNameArr = explode("?", $fileName);
@@ -1188,7 +1247,7 @@ class SmartFoodApi
         return $text;
     }
     
-    function ShowError($key)
+    function ShowError($key, $message = false)
     {
         $errors = $this->config["errors"];
         
@@ -1197,7 +1256,10 @@ class SmartFoodApi
         
         $statusCode = $errors[$key]["status_code"];
         
-        $error = array("code" => $errors[$key]["code"], "message" => $errors[$key]["message"]);
+        if($message === false)
+            $message = $errors[$key]["message"];
+        
+        $error = array("code" => $errors[$key]["code"], "message" => $message);
         
         $this->ShowJson($error, $statusCode);
         
