@@ -31,7 +31,7 @@ namespace SmartFood.Forms
             tabPageSuppliers.Enter += new System.EventHandler(this.TabPageSuppliers_Enter);
             instance = this;
 
-
+            #region dataGridViewConsumbles
             dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
             dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.NAME);
             dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_PRICE, GeneralConstants.PRICE);
@@ -57,8 +57,60 @@ namespace SmartFood.Forms
             dataGridViewConsumbles.AllowUserToAddRows = false;
             dataGridViewConsumbles.Columns[0].ReadOnly = true;
             dataGridViewConsumbles.Columns[2].ReadOnly = true;
+            dataGridViewConsumbles.Columns[3].ReadOnly = true;
             dataGridViewConsumbles.RowHeadersVisible = false;
             dataGridViewConsumbles.EditMode = DataGridViewEditMode.EditOnEnter;
+            #endregion
+
+            #region dataGridViewSuppliers
+            dataGridViewSuppliers.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
+            dataGridViewSuppliers.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.NAME);
+            dataGridViewSuppliers.Columns.Add(UIConstans.NEW_COLUMN_PHONE, GeneralConstants.PHONE);
+            dataGridViewSuppliers.Columns.Add(UIConstans.NEW_COLUMN_EMEIL, GeneralConstants.EMEIL);
+            dataGridViewSuppliers.Columns.Add(UIConstans.NEW_COLUMN_SKYPE, GeneralConstants.SKYPE);
+            dataGridViewSuppliers.Columns.Add(UIConstans.NEW_COLUMN_NOTES, GeneralConstants.NOTES);
+
+            column = new DataGridViewComboBoxColumn();
+            column.DataSource = new List<string>() { GeneralConstants.YES, GeneralConstants.NO };
+            column.HeaderText = GeneralConstants.VISIBILITY;
+            dataGridViewSuppliers.Columns.Add(column);
+
+            dataGridViewSuppliers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewSuppliers.AllowUserToAddRows = false;
+            dataGridViewSuppliers.Columns[0].ReadOnly = true;
+            dataGridViewSuppliers.RowHeadersVisible = false;
+            dataGridViewSuppliers.EditMode = DataGridViewEditMode.EditOnEnter;
+            #endregion
+
+            #region dataGridViewEmployees
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_FIRST_NAME, GeneralConstants.FIRST_NAME);
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_LAST_NAME, GeneralConstants.LAST_NAME);
+
+            column = new DataGridViewComboBoxColumn();
+            column.DataSource = EmployeesTypesCore.EmployeesTypes.ToList();
+            column.HeaderText = GeneralConstants.ID_TYPE;
+            dataGridViewEmployees.Columns.Add(column);
+
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_PHONE, GeneralConstants.PHONE);
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_PHONE_EX, GeneralConstants.PHONE_EX);
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_SKYPE, GeneralConstants.SKYPE);
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_ADRESS, GeneralConstants.ADRESS);
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_EMEIL, GeneralConstants.EMEIL);
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_BIRTHDAY, GeneralConstants.BIRTHDAY);
+            dataGridViewEmployees.Columns.Add(UIConstans.NEW_COLUMN_COMMENT, GeneralConstants.COMMENT);
+
+            column = new DataGridViewComboBoxColumn();
+            column.DataSource = new List<string>() { GeneralConstants.YES, GeneralConstants.NO };
+            column.HeaderText = GeneralConstants.VISIBILITY;
+            dataGridViewEmployees.Columns.Add(column);
+
+            dataGridViewEmployees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewEmployees.AllowUserToAddRows = false;
+            dataGridViewEmployees.Columns[0].ReadOnly = true;
+            dataGridViewEmployees.RowHeadersVisible = false;
+            dataGridViewEmployees.EditMode = DataGridViewEditMode.EditOnEnter;
+            #endregion
         }
 
         private void AdminForm_Shown(object sender, EventArgs e)
@@ -84,18 +136,56 @@ namespace SmartFood.Forms
             tmpPoint.Y = tabPageConsumables.Height - buttonAddSupplier.Height - 10;
             buttonAddSupplier.Location = tmpPoint;
 
-            tmpPoint.X = buttonAddSupplier.Location.X - buttoDeleteSupplier.Width - 10;
-            buttoDeleteSupplier.Location = tmpPoint;
-
-            tmpPoint.X = buttoDeleteSupplier.Location.X - buttonEditSupplier.Width - 10;
-            buttonEditSupplier.Location = tmpPoint;
-
             int tmpWidth = tabPageConsumables.Width - 24;
-            int tmpHeight = buttonEditSupplier.Location.Y - buttonEditSupplier.Height - 20;
+            int tmpHeight = buttonAddSupplier.Location.Y - buttonAddSupplier.Height - 20;
             tmpPoint.X = tabPageConsumables.Left + 10;
             tmpPoint.Y = tabPageConsumables.Top + 10;
             dataGridViewSuppliers.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
+            UpdateDataGridViewSuppliers();
             this.Refresh();
+        }
+
+        public void UpdateDataGridViewSuppliers()
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        dataGridViewSuppliers.Rows.Clear();
+                        foreach (Supplier supplier in SuppliersCore.Suppliers.items)
+                        {
+                            DataGridViewRow row = new DataGridViewRow();
+                            dataGridViewSuppliers.Rows.Add(supplier.id, supplier.name, supplier.phone, supplier.email, supplier.skype, supplier.notes, Convert.ToBoolean(supplier.visible) ? GeneralConstants.YES : GeneralConstants.NO);
+                            dataGridViewSuppliers.CellValueChanged += DataGridViewSuppliers_CellValueChanged; ;
+                            updateFlag = true;
+                        }
+                    });
+                }
+                catch { }
+            }).Start();
+        }
+
+        private void DataGridViewSuppliers_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (updateFlag)
+            {
+                DataGridViewCellCollection collection = dataGridViewSuppliers.Rows[e.RowIndex].Cells;
+                ConsumbleCategorieCore.GetConsumbleCategorie(ConsumblesTypesCore.ConsumbleTypes.GetID(collection[5].Value.ToString()).ToString());
+                SuppliersCore.EditSuplier(collection[0].Value.ToString(),
+                    collection[1].Value.ToString(),
+                    collection[2].Value.ToString(),
+                    collection[3].Value.ToString(),
+                    collection[4].Value.ToString(),
+                    collection[5].Value.ToString(),
+                    collection[6].Value.ToString() == GeneralConstants.YES ? "1" : "0");
+                dataGridViewSuppliers.CellValueChanged -= DataGridViewSuppliers_CellValueChanged;
+                updateFlag = false;
+                dataGridViewConsumbles.Rows.Clear();
+                SuppliersCore.GetSuppliers();
+                UpdateDataGridViewConsumbles();
+            }
         }
 
         private void TabPageEmployees_Enter(object sender, EventArgs e)
@@ -106,18 +196,39 @@ namespace SmartFood.Forms
             tmpPoint.Y = tabPageConsumables.Height - buttonAddEmploye.Height - 10;
             buttonAddEmploye.Location = tmpPoint;
 
-            tmpPoint.X = buttonAddEmploye.Location.X - buttonDeleteEmploye.Width - 10;
-            buttonDeleteEmploye.Location = tmpPoint;
-
-            tmpPoint.X = buttonDeleteEmploye.Location.X - buttonEditEmploye.Width - 10;
-            buttonEditEmploye.Location = tmpPoint;
-
             int tmpWidth = tabPageConsumables.Width - 24;
-            int tmpHeight = buttonDeleteEmploye.Location.Y - buttonDeleteEmploye.Height - 20;
+            int tmpHeight = buttonAddEmploye.Location.Y - buttonAddEmploye.Height - 20;
             tmpPoint.X = tabPageConsumables.Left + 10;
             tmpPoint.Y = tabPageConsumables.Top + 10;
             dataGridViewEmployees.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
+            UpdateDataGridViewEmployees();
             this.Refresh();
+        }
+
+        public void UpdateDataGridViewEmployees()
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        dataGridViewEmployees.Rows.Clear();
+                        foreach (Employee employee in EmployeesCore.Emplyees.items)
+                        {
+                            DataGridViewRow row = new DataGridViewRow();
+                            dataGridViewEmployees.Rows.Add(employee.id, employee.first_name, employee.last_name, EmployeesTypesCore.EmployeesTypes.GetName(employee.id_type), employee.phone, employee.phone_ex, employee.skype, employee.address, employee.email, employee.birthday, employee.comment, Convert.ToBoolean(employee.visible) ? GeneralConstants.YES : GeneralConstants.NO);
+                            dataGridViewEmployees.CellValueChanged += DataGridViewSuppliers_CellValueChanged1; ;
+                            updateFlag = true;
+                        }
+                    });
+                }
+                catch { }
+            }).Start();
+        }
+
+        private void DataGridViewSuppliers_CellValueChanged1(object sender, DataGridViewCellEventArgs e)
+        {
         }
 
         private void TabPageClients_Enter(object sender, EventArgs e)
@@ -127,9 +238,6 @@ namespace SmartFood.Forms
             tmpPoint.X = tabPageConsumables.Width - buttonAddClient.Width - 10;
             tmpPoint.Y = tabPageConsumables.Height - buttonAddClient.Height - 10;
             buttonAddClient.Location = tmpPoint;
-
-            tmpPoint.X = buttonAddClient.Location.X - buttonEditClient.Width - 10;
-            buttonEditClient.Location = tmpPoint;
 
             int tmpWidth = tabPageConsumables.Width - 24;
             int tmpHeight = buttonAddClient.Location.Y - buttonAddClient.Height - 20;
@@ -147,14 +255,8 @@ namespace SmartFood.Forms
             tmpPoint.Y = tabPageConsumables.Height - buttonAddGood.Height - 10;
             buttonAddGood.Location = tmpPoint;
 
-            tmpPoint.X = buttonAddGood.Location.X - buttonDeleteGood.Width - 10;
-            buttonDeleteGood.Location = tmpPoint;
-
-            tmpPoint.X = buttonDeleteGood.Location.X - buttonEditGood.Width - 10;
-            buttonEditGood.Location = tmpPoint;
-
             int tmpWidth = tabPageConsumables.Width - 24;
-            int tmpHeight = buttonDeleteGood.Location.Y - buttonDeleteGood.Height - 20;
+            int tmpHeight = buttonAddGood.Location.Y - buttonAddGood.Height - 20;
             tmpPoint.X = tabPageConsumables.Left + 10;
             tmpPoint.Y = tabPageConsumables.Top + 10;
             dataGridViewGoods.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
@@ -171,9 +273,6 @@ namespace SmartFood.Forms
 
             tmpPoint.X = buttonAddAcount.Location.X - buttonDeleteAcount.Width - 10;
             buttonDeleteAcount.Location = tmpPoint;
-
-            tmpPoint.X = buttonDeleteAcount.Location.X - buttonEditAcount.Width - 10;
-            buttonEditAcount.Location = tmpPoint;
 
             int tmpWidth = tabPageConsumables.Width - 24;
             int tmpHeight = buttonDeleteAcount.Location.Y - buttonDeleteAcount.Height - 20;
@@ -244,11 +343,8 @@ namespace SmartFood.Forms
             tmpPoint.Y = tabPageConsumables.Height - buttonAddConsumble.Height - 10;
             buttonAddConsumble.Location = tmpPoint;
 
-            tmpPoint.X = buttonAddConsumble.Location.X - buttonDelete.Width - 10;
-            buttonDelete.Location = tmpPoint;
-
             int tmpWidth = tabPageConsumables.Width - 24;
-            int tmpHeight = buttonDelete.Location.Y - buttonDelete.Height - 20;
+            int tmpHeight = buttonAddConsumble.Location.Y - buttonAddConsumble.Height - 20;
             tmpPoint.X = tabPageConsumables.Left + 10;
             tmpPoint.Y = tabPageConsumables.Top + 10;
             dataGridViewConsumbles.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
@@ -302,7 +398,10 @@ namespace SmartFood.Forms
 
                             cell = new DataGridViewComboBoxCell();
                             foreach (var type in ConsumblesTypesCore.ConsumbleTypes.items)
-                                cell.Items.Add(type.name);
+                            {
+                                if(type.visible!=0)
+                                    cell.Items.Add(type.name);
+                            }
                             cell.Value = ConsumblesTypesCore.ConsumbleTypes.GetName(consumble.id_type);
                             row.Cells.Add(cell);
 
@@ -328,7 +427,7 @@ namespace SmartFood.Forms
                             updateFlag = true;
 
                             dataGridViewConsumbles.CellValueChanged += DataGridViewConsumbles_CellValueChanged;
-                            this.Refresh();
+                            //this.Refresh();
                         }
                     });
                 }
@@ -338,16 +437,29 @@ namespace SmartFood.Forms
 
         private void DataGridViewConsumbles_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            //if (updateFlag)
-            //{
-            //    DataGridViewCellCollection collection = dataGridViewConsumbles.Rows[e.RowIndex].Cells;
-            //    ConsumbleCategorieCore.EditConsumbleCategorie(collection[0].Value.ToString(), collection[1].Value.ToString(), collection[2].Value.ToString() == GeneralConstants.YES ? "1" : "0", ConsumblesTypesCore.consumbleTypes.GetID(collection[3].Value.ToString()));
-            //    dataGridViewConsumbleCategories.CellValueChanged -= DataGridViewConsumbleCategories_CellValueChanged;
-            //    updateFlag = false;
-            //    selectColumn = e.ColumnIndex;
-            //    selectedRow = e.RowIndex;
-            //    DownloadConsumbleCategories();
-            //}
+            if (updateFlag)
+            {
+                DataGridViewCellCollection collection = dataGridViewConsumbles.Rows[e.RowIndex].Cells;
+                ConsumbleCategorieCore.GetConsumbleCategorie(ConsumblesTypesCore.ConsumbleTypes.GetID(collection[5].Value.ToString()).ToString());
+                ConsumblesCore.EditConsumble(collection[0].Value.ToString(), 
+                    collection[1].Value.ToString(), 
+                    collection[7].Value.ToString() == GeneralConstants.YES ? "1" : "0", 
+                    ConsumblesTypesCore.ConsumbleTypes.GetID(collection[5].Value.ToString()),
+                    ConsumbleCategorieCore.consumbleCategories.GetID(collection[6].Value.ToString()),
+                    MeasuresCore.Measures.GetID(collection[4].Value.ToString()));
+                dataGridViewConsumbles.CellValueChanged -= DataGridViewConsumbles_CellValueChanged;
+                updateFlag = false;
+                int selectColumn = e.ColumnIndex;
+                int selectedRow = e.RowIndex;
+                dataGridViewConsumbles.Rows.Clear();
+                ConsumblesCore.GetConsumbles();
+                UpdateDataGridViewConsumbles();
+                try
+                {
+                    dataGridViewConsumbles.CurrentCell = dataGridViewConsumbles.Rows[selectedRow].Cells[selectColumn];
+                }
+                catch { }
+            }
         }
 
         private void TabPageArrivalAndWriteOff_Enter(object sender, EventArgs e)

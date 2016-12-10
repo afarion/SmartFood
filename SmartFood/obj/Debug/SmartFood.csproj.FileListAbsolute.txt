@@ -86,7 +86,6 @@ C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddCon
 C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddConsumbleTypeForm.resources
 C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.ConsumbleCategorieForm.resources
 C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.ConsumbleTypeForm.resources
-C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.csprojResolveAssemblyReference.cache
 E:\SmartFood\SmartFood\SmartFood\bin\Debug\SmartFood.exe.config
 E:\SmartFood\SmartFood\SmartFood\bin\Debug\SmartFood.exe
 E:\SmartFood\SmartFood\SmartFood\bin\Debug\SmartFood.pdb
@@ -131,3 +130,4 @@ E:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.pdb
 D:\Work\smartfood\SmartFood\bin\Debug\SmartFood.exe.config
 D:\Work\smartfood\SmartFood\obj\Debug\SmartFood.exe
 D:\Work\smartfood\SmartFood\obj\Debug\SmartFood.pdb
+D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.csprojResolveAssemblyReference.cache

@@ -84,6 +84,8 @@
     <Compile Include="Core\Constants\GeneralConstants.cs" />
     <Compile Include="Core\ConsumblesCore.cs" />
     <Compile Include="Core\ConsumbleCategorieCore.cs" />
+    <Compile Include="Core\EmployeesCore.cs" />
+    <Compile Include="Core\EmployeesTypesCore.cs" />
     <Compile Include="Core\MeasuresCore.cs" />
     <Compile Include="Core\Serialisation\AuthUserData.cs" />
     <Compile Include="Core\ComboBoxItem.cs" />
@@ -93,9 +95,13 @@
     <Compile Include="Core\Serialisation\ConsumbleCategories.cs" />
     <Compile Include="Core\Serialisation\ConsumbleTypes.cs" />
     <Compile Include="Core\ConsumblesTypesCore.cs" />
+    <Compile Include="Core\Serialisation\Employees.cs" />
+    <Compile Include="Core\Serialisation\EmployesTypes.cs" />
     <Compile Include="Core\Serialisation\ErrorType.cs" />
     <Compile Include="Core\Serialisation\Measures.cs" />
     <Compile Include="Core\Constants\UriPostfix.cs" />
+    <Compile Include="Core\Serialisation\Suppliers.cs" />
+    <Compile Include="Core\SuppliersCore.cs" />
     <Compile Include="Forms\AcountDetails.cs">
       <SubType>Form</SubType>
     </Compile>

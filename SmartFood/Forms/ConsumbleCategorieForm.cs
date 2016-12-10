@@ -17,6 +17,7 @@ namespace SmartFood.Forms
     {
         public static ConsumbleCategorieForm instance;
         private static bool updateFlag = false;
+        private int counterUpdates = 0;
         int selectedRow = 0;
         int selectColumn = 0;
         public ConsumbleCategorieForm()
@@ -50,13 +51,13 @@ namespace SmartFood.Forms
                 comboBoxConsumbleTypes.SelectedIndex = 0;
             }            
             catch { }
-
-            DownloadConsumbleCategories();
         }
 
         private void ConsumbleCategorieForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             AdminForm.instance.Enabled = true;
+            if (counterUpdates>1)
+                AdminForm.instance.UpdateDataGridViewConsumbles();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -74,15 +75,15 @@ namespace SmartFood.Forms
 
         public void DownloadConsumbleCategories()
         {
-            bool isOk = false;
+            bool isOk = true;
             long typeID = -1;
             try
             {
-                typeID = ConsumblesTypesCore.ConsumbleTypes.GetID(comboBoxConsumbleTypes.SelectedItem.ToString());
-                isOk = true;
+                typeID = ConsumblesTypesCore.ConsumbleTypes.GetID(comboBoxConsumbleTypes.SelectedItem.ToString());                
             }
             catch
             {
+                isOk = false;
                 ErrorsViewWrapper.ShowError(ErrorTexts.ENTER_TYPE_BEFORE);
             }
             if (isOk)
@@ -121,6 +122,7 @@ namespace SmartFood.Forms
                             dataGridViewConsumbleCategories.CurrentCell = dataGridViewConsumbleCategories.Rows[0].Cells[0];
                         }
                     }
+                    counterUpdates++;
                 });
             }
             catch { }
@@ -141,6 +143,11 @@ namespace SmartFood.Forms
         }
 
         private void comboBoxConsumbleTypes_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            DownloadConsumbleCategories();
+        }
+
+        private void ConsumbleCategorieForm_Load(object sender, EventArgs e)
         {
             DownloadConsumbleCategories();
         }
