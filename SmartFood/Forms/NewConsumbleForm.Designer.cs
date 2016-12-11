@@ -41,12 +41,14 @@
             this.labelCategory = new System.Windows.Forms.Label();
             this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             this.comboBoxMeasuring = new System.Windows.Forms.ComboBox();
+            this.textBoxWaste = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxName
             // 
             this.textBoxName.Location = new System.Drawing.Point(183, 11);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(219, 22);
             this.textBoxName.TabIndex = 0;
@@ -55,7 +57,7 @@
             // 
             this.comboBoxType.FormattingEnabled = true;
             this.comboBoxType.Location = new System.Drawing.Point(183, 43);
-            this.comboBoxType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxType.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxType.Name = "comboBoxType";
             this.comboBoxType.Size = new System.Drawing.Size(219, 24);
             this.comboBoxType.TabIndex = 1;
@@ -64,7 +66,7 @@
             // textBoxPrice
             // 
             this.textBoxPrice.Location = new System.Drawing.Point(183, 154);
-            this.textBoxPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPrice.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(219, 22);
             this.textBoxPrice.TabIndex = 2;
@@ -101,8 +103,8 @@
             // 
             // buttonOk
             // 
-            this.buttonOk.Location = new System.Drawing.Point(302, 187);
-            this.buttonOk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonOk.Location = new System.Drawing.Point(302, 219);
+            this.buttonOk.Margin = new System.Windows.Forms.Padding(4);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(100, 28);
             this.buttonOk.TabIndex = 6;
@@ -112,8 +114,8 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(183, 187);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCancel.Location = new System.Drawing.Point(194, 219);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(100, 28);
             this.buttonCancel.TabIndex = 7;
@@ -157,11 +159,31 @@
             this.comboBoxMeasuring.Size = new System.Drawing.Size(219, 24);
             this.comboBoxMeasuring.TabIndex = 13;
             // 
+            // textBoxWaste
+            // 
+            this.textBoxWaste.Location = new System.Drawing.Point(183, 189);
+            this.textBoxWaste.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxWaste.Name = "textBoxWaste";
+            this.textBoxWaste.Size = new System.Drawing.Size(219, 22);
+            this.textBoxWaste.TabIndex = 14;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 192);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 16);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Процент отхода";
+            // 
             // NewConsumbleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(419, 230);
+            this.ClientSize = new System.Drawing.Size(416, 260);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBoxWaste);
             this.Controls.Add(this.comboBoxMeasuring);
             this.Controls.Add(this.comboBoxCategory);
             this.Controls.Add(this.labelCategory);
@@ -176,7 +198,7 @@
             this.Controls.Add(this.textBoxName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NewConsumbleForm";
@@ -201,5 +223,7 @@
         private System.Windows.Forms.Label labelCategory;
         private System.Windows.Forms.ComboBox comboBoxCategory;
         private System.Windows.Forms.ComboBox comboBoxMeasuring;
+        private System.Windows.Forms.TextBox textBoxWaste;
+        private System.Windows.Forms.Label label1;
     }
 }

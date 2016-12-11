@@ -18,6 +18,7 @@ namespace SmartFood.Core.Constants
         public const string COOK = "Повар";
         public const string PRICE = "Цена";
         public const string AMOUNT = "Количество";
+        public const string WASTE = "Процент отхода";
         public const string MEASURING = "Единица";
         public const string CATEGORY = "Категория";
         public const string PHONE = "Телефон";
@@ -41,6 +42,7 @@ namespace SmartFood.Core.Constants
         public const string NEW_COLUMN_PRICE = "newColumnPrice";
         public const string NEW_COLUMN_MEASURING = "newColumnMeasuring";
         public const string NEW_COLUMN_AMOUNT= "newColumnAmount";
+        public const string NEW_COLUMN_WASTE = "newColumnWaste";
         public const string NEW_COLUMN_TYPE = "newColumnType";
         public const string NEW_COLUMN_CATEGORY = "newColumnCategory";
         public const string NEW_COLUMN_PHONE = "newColumnPhone";

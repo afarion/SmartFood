@@ -43,6 +43,8 @@ namespace SmartFood.Forms
             if (!string.IsNullOrEmpty(textBoxName.Text) && !string.IsNullOrEmpty(textBoxPrice.Text))
             {
                 double price = 0;
+                int waste=0;
+                bool correctWaste = false;
                 try
                 {
                    price  = Convert.ToDouble(textBoxPrice.Text);
@@ -51,14 +53,27 @@ namespace SmartFood.Forms
                 {
                     ErrorsViewWrapper.ShowError(ErrorTexts.INCORRECT_PRICE);
                 }
-                if(price > 0)
+                try
+                {
+                    waste = Convert.ToInt32(textBoxWaste.Text);
+                    if (waste < 100 && waste>=0)
+                        correctWaste = true;
+                    else
+                        ErrorsViewWrapper.ShowError(ErrorTexts.INCORRECT_WASTE);
+                }
+                catch
+                {
+                    ErrorsViewWrapper.ShowError(ErrorTexts.INCORRECT_WASTE);
+                }
+                if (price > 0 && correctWaste)
                 {
                     ConsumblesCore.AddConsumble(textBoxName.Text,
                                                 ConsumblesTypesCore.ConsumbleTypes.GetID(comboBoxType.SelectedItem.ToString()),
                                                 ConsumbleCategorieCore.consumbleCategories.GetID(comboBoxCategory.SelectedItem.ToString()),
                                                 MeasuresCore.Measures.GetID(comboBoxMeasuring.SelectedItem.ToString()),
                                                 0,
-                                                price);                    
+                                                price,
+                                                waste);                    
                     AdminForm.instance.UpdateDataGridViewConsumbles();
                     this.Close();
                 }
