@@ -163,12 +163,18 @@ function GetConfigArray()
             "part" => array(
                 "id"        => array( "field" => "id",          "type" => "key",    "required" => true ),
                 "name"      => array( "field" => "name",        "type" => "text",   "required" => true ),
+                "phone"     => array( "field" => "phone",       "type" => "text",   "required" => true ),
+                "email"     => array( "field" => "email",       "type" => "text",   "required" => true ),
+                "skype"     => array( "field" => "skype",       "type" => "text",   "required" => true ),
                 "notes"     => array( "field" => "notes",       "type" => "text",   "required" => true ),
                 "visible"   => array( "field" => "visible",     "type" => "int",    "required" => true ),
             ),
             
             "fields" => array(
                 "name"          => array( "type" => "text",   "default" => false,   "editable" => true ),
+                "phone"         => array( "type" => "text",   "default" => "NULL",  "editable" => true ),
+                "email"         => array( "type" => "text",   "default" => "NULL",  "editable" => true ),
+                "skype"         => array( "type" => "text",   "default" => "NULL",  "editable" => true ),
                 "notes"         => array( "type" => "text",   "default" => "",      "editable" => true ),
                 "visible"       => array( "type" => "flag",   "default" => 1,       "editable" => true ),
             ),
@@ -369,7 +375,210 @@ function GetConfigArray()
                 "name"      => "tadmin.name",
             ),
         ),
-          
+        
+        "purchase" => array(
+        
+            "table" => "tpurchase",
+            
+            "permission" => array( 
+                //          view    edit    add     remove
+                1 => array( true,   false,  true,   false),  //Администратор
+                2 => array( true,   false,  false,  false),  //Оператор
+                3 => array( true,   false,  false,  false),  //Повар
+            ),
+            
+            "part" => array(
+                "id"            => array( "field" => "id",          "type" => "key",        "required" => true ),
+                "id_item"       => array( "field" => "id_item",     "type" => "int",        "required" => true ),
+                "id_provider"   => array( "field" => "id_provider", "type" => "int",        "required" => true ),
+                "id_admin"      => array( "field" => "id_admin",    "type" => "int",        "required" => true ),
+                "id_employee"   => array( "field" => "id_employee", "type" => "int",        "required" => true ),
+                "amount"        => array( "field" => "amount",      "type" => "float",      "required" => true ),
+                "price"         => array( "field" => "price",       "type" => "price",      "required" => true ),
+                "date_create"   => array( "field" => "date_create", "type" => "datetime",   "required" => true ),
+                
+            ),
+            
+            "fields" => array(
+                "id_item"       => array( "type" => "int",    "default" => false,   "editable" => false ),
+                "id_provider"   => array( "type" => "int",    "default" => false,   "editable" => false ),
+                "id_admin"      => array( "type" => "int",    "default" => false,   "editable" => false ),
+                "id_employee"   => array( "type" => "int",    "default" => false,   "editable" => false ),
+                "amount"        => array( "type" => "float",  "default" => false,   "editable" => false ),
+                "price"         => array( "type" => "float",  "default" => false,   "editable" => false ),
+            ),
+            
+            "filters" => array(
+                "type"      => array( "field" => "id_type",     "type" => "int_equals" ),
+                "provider"  => array( "field" => "id_provider", "type" => "int_equals" ),
+                "admin"     => array( "field" => "id_admin",    "type" => "int_equals" ),
+                "employee"  => array( "field" => "id_employee", "type" => "int_equals" ),
+            ),
+        
+            "order" => array(
+                "create"    => "tpurchase.id",
+            ),
+            
+            "add_callback" => "update_purchase",
+        
+        ),
+        
+        "outlay" => array(
+        
+            "table" => "toutlay",
+            
+            "permission" => array( 
+                //          view    edit    add     remove
+                1 => array( true,   false,  true,   false),  //Администратор
+                2 => array( true,   false,  false,  false),  //Оператор
+                3 => array( true,   false,  false,  false),  //Повар
+            ),
+            
+            "part" => array(
+                "id"            => array( "field" => "id",          "type" => "key",        "required" => true ),
+                "id_item"       => array( "field" => "id_item",     "type" => "int",        "required" => true ),
+                "id_admin"      => array( "field" => "id_admin",    "type" => "int",        "required" => true ),
+                "id_employee"   => array( "field" => "id_employee", "type" => "int",        "required" => true ),
+                "amount"        => array( "field" => "amount",      "type" => "float",      "required" => true ),
+                "waste"         => array( "field" => "waste",       "type" => "float",      "required" => true ),
+                "comment"       => array( "field" => "comment",     "type" => "text",       "required" => true ),
+                "date_create"   => array( "field" => "date_create", "type" => "datetime",   "required" => true ),
+            ),
+            
+            "fields" => array(
+                "id_item"       => array( "type" => "int",    "default" => false,   "editable" => false ),
+                "id_admin"      => array( "type" => "int",    "default" => false,   "editable" => false ),
+                "id_employee"   => array( "type" => "int",    "default" => false,   "editable" => false ),
+                "amount"        => array( "type" => "float",  "default" => false,   "editable" => false ),
+                "waste"         => array( "type" => "float",  "default" => 0,       "editable" => false ),
+                "comment"       => array( "type" => "text",   "default" => false,   "editable" => false ),
+            ),
+            
+            "filters" => array(
+                "admin"     => array( "field" => "id_admin",    "type" => "int_equals" ),
+                "employee"  => array( "field" => "id_employee", "type" => "int_equals" ),
+            ),
+        
+            "order" => array(
+                "create"    => "toutlay.id",
+            ),
+            
+            "add_callback" => "update_outlay",
+        
+        ),
+        
+        "dishcategory" => array(
+        
+            "table" => "tdishcategory",
+            
+            "permission" => array( 
+                //          view    edit    add     remove
+                1 => array( true,   false,  false,  false),  //Администратор
+                2 => array( true,   false,  false,  false),  //Оператор
+                3 => array( true,   false,  false,  false),  //Повар
+            ),
+        
+            "part" => array(
+                "id"    => array( "field" => "id",      "type" => "key",    "required" => true ),
+                "name"  => array( "field" => "name",    "type" => "text",   "required" => true ),
+            ),
+            
+            "show_only" => array(
+                "visible > 0"
+            ),
+        
+            "order" => array(
+                "priority"  => "tdishcategory.priority desc, tdishcategory.id",
+                "name"      => "tdishcategory.name",
+                "create"    => "tdishcategory.id",
+            ),
+        ),
+        
+        "dish" => array(
+        
+            "table" => "tdish",
+            
+            "permission" => array( 
+                //          view    edit    add     remove
+                1 => array( true,   true,   true,   false),  //Администратор
+                2 => array( true,   false,  false,  false),  //Оператор
+                3 => array( true,   false,  false,  false),  //Повар
+            ),
+        
+            "part" => array(
+                "id"            => array( "field" => "id",          "type" => "key",    "required" => true ),
+                "id_category"   => array( "field" => "id_category", "type" => "int",    "required" => true ),
+                "name"          => array( "field" => "name",        "type" => "text",   "required" => true ),
+                "weight"        => array( "field" => "weight",      "type" => "float",  "required" => true ),
+                "price"         => array( "field" => "price",       "type" => "price",  "required" => true ),
+                "visible"       => array( "field" => "visible",     "type" => "int",    "required" => true ),
+                "category"      => array( "field" => "id_category", "type" => "table",  "required" => false, "join" => array("tdishcategory", "name", "id") ),
+            ),
+            
+            "fields" => array(
+                "id_category"   => array( "type" => "int",    "default" => false,   "editable" => true ),
+                "name"          => array( "type" => "text",   "default" => false,   "editable" => true ),
+                "weight"        => array( "type" => "float",  "default" => 0,       "editable" => true ),
+                "price"         => array( "type" => "float",  "default" => 0,       "editable" => true ),
+                "visible"       => array( "type" => "flag",   "default" => 1,       "editable" => true ),
+            ),
+            
+            "filters" => array(
+                "category"  => array( "field" => "id_category", "type" => "int_equals" ),
+            ),
+        
+            "order" => array(
+                "priority"      => "tdish.priority desc, tdish.id",
+                "name"          => "tdish.name",
+                "price"         => "tdish.price",
+                "price_desc"    => "tdish.price desc",
+                "create"        => "tdish.id",
+            ),
+        ),
+        
+        "dishitem" => array(
+        
+            "table" => "tdishitem",
+            
+            "permission" => array( 
+                //          view    edit    add     remove
+                1 => array( true,   true,   true,   false),  //Администратор
+                2 => array( true,   false,  false,  false),  //Оператор
+                3 => array( true,   false,  false,  false),  //Повар
+            ),
+        
+            "part" => array(
+                "id"            => array( "field" => "id",          "type" => "key",    "required" => true ),
+                "id_category"   => array( "field" => "id_category", "type" => "int",    "required" => true ),
+                "name"          => array( "field" => "name",        "type" => "text",   "required" => true ),
+                "weight"        => array( "field" => "weight",      "type" => "float",  "required" => true ),
+                "price"         => array( "field" => "price",       "type" => "price",  "required" => true ),
+                "visible"       => array( "field" => "visible",     "type" => "int",    "required" => true ),
+                "category"      => array( "field" => "id_category", "type" => "table",  "required" => false, "join" => array("tdishcategory", "name", "id") ),
+            ),
+            
+            "fields" => array(
+                "id_category"   => array( "type" => "int",    "default" => false,   "editable" => true ),
+                "name"          => array( "type" => "text",   "default" => false,   "editable" => true ),
+                "weight"        => array( "type" => "float",  "default" => 0,       "editable" => true ),
+                "price"         => array( "type" => "float",  "default" => 0,       "editable" => true ),
+                "visible"       => array( "type" => "flag",   "default" => 1,       "editable" => true ),
+            ),
+            
+            "filters" => array(
+                "category"  => array( "field" => "id_category", "type" => "int_equals" ),
+            ),
+        
+            "order" => array(
+                "priority"      => "tdish.priority desc, tdish.id",
+                "name"          => "tdish.name",
+                "price"         => "tdish.price",
+                "price_desc"    => "tdish.price desc",
+                "create"        => "tdish.id",
+            ),
+        ),
+        
+        
     /*
 
         "hotel" => array(
@@ -530,6 +739,7 @@ function GetConfigArray()
             "user"      => array( "code" => 22,     "status_code" => 400,   "message" => "Invalid user data" ),
             
             "insert"    => array( "code" => 31,     "status_code" => 400,   "message" => "Insert object error" ),
+            "amount"    => array( "code" => 32,     "status_code" => 400,   "message" => "Not enough amount" ),
             
             "sid"       => array( "code" => 50,     "status_code" => 401,   "message" => "Wrong user sid" ),
             "perm"      => array( "code" => 51,     "status_code" => 403,   "message" => "You do not have permission for this action" ),

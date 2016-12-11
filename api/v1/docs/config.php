@@ -691,7 +691,7 @@ function DocConfigArray()
             "response" => '{"success":1}',
             
         ),
-    
+        
         // ====================================================================================================
         // PROVIDER
         
@@ -739,7 +739,7 @@ function DocConfigArray()
                     "test_file" => "provider_view.php"
                 ),
             
-            "response" => '{"count":3,"items":[{"id":"1","name":"\u041f\u043e\u0441\u0442\u0430\u0432\u0449\u0438\u043a \u043f\u0435\u0440\u0432\u044b\u0439","notes":"\u041e\u043d \u043f\u0435\u0440\u0432\u044b\u0439!","visible":"1"},{"id":"2","name":"\u041f\u043e\u0441\u0442\u0430\u0432\u0449\u0438\u043a 2","notes":"\u0434\u043e\u043b\u0436\u0435\u043d \u0434\u0435\u043d\u0435\u0433","visible":"1"},{"id":"3","name":"\u041f\u043e\u0441\u0442\u0430\u0432\u0449\u0438\u043a 3","notes":"","visible":"1"}]}',
+            "response" => '{"count":3,"items":[{"id":"1","name":"\u041f\u043e\u0441\u0442\u0430\u0432\u0449\u0438\u043a \u043f\u0435\u0440\u0432\u044b\u0439","phone":"","email":"","skype":"","notes":"\u041e\u043d \u043f\u0435\u0440\u0432\u044b\u0439!","visible":"1"},{"id":"2","name":"\u041f\u043e\u0441\u0442\u0430\u0432\u0449\u0438\u043a 2","phone":"","email":"","skype":"","notes":"\u0434\u043e\u043b\u0436\u0435\u043d \u0434\u0435\u043d\u0435\u0433","visible":"1"},{"id":"3","name":"\u041f\u043e\u0441\u0442\u0430\u0432\u0449\u0438\u043a 3","phone":"","email":"","skype":"","notes":"","visible":"1"}]}',
             
         ),
         
@@ -777,6 +777,24 @@ function DocConfigArray()
                     "value" => "",
                     "type"  => "string", 
                     "descr" => "Имя поставщика. Обязательное поле."
+                ),
+                
+                "phone" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Телефон поставщика."
+                ),
+                
+                "email" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "E-mail поставщика."
+                ),
+                
+                "skype" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Skype поставщика."
                 ),
                 
                 "notes" => array(
@@ -843,6 +861,24 @@ function DocConfigArray()
                     "value" => "",
                     "type"  => "string", 
                     "descr" => "Имя поставщика."
+                ),
+                
+                "phone" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Телефон поставщика."
+                ),
+                
+                "email" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "E-mail поставщика."
+                ),
+                
+                "skype" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Skype поставщика."
                 ),
                 
                 "notes" => array(
@@ -1708,6 +1744,520 @@ function DocConfigArray()
             "response" => '{"success":1}',
             
         ),
+        
+        // ====================================================================================================
+        // PURCHASE
+        
+        "purchase_view" => array(
+            
+            "name" => "Приход. View",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "view",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
+                ),
+                
+                "order" => array(
+                    "value" => "[create]",
+                    "type"  => "string", 
+                    "descr" => "Сортировка результатов. Варианты сортировок:<br />create - по дате создания" 
+                ),
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "purchase/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view"}',
+                    "test_file" => "purchase_view.php"
+                ),
+            
+            "response" => '{"count":2,"items":[{"id":"1","id_item":"1","id_provider":"2","id_admin":"4","id_employee":"4","amount":"10.000","price":"12.90","date_create":"2016-12-07 22:48:38"},{"id":"2","id_item":"1","id_provider":"2","id_admin":"4","id_employee":"4","amount":"25.000","price":"51.00","date_create":"2016-12-07 22:49:24"}]}',
+            
+        ),
+        
+        "purchase_add" => array(
+            
+            "name" => "Приход. Add",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "add",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае добавление (add). Обязательное поле."
+                ),
+                
+                "id_item" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID расходника. Обязательное поле."
+                ),
+                
+                "id_provider" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID поставщика. Обязательное поле."
+                ),
+                
+                "id_employee" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID сотрудника. Обязательное поле."
+                ),
+                
+                "amount" => array(
+                    "value" => "",
+                    "type"  => "float", 
+                    "descr" => "Колличество / вес прихода. Обязательное поле."
+                ),
+                
+                "price" => array(
+                    "value" => "",
+                    "type"  => "float", 
+                    "descr" => "Общая цена прихода. Обязательное поле."
+                ),
+                
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "purchase/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"add","id_item":"1","id_provider":"1","id_employee":"1","amount":"100","price":"235.50"}',
+                    "test_file" => "purchase_add.php"
+                ),
+            
+            "response" => '{"success":1}',
+            
+        ),
+        
+        // ====================================================================================================
+        // OUTLAY
+        
+        "outlay_view" => array(
+            
+            "name" => "Списание. View",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "view",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
+                ),
+                
+                "order" => array(
+                    "value" => "[create]",
+                    "type"  => "string", 
+                    "descr" => "Сортировка результатов. Варианты сортировок:<br />create - по дате создания" 
+                ),
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "outlay/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view"}',
+                    "test_file" => "outlay_view.php"
+                ),
+            
+            "response" => '{"count":3,"items":[{"id":"1","id_item":"1","id_admin":"4","id_employee":"4","amount":"20.000","waste":"0.000","comment":"\u0438\u0441\u043f\u043e\u0440\u0442\u0438\u043b\u0430\u0441\u044c \u0444\u043e\u0440\u0435\u043b\u044c","date_create":"2016-12-08 22:10:42"},{"id":"3","id_item":"1","id_admin":"4","id_employee":"4","amount":"11.500","waste":"0.000","comment":"\u0438\u0441\u043f\u043e\u0440\u0442\u0438\u043b\u0430\u0441\u044c \u0444\u043e\u0440\u0435\u043b\u044c","date_create":"2016-12-08 22:11:14"},{"id":"5","id_item":"1","id_admin":"4","id_employee":"4","amount":"1.000","waste":"0.000","comment":"\u043e\u043f\u044f\u0442\u044c \u0438\u0441\u043f\u043e\u0440\u0442\u0438\u043b\u0430\u0441\u044c","date_create":"2016-12-08 22:13:41"}]}',
+            
+        ),
+        
+        "outlay_add" => array(
+            
+            "name" => "Списание. Add",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "add",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае добавление (add). Обязательное поле."
+                ),
+                
+                "id_item" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID расходника. Обязательное поле."
+                ),
+                
+                "id_employee" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID сотрудника. Обязательное поле."
+                ),
+                
+                "amount" => array(
+                    "value" => "",
+                    "type"  => "float", 
+                    "descr" => "Колличество / вес прихода. Обязательное поле."
+                ),
+                
+                "comment" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Комментарий."
+                ),
+                
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "outlay/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"add","id_item":"1","id_employee":"1","amount":"100","comment":"причина списания"}',
+                    "test_file" => "outlay_add.php"
+                ),
+            
+            "response" => '{"success":1}',
+            
+        ),
+        
+        // ====================================================================================================
+        // DISH CATEGORY
+    
+        "dishcategory" => array(
+            
+            "name" => "Категории товаров. View",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "view",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
+                ),
+                
+                "order" => array(
+                    "value" => "[priority|name|create]",
+                    "type"  => "string", 
+                    "descr" => "Сортировка результатов. Варианты сортировок:<br />priority - по приоритету<br />name - по названию<br />create - по дате создания" 
+                ),
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "dishcategory/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view","order":"priority"}',
+                    "test_file" => "dishcategory_view.php"
+                ),
+            
+            "response" => '{"count":12,"items":[{"id":"1","name":"\u0421\u0443\u0448\u0438 - \u041d\u0438\u0433\u0438\u0440\u0438\/\u0413\u0443\u043d\u043a\u0430\u043d\u044b"},{"id":"2","name":"\u0421\u0443\u0448\u0438 - \u0420\u043e\u043b\u043b\u044b"},{"id":"3","name":"\u0421\u0443\u0448\u0438 - \u0413\u043e\u0440\u044f\u0447\u0438\u0435 \u0440\u043e\u043b\u043b\u044b"},{"id":"4","name":"\u0421\u0443\u0448\u0438 - \u0421\u043e\u0448\u0438\u043c\u0438"},{"id":"5","name":"\u0421\u0443\u0448\u0438 - \u0421\u0435\u0442\u044b"},{"id":"6","name":"\u041f\u0438\u0446\u0446\u0430"},{"id":"7","name":"BBQ - \u0411\u0443\u0440\u0433\u0435\u0440\u044b"},{"id":"8","name":"BBQ - \u0413\u0430\u0440\u043d\u0438\u0440\u044b"},{"id":"9","name":"BBQ - \u0421\u0442\u0435\u0439\u043a\u0438"},{"id":"10","name":"\u0421\u0430\u043b\u0430\u0442\u044b"},{"id":"11","name":"\u0414\u0435\u0441\u0435\u0440\u0442\u044b"},{"id":"12","name":"\u041d\u0430\u043f\u0438\u0442\u043a\u0438"}]}',
+            
+        ),
+        
+        // ====================================================================================================
+        // DISH
+        
+        "dish_view" => array(
+            
+            "name" => "Товары. View",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "view",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
+                ),
+                
+                "part" => array(
+                    "value" => "[category]",
+                    "type"  => "string", 
+                    "descr" => "Дополнительные поля, перечисленые через запятую. Если указаны, будут добавлены в ответ.<br />
+                                &#8226; category - название категории объекта" 
+                ),
+                
+                "category" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID категории. Если указан, будут возвращены объекты только этой категории."
+                ),
+                
+                "order" => array(
+                    "value" => "[priority|name|price|price_desc|create]",
+                    "type"  => "string", 
+                    "descr" => "Сортировка результатов. Варианты сортировок:<br />
+                                &#8226; priority - по приоритету<br />
+                                &#8226; name - по названию<br />
+                                &#8226; price - по возрастанию цены<br />
+                                &#8226; price_desc - по убыванию цены<br />
+                                &#8226; create - по дате создания" 
+                ),
+                
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "dish/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view","part":"category","order":"priority"}',
+                    "test_file" => "dish_view.php"
+                ),
+            
+            "response" => '{"count":2,"items":[{"id":"1","id_category":"1","name":"\u0411\u0443\u0440\u0433\u0435\u0440 1","weight":"250.000","price":"120.00","visible":"1","category":"\u0421\u0443\u0448\u0438 - \u041d\u0438\u0433\u0438\u0440\u0438\/\u0413\u0443\u043d\u043a\u0430\u043d\u044b"},{"id":"2","id_category":"1","name":"\u0411\u0443\u0440\u0433\u0435\u0440 \u0432\u0442\u043e\u0440\u043e\u0439","weight":"230.000","price":"135.00","visible":"1","category":"\u0421\u0443\u0448\u0438 - \u041d\u0438\u0433\u0438\u0440\u0438\/\u0413\u0443\u043d\u043a\u0430\u043d\u044b"}]}',
+            
+        ),
+        
+        "dish_add" => array(
+            
+            "name" => "Товары. Add",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "add",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае добавление (add). Обязательное поле."
+                ),
+                
+                "id_category" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID категории товара. Обязательное поле."
+                ),
+                
+                "name" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Название товара. Обязательное поле."
+                ),
+                
+                "weight" => array(
+                    "value" => "",
+                    "type"  => "float", 
+                    "descr" => "Вес товара."
+                ),
+                
+                "price" => array(
+                    "value" => "",
+                    "type"  => "float", 
+                    "descr" => "Цена товара."
+                ),
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "dish/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"add","name":"Бургер","id_category":"1","weight":"200","price":"52"}',
+                    "test_file" => "dish_add.php"
+                ),
+            
+            "response" => '{"success":1}',
+            
+        ),
+        
+        "dish_edit" => array(
+            
+            "name" => "Товары. Edit",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "edit",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае редактирование (edit). Обязательное поле."
+                ),
+                
+                "id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID редактируемого товара. Обязательное поле."
+                ),
+                
+                "id_category" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID категории товара."
+                ),
+                
+                "name" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Название товара."
+                ),
+
+                "weight" => array(
+                    "value" => "",
+                    "type"  => "float", 
+                    "descr" => "Вес товара."
+                ),
+                
+                "price" => array(
+                    "value" => "",
+                    "type"  => "float", 
+                    "descr" => "Цена товара."
+                ),
+                
+                "visible" => array(
+                    "value" => "0 или 1 ",
+                    "type"  => "flag", 
+                    "descr" => "Видимость товара."
+                ),
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "dish/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"edit","id":"1","name":"Бургер","id_category":"1"}',
+                    "test_file" => "dish_edit.php"
+                ),
+            
+            "response" => '{"success":1}',
+            
+        ),
+        
+        // ====================================================================================================
+        // DISH ITEM
+        
+        
+        
+        
         
         // ====================================================================================================
         // ERRORS

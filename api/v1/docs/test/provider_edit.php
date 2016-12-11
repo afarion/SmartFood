@@ -34,6 +34,21 @@ header('Content-Type: text/html; charset=utf-8');
         </tr>
         
         <tr>
+            <td>phone</td>
+            <td><input type="text" name="phone" value=""/></td>
+        </tr>
+        
+        <tr>
+            <td>email</td>
+            <td><input type="text" name="email" value=""/></td>
+        </tr>
+        
+        <tr>
+            <td>skype</td>
+            <td><input type="text" name="skype" value=""/></td>
+        </tr>
+        
+        <tr>
             <td>notes</td>
             <td><input type="text" name="notes" value=""/></td>
         </tr>
