@@ -536,6 +536,48 @@ function GetConfigArray()
             ),
         ),
         
+        "dishitem" => array(
+        
+            "table" => "tdishitem",
+            
+            "permission" => array( 
+                //          view    edit    add     remove
+                1 => array( true,   true,   true,   false),  //Администратор
+                2 => array( true,   false,  false,  false),  //Оператор
+                3 => array( true,   false,  false,  false),  //Повар
+            ),
+        
+            "part" => array(
+                "id"            => array( "field" => "id",          "type" => "key",    "required" => true ),
+                "id_category"   => array( "field" => "id_category", "type" => "int",    "required" => true ),
+                "name"          => array( "field" => "name",        "type" => "text",   "required" => true ),
+                "weight"        => array( "field" => "weight",      "type" => "float",  "required" => true ),
+                "price"         => array( "field" => "price",       "type" => "price",  "required" => true ),
+                "visible"       => array( "field" => "visible",     "type" => "int",    "required" => true ),
+                "category"      => array( "field" => "id_category", "type" => "table",  "required" => false, "join" => array("tdishcategory", "name", "id") ),
+            ),
+            
+            "fields" => array(
+                "id_category"   => array( "type" => "int",    "default" => false,   "editable" => true ),
+                "name"          => array( "type" => "text",   "default" => false,   "editable" => true ),
+                "weight"        => array( "type" => "float",  "default" => 0,       "editable" => true ),
+                "price"         => array( "type" => "float",  "default" => 0,       "editable" => true ),
+                "visible"       => array( "type" => "flag",   "default" => 1,       "editable" => true ),
+            ),
+            
+            "filters" => array(
+                "category"  => array( "field" => "id_category", "type" => "int_equals" ),
+            ),
+        
+            "order" => array(
+                "priority"      => "tdish.priority desc, tdish.id",
+                "name"          => "tdish.name",
+                "price"         => "tdish.price",
+                "price_desc"    => "tdish.price desc",
+                "create"        => "tdish.id",
+            ),
+        ),
+        
         
     /*
 

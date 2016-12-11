@@ -1988,11 +1988,11 @@ function DocConfigArray()
         ),
         
         // ====================================================================================================
-        // UNIT
+        // DISH CATEGORY
     
         "dishcategory" => array(
             
-            "name" => "Категории блюд. View",
+            "name" => "Категории товаров. View",
             
             "properties" => array(
                 
@@ -2043,7 +2043,7 @@ function DocConfigArray()
         
         "dish_view" => array(
             
-            "name" => "Блюда. View",
+            "name" => "Товары. View",
             
             "properties" => array(
                 
@@ -2110,7 +2110,7 @@ function DocConfigArray()
         
         "dish_add" => array(
             
-            "name" => "Блюда. Add",
+            "name" => "Товары. Add",
             
             "properties" => array(
                 
@@ -2141,25 +2141,25 @@ function DocConfigArray()
                 "id_category" => array(
                     "value" => "",
                     "type"  => "int", 
-                    "descr" => "ID категории блюда. Обязательное поле."
+                    "descr" => "ID категории товара. Обязательное поле."
                 ),
                 
                 "name" => array(
                     "value" => "",
                     "type"  => "string", 
-                    "descr" => "Название блюда. Обязательное поле."
+                    "descr" => "Название товара. Обязательное поле."
                 ),
                 
                 "weight" => array(
                     "value" => "",
                     "type"  => "float", 
-                    "descr" => "Вес блюда."
+                    "descr" => "Вес товара."
                 ),
                 
                 "price" => array(
                     "value" => "",
                     "type"  => "float", 
-                    "descr" => "Цена блюда."
+                    "descr" => "Цена товара."
                 ),
             ),
             
@@ -2176,7 +2176,7 @@ function DocConfigArray()
         
         "dish_edit" => array(
             
-            "name" => "Блюда. Edit",
+            "name" => "Товары. Edit",
             
             "properties" => array(
                 
@@ -2207,37 +2207,37 @@ function DocConfigArray()
                 "id" => array(
                     "value" => "",
                     "type"  => "int", 
-                    "descr" => "ID редактируемого блюда. Обязательное поле."
+                    "descr" => "ID редактируемого товара. Обязательное поле."
                 ),
                 
                 "id_category" => array(
                     "value" => "",
                     "type"  => "int", 
-                    "descr" => "ID категории блюда."
+                    "descr" => "ID категории товара."
                 ),
                 
                 "name" => array(
                     "value" => "",
                     "type"  => "string", 
-                    "descr" => "Название блюда."
+                    "descr" => "Название товара."
                 ),
 
                 "weight" => array(
                     "value" => "",
                     "type"  => "float", 
-                    "descr" => "Вес блюда."
+                    "descr" => "Вес товара."
                 ),
                 
                 "price" => array(
                     "value" => "",
                     "type"  => "float", 
-                    "descr" => "Цена блюда."
+                    "descr" => "Цена товара."
                 ),
                 
                 "visible" => array(
                     "value" => "0 или 1 ",
                     "type"  => "flag", 
-                    "descr" => "Видимость блюда."
+                    "descr" => "Видимость товара."
                 ),
             ),
             
@@ -2251,6 +2251,11 @@ function DocConfigArray()
             "response" => '{"success":1}',
             
         ),
+        
+        // ====================================================================================================
+        // DISH ITEM
+        
+        
         
         
         
