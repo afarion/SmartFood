@@ -304,7 +304,10 @@ class SmartFoodApi
         
         $query = "UPDATE $table SET ".join(",", $updateValues)." WHERE id = $id";
         
-        $this->ExecuteNonQuery($query);
+        $res = $this->ExecuteNonQuery($query);
+        
+        if(!$res)
+            $this->ShowError("request");
         
         $response = array("success" => $id);
         
@@ -1324,7 +1327,13 @@ class SmartFoodApi
     function ExecuteNonQuery($query)
     {
         $this->db->sql_query($query);
+        $error = $this->db->sql_error(); 
         $this->db->sql_freeresult();
+        
+        if($error["code"] > 0)
+            return false;
+            
+        return true;
     }
 
     function DbConnect()

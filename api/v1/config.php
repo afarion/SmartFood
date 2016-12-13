@@ -117,6 +117,7 @@ function GetConfigArray()
                 
                 "amount"        => array( "field" => "amount",      "type" => "float",  "required" => true ),
                 "price"         => array( "field" => "price",       "type" => "price",  "required" => true ),
+                "waste_pct"     => array( "field" => "waste_pct",   "type" => "int",    "required" => true ),
                 "visible"       => array( "field" => "visible",     "type" => "int",    "required" => true ),
                 
                 "type"          => array( "field" => "id_type",     "type" => "table",  "required" => false, "join" => array("titemtype", "name", "id") ),
@@ -131,6 +132,7 @@ function GetConfigArray()
                 "id_unit"       => array( "type" => "int",    "default" => false,   "editable" => true ),
                 //"amount"        => array( "type" => "float",  "default" => 0,       "editable" => true ),
                 "price"         => array( "type" => "float",  "default" => 0,       "editable" => false ),
+                "waste_pct"     => array( "type" => "int",    "default" => 0,       "editable" => true ),
                 "visible"       => array( "type" => "flag",   "default" => 1,       "editable" => true ),
             ),
             
@@ -284,6 +286,7 @@ function GetConfigArray()
                 "discount_stored"   => array( "field" => "discount_stored", "type" => "int",    "required" => true ),
                 "total_balance"     => array( "field" => "total_balance",   "type" => "price",  "required" => true ),
                 "comment"           => array( "field" => "comment",         "type" => "text",   "required" => true ),
+                "discount_reason"   => array( "field" => "discount_reason", "type" => "text",   "required" => true ),
                 "visible"           => array( "field" => "visible",         "type" => "int",    "required" => true ),
             ),
             
@@ -295,6 +298,7 @@ function GetConfigArray()
                 "discount_stored"   => array( "type" => "int",      "default" => "NULL",  "editable" => false ),
                 "total_balance"     => array( "type" => "float",    "default" => "NULL",  "editable" => false ),
                 "comment"           => array( "type" => "text",     "default" => "NULL",  "editable" => true ),
+                "discount_reason"   => array( "type" => "text",     "default" => "NULL",  "editable" => true ),
                 "visible"           => array( "type" => "flag",     "default" => 1,       "editable" => true ),
             ),
             
@@ -549,32 +553,28 @@ function GetConfigArray()
         
             "part" => array(
                 "id"            => array( "field" => "id",          "type" => "key",    "required" => true ),
-                "id_category"   => array( "field" => "id_category", "type" => "int",    "required" => true ),
-                "name"          => array( "field" => "name",        "type" => "text",   "required" => true ),
+                "id_dish"       => array( "field" => "id_dish",     "type" => "int",    "required" => true ),
+                "id_item"       => array( "field" => "id_item",     "type" => "int",    "required" => true ),
                 "weight"        => array( "field" => "weight",      "type" => "float",  "required" => true ),
-                "price"         => array( "field" => "price",       "type" => "price",  "required" => true ),
                 "visible"       => array( "field" => "visible",     "type" => "int",    "required" => true ),
-                "category"      => array( "field" => "id_category", "type" => "table",  "required" => false, "join" => array("tdishcategory", "name", "id") ),
+                "item"          => array( "field" => "id_item",     "type" => "table",  "required" => false, "join" => array("titem", "name", "id") ),
             ),
             
             "fields" => array(
-                "id_category"   => array( "type" => "int",    "default" => false,   "editable" => true ),
-                "name"          => array( "type" => "text",   "default" => false,   "editable" => true ),
-                "weight"        => array( "type" => "float",  "default" => 0,       "editable" => true ),
-                "price"         => array( "type" => "float",  "default" => 0,       "editable" => true ),
+                "id_dish"       => array( "type" => "int",    "default" => false,   "editable" => true ),
+                "id_item"       => array( "type" => "int",    "default" => false,   "editable" => true ),
+                "weight"        => array( "type" => "float",  "default" => false,   "editable" => true ),
                 "visible"       => array( "type" => "flag",   "default" => 1,       "editable" => true ),
             ),
             
             "filters" => array(
-                "category"  => array( "field" => "id_category", "type" => "int_equals" ),
+                "dish"  => array( "field" => "id_dish", "type" => "int_equals" ),
             ),
         
             "order" => array(
-                "priority"      => "tdish.priority desc, tdish.id",
-                "name"          => "tdish.name",
-                "price"         => "tdish.price",
-                "price_desc"    => "tdish.price desc",
-                "create"        => "tdish.id",
+                "priority"      => "tdishitem.priority desc, tdishitem.id",
+                "name"          => "tdishitem.name",
+                "create"        => "tdishitem.id",
             ),
         ),
         
