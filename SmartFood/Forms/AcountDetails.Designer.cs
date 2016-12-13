@@ -44,95 +44,105 @@
             // labelEmploye
             // 
             this.labelEmploye.AutoSize = true;
-            this.labelEmploye.Location = new System.Drawing.Point(10, 9);
+            this.labelEmploye.Location = new System.Drawing.Point(13, 11);
+            this.labelEmploye.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelEmploye.Name = "labelEmploye";
-            this.labelEmploye.Size = new System.Drawing.Size(60, 13);
+            this.labelEmploye.Size = new System.Drawing.Size(79, 16);
             this.labelEmploye.TabIndex = 0;
             this.labelEmploye.Text = "Сотрудник";
             // 
             // comboBoxEmploye
             // 
             this.comboBoxEmploye.FormattingEnabled = true;
-            this.comboBoxEmploye.Location = new System.Drawing.Point(13, 25);
+            this.comboBoxEmploye.Location = new System.Drawing.Point(17, 31);
+            this.comboBoxEmploye.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxEmploye.Name = "comboBoxEmploye";
-            this.comboBoxEmploye.Size = new System.Drawing.Size(267, 21);
+            this.comboBoxEmploye.Size = new System.Drawing.Size(355, 24);
             this.comboBoxEmploye.TabIndex = 1;
             // 
             // labelLogin
             // 
             this.labelLogin.AutoSize = true;
-            this.labelLogin.Location = new System.Drawing.Point(10, 50);
+            this.labelLogin.Location = new System.Drawing.Point(13, 62);
+            this.labelLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelLogin.Name = "labelLogin";
-            this.labelLogin.Size = new System.Drawing.Size(38, 13);
+            this.labelLogin.Size = new System.Drawing.Size(47, 16);
             this.labelLogin.TabIndex = 2;
             this.labelLogin.Text = "Логин";
             // 
             // textBoxLogin
             // 
-            this.textBoxLogin.Location = new System.Drawing.Point(13, 66);
+            this.textBoxLogin.Location = new System.Drawing.Point(17, 81);
+            this.textBoxLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(265, 20);
-            this.textBoxLogin.TabIndex = 3;
+            this.textBoxLogin.Size = new System.Drawing.Size(352, 22);
+            this.textBoxLogin.TabIndex = 2;
             // 
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
-            this.labelPassword.Location = new System.Drawing.Point(10, 89);
+            this.labelPassword.Location = new System.Drawing.Point(13, 110);
+            this.labelPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(45, 13);
+            this.labelPassword.Size = new System.Drawing.Size(57, 16);
             this.labelPassword.TabIndex = 4;
             this.labelPassword.Text = "Пароль";
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(13, 105);
+            this.textBoxPassword.Location = new System.Drawing.Point(17, 129);
+            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(265, 20);
-            this.textBoxPassword.TabIndex = 5;
+            this.textBoxPassword.Size = new System.Drawing.Size(352, 22);
+            this.textBoxPassword.TabIndex = 3;
             // 
             // labelRole
             // 
             this.labelRole.AutoSize = true;
-            this.labelRole.Location = new System.Drawing.Point(10, 128);
+            this.labelRole.Location = new System.Drawing.Point(13, 158);
+            this.labelRole.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelRole.Name = "labelRole";
-            this.labelRole.Size = new System.Drawing.Size(32, 13);
+            this.labelRole.Size = new System.Drawing.Size(40, 16);
             this.labelRole.TabIndex = 6;
             this.labelRole.Text = "Роль";
             // 
             // comboBoxRole
             // 
             this.comboBoxRole.FormattingEnabled = true;
-            this.comboBoxRole.Location = new System.Drawing.Point(13, 144);
+            this.comboBoxRole.Location = new System.Drawing.Point(17, 177);
+            this.comboBoxRole.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxRole.Name = "comboBoxRole";
-            this.comboBoxRole.Size = new System.Drawing.Size(267, 21);
-            this.comboBoxRole.TabIndex = 7;
+            this.comboBoxRole.Size = new System.Drawing.Size(355, 24);
+            this.comboBoxRole.TabIndex = 4;
             // 
             // buttonOk
             // 
-            this.buttonOk.Location = new System.Drawing.Point(205, 172);
+            this.buttonOk.Location = new System.Drawing.Point(273, 212);
+            this.buttonOk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(75, 23);
-            this.buttonOk.TabIndex = 8;
+            this.buttonOk.Size = new System.Drawing.Size(100, 28);
+            this.buttonOk.TabIndex = 5;
             this.buttonOk.Text = "ОК";
             this.buttonOk.UseVisualStyleBackColor = true;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(124, 172);
+            this.buttonCancel.Location = new System.Drawing.Point(165, 212);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 9;
+            this.buttonCancel.Size = new System.Drawing.Size(100, 28);
+            this.buttonCancel.TabIndex = 6;
             this.buttonCancel.Text = "Отменить";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // AcountDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(294, 205);
+            this.ClientSize = new System.Drawing.Size(392, 252);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.comboBoxRole);
@@ -145,6 +155,7 @@
             this.Controls.Add(this.labelEmploye);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AcountDetails";

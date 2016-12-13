@@ -114,7 +114,6 @@ namespace SmartFood.Forms
             dataGridViewEmployees.EditMode = DataGridViewEditMode.EditOnEnter;
             #endregion
 
-
             #region dataGridViewAcount
             dataGridViewAcount.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
             dataGridViewAcount.Columns.Add(UIConstans.NEW_COLUMN_LOGIN, GeneralConstants.LOGIN);
@@ -130,8 +129,6 @@ namespace SmartFood.Forms
             column.HeaderText = GeneralConstants.ACOUNT_TYPE;
             dataGridViewAcount.Columns.Add(column);
 
-            dataGridViewAcount.Columns.Add(UIConstans.NEW_COLUMN_EMPLOYEE_TYPE, GeneralConstants.EMPLOYEE_TYPE);
-
             column = new DataGridViewComboBoxColumn();
             column.DataSource = new List<string>() { GeneralConstants.YES, GeneralConstants.NO };
             column.HeaderText = GeneralConstants.VISIBILITY;
@@ -140,7 +137,6 @@ namespace SmartFood.Forms
             dataGridViewAcount.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewAcount.AllowUserToAddRows = false;
             dataGridViewAcount.Columns[0].ReadOnly = true;
-            dataGridViewAcount.Columns[5].ReadOnly = true;
             dataGridViewAcount.RowHeadersVisible = false;
             dataGridViewAcount.EditMode = DataGridViewEditMode.EditOnEnter;
             #endregion
@@ -348,7 +344,7 @@ namespace SmartFood.Forms
                         foreach (Account account in AcountsCore.Acounts.items)
                         {
                             DataGridViewRow row = new DataGridViewRow();
-                            dataGridViewAcount.Rows.Add(account.id, account.login, GeneralConstants.PASSWORD_MASC, EmployeesCore.Emplyees.GetEmployeeFullName(account.id_employee), AcountTypesCore.GetAcountType(account.id_type), EmployeesCore.Emplyees.GetEmployeePosition(account.id_employee), Convert.ToBoolean(account.visible) ? GeneralConstants.YES : GeneralConstants.NO);
+                            dataGridViewAcount.Rows.Add(account.id, account.login, GeneralConstants.PASSWORD_MASC, EmployeesCore.Emplyees.GetEmployeeFullName(account.id_employee), AcountTypesCore.GetAcountType(account.id_type), Convert.ToBoolean(account.visible) ? GeneralConstants.YES : GeneralConstants.NO);
                             dataGridViewAcount.CellValueChanged += DataGridViewAcount_CellValueChanged;
                             updateFlag = true;
                         }

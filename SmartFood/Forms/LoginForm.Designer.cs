@@ -43,47 +43,47 @@
             this.comboBoxRole.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.comboBoxRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxRole.FormattingEnabled = true;
-            this.comboBoxRole.Location = new System.Drawing.Point(33, 40);
-            this.comboBoxRole.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboBoxRole.Location = new System.Drawing.Point(29, 32);
+            this.comboBoxRole.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxRole.Name = "comboBoxRole";
-            this.comboBoxRole.Size = new System.Drawing.Size(338, 28);
-            this.comboBoxRole.TabIndex = 0;
+            this.comboBoxRole.Size = new System.Drawing.Size(301, 24);
+            this.comboBoxRole.TabIndex = 1;
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(33, 162);
-            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxPassword.Location = new System.Drawing.Point(29, 130);
+            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
-            this.textBoxPassword.Size = new System.Drawing.Size(338, 26);
-            this.textBoxPassword.TabIndex = 1;
+            this.textBoxPassword.Size = new System.Drawing.Size(301, 22);
+            this.textBoxPassword.TabIndex = 3;
             // 
             // LoginLabel
             // 
             this.LoginLabel.AutoSize = true;
-            this.LoginLabel.Location = new System.Drawing.Point(28, 77);
+            this.LoginLabel.Location = new System.Drawing.Point(25, 62);
             this.LoginLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(55, 20);
+            this.LoginLabel.Size = new System.Drawing.Size(47, 16);
             this.LoginLabel.TabIndex = 2;
             this.LoginLabel.Text = "Логин";
             // 
             // PasswordLabel
             // 
             this.PasswordLabel.AutoSize = true;
-            this.PasswordLabel.Location = new System.Drawing.Point(28, 137);
+            this.PasswordLabel.Location = new System.Drawing.Point(25, 110);
             this.PasswordLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PasswordLabel.Name = "PasswordLabel";
-            this.PasswordLabel.Size = new System.Drawing.Size(67, 20);
+            this.PasswordLabel.Size = new System.Drawing.Size(57, 16);
             this.PasswordLabel.TabIndex = 3;
             this.PasswordLabel.Text = "Пароль";
             // 
             // LoginButton
             // 
-            this.LoginButton.Location = new System.Drawing.Point(261, 202);
-            this.LoginButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.LoginButton.Location = new System.Drawing.Point(232, 162);
+            this.LoginButton.Margin = new System.Windows.Forms.Padding(4);
             this.LoginButton.Name = "LoginButton";
-            this.LoginButton.Size = new System.Drawing.Size(112, 35);
+            this.LoginButton.Size = new System.Drawing.Size(100, 28);
             this.LoginButton.TabIndex = 4;
             this.LoginButton.Text = "Войти";
             this.LoginButton.UseVisualStyleBackColor = true;
@@ -91,27 +91,27 @@
             // 
             // textBoxLogin
             // 
-            this.textBoxLogin.Location = new System.Drawing.Point(33, 102);
-            this.textBoxLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxLogin.Location = new System.Drawing.Point(29, 82);
+            this.textBoxLogin.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(338, 26);
-            this.textBoxLogin.TabIndex = 5;
+            this.textBoxLogin.Size = new System.Drawing.Size(301, 22);
+            this.textBoxLogin.TabIndex = 2;
             // 
             // labelRole
             // 
             this.labelRole.AutoSize = true;
-            this.labelRole.Location = new System.Drawing.Point(28, 14);
+            this.labelRole.Location = new System.Drawing.Point(25, 11);
             this.labelRole.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelRole.Name = "labelRole";
-            this.labelRole.Size = new System.Drawing.Size(47, 20);
+            this.labelRole.Size = new System.Drawing.Size(40, 16);
             this.labelRole.TabIndex = 6;
             this.labelRole.Text = "Роль";
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 252);
+            this.ClientSize = new System.Drawing.Size(370, 202);
             this.Controls.Add(this.labelRole);
             this.Controls.Add(this.textBoxLogin);
             this.Controls.Add(this.LoginButton);
@@ -121,7 +121,7 @@
             this.Controls.Add(this.comboBoxRole);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LoginForm";
             this.Text = "SmartFood";
             this.ResumeLayout(false);

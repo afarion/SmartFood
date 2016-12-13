@@ -25,7 +25,15 @@ namespace SmartFood
             comboBoxRole.Items.Add(new ComboBoxItem(Convert.ToInt64(EAcountType.Operator), AcountTypesCore.Types[EAcountType.Operator]));
             comboBoxRole.Items.Add(new ComboBoxItem(Convert.ToInt64(EAcountType.Cook), AcountTypesCore.Types[EAcountType.Cook]));
             comboBoxRole.SelectedIndex = 0;
+            this.KeyPreview = true;
+            this.KeyDown += LoginForm_KeyDown;
             CoreBase.Init();
+        }
+
+        private void LoginForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                LoginButton_Click(this, null);
         }
 
         private void LoginButton_Click(object sender, EventArgs e)

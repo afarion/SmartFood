@@ -66,7 +66,7 @@
             // textBoxFirstName
             // 
             this.textBoxFirstName.Location = new System.Drawing.Point(199, 16);
-            this.textBoxFirstName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxFirstName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(379, 22);
             this.textBoxFirstName.TabIndex = 1;
@@ -84,7 +84,7 @@
             // textBoxPhone1
             // 
             this.textBoxPhone1.Location = new System.Drawing.Point(200, 106);
-            this.textBoxPhone1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPhone1.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPhone1.Name = "textBoxPhone1";
             this.textBoxPhone1.Size = new System.Drawing.Size(379, 22);
             this.textBoxPhone1.TabIndex = 4;
@@ -102,10 +102,10 @@
             // textBoxPhone2
             // 
             this.textBoxPhone2.Location = new System.Drawing.Point(200, 136);
-            this.textBoxPhone2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPhone2.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPhone2.Name = "textBoxPhone2";
             this.textBoxPhone2.Size = new System.Drawing.Size(379, 22);
-            this.textBoxPhone2.TabIndex = 6;
+            this.textBoxPhone2.TabIndex = 5;
             // 
             // labelPhone2
             // 
@@ -120,7 +120,7 @@
             // textBoxEmeil
             // 
             this.textBoxEmeil.Location = new System.Drawing.Point(200, 229);
-            this.textBoxEmeil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxEmeil.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxEmeil.Name = "textBoxEmeil";
             this.textBoxEmeil.Size = new System.Drawing.Size(379, 22);
             this.textBoxEmeil.TabIndex = 8;
@@ -138,10 +138,10 @@
             // textBoxSkype
             // 
             this.textBoxSkype.Location = new System.Drawing.Point(200, 166);
-            this.textBoxSkype.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxSkype.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxSkype.Name = "textBoxSkype";
             this.textBoxSkype.Size = new System.Drawing.Size(379, 22);
-            this.textBoxSkype.TabIndex = 10;
+            this.textBoxSkype.TabIndex = 6;
             // 
             // labelSkype
             // 
@@ -156,10 +156,10 @@
             // textBoxAdress
             // 
             this.textBoxAdress.Location = new System.Drawing.Point(200, 196);
-            this.textBoxAdress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxAdress.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAdress.Name = "textBoxAdress";
             this.textBoxAdress.Size = new System.Drawing.Size(379, 22);
-            this.textBoxAdress.TabIndex = 12;
+            this.textBoxAdress.TabIndex = 7;
             // 
             // labelAdress
             // 
@@ -174,10 +174,10 @@
             // buttonOk
             // 
             this.buttonOk.Location = new System.Drawing.Point(479, 320);
-            this.buttonOk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonOk.Margin = new System.Windows.Forms.Padding(4);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(100, 28);
-            this.buttonOk.TabIndex = 14;
+            this.buttonOk.TabIndex = 11;
             this.buttonOk.Text = "Ок";
             this.buttonOk.UseVisualStyleBackColor = true;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
@@ -185,10 +185,10 @@
             // buttonCancel
             // 
             this.buttonCancel.Location = new System.Drawing.Point(371, 320);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(100, 28);
-            this.buttonCancel.TabIndex = 15;
+            this.buttonCancel.TabIndex = 12;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -199,7 +199,7 @@
             this.textBoxSourname.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxSourname.Name = "textBoxSourname";
             this.textBoxSourname.Size = new System.Drawing.Size(379, 22);
-            this.textBoxSourname.TabIndex = 16;
+            this.textBoxSourname.TabIndex = 2;
             // 
             // labelSourname
             // 
@@ -217,7 +217,7 @@
             this.textBoxComment.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxComment.Name = "textBoxComment";
             this.textBoxComment.Size = new System.Drawing.Size(379, 22);
-            this.textBoxComment.TabIndex = 19;
+            this.textBoxComment.TabIndex = 10;
             // 
             // labelBirthday
             // 
@@ -245,14 +245,14 @@
             this.comboBoxPosition.Location = new System.Drawing.Point(199, 75);
             this.comboBoxPosition.Name = "comboBoxPosition";
             this.comboBoxPosition.Size = new System.Drawing.Size(379, 24);
-            this.comboBoxPosition.TabIndex = 22;
+            this.comboBoxPosition.TabIndex = 3;
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(199, 260);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(379, 22);
-            this.dateTimePicker1.TabIndex = 23;
+            this.dateTimePicker1.TabIndex = 9;
             // 
             // EmployeDetailsForm
             // 
@@ -283,7 +283,7 @@
             this.Controls.Add(this.labelFirstName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EmployeDetailsForm";

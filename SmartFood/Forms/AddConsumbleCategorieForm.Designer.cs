@@ -39,62 +39,66 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(127, 47);
+            this.textBoxName.Location = new System.Drawing.Point(113, 38);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(340, 26);
-            this.textBoxName.TabIndex = 1;
+            this.textBoxName.Size = new System.Drawing.Size(303, 22);
+            this.textBoxName.TabIndex = 2;
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(3, 53);
+            this.labelName.Location = new System.Drawing.Point(3, 42);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(40, 20);
+            this.labelName.Size = new System.Drawing.Size(34, 16);
             this.labelName.TabIndex = 2;
             this.labelName.Text = "Имя";
             // 
             // comboBoxType
             // 
             this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Location = new System.Drawing.Point(127, 13);
+            this.comboBoxType.Location = new System.Drawing.Point(113, 10);
+            this.comboBoxType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(340, 28);
-            this.comboBoxType.TabIndex = 3;
+            this.comboBoxType.Size = new System.Drawing.Size(303, 24);
+            this.comboBoxType.TabIndex = 1;
             // 
             // labelType
             // 
             this.labelType.AutoSize = true;
-            this.labelType.Location = new System.Drawing.Point(3, 21);
+            this.labelType.Location = new System.Drawing.Point(3, 17);
             this.labelType.Name = "labelType";
-            this.labelType.Size = new System.Drawing.Size(36, 20);
+            this.labelType.Size = new System.Drawing.Size(33, 16);
             this.labelType.TabIndex = 4;
             this.labelType.Text = "Тип";
             // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(356, 79);
+            this.buttonOK.Location = new System.Drawing.Point(316, 63);
+            this.buttonOK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(112, 35);
-            this.buttonOK.TabIndex = 5;
+            this.buttonOK.Size = new System.Drawing.Size(100, 28);
+            this.buttonOK.TabIndex = 3;
             this.buttonOK.Text = "ОК";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(238, 79);
+            this.buttonCancel.Location = new System.Drawing.Point(212, 63);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(112, 35);
-            this.buttonCancel.TabIndex = 6;
+            this.buttonCancel.Size = new System.Drawing.Size(100, 28);
+            this.buttonCancel.TabIndex = 4;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // AddConsumbleCategorieForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(476, 127);
+            this.ClientSize = new System.Drawing.Size(423, 102);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.labelType);
@@ -103,6 +107,7 @@
             this.Controls.Add(this.textBoxName);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddConsumbleCategorieForm";
