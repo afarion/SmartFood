@@ -127,6 +127,10 @@ class SmartFoodApi
             }
             case "remove":
             {
+                $this->CheckUserPermissions($method, $userType, 3);
+                
+                $this->DeleteObject($method, $request);
+                
                 break;
             }
             default:
@@ -253,6 +257,36 @@ class SmartFoodApi
             $this->ShowError("insert");
         
         $response = array("success" => $newId);
+        
+        $this->ShowJson($response);
+    }
+    
+    private function DeleteObject($method, $request)
+    {
+        //Unknown method (not exist in config file)
+        if(!isset($this->config[$method]))
+            $this->ShowError("method");
+        
+        $methodConfig = $this->config[$method];
+        
+        if(!isset($methodConfig["fields"]))
+            $this->ShowError("request");
+        
+        if(!isset($request["id"]))
+            $this->ShowError("request");
+            
+        $id = intval($request["id"]);
+        
+        $table = $methodConfig["table"];
+        
+        $query = "DELETE FROM $table WHERE id = $id";
+        
+        $res = $this->ExecuteNonQuery($query);
+        
+        if(!$res)
+            $this->ShowError("request");
+        
+        $response = array("success" => $id);
         
         $this->ShowJson($response);
     }

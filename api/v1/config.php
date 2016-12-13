@@ -314,7 +314,7 @@ function GetConfigArray()
             
             "permission" => array( 
                 //          view    edit    add     remove
-                1 => array( true,   false,  true,   false),  //Администратор
+                1 => array( true,   false,  true,   true),   //Администратор
                 2 => array( true,   false,  false,  false),  //Оператор
                 3 => array( true,   false,  false,  false),  //Повар
             ),

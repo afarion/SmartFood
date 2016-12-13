@@ -1573,6 +1573,54 @@ function DocConfigArray()
             
         ),
         
+        "useraddress_remove" => array(
+            
+            "name" => "Адреса клиентов. Remove",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "add",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае удаление (remove). Обязательное поле."
+                ),
+                
+                "id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID удаляемого адреса. Обязательное поле."
+                ),
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "useraddress/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"remove","id":"1"}',
+                    "test_file" => "useraddress_remove.php"
+                ),
+            
+            "response" => '{"success":1}',
+            
+        ),
+        
         // ====================================================================================================
         // ADMIN
         
