@@ -16,5 +16,7 @@ namespace SmartFood.Core
         public const string EMPLOYEES = "employee/";
         public const string EMPLOYEES_TYPES = "employeetype/";
         public const string ACOUNTS = "admin/";
+        public const string CLIENTS = "user/";
+        public const string CLIENTS_ADDRESSES = "useraddress/";
     }
 }

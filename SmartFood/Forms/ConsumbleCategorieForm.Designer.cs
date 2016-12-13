@@ -41,7 +41,7 @@
             this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(100, 28);
-            this.buttonAdd.TabIndex = 1;
+            this.buttonAdd.TabIndex = 2;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
@@ -63,7 +63,7 @@
             this.comboBoxConsumbleTypes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxConsumbleTypes.Name = "comboBoxConsumbleTypes";
             this.comboBoxConsumbleTypes.Size = new System.Drawing.Size(416, 24);
-            this.comboBoxConsumbleTypes.TabIndex = 4;
+            this.comboBoxConsumbleTypes.TabIndex = 1;
             this.comboBoxConsumbleTypes.SelectionChangeCommitted += new System.EventHandler(this.comboBoxConsumbleTypes_SelectionChangeCommitted);
             // 
             // ConsumbleCategorieForm

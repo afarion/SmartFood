@@ -37,7 +37,7 @@ namespace SmartFood.Core
             param.Add(RequestFields.PHONE, phone);
             param.Add(RequestFields.PHONE_EX, phone_ex);
             param.Add(RequestFields.EMEIL, emeil);
-            param.Add(RequestFields.ADRESS, adress);
+            param.Add(RequestFields.ADDRESS, adress);
             param.Add(RequestFields.SKYPE, skype);
             param.Add(RequestFields.BIRTHDAY, birthday);
             param.Add(RequestFields.COMMENT, comment);
@@ -55,7 +55,7 @@ namespace SmartFood.Core
             param.Add(RequestFields.PHONE, phone);
             param.Add(RequestFields.PHONE_EX, phone_ex);
             param.Add(RequestFields.EMEIL, emeil);
-            param.Add(RequestFields.ADRESS, adress);
+            param.Add(RequestFields.ADDRESS, adress);
             param.Add(RequestFields.SKYPE, skype);
             param.Add(RequestFields.BIRTHDAY, birthday);
             param.Add(RequestFields.COMMENT, comment);

@@ -69,7 +69,7 @@
             this.textBoxPrice.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(219, 22);
-            this.textBoxPrice.TabIndex = 2;
+            this.textBoxPrice.TabIndex = 4;
             // 
             // labelName
             // 
@@ -149,7 +149,7 @@
             this.comboBoxCategory.Location = new System.Drawing.Point(183, 80);
             this.comboBoxCategory.Name = "comboBoxCategory";
             this.comboBoxCategory.Size = new System.Drawing.Size(219, 24);
-            this.comboBoxCategory.TabIndex = 12;
+            this.comboBoxCategory.TabIndex = 2;
             // 
             // comboBoxMeasuring
             // 
@@ -157,7 +157,7 @@
             this.comboBoxMeasuring.Location = new System.Drawing.Point(183, 118);
             this.comboBoxMeasuring.Name = "comboBoxMeasuring";
             this.comboBoxMeasuring.Size = new System.Drawing.Size(219, 24);
-            this.comboBoxMeasuring.TabIndex = 13;
+            this.comboBoxMeasuring.TabIndex = 3;
             // 
             // textBoxWaste
             // 
@@ -165,7 +165,7 @@
             this.textBoxWaste.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxWaste.Name = "textBoxWaste";
             this.textBoxWaste.Size = new System.Drawing.Size(219, 22);
-            this.textBoxWaste.TabIndex = 14;
+            this.textBoxWaste.TabIndex = 5;
             // 
             // label1
             // 

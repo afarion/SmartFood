@@ -81,6 +81,8 @@
   <ItemGroup>
     <Compile Include="Core\AcountsCore.cs" />
     <Compile Include="Core\AcountTypesCore.cs" />
+    <Compile Include="Core\ClientAddressesCore.cs" />
+    <Compile Include="Core\ClientsCore.cs" />
     <Compile Include="Core\Constants\ActionsConstants.cs" />
     <Compile Include="Core\Constants\ErrorTexts.cs" />
     <Compile Include="Core\Constants\GeneralConstants.cs" />
@@ -94,6 +96,8 @@
     <Compile Include="Core\ComboBoxItem.cs" />
     <Compile Include="Core\CoreBase.cs" />
     <Compile Include="Core\LoginCore.cs" />
+    <Compile Include="Core\Serialisation\ClientAdresses.cs" />
+    <Compile Include="Core\Serialisation\Clients.cs" />
     <Compile Include="Core\Serialisation\Consumbles.cs" />
     <Compile Include="Core\Serialisation\ConsumbleCategories.cs" />
     <Compile Include="Core\Serialisation\ConsumbleTypes.cs" />

@@ -10,6 +10,7 @@ namespace SmartFood.Core.Constants
         public const string GET = "view";
         public const string ADD = "add";
         public const string EDIT = "edit";
+        public const string REMOVE = "remove";
     }
 
     public class RequestFields
@@ -38,9 +39,13 @@ namespace SmartFood.Core.Constants
         public const string FIRST_NAME = "first_name";
         public const string LAST_NAME = "last_name";
         public const string PHONE_EX = "phone_ex";
-        public const string ADRESS = "address";
+        public const string ADDRESS = "address";
         public const string BIRTHDAY = "birthday";
         public const string COMMENT = "comment";
         public const string ID_EMPLOYEE = "id_employee";
+        public const string CLIENT = "user";
+        public const string CLIENT_ID = "id_user";
+        public const string DISCOUNT_FIXED = "discount_fixed";
+        public const string DISCOUNT_REASONE = "discount_reason";
     }
 }
