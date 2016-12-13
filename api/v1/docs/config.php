@@ -97,7 +97,7 @@ function DocConfigArray()
         
         "itemtype_view" => array(
             
-            "name" => "Тип объекта. View",
+            "name" => "Тип расходника. View",
             
             "properties" => array(
                 
@@ -145,7 +145,7 @@ function DocConfigArray()
         
         "itemtype_add" => array(
             
-            "name" => "Тип объекта. Add",
+            "name" => "Тип расходника. Add",
             
             "properties" => array(
                 
@@ -199,7 +199,7 @@ function DocConfigArray()
         
         "itemtype_edit" => array(
             
-            "name" => "Тип объекта. Edit",
+            "name" => "Тип расходника. Edit",
             
             "properties" => array(
                 
@@ -263,7 +263,7 @@ function DocConfigArray()
         
         "itemcategory_view" => array(
             
-            "name" => "Категория объекта. View",
+            "name" => "Категория расходника. View",
             
             "properties" => array(
                 
@@ -317,7 +317,7 @@ function DocConfigArray()
         
         "itemcategory_add" => array(
             
-            "name" => "Категория объекта. Add",
+            "name" => "Категория расходника. Add",
             
             "properties" => array(
                 
@@ -377,7 +377,7 @@ function DocConfigArray()
         
         "itemcategory_edit" => array(
             
-            "name" => "Категория объекта. Edit",
+            "name" => "Категория расходника. Edit",
             
             "properties" => array(
                 
@@ -446,7 +446,7 @@ function DocConfigArray()
         
         "item_view" => array(
             
-            "name" => "Объекты. View",
+            "name" => "Расходники. View",
             
             "properties" => array(
                 
@@ -478,8 +478,8 @@ function DocConfigArray()
                     "value" => "[type|category|unit]",
                     "type"  => "string", 
                     "descr" => "Дополнительные поля, перечисленые через запятую. Если указаны, будут добавлены в ответ.<br />
-                                &#8226; type - название типа объекта<br />
-                                &#8226; category - название категории объекта<br />
+                                &#8226; type - название типа расходника<br />
+                                &#8226; category - название категории расходника<br />
                                 &#8226; unit - еденица измерения, сокращение" 
                 ),
                 
@@ -516,13 +516,13 @@ function DocConfigArray()
                     "test_file" => "item_view.php"
                 ),
             
-            "response" => '{"count":5,"items":[{"id":"1","name":"Item 1","id_type":"1","id_category":"1","id_unit":"1","amount":"0.000","price":"0.00","visible":"1","type":"\u041f\u0440\u043e\u0434\u0443\u043a\u0442","category":"\u0420\u044b\u0431\u0430","unit":"\u0448\u0442."},{"id":"5","name":"Item 2","id_type":"1","id_category":"2","id_unit":"1","amount":"0.000","price":"0.00","visible":"1","type":"\u041f\u0440\u043e\u0434\u0443\u043a\u0442","category":"\u041e\u0432\u043e\u0449\u0438","unit":"\u0448\u0442."},{"id":"6","name":"Item 3","id_type":"1","id_category":"2","id_unit":"1","amount":"1.000","price":"0.00","visible":"1","type":"\u041f\u0440\u043e\u0434\u0443\u043a\u0442","category":"\u041e\u0432\u043e\u0449\u0438","unit":"\u0448\u0442."},{"id":"8","name":"Item 4","id_type":"1","id_category":"2","id_unit":"1","amount":"1.800","price":"0.00","visible":"1","type":"\u041f\u0440\u043e\u0434\u0443\u043a\u0442","category":"\u041e\u0432\u043e\u0449\u0438","unit":"\u0448\u0442."},{"id":"9","name":"Item 5","id_type":"1","id_category":"2","id_unit":"1","amount":"1.561","price":"0.00","visible":"1","type":"\u041f\u0440\u043e\u0434\u0443\u043a\u0442","category":"\u041e\u0432\u043e\u0449\u0438","unit":"\u0448\u0442."}]}',
+            "response" => '{"count":7,"items":[{"id":"1","name":"\u0424\u043e\u0440\u0435\u043b\u044c","id_type":"1","id_category":"1","id_unit":"1","amount":"2.500","price":"2.04","waste_pct":"40","visible":"1","type":"\u041f\u0440\u043e\u0434\u0443\u043a\u0442","category":"\u0420\u044b\u0431\u0430","unit":"\u0448\u0442."},{"id":"5","name":"\u041a\u0430\u0440\u0442\u043e\u0448\u043a\u0430","id_type":"1","id_category":"2","id_unit":"1","amount":"0.000","price":"0.00","waste_pct":"17","visible":"1","type":"\u041f\u0440\u043e\u0434\u0443\u043a\u0442","category":"\u041e\u0432\u043e\u0449\u0438","unit":"\u0448\u0442."},{"id":"6","name":"\u0413\u043e\u0432\u044f\u0434\u0438\u043d\u0430","id_type":"1","id_category":"3","id_unit":"1","amount":"1.000","price":"0.00","waste_pct":"0","visible":"1","type":"\u041f\u0440\u043e\u0434\u0443\u043a\u0442","category":"\u041c\u044f\u0441\u043e","unit":"\u0448\u0442."},{"id":"8","name":"\u041c\u043e\u0440\u043a\u043e\u0432\u043a\u0430","id_type":"1","id_category":"2","id_unit":"1","amount":"1.800","price":"0.00","waste_pct":"0","visible":"1","type":"\u041f\u0440\u043e\u0434\u0443\u043a\u0442","category":"\u041e\u0432\u043e\u0449\u0438","unit":"\u0448\u0442."},{"id":"9","name":"\u041c\u044b\u043b\u043e","id_type":"3","id_category":"8","id_unit":"1","amount":"1.561","price":"0.00","waste_pct":"36","visible":"1","type":"\u0411\u044b\u0442\u043e\u0432\u0430\u044f \u0445\u0438\u043c\u0438\u044f","category":"\u041c\u044b\u043b\u043e","unit":"\u0448\u0442."},{"id":"10","name":"\u0421\u0432\u0438\u043d\u0438\u043d\u0430","id_type":"1","id_category":"3","id_unit":"2","amount":"0.000","price":"100.00","waste_pct":"0","visible":"1","type":"\u041f\u0440\u043e\u0434\u0443\u043a\u0442","category":"\u041c\u044f\u0441\u043e","unit":"\u043a\u0433."},{"id":"11","name":"\u0441\u0430\u043b\u0444\u0435\u0442\u043a\u0438 \u0440\u0443\u0442\u0430","id_type":"2","id_category":"5","id_unit":"6","amount":"0.000","price":"1.00","waste_pct":"0","visible":"1","type":"\u0420\u0430\u0441\u0445\u043e\u0434\u043d\u0438\u043a\u0438","category":"\u0421\u0430\u043b\u0444\u0435\u0442\u043a\u0438","unit":"\u0443\u043f."}]}',
             
         ),
         
         "item_add" => array(
             
-            "name" => "Объекты. Add",
+            "name" => "Расходники. Add",
             
             "properties" => array(
                 
@@ -553,25 +553,25 @@ function DocConfigArray()
                 "name" => array(
                     "value" => "",
                     "type"  => "string", 
-                    "descr" => "Название объекта. Обязательное поле."
+                    "descr" => "Название расходника. Обязательное поле."
                 ),
                 
                 "id_type" => array(
                     "value" => "",
                     "type"  => "int", 
-                    "descr" => "ID типа объекта. Обязательное поле."
+                    "descr" => "ID типа расходника. Обязательное поле."
                 ),
                 
                 "id_category" => array(
                     "value" => "",
                     "type"  => "int", 
-                    "descr" => "ID категории объекта. Обязательное поле."
+                    "descr" => "ID категории расходника. Обязательное поле."
                 ),
                 
                 "id_unit" => array(
                     "value" => "",
                     "type"  => "int", 
-                    "descr" => "ID единицы измерения объекта. Обязательное поле."
+                    "descr" => "ID единицы измерения расходника. Обязательное поле."
                 ),
                 
                 /*
@@ -581,6 +581,12 @@ function DocConfigArray()
                     "descr" => "Колличество на складе."
                 ),
                 */
+                
+                "waste_pct" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Процент отхода расходника."
+                ),
                 
                 "price" => array(
                     "value" => "",
@@ -602,7 +608,7 @@ function DocConfigArray()
         
         "item_edit" => array(
             
-            "name" => "Объекты. Edit",
+            "name" => "Расходники. Edit",
             
             "properties" => array(
                 
@@ -633,31 +639,37 @@ function DocConfigArray()
                 "id" => array(
                     "value" => "",
                     "type"  => "int", 
-                    "descr" => "ID редактируемого объекта. Обязательное поле."
+                    "descr" => "ID редактируемого расходника. Обязательное поле."
                 ),
                 
                 "name" => array(
                     "value" => "",
                     "type"  => "string", 
-                    "descr" => "Название объекта."
+                    "descr" => "Название расходника."
                 ),
                 
                 "id_type" => array(
                     "value" => "",
                     "type"  => "int", 
-                    "descr" => "ID типа объекта."
+                    "descr" => "ID типа расходника."
                 ),
                 
                 "id_category" => array(
                     "value" => "",
                     "type"  => "int", 
-                    "descr" => "ID категории объекта."
+                    "descr" => "ID категории расходника."
                 ),
                 
                 "id_unit" => array(
                     "value" => "",
                     "type"  => "int", 
-                    "descr" => "ID единицы измерения объекта."
+                    "descr" => "ID единицы измерения расходника."
+                ),
+                
+                "waste_pct" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Процент отхода расходника."
                 ),
                 
                 /*
@@ -677,7 +689,7 @@ function DocConfigArray()
                 "visible" => array(
                     "value" => "0 или 1 ",
                     "type"  => "flag", 
-                    "descr" => "Видимость объекта."
+                    "descr" => "Видимость расходника."
                 ),
             ),
             
@@ -1341,6 +1353,12 @@ function DocConfigArray()
                     "descr" => "Комментарий."
                 ),
                 
+                "discount_reason" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Причина скидки."
+                ),
+                
             ),
             
             "request_post" => 
@@ -1418,6 +1436,12 @@ function DocConfigArray()
                     "value" => "",
                     "type"  => "string", 
                     "descr" => "Комментарий."
+                ),
+                
+                "discount_reason" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Причина скидки."
                 ),
                 
                 "visible" => array(
@@ -2075,7 +2099,7 @@ function DocConfigArray()
                     "value" => "[category]",
                     "type"  => "string", 
                     "descr" => "Дополнительные поля, перечисленые через запятую. Если указаны, будут добавлены в ответ.<br />
-                                &#8226; category - название категории объекта" 
+                                &#8226; category - название категории товара" 
                 ),
                 
                 "category" => array(
@@ -2255,6 +2279,202 @@ function DocConfigArray()
         // ====================================================================================================
         // DISH ITEM
         
+        "dishitem_view" => array(
+            
+            "name" => "Расходники товаров. View",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "view",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
+                ),
+                
+                "part" => array(
+                    "value" => "[item]",
+                    "type"  => "string", 
+                    "descr" => "Дополнительные поля, перечисленые через запятую. Если указаны, будут добавлены в ответ.<br />
+                                &#8226; item - название расходника" 
+                ),
+                
+                "dish" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID товара. Если указан, будут возвращены объекты только этого товара."
+                ),
+                
+                "order" => array(
+                    "value" => "[priority|name|create]",
+                    "type"  => "string", 
+                    "descr" => "Сортировка результатов. Варианты сортировок:<br />
+                                &#8226; priority - по приоритету<br />
+                                &#8226; name - по названию<br />
+                                &#8226; create - по дате создания" 
+                ),
+                
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "dishitem/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view","part":"item","order":"priority"}',
+                    "test_file" => "dishitem_view.php"
+                ),
+            
+            "response" => '{"count":3,"items":[{"id":"1","id_dish":"1","id_item":"5","weight":"80.000","visible":"1","item":"\u041a\u0430\u0440\u0442\u043e\u0448\u043a\u0430"},{"id":"2","id_dish":"1","id_item":"6","weight":"100.000","visible":"1","item":"\u0413\u043e\u0432\u044f\u0434\u0438\u043d\u0430"},{"id":"3","id_dish":"1","id_item":"8","weight":"20.000","visible":"1","item":"\u041c\u043e\u0440\u043a\u043e\u0432\u043a\u0430"}]}',
+            
+        ),
+        
+        "dishitem_add" => array(
+            
+            "name" => "Расходники товаров. Add",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "add",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае добавление (add). Обязательное поле."
+                ),
+                
+                "id_dish" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID товара. Обязательное поле."
+                ),
+                
+                "id_item" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID расходника. Обязательное поле."
+                ),
+                
+                "weight" => array(
+                    "value" => "",
+                    "type"  => "float", 
+                    "descr" => "Вес расходника."
+                ),
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "dishitem/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"add","id_dish":"1","id_item":"1","weight":"200"}',
+                    "test_file" => "dishitem_add.php"
+                ),
+            
+            "response" => '{"success":1}',
+            
+        ),
+        
+        "dishitem_edit" => array(
+            
+            "name" => "Расходники товаров. Edit",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "edit",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае редактирование (edit). Обязательное поле."
+                ),
+                
+                "id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID редактируемого расходника. Обязательное поле."
+                ),
+                
+                "id_dish" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID товара."
+                ),
+                
+                "id_item" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID расходника."
+                ),
+                
+                "weight" => array(
+                    "value" => "",
+                    "type"  => "float", 
+                    "descr" => "Вес расходника."
+                ),
+                
+                "visible" => array(
+                    "value" => "0 или 1 ",
+                    "type"  => "flag", 
+                    "descr" => "Видимость расходника."
+                ),
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "dishitem/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"edit","id":"1","weight":"150"}',
+                    "test_file" => "dishitem_edit.php"
+                ),
+            
+            "response" => '{"success":1}',
+            
+        ),
         
         
         

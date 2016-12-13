@@ -43,6 +43,10 @@ header('Content-Type: text/html; charset=utf-8');
             <td><input type="text" name="id_unit" value=""/></td>
         </tr>
         <tr>
+            <td>waste_pct</td>
+            <td><input type="text" name="waste_pct" value=""/></td>
+        </tr>
+        <tr>
             <td>visible</td>
             <td><input type="text" name="visible" value="1"/></td>
         </tr>
