@@ -26,7 +26,7 @@ namespace SmartFood.Core
             return SendGetRequest<Consumbles>(UriPostfix.CONSUMBLES, param, out consumbles);
         }
 
-        public static bool AddConsumble(string name, int idType, int idCategory, int idMeasure, double amount, double price)
+        public static bool AddConsumble(string name, int idType, int idCategory, int idMeasure, double amount, double price, int waste)
         {
             Dictionary<string, string> param = new Dictionary<string, string>();
             param.Add(RequestFields.ACTION, Actions.ADD);
@@ -36,10 +36,11 @@ namespace SmartFood.Core
             param.Add(RequestFields.ID_MEASURE, idMeasure.ToString());
             param.Add(RequestFields.AMOUNT, amount.ToString());
             param.Add(RequestFields.PRICE, price.ToString());
+            param.Add(RequestFields.WASTE, waste.ToString());
             return SendEditRequest(UriPostfix.CONSUMBLES, param);
         }
 
-        public static bool EditConsumble(string id, string name, string visible, int idType, int idCategory, int idMeasure)
+        public static bool EditConsumble(string id, string name, string visible, int idType, int idCategory, int idMeasure, int waste)
         {
             Dictionary<string, string> param = new Dictionary<string, string>();
             param.Add(RequestFields.ACTION, Actions.EDIT);
@@ -49,6 +50,7 @@ namespace SmartFood.Core
             param.Add(RequestFields.ID_TYPE, idType.ToString());
             param.Add(RequestFields.ID_CATEGORY, idCategory.ToString());
             param.Add(RequestFields.ID_MEASURE, idMeasure.ToString());
+            param.Add(RequestFields.WASTE, waste.ToString());
             return SendEditRequest(UriPostfix.CONSUMBLES, param);
         }
     }

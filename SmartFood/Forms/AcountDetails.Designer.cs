@@ -69,7 +69,7 @@
             // 
             // textBoxLogin
             // 
-            this.textBoxLogin.Location = new System.Drawing.Point(15, 66);
+            this.textBoxLogin.Location = new System.Drawing.Point(13, 66);
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(265, 20);
             this.textBoxLogin.TabIndex = 3;
@@ -115,6 +115,7 @@
             this.buttonOk.TabIndex = 8;
             this.buttonOk.Text = "ОК";
             this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // buttonCancel
             // 

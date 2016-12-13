@@ -18,6 +18,7 @@ namespace SmartFood.Core.Constants
         public const string COOK = "Повар";
         public const string PRICE = "Цена";
         public const string AMOUNT = "Количество";
+        public const string WASTE = "Процент отхода";
         public const string MEASURING = "Единица";
         public const string CATEGORY = "Категория";
         public const string PHONE = "Телефон";
@@ -31,6 +32,12 @@ namespace SmartFood.Core.Constants
         public const string ADRESS = "Адресс";
         public const string BIRTHDAY = "День Рождения";
         public const string COMMENT = "Коментарий";
+        public const string LOGIN = "Логин";
+        public const string PASSWORD = "Пароль";
+        public const string ACOUNT_TYPE = "Тип акунта";
+        public const string EMPLOYEE_TYPE = "Должность сотрудника";
+        public const string EMPLOYEE = "Сотрудник";
+        public const string PASSWORD_MASC = "*****";
     }
 
 
@@ -41,6 +48,7 @@ namespace SmartFood.Core.Constants
         public const string NEW_COLUMN_PRICE = "newColumnPrice";
         public const string NEW_COLUMN_MEASURING = "newColumnMeasuring";
         public const string NEW_COLUMN_AMOUNT= "newColumnAmount";
+        public const string NEW_COLUMN_WASTE = "newColumnWaste";
         public const string NEW_COLUMN_TYPE = "newColumnType";
         public const string NEW_COLUMN_CATEGORY = "newColumnCategory";
         public const string NEW_COLUMN_PHONE = "newColumnPhone";
@@ -54,6 +62,10 @@ namespace SmartFood.Core.Constants
         public const string NEW_COLUMN_ADRESS = "newColumnAdress";
         public const string NEW_COLUMN_BIRTHDAY = "newColumnBirthday";
         public const string NEW_COLUMN_COMMENT = "newColumnComment";
+        public const string NEW_COLUMN_LOGIN = "newColumnLogin";
+        public const string NEW_COLUMN_PASSWORD = "newColumnLogin";
+        public const string NEW_COLUMN_ACOUNT_TYPE = "newColumnAcountType";
+        public const string NEW_COLUMN_EMPLOYEE_TYPE = "newColumnEmplyeeType";
     }
 
 }

@@ -50,5 +50,6 @@ namespace SmartFood.Core.Serialisation
         public double amount;
         public double price;
         public int visible;
+        public int waste_pct;
     }
 }

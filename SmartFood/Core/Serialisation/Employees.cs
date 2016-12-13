@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartFood.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,27 +15,37 @@ namespace SmartFood.Core.Serialisation
         {
             List<string> tmpList = new List<string>();
             foreach (var item in items)
-                tmpList.Add(item.last_name);
+                tmpList.Add(string.Format("{0} {1}", item.last_name, item.first_name));
 
             return tmpList;
         }
 
-        public int GetID(string soureName)
+        public int GetID(string fullName)
         {
             foreach (var item in items)
             {
-                if (item.last_name == soureName)
+                if (string.Format("{0} {1}", item.last_name, item.first_name) == fullName)
                     return item.id;
             }
             return -1;
         }
 
-        public string GetSoureName(int typeID)
+        public string GetEmployeeFullName(int employeeID)
         {
             foreach (var item in items)
             {
-                if (item.id == typeID)
-                    return item.last_name;
+                if (item.id == employeeID)
+                    return string.Format("{0} {1}", item.last_name, item.first_name);
+            }
+            return string.Empty;
+        }
+
+        public string GetEmployeePosition(int employeeID)
+        {
+            foreach (var item in items)
+            {
+                if (item.id == employeeID)
+                    return EmployeesTypesCore.EmployeesTypes.GetName(item.id);
             }
             return string.Empty;
         }

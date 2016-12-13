@@ -21,12 +21,11 @@ namespace SmartFood
         {
             InitializeComponent();
 
-            comboBoxRole.Items.Add(new ComboBoxItem(1, GeneralConstants.ADMINISTRATOR));
-            comboBoxRole.Items.Add(new ComboBoxItem(2, GeneralConstants.OPERATOR));
-            comboBoxRole.Items.Add(new ComboBoxItem(3, GeneralConstants.COOK));
+            comboBoxRole.Items.Add(new ComboBoxItem(Convert.ToInt64(EAcountType.Admin), AcountTypesCore.Types[EAcountType.Admin]));
+            comboBoxRole.Items.Add(new ComboBoxItem(Convert.ToInt64(EAcountType.Operator), AcountTypesCore.Types[EAcountType.Operator]));
+            comboBoxRole.Items.Add(new ComboBoxItem(Convert.ToInt64(EAcountType.Cook), AcountTypesCore.Types[EAcountType.Cook]));
             comboBoxRole.SelectedIndex = 0;
             CoreBase.Init();
-            //LoginCore.LogIn();
         }
 
         private void LoginButton_Click(object sender, EventArgs e)

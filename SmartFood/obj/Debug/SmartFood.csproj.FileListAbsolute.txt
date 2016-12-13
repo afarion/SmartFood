@@ -104,7 +104,6 @@ E:\SmartFood\SmartFood\SmartFood\bin\Debug\System.Net.Http.WebRequest.xml
 E:\SmartFood\SmartFood\SmartFood\bin\Debug\System.Runtime.xml
 E:\SmartFood\SmartFood\SmartFood\bin\Debug\System.Threading.Tasks.xml
 E:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.csproj.App.config
-E:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.csprojResolveAssemblyReference.cache
 E:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AcountDetails.resources
 E:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddConsumbleCategorieForm.resources
 E:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddConsumbleTypeForm.resources
