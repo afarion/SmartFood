@@ -67,5 +67,4 @@ namespace SmartFood.Core.Constants
         public const string NEW_COLUMN_ACOUNT_TYPE = "newColumnAcountType";
         public const string NEW_COLUMN_EMPLOYEE_TYPE = "newColumnEmplyeeType";
     }
-
 }
