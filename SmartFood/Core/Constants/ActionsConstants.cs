@@ -41,5 +41,6 @@ namespace SmartFood.Core.Constants
         public const string ADRESS = "address";
         public const string BIRTHDAY = "birthday";
         public const string COMMENT = "comment";
+        public const string ID_EMPLOYEE = "id_employee";
     }
 }

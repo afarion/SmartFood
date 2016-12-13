@@ -79,6 +79,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\AcountsCore.cs" />
+    <Compile Include="Core\AcountTypesCore.cs" />
     <Compile Include="Core\Constants\ActionsConstants.cs" />
     <Compile Include="Core\Constants\ErrorTexts.cs" />
     <Compile Include="Core\Constants\GeneralConstants.cs" />
@@ -87,6 +89,7 @@
     <Compile Include="Core\EmployeesCore.cs" />
     <Compile Include="Core\EmployeesTypesCore.cs" />
     <Compile Include="Core\MeasuresCore.cs" />
+    <Compile Include="Core\Serialisation\Accounts.cs" />
     <Compile Include="Core\Serialisation\AuthUserData.cs" />
     <Compile Include="Core\ComboBoxItem.cs" />
     <Compile Include="Core\CoreBase.cs" />

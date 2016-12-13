@@ -113,6 +113,37 @@ namespace SmartFood.Forms
             dataGridViewEmployees.RowHeadersVisible = false;
             dataGridViewEmployees.EditMode = DataGridViewEditMode.EditOnEnter;
             #endregion
+
+
+            #region dataGridViewAcount
+            dataGridViewAcount.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
+            dataGridViewAcount.Columns.Add(UIConstans.NEW_COLUMN_LOGIN, GeneralConstants.LOGIN);
+            dataGridViewAcount.Columns.Add(UIConstans.NEW_COLUMN_PASSWORD, GeneralConstants.PASSWORD);
+
+            column = new DataGridViewComboBoxColumn();
+            column.DataSource = EmployeesCore.Emplyees.ToList();
+            column.HeaderText = GeneralConstants.EMPLOYEE;
+            dataGridViewAcount.Columns.Add(column);
+
+            column = new DataGridViewComboBoxColumn();
+            column.DataSource = AcountTypesCore.ToList();
+            column.HeaderText = GeneralConstants.ACOUNT_TYPE;
+            dataGridViewAcount.Columns.Add(column);
+
+            dataGridViewAcount.Columns.Add(UIConstans.NEW_COLUMN_EMPLOYEE_TYPE, GeneralConstants.EMPLOYEE_TYPE);
+
+            column = new DataGridViewComboBoxColumn();
+            column.DataSource = new List<string>() { GeneralConstants.YES, GeneralConstants.NO };
+            column.HeaderText = GeneralConstants.VISIBILITY;
+            dataGridViewAcount.Columns.Add(column);
+
+            dataGridViewAcount.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewAcount.AllowUserToAddRows = false;
+            dataGridViewAcount.Columns[0].ReadOnly = true;
+            dataGridViewAcount.Columns[5].ReadOnly = true;
+            dataGridViewAcount.RowHeadersVisible = false;
+            dataGridViewAcount.EditMode = DataGridViewEditMode.EditOnEnter;
+            #endregion
         }
 
         private void AdminForm_Shown(object sender, EventArgs e)
@@ -295,15 +326,56 @@ namespace SmartFood.Forms
             tmpPoint.Y = tabPageConsumables.Height - buttonAddAcount.Height - 10;
             buttonAddAcount.Location = tmpPoint;
 
-            tmpPoint.X = buttonAddAcount.Location.X - buttonDeleteAcount.Width - 10;
-            buttonDeleteAcount.Location = tmpPoint;
-
             int tmpWidth = tabPageConsumables.Width - 24;
-            int tmpHeight = buttonDeleteAcount.Location.Y - buttonDeleteAcount.Height - 20;
+            int tmpHeight = buttonAddAcount.Location.Y - buttonAddAcount.Height - 20;
             tmpPoint.X = tabPageConsumables.Left + 10;
             tmpPoint.Y = tabPageConsumables.Top + 10;
             dataGridViewAcount.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
+            UpdateDataGridViewAcounts();
             this.Refresh();
+        }
+
+        public void UpdateDataGridViewAcounts()
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        dataGridViewAcount.Rows.Clear();
+                        AcountsCore.GetAcounts();
+                        foreach (Account account in AcountsCore.Acounts.items)
+                        {
+                            DataGridViewRow row = new DataGridViewRow();
+                            dataGridViewAcount.Rows.Add(account.id, account.login, GeneralConstants.PASSWORD_MASC, EmployeesCore.Emplyees.GetEmployeeFullName(account.id_employee), AcountTypesCore.GetAcountType(account.id_type), EmployeesCore.Emplyees.GetEmployeePosition(account.id_employee), Convert.ToBoolean(account.visible) ? GeneralConstants.YES : GeneralConstants.NO);
+                            dataGridViewAcount.CellValueChanged += DataGridViewAcount_CellValueChanged;
+                            updateFlag = true;
+                        }
+                    });
+                }
+                catch { }
+            }).Start();
+        }
+
+        private void DataGridViewAcount_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (updateFlag)
+            {
+                DataGridViewCellCollection collection = dataGridViewAcount.Rows[e.RowIndex].Cells;
+                AcountsCore.EditAcount(collection[0].Value.ToString(),
+                    collection[1].Value.ToString(),
+                    AcountTypesCore.GetAcountType(collection[4].Value.ToString()),
+                    EmployeesCore.Emplyees.GetID(collection[3].Value.ToString()),
+                    collection[2].Value.ToString(),
+                    collection[6].Value.ToString() == GeneralConstants.YES ? "1" : "0");
+
+                dataGridViewAcount.CellValueChanged -= DataGridViewAcount_CellValueChanged;
+                updateFlag = false;
+                dataGridViewAcount.Rows.Clear();
+                AcountsCore.GetAcounts();
+                UpdateDataGridViewAcounts();
+            }
         }
 
         private void TabPageReports_Enter(object sender, EventArgs e)
