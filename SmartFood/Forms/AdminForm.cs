@@ -140,6 +140,33 @@ namespace SmartFood.Forms
             dataGridViewAcount.RowHeadersVisible = false;
             dataGridViewAcount.EditMode = DataGridViewEditMode.EditOnEnter;
             #endregion
+
+            #region dataGridViewClients
+            dataGridViewClients.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
+            dataGridViewClients.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.NAME);
+            dataGridViewClients.Columns.Add(UIConstans.NEW_COLUMN_PHONE, GeneralConstants.PHONE);
+            dataGridViewClients.Columns.Add(UIConstans.NEW_COLUMN_EMEIL, GeneralConstants.EMEIL);
+            dataGridViewClients.Columns.Add(UIConstans.NEW_COLUMN_DISCOUNT_FLEX, GeneralConstants.DISCOUNT_FLEX);
+            dataGridViewClients.Columns.Add(UIConstans.NEW_COLUMN_TOTAL_BALANCE, GeneralConstants.TOTAL_BALANCE);
+            dataGridViewClients.Columns.Add(UIConstans.NEW_COLUMN_DISCOUNT_FIXED, GeneralConstants.DISCOUNT_FIXED);
+            dataGridViewClients.Columns.Add(UIConstans.NEW_COLUMN_DISCOUNT_REASONE, GeneralConstants.DISCOUNT_REASONE);
+            dataGridViewClients.Columns.Add(UIConstans.NEW_COLUMN_COMMENT, GeneralConstants.COMMENT);
+
+            column = new DataGridViewComboBoxColumn();
+            column.DataSource = new List<string>() { GeneralConstants.YES, GeneralConstants.NO };
+            column.HeaderText = GeneralConstants.VISIBILITY;
+            dataGridViewClients.Columns.Add(column);
+
+            dataGridViewClients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewClients.AllowUserToAddRows = false;
+            dataGridViewClients.Columns[0].ReadOnly = true;
+            dataGridViewClients.Columns[4].ReadOnly = true;
+            dataGridViewClients.Columns[5].ReadOnly = true;
+            dataGridViewClients.Columns[6].ReadOnly = true;
+            dataGridViewClients.Columns[7].ReadOnly = true;
+            dataGridViewClients.RowHeadersVisible = false;
+            dataGridViewClients.EditMode = DataGridViewEditMode.EditOnEnter;
+            #endregion
         }
 
         private void AdminForm_Shown(object sender, EventArgs e)
@@ -295,7 +322,78 @@ namespace SmartFood.Forms
             tmpPoint.X = tabPageConsumables.Left + 10;
             tmpPoint.Y = tabPageConsumables.Top + 10;
             dataGridViewClients.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
+            UpdateDataGridViewClients();
             this.Refresh();
+        }
+
+        public void UpdateDataGridViewClients()
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        dataGridViewClients.Rows.Clear();
+                        foreach (Client client in ClientsCore.Clients.items)
+                        {
+                            DataGridViewRow row = new DataGridViewRow();
+                            row.Cells.Add(new DataGridViewTextBoxCell()
+                            {
+                                Value = client.id
+                            });
+                            row.Cells.Add(new DataGridViewTextBoxCell()
+                            {
+                                Value = client.name
+                            });
+                            row.Cells.Add(new DataGridViewTextBoxCell()
+                            {
+                                Value = client.phone
+                            });
+                            row.Cells.Add(new DataGridViewTextBoxCell()
+                            {
+                                Value = client.email
+                            });
+                            row.Cells.Add(new DataGridViewTextBoxCell()
+                            {
+                                Value = client.discount_stored
+                            });
+                            row.Cells.Add(new DataGridViewTextBoxCell()
+                            {
+                                Value = client.total_balance
+                            });
+                            row.Cells.Add(new DataGridViewTextBoxCell()
+                            {
+                                Value = client.discount_fixed
+                            });
+                            row.Cells.Add(new DataGridViewTextBoxCell()
+                            {
+                                Value = client.discount_reason
+                            });
+                            row.Cells.Add(new DataGridViewTextBoxCell()
+                            {
+                                Value = client.comment
+                            });
+
+                            DataGridViewComboBoxCell cell = new DataGridViewComboBoxCell();
+                            cell.Items.Add(GeneralConstants.YES);
+                            cell.Items.Add(GeneralConstants.NO);
+                            cell.Value = Convert.ToBoolean(client.visible) ? GeneralConstants.YES : GeneralConstants.NO;
+                            row.Cells.Add(cell);
+
+                            dataGridViewClients.Rows.Add(row);
+                            updateFlag = true;
+
+                            dataGridViewClients.CellValueChanged += DataGridViewClients_CellValueChanged; ;
+                        }
+                    });
+                }
+                catch { }
+            }).Start();
+        }
+
+        private void DataGridViewClients_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
         }
 
         private void TabPageGoods_Enter(object sender, EventArgs e)
@@ -661,7 +759,7 @@ namespace SmartFood.Forms
 
         private void buttonAddClient_Click(object sender, EventArgs e)
         {
-            ClientDetailsForm modalForm = new ClientDetailsForm();
+            AddClientForm modalForm = new AddClientForm();
             modalForm.StartPosition = FormStartPosition.CenterScreen;
             this.Enabled = false;
             modalForm.Show();

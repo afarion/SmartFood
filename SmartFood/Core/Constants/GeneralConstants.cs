@@ -38,6 +38,11 @@ namespace SmartFood.Core.Constants
         public const string EMPLOYEE_TYPE = "Должность сотрудника";
         public const string EMPLOYEE = "Сотрудник";
         public const string PASSWORD_MASC = "*****";
+        public const string DISCOUNT_FLEX = "Накопительная скидка";
+        public const string DISCOUNT_FIXED = "Фиксированная скидка";
+        public const string DISCOUNT_REASONE = "Причина скидки";
+        public const string TOTAL_BALANCE = "Сумма заказов";
+        public const string ADDRESSES = "Адресса";
     }
 
 
@@ -66,5 +71,9 @@ namespace SmartFood.Core.Constants
         public const string NEW_COLUMN_PASSWORD = "newColumnLogin";
         public const string NEW_COLUMN_ACOUNT_TYPE = "newColumnAcountType";
         public const string NEW_COLUMN_EMPLOYEE_TYPE = "newColumnEmplyeeType";
+        public const string NEW_COLUMN_DISCOUNT_FLEX = "newColumnDiscountFlexible";
+        public const string NEW_COLUMN_DISCOUNT_FIXED= "newColumnDiscountFixed";
+        public const string NEW_COLUMN_DISCOUNT_REASONE = "newColumnDiscountReasone";
+        public const string NEW_COLUMN_TOTAL_BALANCE = "newColumnTotalBalance";
     }
 }

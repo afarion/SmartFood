@@ -9,7 +9,7 @@ namespace SmartFood.Core.Serialisation
     public class ClientAddresses
     {
         public int count;
-        public LinkedList<ClientAddress> items;
+        public List<ClientAddress> items;
 
         public List<string> ToList()
         {

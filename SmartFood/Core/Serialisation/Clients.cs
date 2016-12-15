@@ -9,7 +9,7 @@ namespace SmartFood.Core.Serialisation
     public class Clients
     {
         public List<Client> items;
-
+        public int count;
         public List<string> ToList()
         {
             List<string> tmpList = new List<string>();
@@ -39,6 +39,16 @@ namespace SmartFood.Core.Serialisation
             }
             return string.Empty;
         }
+
+        public List<string> GetAddresses(int id)
+        {
+            foreach (var item in items)
+            {
+                if (item.id == id)
+                    return item.addresses.ToList();
+            }
+            return null;
+        }
     }
 
     [Serializable]
@@ -50,10 +60,11 @@ namespace SmartFood.Core.Serialisation
         public string email;
         public int discount_fixed;
         public int discount_stored;
-        public int total_balance;
+        public double total_balance;
         public string comment;
         public string discount_reason;
         public int visible;
+        [NonSerialized]
         public ClientAddresses addresses;
     }
 }
