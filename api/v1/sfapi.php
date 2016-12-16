@@ -139,8 +139,62 @@ class SmartFoodApi
                 break;
             }
         }
+    }
+    
+    private function TryToExecuteLog($method, $request, $idObject, $actionType, $oldValuesData = array())
+    {
+        //$actionType = 1 Insert
+        //$actionType = 2 Update
+        //$actionType = 3 Purchase
+        //$actionType = 4 Outlay
         
+        $methodConfig = $this->config[$method];
         
+        if(!isset($methodConfig["log_table"]))
+            return false;
+        
+        $logTable = $methodConfig["log_table"];
+        
+        $idAdmin = $request["user_id"];
+        
+        $fieldsConfig = $methodConfig["fields"];
+        
+        foreach($fieldsConfig as $fieldName => $fieldData)
+        {
+            if(!isset($request[$fieldName]))
+                continue;
+                
+            $fieldType = $fieldData["type"];
+            
+            $valueOld = "";
+            if(isset($oldValuesData[$fieldName]))
+                $valueOld = $oldValuesData[$fieldName];
+            
+            $valueNew = $request[$fieldName];
+            
+            if($valueOld == $valueNew)
+                continue;
+                
+            $this->InsertIntoLog($logTable, $idAdmin, $idObject, $actionType, $fieldName, $fieldType, $valueOld, $valueNew);
+        }
+    }
+    
+    private function InsertIntoLog($logTable, $idAdmin, $idObject, $actionType, $fieldName, $fieldType, $valueOld, $valueNew)
+    {
+        $idAdmin    = intval($idAdmin);
+        $idObject   = intval($idObject);
+        $actionType = intval($actionType);
+        
+        $fieldName  = $this->MySqlScreening($fieldName);
+        $fieldType  = $this->MySqlScreening($fieldType);
+        $valueOld   = $this->MySqlScreening($valueOld);
+        $valueNew   = $this->MySqlScreening($valueNew);
+        
+        $query = "INSERT INTO $logTable (id_admin, id_object, action_type, field_name, field_type, value_old, value_new) VALUES ($idAdmin, $idObject, $actionType, '$fieldName', '$fieldType', '$valueOld', '$valueNew')";
+        
+        $res = $this->ExecuteNonQuery($query);
+        
+        return $res;
     }
     
     private function ExecuteCallBack($name, $method, $request)
@@ -170,9 +224,17 @@ class SmartFoodApi
         
         $itemTable = $this->config["item"]["table"];
         
-        $query = "UPDATE $itemTable SET amount = amount + $amount, price = '$priceSingle' WHERE id = $id_item";
+        $currentData    = $this->GetValuesByQuery("SELECT amount, price FROM $itemTable WHERE id = $id_item");
+        $currentAmount  = $this->FormatField($currentData["amount"], "float");
+        $currentPrice   = $this->FormatField($currentData["price"], "float");
+        
+        $resultAmount = $currentAmount + $amount;
+        
+        $query = "UPDATE $itemTable SET amount = $resultAmount, price = '$priceSingle' WHERE id = $id_item";
         
         $this->ExecuteNonQuery($query);
+        
+        $this->TryToExecuteLog("item", array("amount" => $resultAmount, "price" => $priceSingle), $id_item, 3, array("amount" => $currentAmount, "price" => $currentPrice));
     }
     
     private function UpdateOutlay($method, $request)
@@ -196,6 +258,8 @@ class SmartFoodApi
         $query = "UPDATE $itemTable SET amount = $resultAmount WHERE id = $id_item";
         
         $this->ExecuteNonQuery($query);
+        
+        $this->TryToExecuteLog("item", array("amount" => $resultAmount), $id_item, 4, array("amount" => $currentAmount));
     }
     
     private function CheckUserPermissions($method, $userType, $key)
@@ -256,6 +320,8 @@ class SmartFoodApi
         if(intval($newId) <= 0)
             $this->ShowError("insert");
         
+        $this->TryToExecuteLog($method, $request, $newId, 1);
+        
         $response = array("success" => $newId);
         
         $this->ShowJson($response);
@@ -310,6 +376,12 @@ class SmartFoodApi
         if($id <= 0)
             $this->ShowError("request");
         
+        $table = $methodConfig["table"];
+        
+        $fields = join(",", array_keys($methodConfig["fields"]));
+        
+        $oldValuesData = $this->GetValuesByQuery("SELECT $fields FROM $table WHERE id = $id");
+        
         $updateValues = array();
         
         foreach($methodConfig["fields"] as $fieldName => $fieldConfig)
@@ -334,14 +406,14 @@ class SmartFoodApi
         if(isset($methodConfig["edit_callback"]))
             $this->ExecuteCallBack($methodConfig["edit_callback"], $method, $request);
         
-        $table = $methodConfig["table"];
-        
         $query = "UPDATE $table SET ".join(",", $updateValues)." WHERE id = $id";
         
         $res = $this->ExecuteNonQuery($query);
         
         if(!$res)
             $this->ShowError("request");
+            
+        $this->TryToExecuteLog($method, $request, $id, 2, $oldValuesData);
         
         $response = array("success" => $id);
         

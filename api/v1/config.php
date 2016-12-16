@@ -8,6 +8,8 @@ function GetConfigArray()
         
             "table" => "titemtype",
             
+            "log_table" => "titemtype_log",
+            
             "permission" => array( 
                 //          view    edit    add     remove
                 1 => array( true,   true,   true,   false),  //Администратор
@@ -36,6 +38,8 @@ function GetConfigArray()
         "itemcategory" => array(
         
             "table" => "titemcategory",
+            
+            "log_table" => "titemcategory_log",
             
             "permission" => array( 
                 //          view    edit    add     remove
@@ -100,6 +104,8 @@ function GetConfigArray()
         
             "table" => "titem",
             
+            "log_table" => "titem_log",
+            
             "permission" => array( 
                 //          view    edit    add     remove
                 1 => array( true,   true,   true,   false),  //Администратор
@@ -130,7 +136,7 @@ function GetConfigArray()
                 "id_type"       => array( "type" => "int",    "default" => false,   "editable" => true ),
                 "id_category"   => array( "type" => "int",    "default" => false,   "editable" => true ),
                 "id_unit"       => array( "type" => "int",    "default" => false,   "editable" => true ),
-                //"amount"        => array( "type" => "float",  "default" => 0,       "editable" => true ),
+                "amount"        => array( "type" => "float",  "default" => 0,       "editable" => false ),
                 "price"         => array( "type" => "float",  "default" => 0,       "editable" => false ),
                 "waste_pct"     => array( "type" => "int",    "default" => 0,       "editable" => true ),
                 "visible"       => array( "type" => "flag",   "default" => 1,       "editable" => true ),
@@ -155,6 +161,8 @@ function GetConfigArray()
         
             "table" => "tprovider",
             
+            "log_table" => "tprovider_log",
+            
             "permission" => array( 
                 //          view    edit    add     remove
                 1 => array( true,   true,   true,   false),  //Администратор
@@ -174,9 +182,9 @@ function GetConfigArray()
             
             "fields" => array(
                 "name"          => array( "type" => "text",   "default" => false,   "editable" => true ),
-                "phone"         => array( "type" => "text",   "default" => "NULL",  "editable" => true ),
-                "email"         => array( "type" => "text",   "default" => "NULL",  "editable" => true ),
-                "skype"         => array( "type" => "text",   "default" => "NULL",  "editable" => true ),
+                "phone"         => array( "type" => "text",   "default" => "",      "editable" => true ),
+                "email"         => array( "type" => "text",   "default" => "",      "editable" => true ),
+                "skype"         => array( "type" => "text",   "default" => "",      "editable" => true ),
                 "notes"         => array( "type" => "text",   "default" => "",      "editable" => true ),
                 "visible"       => array( "type" => "flag",   "default" => 1,       "editable" => true ),
             ),
@@ -219,6 +227,8 @@ function GetConfigArray()
         
             "table" => "temployee",
             
+            "log_table" => "temployee_log",
+            
             "permission" => array( 
                 //          view    edit    add     remove
                 1 => array( true,   true,   true,   false),  //Администратор
@@ -245,13 +255,13 @@ function GetConfigArray()
                 "id_type"       => array( "type" => "int",    "default" => false,   "editable" => true ),
                 "first_name"    => array( "type" => "text",   "default" => false,   "editable" => true ),
                 "last_name"     => array( "type" => "text",   "default" => false,   "editable" => true ),
-                "phone"         => array( "type" => "text",   "default" => "NULL",  "editable" => true ),
-                "phone_ex"      => array( "type" => "text",   "default" => "NULL",  "editable" => true ),
-                "skype"         => array( "type" => "text",   "default" => "NULL",  "editable" => true ),
-                "address"       => array( "type" => "text",   "default" => "NULL",  "editable" => true ),
-                "email"         => array( "type" => "text",   "default" => "NULL",  "editable" => true ),
+                "phone"         => array( "type" => "text",   "default" => "",      "editable" => true ),
+                "phone_ex"      => array( "type" => "text",   "default" => "",      "editable" => true ),
+                "skype"         => array( "type" => "text",   "default" => "",      "editable" => true ),
+                "address"       => array( "type" => "text",   "default" => "",      "editable" => true ),
+                "email"         => array( "type" => "text",   "default" => "",      "editable" => true ),
                 "birthday"      => array( "type" => "date",   "default" => "NULL",  "editable" => true ),
-                "comment"       => array( "type" => "text",   "default" => "NULL",  "editable" => true ),
+                "comment"       => array( "type" => "text",   "default" => "",      "editable" => true ),
                 "visible"       => array( "type" => "flag",   "default" => 1,       "editable" => true ),
             ),
             
@@ -269,6 +279,8 @@ function GetConfigArray()
         "user" => array(
         
             "table" => "tuser",
+            
+            "log_table" => "tuser_log",
             
             "permission" => array( 
                 //          view    edit    add     remove
@@ -291,15 +303,15 @@ function GetConfigArray()
             ),
             
             "fields" => array(
-                "name"              => array( "type" => "text",     "default" => false,   "editable" => true ),
-                "phone"             => array( "type" => "text",     "default" => "NULL",  "editable" => true ),
-                "email"             => array( "type" => "text",     "default" => "NULL",  "editable" => true ),
-                "discount_fixed"    => array( "type" => "int",      "default" => "NULL",  "editable" => true ),
-                "discount_stored"   => array( "type" => "int",      "default" => "NULL",  "editable" => false ),
-                "total_balance"     => array( "type" => "float",    "default" => "NULL",  "editable" => false ),
-                "comment"           => array( "type" => "text",     "default" => "NULL",  "editable" => true ),
-                "discount_reason"   => array( "type" => "text",     "default" => "NULL",  "editable" => true ),
-                "visible"           => array( "type" => "flag",     "default" => 1,       "editable" => true ),
+                "name"              => array( "type" => "text",     "default" => false,     "editable" => true ),
+                "phone"             => array( "type" => "text",     "default" => false,     "editable" => true ),
+                "email"             => array( "type" => "text",     "default" => "",        "editable" => true ),
+                "discount_fixed"    => array( "type" => "int",      "default" => 0,         "editable" => true ),
+                "discount_stored"   => array( "type" => "int",      "default" => 0,         "editable" => false ),
+                "total_balance"     => array( "type" => "float",    "default" => 0,         "editable" => false ),
+                "comment"           => array( "type" => "text",     "default" => "",        "editable" => true ),
+                "discount_reason"   => array( "type" => "text",     "default" => "",        "editable" => true ),
+                "visible"           => array( "type" => "flag",     "default" => 1,         "editable" => true ),
             ),
             
             "order" => array(
@@ -311,6 +323,8 @@ function GetConfigArray()
         "useraddress" => array(
         
             "table" => "tuseraddress",
+            
+            "log_table" => "tuseraddress_log",
             
             "permission" => array( 
                 //          view    edit    add     remove
@@ -345,6 +359,8 @@ function GetConfigArray()
         "admin" => array(
         
             "table" => "tadmin",
+            
+            "log_table" => "tadmin_log",
             
             "permission" => array( 
                 //          view    edit    add     remove
@@ -502,6 +518,8 @@ function GetConfigArray()
         
             "table" => "tdish",
             
+            "log_table" => "tdish_log",
+            
             "permission" => array( 
                 //          view    edit    add     remove
                 1 => array( true,   true,   true,   false),  //Администратор
@@ -543,6 +561,8 @@ function GetConfigArray()
         "dishitem" => array(
         
             "table" => "tdishitem",
+            
+            "log_table" => "tdishitem_log",
             
             "permission" => array( 
                 //          view    edit    add     remove
