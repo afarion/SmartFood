@@ -43,6 +43,9 @@ namespace SmartFood.Core.Constants
         public const string DISCOUNT_REASONE = "Причина скидки";
         public const string TOTAL_BALANCE = "Сумма заказов";
         public const string ADDRESSES = "Адресса";
+        public const string CONSUMBLE = "Расходник";
+        public const string SUPPLIER = "Поставщик";
+        public const string DATE = "Дата";
     }
 
 
@@ -75,5 +78,9 @@ namespace SmartFood.Core.Constants
         public const string NEW_COLUMN_DISCOUNT_FIXED= "newColumnDiscountFixed";
         public const string NEW_COLUMN_DISCOUNT_REASONE = "newColumnDiscountReasone";
         public const string NEW_COLUMN_TOTAL_BALANCE = "newColumnTotalBalance";
+        public const string NEW_COLUMN_CONSUMBLE = "newColumnTotalConsumble";
+        public const string NEW_COLUMN_SUPPLIER = "newColumnTotalSupplier";
+        public const string NEW_COLUMN_EMPLOYEE = "newColumnTotalEmployee";
+        public const string NEW_COLUMN_DATE = "newColumnTotalDate";
     }
 }

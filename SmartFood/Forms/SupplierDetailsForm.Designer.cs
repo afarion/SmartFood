@@ -56,7 +56,7 @@
             // textBoxCompanyName
             // 
             this.textBoxCompanyName.Location = new System.Drawing.Point(156, 16);
-            this.textBoxCompanyName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxCompanyName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxCompanyName.Name = "textBoxCompanyName";
             this.textBoxCompanyName.Size = new System.Drawing.Size(300, 22);
             this.textBoxCompanyName.TabIndex = 1;
@@ -64,7 +64,7 @@
             // textBoxPhone1
             // 
             this.textBoxPhone1.Location = new System.Drawing.Point(156, 48);
-            this.textBoxPhone1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPhone1.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPhone1.Name = "textBoxPhone1";
             this.textBoxPhone1.Size = new System.Drawing.Size(300, 22);
             this.textBoxPhone1.TabIndex = 2;
@@ -72,7 +72,7 @@
             // textBoxEmeil
             // 
             this.textBoxEmeil.Location = new System.Drawing.Point(156, 80);
-            this.textBoxEmeil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxEmeil.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxEmeil.Name = "textBoxEmeil";
             this.textBoxEmeil.Size = new System.Drawing.Size(300, 22);
             this.textBoxEmeil.TabIndex = 3;
@@ -80,7 +80,7 @@
             // textBoxSkype
             // 
             this.textBoxSkype.Location = new System.Drawing.Point(156, 112);
-            this.textBoxSkype.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxSkype.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxSkype.Name = "textBoxSkype";
             this.textBoxSkype.Size = new System.Drawing.Size(300, 22);
             this.textBoxSkype.TabIndex = 4;
@@ -118,7 +118,7 @@
             // buttonOk
             // 
             this.buttonOk.Location = new System.Drawing.Point(359, 176);
-            this.buttonOk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonOk.Margin = new System.Windows.Forms.Padding(4);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(100, 28);
             this.buttonOk.TabIndex = 6;
@@ -129,7 +129,7 @@
             // buttonCancel
             // 
             this.buttonCancel.Location = new System.Drawing.Point(251, 176);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(100, 28);
             this.buttonCancel.TabIndex = 7;
@@ -140,7 +140,7 @@
             // textBoxNotes
             // 
             this.textBoxNotes.Location = new System.Drawing.Point(157, 144);
-            this.textBoxNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxNotes.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxNotes.Name = "textBoxNotes";
             this.textBoxNotes.Size = new System.Drawing.Size(300, 22);
             this.textBoxNotes.TabIndex = 5;
@@ -174,11 +174,11 @@
             this.Controls.Add(this.labelCompanyName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SupplierDetailsForm";
-            this.Text = "SupplierDetailsForm";
+            this.Text = "Поставщик";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SupplierDetailsForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -159,13 +159,25 @@ namespace SmartFood.Forms
 
             dataGridViewClients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewClients.AllowUserToAddRows = false;
-            dataGridViewClients.Columns[0].ReadOnly = true;
-            dataGridViewClients.Columns[4].ReadOnly = true;
-            dataGridViewClients.Columns[5].ReadOnly = true;
-            dataGridViewClients.Columns[6].ReadOnly = true;
-            dataGridViewClients.Columns[7].ReadOnly = true;
             dataGridViewClients.RowHeadersVisible = false;
             dataGridViewClients.EditMode = DataGridViewEditMode.EditOnEnter;
+            dataGridViewClients.ReadOnly = true;
+            #endregion
+
+            #region dataGridViewArrivals
+            dataGridViewArrival.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
+            dataGridViewArrival.Columns.Add(UIConstans.NEW_COLUMN_CONSUMBLE, GeneralConstants.CONSUMBLE);
+            dataGridViewArrival.Columns.Add(UIConstans.NEW_COLUMN_SUPPLIER, GeneralConstants.SUPPLIER);
+            dataGridViewArrival.Columns.Add(UIConstans.NEW_COLUMN_EMPLOYEE, GeneralConstants.EMPLOYEE);
+            dataGridViewArrival.Columns.Add(UIConstans.NEW_COLUMN_AMOUNT, GeneralConstants.AMOUNT);
+            dataGridViewArrival.Columns.Add(UIConstans.NEW_COLUMN_PRICE, GeneralConstants.PRICE);
+            dataGridViewArrival.Columns.Add(UIConstans.NEW_COLUMN_DATE, GeneralConstants.DATE);
+
+            dataGridViewArrival.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewArrival.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewArrival.AllowUserToAddRows = false;
+            dataGridViewArrival.RowHeadersVisible = false;
+            dataGridViewArrival.ReadOnly = true;
             #endregion
         }
 
@@ -692,11 +704,11 @@ namespace SmartFood.Forms
         {
             Point tmpPoint = new Point();
 
-            tmpPoint.X = tabPageConsumables.Width - buttonArrivial.Width - 10;
+            tmpPoint.X = dataGridViewArrival.Width - buttonArrivial.Width - 30;
             tmpPoint.Y = tabPageConsumables.Height - buttonArrivial.Height - 10;
             buttonArrivial.Location = tmpPoint;
 
-            tmpPoint.X = buttonArrivial.Location.X - buttonWriteOff.Width - 10;
+            tmpPoint.X = tabPageConsumables.Width - buttonArrivial.Width - 10;
             buttonWriteOff.Location = tmpPoint;
 
             int tmpWidth = tabPageConsumables.Width / 2 - 20;
@@ -707,7 +719,34 @@ namespace SmartFood.Forms
             dataGridViewArrival.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
             tmpPoint.X = tabPageConsumables.Width / 2 + 10;
             dataGridViewWriteOff.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
+            UpdateDataGridViewArrival();
             this.Refresh();
+        }
+
+        public void UpdateDataGridViewArrival()
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        dataGridViewArrival.Rows.Clear();
+                        foreach (Arrival arrival in ArrivalCore.Arrivals.items)
+                        {
+                            DataGridViewRow row = new DataGridViewRow();
+                            dataGridViewArrival.Rows.Add(arrival.id,
+                                ConsumblesCore.Consumbles.GetName(arrival.id_item),
+                                SuppliersCore.Suppliers.GetName(arrival.id_provider),
+                                EmployeesCore.Emplyees.GetEmployeeFullName(arrival.id_employee),
+                                string.Format("{0} {1}",arrival.amount, ConsumblesCore.Consumbles.GetMeasure(arrival.id_item)),
+                                arrival.price,
+                                arrival.date_create);
+                        }
+                    });
+                }
+                catch { }
+            }).Start();
         }
 
         private void AdminForm_Move(object sender, EventArgs e)

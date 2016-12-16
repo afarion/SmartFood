@@ -55,7 +55,7 @@
             // 
             this.comboBoxEmploye.FormattingEnabled = true;
             this.comboBoxEmploye.Location = new System.Drawing.Point(17, 31);
-            this.comboBoxEmploye.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxEmploye.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxEmploye.Name = "comboBoxEmploye";
             this.comboBoxEmploye.Size = new System.Drawing.Size(355, 24);
             this.comboBoxEmploye.TabIndex = 1;
@@ -73,7 +73,7 @@
             // textBoxLogin
             // 
             this.textBoxLogin.Location = new System.Drawing.Point(17, 81);
-            this.textBoxLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxLogin.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(352, 22);
             this.textBoxLogin.TabIndex = 2;
@@ -91,7 +91,7 @@
             // textBoxPassword
             // 
             this.textBoxPassword.Location = new System.Drawing.Point(17, 129);
-            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(352, 22);
             this.textBoxPassword.TabIndex = 3;
@@ -110,7 +110,7 @@
             // 
             this.comboBoxRole.FormattingEnabled = true;
             this.comboBoxRole.Location = new System.Drawing.Point(17, 177);
-            this.comboBoxRole.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxRole.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxRole.Name = "comboBoxRole";
             this.comboBoxRole.Size = new System.Drawing.Size(355, 24);
             this.comboBoxRole.TabIndex = 4;
@@ -118,7 +118,7 @@
             // buttonOk
             // 
             this.buttonOk.Location = new System.Drawing.Point(273, 212);
-            this.buttonOk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonOk.Margin = new System.Windows.Forms.Padding(4);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(100, 28);
             this.buttonOk.TabIndex = 5;
@@ -129,7 +129,7 @@
             // buttonCancel
             // 
             this.buttonCancel.Location = new System.Drawing.Point(165, 212);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(100, 28);
             this.buttonCancel.TabIndex = 6;
@@ -155,11 +155,11 @@
             this.Controls.Add(this.labelEmploye);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AcountDetails";
-            this.Text = "AcountDetails";
+            this.Text = "Детали акаунта";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AcountDetails_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();

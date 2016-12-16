@@ -37,6 +37,16 @@ namespace SmartFood.Core.Serialisation
             }
             return string.Empty;
         }
+
+        public string GetMeasure(long id)
+        {
+            foreach (var item in items)
+            {
+                if (item.id == id)
+                    return MeasuresCore.Measures.GetName(item.id_unit);
+            }
+            return string.Empty;
+        }
     }
 
     [Serializable]

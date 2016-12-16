@@ -37,25 +37,28 @@
             // 
             // textBoxAddress
             // 
-            this.textBoxAddress.Location = new System.Drawing.Point(12, 21);
+            this.textBoxAddress.Location = new System.Drawing.Point(16, 26);
+            this.textBoxAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxAddress.Name = "textBoxAddress";
-            this.textBoxAddress.Size = new System.Drawing.Size(349, 20);
+            this.textBoxAddress.Size = new System.Drawing.Size(464, 22);
             this.textBoxAddress.TabIndex = 0;
             // 
             // labelAddress
             // 
             this.labelAddress.AutoSize = true;
-            this.labelAddress.Location = new System.Drawing.Point(12, 5);
+            this.labelAddress.Location = new System.Drawing.Point(16, 6);
+            this.labelAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAddress.Name = "labelAddress";
-            this.labelAddress.Size = new System.Drawing.Size(44, 13);
+            this.labelAddress.Size = new System.Drawing.Size(55, 16);
             this.labelAddress.TabIndex = 1;
             this.labelAddress.Text = "Адресс";
             // 
             // buttonOk
             // 
-            this.buttonOk.Location = new System.Drawing.Point(285, 48);
+            this.buttonOk.Location = new System.Drawing.Point(380, 59);
+            this.buttonOk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(75, 23);
+            this.buttonOk.Size = new System.Drawing.Size(100, 28);
             this.buttonOk.TabIndex = 2;
             this.buttonOk.Text = "Ок";
             this.buttonOk.UseVisualStyleBackColor = true;
@@ -63,9 +66,10 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(204, 47);
+            this.buttonCancel.Location = new System.Drawing.Point(272, 58);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.Size = new System.Drawing.Size(100, 28);
             this.buttonCancel.TabIndex = 3;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -73,19 +77,20 @@
             // 
             // AddClientsAddress
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(371, 77);
+            this.ClientSize = new System.Drawing.Size(495, 95);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.labelAddress);
             this.Controls.Add(this.textBoxAddress);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddClientsAddress";
-            this.Text = "AddClientsAddress";
+            this.Text = "Новый адресс клиента";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddClientsAddress_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
