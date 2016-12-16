@@ -9,5 +9,13 @@ namespace SmartFood.Forms
         {
             MessageBox.Show(text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        public static bool ShowDialog(string text, string caption = ErrorTexts.ATTENTION)
+        {
+            DialogResult dialogResult = MessageBox.Show(text, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.Yes)
+                return true;
+            return false;
+        }
     }
 }

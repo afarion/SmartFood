@@ -115,6 +115,18 @@
     <Compile Include="Forms\AcountDetails.Designer.cs">
       <DependentUpon>AcountDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddClientForm.Designer.cs">
+      <DependentUpon>AddClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddClientsAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddClientsAddress.Designer.cs">
+      <DependentUpon>AddClientsAddress.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AddConsumbleCategorieForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +240,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AcountDetails.resx">
       <DependentUpon>AcountDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddClientForm.resx">
+      <DependentUpon>AddClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddClientsAddress.resx">
+      <DependentUpon>AddClientsAddress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddConsumbleCategorieForm.resx">
       <DependentUpon>AddConsumbleCategorieForm.cs</DependentUpon>

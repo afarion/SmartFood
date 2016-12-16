@@ -86,6 +86,11 @@ C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddCon
 C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddConsumbleTypeForm.resources
 C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.ConsumbleCategorieForm.resources
 C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.ConsumbleTypeForm.resources
+D:\Work\smartfood\SmartFood\bin\Debug\SmartFood.exe.config
+D:\Work\smartfood\SmartFood\obj\Debug\SmartFood.exe
+D:\Work\smartfood\SmartFood\obj\Debug\SmartFood.pdb
+D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.csprojResolveAssemblyReference.cache
+D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddClientForm.resources
 E:\SmartFood\SmartFood\SmartFood\bin\Debug\SmartFood.exe.config
 E:\SmartFood\SmartFood\SmartFood\bin\Debug\SmartFood.exe
 E:\SmartFood\SmartFood\SmartFood\bin\Debug\SmartFood.pdb
@@ -105,6 +110,7 @@ E:\SmartFood\SmartFood\SmartFood\bin\Debug\System.Runtime.xml
 E:\SmartFood\SmartFood\SmartFood\bin\Debug\System.Threading.Tasks.xml
 E:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.csproj.App.config
 E:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AcountDetails.resources
+E:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddClientForm.resources
 E:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddConsumbleCategorieForm.resources
 E:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddConsumbleTypeForm.resources
 E:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddDiscountForm.resources
@@ -126,7 +132,4 @@ E:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Properties.Resources.resour
 E:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.csproj.GenerateResource.Cache
 E:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.exe
 E:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.pdb
-D:\Work\smartfood\SmartFood\bin\Debug\SmartFood.exe.config
-D:\Work\smartfood\SmartFood\obj\Debug\SmartFood.exe
-D:\Work\smartfood\SmartFood\obj\Debug\SmartFood.pdb
-D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.csprojResolveAssemblyReference.cache
+E:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddClientsAddress.resources
