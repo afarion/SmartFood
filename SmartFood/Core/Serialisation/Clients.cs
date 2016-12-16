@@ -49,6 +49,16 @@ namespace SmartFood.Core.Serialisation
             }
             return null;
         }
+
+        public Client GetClint(int id)
+        {
+            foreach (var item in items)
+            {
+                if (item.id == id)
+                    return item;
+            }
+            return null;
+        }
     }
 
     [Serializable]

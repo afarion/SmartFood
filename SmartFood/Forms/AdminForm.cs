@@ -323,7 +323,19 @@ namespace SmartFood.Forms
             tmpPoint.Y = tabPageConsumables.Top + 10;
             dataGridViewClients.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
             UpdateDataGridViewClients();
+            dataGridViewClients.CellDoubleClick += DataGridViewClients_CellDoubleClick;
             this.Refresh();
+        }
+
+        private void DataGridViewClients_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                ClientDetailsForm modalForm = new ClientDetailsForm(Convert.ToInt32(dataGridViewClients[0, e.RowIndex].Value));
+                modalForm.StartPosition = FormStartPosition.CenterScreen;
+                this.Enabled = false;
+                modalForm.Show();
+            }
         }
 
         public void UpdateDataGridViewClients()
@@ -380,6 +392,7 @@ namespace SmartFood.Forms
                             cell.Items.Add(GeneralConstants.NO);
                             cell.Value = Convert.ToBoolean(client.visible) ? GeneralConstants.YES : GeneralConstants.NO;
                             row.Cells.Add(cell);
+                            row.ReadOnly = true;
 
                             dataGridViewClients.Rows.Add(row);
                             updateFlag = true;

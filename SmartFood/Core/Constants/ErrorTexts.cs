@@ -9,6 +9,7 @@ namespace SmartFood.Core.Constants
     {
         public static string AUTORITHATION_FAILED = "Авторизация не удалась. Ошибка: ";
         public const string ERROR = "Ошибка";
+        public const string ATTENTION = "Внимание";
         public const string ANOTHER_DEVICE_LOGGED = "С вашего аккаунта был выполнен вход с другого устройства. Приложение будет закрыто";
         public const string AUTHORITHATION_FAILED = "Ошибка авторизации";
         public const string PERMISSIONS_DENIED = "У вас нет прав для совершения этого действия";
@@ -32,6 +33,13 @@ namespace SmartFood.Core.Constants
         public const string ENTER_EMEIL = "Введите почту";
         public const string ENTER_FULL_NAME = "Введите фамилия и имя";
         public const string INCORRECT_WASTE = "Неправильный процент отхода";
+        public const string ENTER_NAME_AND_PHONE = "Введите имя и телефон";
+        public const string ENTER_ADDRESS = "Введите Адресс";
+        public const string WARNING_DELETE_ADDRESS = "Вы уверены что хотите удалить выбранный адресс?";
+        public const string ENTER_DISCOUNT = "Введите скидку";
+        public const string ENTER_DISCOUNT_REASONE = "Введите причину скидки";
+        public const string ENTER_DISCOUNT_AND_REASONE = "Введите скидку и причину";
+        public const string INCORRECT_DISCOUNT = "Неправильная скидка";
 
     }
 }

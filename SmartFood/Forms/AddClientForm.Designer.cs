@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddClientForm));
             this.buttonOk = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.labelName = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.labelPhone = new System.Windows.Forms.Label();
@@ -43,99 +43,95 @@
             // 
             // buttonOk
             // 
-            this.buttonOk.Location = new System.Drawing.Point(268, 196);
+            this.buttonOk.Location = new System.Drawing.Point(201, 159);
+            this.buttonOk.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(100, 28);
+            this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 0;
             this.buttonOk.Text = "Ок";
             this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
-            // button2
+            // buttonCancel
             // 
-            this.button2.Location = new System.Drawing.Point(162, 196);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 28);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Отмена";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonCancel.Location = new System.Drawing.Point(122, 159);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 1;
+            this.buttonCancel.Text = "Отмена";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(13, 9);
-            this.labelName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelName.Location = new System.Drawing.Point(10, 7);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(34, 16);
+            this.labelName.Size = new System.Drawing.Size(29, 13);
             this.labelName.TabIndex = 3;
             this.labelName.Text = "Имя";
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(16, 29);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxName.Location = new System.Drawing.Point(12, 24);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(352, 22);
+            this.textBoxName.Size = new System.Drawing.Size(265, 20);
             this.textBoxName.TabIndex = 4;
             // 
             // labelPhone
             // 
             this.labelPhone.AutoSize = true;
-            this.labelPhone.Location = new System.Drawing.Point(13, 55);
-            this.labelPhone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPhone.Location = new System.Drawing.Point(10, 45);
             this.labelPhone.Name = "labelPhone";
-            this.labelPhone.Size = new System.Drawing.Size(68, 16);
+            this.labelPhone.Size = new System.Drawing.Size(52, 13);
             this.labelPhone.TabIndex = 5;
             this.labelPhone.Text = "Телефон";
             // 
             // textBoxPhone
             // 
-            this.textBoxPhone.Location = new System.Drawing.Point(16, 75);
-            this.textBoxPhone.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxPhone.Location = new System.Drawing.Point(12, 61);
             this.textBoxPhone.Name = "textBoxPhone";
-            this.textBoxPhone.Size = new System.Drawing.Size(352, 22);
+            this.textBoxPhone.Size = new System.Drawing.Size(265, 20);
             this.textBoxPhone.TabIndex = 6;
             // 
             // labelEmeil
             // 
             this.labelEmeil.AutoSize = true;
-            this.labelEmeil.Location = new System.Drawing.Point(13, 101);
-            this.labelEmeil.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelEmeil.Location = new System.Drawing.Point(10, 82);
             this.labelEmeil.Name = "labelEmeil";
-            this.labelEmeil.Size = new System.Drawing.Size(42, 16);
+            this.labelEmeil.Size = new System.Drawing.Size(32, 13);
             this.labelEmeil.TabIndex = 7;
             this.labelEmeil.Text = "Emeil";
             // 
             // textBoxEmeil
             // 
-            this.textBoxEmeil.Location = new System.Drawing.Point(16, 121);
-            this.textBoxEmeil.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxEmeil.Location = new System.Drawing.Point(12, 98);
             this.textBoxEmeil.Name = "textBoxEmeil";
-            this.textBoxEmeil.Size = new System.Drawing.Size(352, 22);
+            this.textBoxEmeil.Size = new System.Drawing.Size(265, 20);
             this.textBoxEmeil.TabIndex = 8;
             // 
             // labelComment
             // 
             this.labelComment.AutoSize = true;
-            this.labelComment.Location = new System.Drawing.Point(13, 147);
-            this.labelComment.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelComment.Location = new System.Drawing.Point(10, 119);
             this.labelComment.Name = "labelComment";
-            this.labelComment.Size = new System.Drawing.Size(88, 16);
+            this.labelComment.Size = new System.Drawing.Size(69, 13);
             this.labelComment.TabIndex = 9;
             this.labelComment.Text = "Коментарий";
             // 
             // textBoxComment
             // 
-            this.textBoxComment.Location = new System.Drawing.Point(16, 167);
-            this.textBoxComment.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxComment.Location = new System.Drawing.Point(12, 136);
             this.textBoxComment.Name = "textBoxComment";
-            this.textBoxComment.Size = new System.Drawing.Size(352, 22);
+            this.textBoxComment.Size = new System.Drawing.Size(265, 20);
             this.textBoxComment.TabIndex = 10;
             // 
             // AddClientForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 241);
+            this.ClientSize = new System.Drawing.Size(286, 196);
             this.Controls.Add(this.textBoxComment);
             this.Controls.Add(this.labelComment);
             this.Controls.Add(this.textBoxEmeil);
@@ -144,14 +140,16 @@
             this.Controls.Add(this.labelPhone);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.labelName);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOk);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddClientForm";
             this.Text = "Новый Клиент";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddClientForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,7 +158,7 @@
         #endregion
 
         private System.Windows.Forms.Button buttonOk;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label labelPhone;

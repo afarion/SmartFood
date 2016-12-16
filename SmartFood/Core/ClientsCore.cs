@@ -31,16 +31,14 @@ namespace SmartFood.Core
             return isOk;
         }
 
-        public static bool AddClient(string name, string phone, string email, string comment="", int discount_fixed=0, string discount_reason="")
+        public static bool AddClient(string name, string phone, string email, string comment)
         {
             Dictionary<string, string> param = new Dictionary<string, string>();
             param.Add(RequestFields.ACTION, Actions.ADD);
             param.Add(RequestFields.NAME, name);
             param.Add(RequestFields.PHONE, phone);
             param.Add(RequestFields.EMEIL, email);
-            param.Add(RequestFields.DISCOUNT_FIXED, discount_fixed.ToString());
             param.Add(RequestFields.COMMENT, comment);
-            param.Add(RequestFields.DISCOUNT_REASONE, discount_reason);
             return SendEditRequest(UriPostfix.CLIENTS, param);
         }
 
