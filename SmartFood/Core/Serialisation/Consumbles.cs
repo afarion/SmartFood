@@ -18,7 +18,7 @@ namespace SmartFood.Core.Serialisation
             return tmpList;
         }
 
-        public long GetID(string typeName)
+        public int GetID(string typeName)
         {
             foreach (var item in items)
             {

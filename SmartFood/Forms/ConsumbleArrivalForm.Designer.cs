@@ -37,17 +37,17 @@
             this.labelCount = new System.Windows.Forms.Label();
             this.labelPrice = new System.Windows.Forms.Label();
             this.labelSupplier = new System.Windows.Forms.Label();
-            this.textBoxCook = new System.Windows.Forms.TextBox();
             this.labelCook = new System.Windows.Forms.Label();
             this.buttonOk = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.comboBoxCook = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // comboBoxName
             // 
             this.comboBoxName.FormattingEnabled = true;
             this.comboBoxName.Location = new System.Drawing.Point(153, 15);
-            this.comboBoxName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxName.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxName.Name = "comboBoxName";
             this.comboBoxName.Size = new System.Drawing.Size(219, 24);
             this.comboBoxName.TabIndex = 2;
@@ -56,7 +56,7 @@
             // 
             this.comboBoxSupplier.FormattingEnabled = true;
             this.comboBoxSupplier.Location = new System.Drawing.Point(153, 112);
-            this.comboBoxSupplier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxSupplier.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxSupplier.Name = "comboBoxSupplier";
             this.comboBoxSupplier.Size = new System.Drawing.Size(219, 24);
             this.comboBoxSupplier.TabIndex = 3;
@@ -64,7 +64,7 @@
             // textBoxCount
             // 
             this.textBoxCount.Location = new System.Drawing.Point(153, 48);
-            this.textBoxCount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxCount.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxCount.Name = "textBoxCount";
             this.textBoxCount.Size = new System.Drawing.Size(219, 22);
             this.textBoxCount.TabIndex = 4;
@@ -72,7 +72,7 @@
             // textBoxPrice
             // 
             this.textBoxPrice.Location = new System.Drawing.Point(153, 80);
-            this.textBoxPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPrice.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(219, 22);
             this.textBoxPrice.TabIndex = 5;
@@ -117,14 +117,6 @@
             this.labelSupplier.TabIndex = 9;
             this.labelSupplier.Text = "Поставщик";
             // 
-            // textBoxCook
-            // 
-            this.textBoxCook.Location = new System.Drawing.Point(153, 145);
-            this.textBoxCook.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBoxCook.Name = "textBoxCook";
-            this.textBoxCook.Size = new System.Drawing.Size(219, 22);
-            this.textBoxCook.TabIndex = 10;
-            // 
             // labelCook
             // 
             this.labelCook.AutoSize = true;
@@ -138,17 +130,18 @@
             // buttonOk
             // 
             this.buttonOk.Location = new System.Drawing.Point(285, 193);
-            this.buttonOk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonOk.Margin = new System.Windows.Forms.Padding(4);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(100, 28);
             this.buttonOk.TabIndex = 12;
             this.buttonOk.Text = "Ок";
             this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // buttonCancel
             // 
             this.buttonCancel.Location = new System.Drawing.Point(177, 193);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(100, 28);
             this.buttonCancel.TabIndex = 13;
@@ -156,15 +149,24 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
+            // comboBoxCook
+            // 
+            this.comboBoxCook.FormattingEnabled = true;
+            this.comboBoxCook.Location = new System.Drawing.Point(153, 144);
+            this.comboBoxCook.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxCook.Name = "comboBoxCook";
+            this.comboBoxCook.Size = new System.Drawing.Size(219, 24);
+            this.comboBoxCook.TabIndex = 4;
+            // 
             // ConsumbleArrivalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(388, 225);
+            this.Controls.Add(this.comboBoxCook);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.labelCook);
-            this.Controls.Add(this.textBoxCook);
             this.Controls.Add(this.labelSupplier);
             this.Controls.Add(this.labelPrice);
             this.Controls.Add(this.labelCount);
@@ -175,7 +177,7 @@
             this.Controls.Add(this.comboBoxName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ConsumbleArrivalForm";
@@ -196,9 +198,9 @@
         private System.Windows.Forms.Label labelCount;
         private System.Windows.Forms.Label labelPrice;
         private System.Windows.Forms.Label labelSupplier;
-        private System.Windows.Forms.TextBox textBoxCook;
         private System.Windows.Forms.Label labelCook;
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.ComboBox comboBoxCook;
     }
 }
