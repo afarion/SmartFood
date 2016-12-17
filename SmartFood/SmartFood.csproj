@@ -110,7 +110,9 @@
     <Compile Include="Core\Serialisation\Measures.cs" />
     <Compile Include="Core\Constants\UriPostfix.cs" />
     <Compile Include="Core\Serialisation\Suppliers.cs" />
+    <Compile Include="Core\Serialisation\WriteOff.cs" />
     <Compile Include="Core\SuppliersCore.cs" />
+    <Compile Include="Core\WriteOffCore.cs" />
     <Compile Include="Forms\AcountDetails.cs">
       <SubType>Form</SubType>
     </Compile>

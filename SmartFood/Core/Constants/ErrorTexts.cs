@@ -43,5 +43,7 @@ namespace SmartFood.Core.Constants
         public const string ENTER_COUNT = "Введите количество";
         public const string ENTER_PRICE_AND_COUNT = "Введите цену количество";
         public const string INCORRECT_COUNT = "Неправильная цена";
+        public const string ENTER_COUNT_AND_COMMENT = "Введите количество и причину списания";
+        public const string ENTER_COMMENT = "Введите причину списания";
     }
 }

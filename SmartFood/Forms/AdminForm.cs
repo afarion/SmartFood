@@ -179,6 +179,21 @@ namespace SmartFood.Forms
             dataGridViewArrival.RowHeadersVisible = false;
             dataGridViewArrival.ReadOnly = true;
             #endregion
+
+            #region dataGridViewWriteOffs
+            dataGridViewWriteOff.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
+            dataGridViewWriteOff.Columns.Add(UIConstans.NEW_COLUMN_CONSUMBLE, GeneralConstants.CONSUMBLE);
+            dataGridViewWriteOff.Columns.Add(UIConstans.NEW_COLUMN_EMPLOYEE, GeneralConstants.EMPLOYEE);
+            dataGridViewWriteOff.Columns.Add(UIConstans.NEW_COLUMN_AMOUNT, GeneralConstants.AMOUNT);
+            dataGridViewWriteOff.Columns.Add(UIConstans.NEW_COLUMN_COMMENT, GeneralConstants.COMMENT);
+            dataGridViewWriteOff.Columns.Add(UIConstans.NEW_COLUMN_DATE, GeneralConstants.DATE);
+
+            dataGridViewWriteOff.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewWriteOff.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewWriteOff.AllowUserToAddRows = false;
+            dataGridViewWriteOff.RowHeadersVisible = false;
+            dataGridViewWriteOff.ReadOnly = true;
+            #endregion
         }
 
         private void AdminForm_Shown(object sender, EventArgs e)
@@ -704,7 +719,7 @@ namespace SmartFood.Forms
         {
             Point tmpPoint = new Point();
 
-            tmpPoint.X = dataGridViewArrival.Width - buttonArrivial.Width - 30;
+            tmpPoint.X = tabPageConsumables.Width / 2 - 10 - buttonArrivial.Width;
             tmpPoint.Y = tabPageConsumables.Height - buttonArrivial.Height - 10;
             buttonArrivial.Location = tmpPoint;
 
@@ -720,6 +735,7 @@ namespace SmartFood.Forms
             tmpPoint.X = tabPageConsumables.Width / 2 + 10;
             dataGridViewWriteOff.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
             UpdateDataGridViewArrival();
+            UpdateDataGridViewWriteOff();
             this.Refresh();
         }
 
@@ -742,6 +758,31 @@ namespace SmartFood.Forms
                                 string.Format("{0} {1}",arrival.amount, ConsumblesCore.Consumbles.GetMeasure(arrival.id_item)),
                                 arrival.price,
                                 arrival.date_create);
+                        }
+                    });
+                }
+                catch { }
+            }).Start();
+        }
+
+        public void UpdateDataGridViewWriteOff()
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        dataGridViewWriteOff.Rows.Clear();
+                        foreach (WriteOff writeoff in WriteOffCore.WriteOffs.items)
+                        {
+                            DataGridViewRow row = new DataGridViewRow();
+                            dataGridViewWriteOff.Rows.Add(writeoff.id,
+                                ConsumblesCore.Consumbles.GetName(writeoff.id_item),
+                                EmployeesCore.Emplyees.GetEmployeeFullName(writeoff.id_employee),
+                                string.Format("{0} {1}", writeoff.amount, ConsumblesCore.Consumbles.GetMeasure(writeoff.id_item)),
+                                writeoff.comment,
+                                writeoff.date_create);
                         }
                     });
                 }

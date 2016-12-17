@@ -19,5 +19,6 @@ namespace SmartFood.Core
         public const string CLIENTS = "user/";
         public const string CLIENTS_ADDRESSES = "useraddress/";
         public const string ARRIVALS = "purchase/";
+        public const string WRITEOFF = "outlay/";
     }
 }
