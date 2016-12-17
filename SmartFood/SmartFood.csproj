@@ -107,6 +107,8 @@
     <Compile Include="Core\Serialisation\Employees.cs" />
     <Compile Include="Core\Serialisation\EmployesTypes.cs" />
     <Compile Include="Core\Serialisation\ErrorType.cs" />
+    <Compile Include="Core\Serialisation\GoodConsumbles.cs" />
+    <Compile Include="Core\Serialisation\Goods.cs" />
     <Compile Include="Core\Serialisation\Measures.cs" />
     <Compile Include="Core\Constants\UriPostfix.cs" />
     <Compile Include="Core\Serialisation\Suppliers.cs" />
