@@ -91,6 +91,9 @@
     <Compile Include="Core\ConsumbleCategorieCore.cs" />
     <Compile Include="Core\EmployeesCore.cs" />
     <Compile Include="Core\EmployeesTypesCore.cs" />
+    <Compile Include="Core\GoodConsumlesCore.cs" />
+    <Compile Include="Core\GoodsCategoriesCore.cs" />
+    <Compile Include="Core\GoodsCore.cs" />
     <Compile Include="Core\MeasuresCore.cs" />
     <Compile Include="Core\Serialisation\Accounts.cs" />
     <Compile Include="Core\Serialisation\Arrival.cs" />
@@ -109,6 +112,7 @@
     <Compile Include="Core\Serialisation\ErrorType.cs" />
     <Compile Include="Core\Serialisation\GoodConsumbles.cs" />
     <Compile Include="Core\Serialisation\Goods.cs" />
+    <Compile Include="Core\Serialisation\GoodsCategories.cs" />
     <Compile Include="Core\Serialisation\Measures.cs" />
     <Compile Include="Core\Constants\UriPostfix.cs" />
     <Compile Include="Core\Serialisation\Suppliers.cs" />
