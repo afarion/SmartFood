@@ -31,8 +31,8 @@ header('Content-Type: text/html; charset=utf-8');
             <td><input type="text" name="dish" value=""/></td>
         </tr>
         <tr>
-            <td>order</td>
-            <td><input type="text" name="order" value="priority"/></td>
+            <td>sort</td>
+            <td><input type="text" name="sort" value="priority"/></td>
         </tr>
         
         <tr>

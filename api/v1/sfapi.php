@@ -208,7 +208,47 @@ class SmartFoodApi
             case "update_outlay":
                 $this->UpdateOutlay($method, $request);
                 break;
+            
+            case "add_order":
+                $this->OnOrderAdd($method, $request);
+                break;
+                
+            case "edit_order":
+                $this->OnOrderEdit($method, $request);
+                break;
+                
+            case "add_orderdish":
+                $this->OnOrderDishAdd($method, $request);
+                break;
+                
+            case "edit_orderdish":
+                $this->OnOrderDishEdit($method, $request);
+                break;
         }
+    }
+    
+    private function OnOrderAdd($method, $request)
+    {
+        //Update user address
+        
+        //Update discount
+        
+        
+    }
+    
+    private function OnOrderEdit($method, $request)
+    {
+        
+    }
+    
+    private function OnOrderDishAdd($method, $request)
+    {
+        //Check in warehouse
+    }
+    
+    private function OnOrderDishEdit($method, $request)
+    {
+        
     }
     
     private function UpdatePurchase($method, $request)
@@ -684,7 +724,12 @@ class SmartFoodApi
                 foreach($methodConfig["filters"] as $key => $filterData)
                 {
                     if(!isset($request[$key]))
+                    {
+                        if(isset($filterData["required"]) && $filterData["required"] == true)
+                            $this->ShowError("request");
+                        
                         continue;
+                    }
                         
                     $val = $request[$key];
                         
@@ -739,18 +784,18 @@ class SmartFoodApi
             //Generate order by string for query
             $orderBy = "";
             
-            if(isset($methodConfig["order"]) && is_array($methodConfig["order"]) && count($methodConfig["order"]) > 0)
+            if(isset($methodConfig["sort"]) && is_array($methodConfig["sort"]) && count($methodConfig["sort"]) > 0)
             {
                 // By default first
-                $orderParam = array_values($methodConfig["order"])[0];
+                $orderParam = array_values($methodConfig["sort"])[0];
                 
                 // Custom order
-                if(isset($request["order"]))
+                if(isset($request["sort"]))
                 {
-                    $orderVal = $request["order"];
+                    $orderVal = $request["sort"];
                     
-                    if(isset($methodConfig["order"][$orderVal]))
-                        $orderParam = $methodConfig["order"][$orderVal];
+                    if(isset($methodConfig["sort"][$orderVal]))
+                        $orderParam = $methodConfig["sort"][$orderVal];
                 }
                 
                 if(is_array($orderParam))
@@ -940,27 +985,6 @@ class SmartFoodApi
             if($item["required"] && !isset($params[$name]))
                 $this->ShowError("request");
         }
-        
-        /*
-        switch($action)
-        {
-            case "booking_price":
-            {
-                $bookingData = $this->CalculateBookingPrice($params);
-                $this->ShowBookingPrice($bookingData);
-                break;
-            }
-            case "booking_order":
-            {
-                $userData       = $this->GetUserData($params);
-                $bookingData    = $this->CalculateBookingPrice($params);
-                $orderData      = $this->MakeOrder($params, $userData, $bookingData);
-                
-                $this->ShowJson($orderData);
-                break;
-            }
-        }
-        */
     }
     
     private function CurlPost($url, $accessSecret, $key, $data)
@@ -988,214 +1012,6 @@ class SmartFoodApi
         curl_close($ch);
         
         return $result;
-    }
-    
-    private function MakeOrder($params, $userData, $bookingData)
-    {
-        /*
-        $userNotes = isset($params["user_notes"]) ? $params["user_notes"] : "";
-        
-        $idManager = intval($bookingData["deal"]["id_manager"]);
-        $managerName = $this->GetIdByQuery("SELECT name as id FROM tadmin WHERE id = $idManager");
-        
-        $id_hotel       = intval($params["hotel"]);
-        $id_roomdeal    = intval($params["deal"]);
-        $id_user        = intval($params["user_id"]);
-        $id_manager     = $idManager;
-        $id_status      = 1;
-        $id_duration    = intval($bookingData["deal"]["id_duration"]);
-        $id_checkout    = intval($bookingData["deal"]["id_checkout"]);
-        $user_name      = $this->MySqlScreening($userData["name"]);
-        $manager_name   = $this->MySqlScreening($managerName);
-        $room_name      = $this->MySqlScreening($bookingData["deal"]["name"]);
-        $user_phone     = $this->MySqlScreening($userData["phone"]);
-        $user_email     = $this->MySqlScreening($userData["email"]);
-        $price          = $this->MySqlScreening($bookingData["deal"]["price"]);
-        $tonight_price  = $this->MySqlScreening($bookingData["deal"]["tonight_price"]);
-        $tax            = $bookingData["tax"];
-        $tax_price      = $bookingData["tax_price"] / 100;
-        $subtotal_price = $bookingData["subtotal_price"] / 100;
-        $total_price    = $bookingData["total_price"] / 100;
-        $notes_user     = $this->MySqlScreening($userNotes);
-        $visible        = 1;
-        
-        // Check deal
-        $dealId = $this->GetValueByQuery("SELECT id FROM troomdeal WHERE id='$id_roomdeal' and visible > 0 and date_finish > NOW()", "id");
-        
-        if($dealId <= 0)
-            $this->ShowError(ERROR_CODE_REQUEST, ERROR_TEXT_REQUEST);
-        
-        // Check total price
-        $totalPriceCalc = $bookingData["total_price"];
-        $totalPriceIn   = isset($params["total_price"]) ? $params["total_price"] : 0;
-        
-        if(intval($totalPriceCalc) != intval($totalPriceIn))
-        {
-            $this->ShowError(ERROR_CODE_PRICE, ERROR_TEXT_PRICE);
-        }
-        
-        // Payment token and other from POST (and save to DB if retain = true) or get from DB
-        $payment_method_token   = isset($params["payment_method_token"]) ? $params["payment_method_token"] : "";
-        $last_4_numbers         = isset($params["last_4_numbers"]) ? $params["last_4_numbers"] : "";
-        $fist_name              = isset($params["fist_name"]) ? $params["fist_name"] : "";
-        $last_name              = isset($params["last_name"]) ? $params["last_name"] : "";
-        $hotel_member_id        = isset($params["hotel_member_id"]) ? $params["hotel_member_id"] : "";
-        $guest_full_name        = isset($params["guest_full_name"]) ? $params["guest_full_name"] : "";
-        
-        $retain                 = isset($params["retain"]) ? $params["retain"] : 0;
-        $retainText             = $retain > 0 ? "true" : "false";
-        
-        // if data is empty, get from DB by user id
-        if($payment_method_token == "")
-        {
-            $payment_method_token = $userData["payment_method_token"];
-            $retainText = "true";
-        }
-            
-        if($last_4_numbers == "")
-            $last_4_numbers = $userData["last_4_numbers"];
-            
-        if($payment_method_token == "" || $last_4_numbers == "" || $fist_name == "" || $last_name == "" || $guest_full_name == "")
-            $this->ShowError(ERROR_CODE_REQUEST, ERROR_TEXT_REQUEST);
-        
-        $payment_method_token   = $this->MySqlScreening($payment_method_token);
-        $last_4_numbers         = $this->MySqlScreening($last_4_numbers);
-        $fist_name              = $this->MySqlScreening($fist_name);
-        $last_name              = $this->MySqlScreening($last_name);
-        $hotel_member_id        = $this->MySqlScreening($hotel_member_id);
-        $guest_full_name        = $this->MySqlScreening($guest_full_name);
-        
-        // if retain > 0 and data not empty, save to DB
-        if($retain > 0)
-        {
-            $query = "UPDATE tuser SET payment_method_token = '$payment_method_token', last_4_numbers = '$last_4_numbers' WHERE id = '$id_user'";
-            
-            $this->ExecuteNonQuery($query);
-        }
-        
-        // Insert order into DB
-        
-        $query = "INSERT INTO torder (id_hotel, id_roomdeal, id_user, id_manager, id_status, id_duration, id_checkout, user_name, manager_name, room_name, user_phone, user_email, price, tonight_price, total_price, tax, tax_price, subtotal_price, notes_user, visible, payment_method_token, last_4_numbers, fist_name, last_name, hotel_member_id, guest_full_name, date_insert) VALUES ('$id_hotel', '$id_roomdeal', '$id_user', '$id_manager', '$id_status', '$id_duration', '$id_checkout', '$user_name', '$manager_name', '$room_name', '$user_phone', '$user_email', '$price', '$tonight_price', '$total_price', '$tax', '$tax_price', '$subtotal_price', '$notes_user', '$visible', '$payment_method_token', '$last_4_numbers', '$fist_name', '$last_name', '$hotel_member_id', '$guest_full_name', NOW())";
-        
-        $this->ExecuteNonQuery($query);
-        
-        $orderId = mysql_insert_id();
-        
-        if($orderId <= 0)
-            $this->ShowError(ERROR_CODE_ORDER, ERROR_TEXT_ORDER);
-        
-        foreach($bookingData["services"] as $item)
-        {
-            $itemId     = intval($item["id"]);
-            $itemIdSer  = intval($item["id_service"]);
-            $itemPrice  = $this->MySqlScreening($item["price"]);
-            $itemTPrice = $this->MySqlScreening($item["tonight_price"]);
-            $itemDescr  = $this->MySqlScreening($item["description"]);
-            $itemVis    = 1;
-            
-            $query = "INSERT INTO torderservice (id_order, id_service, id_dealservise, price, tonight_price, description, visible, date_insert) VALUES ('$orderId', '$itemIdSer', '$itemId', '$itemPrice', '$itemTPrice', '$itemDescr', '$itemVis', NOW())";
-            
-            $this->ExecuteNonQuery($query);
-        }
-        
-        // Generate description
-        $description = "Order: $orderId; Fist Name: $fist_name; Last Name: $last_name; Hotel Member ID: $hotel_member_id; Guest Full Name: $guest_full_name";
-        $description = str_replace("\"", "", $description);
-        
-        // Get gateway from hotel by id
-        $gateway = $this->GetValueByQuery("SELECT gateway_token FROM thotel WHERE id = '$id_hotel'", "gateway_token");
-        
-        if($gateway == "")
-            $this->ShowError(ERROR_CODE_GATEWAY, ERROR_TEXT_GATEWAY);
-        
-        // Try to Make a Purchase
-        $purchaseData = '
-        {
-            "transaction": {
-              "payment_method_token": "'.$payment_method_token.'",
-              "amount": '.intval($totalPriceCalc).',
-              "currency_code": "USD",
-              "retain_on_success": '.$retainText.',
-              "order_id": "'.$orderId.'",
-              "ip": "'.$_SERVER['REMOTE_ADDR'].'",
-              "email": "'.$user_email.'",
-              "name": "'.$user_name.'",
-              "phone": "'.$user_phone.'",
-              "description": "'.$description.'"
-            }
-        }';
-        
-        $purchaseUrl = "https://core.spreedly.com/v1/gateways/$gateway/purchase.json";
-        
-        $purchaseResult = $this->CurlPost($purchaseUrl, ACCESS_SECRET, KEY, $purchaseData);
-        
-        $query = "UPDATE torder SET purchase_request = '$purchaseData', purchase_response = '".$this->MySqlScreening($purchaseResult)."' WHERE id = '$orderId'";
-        
-        $this->ExecuteNonQuery($query);
-        
-        $purchaseResultData = json_decode($purchaseResult, true);
-        
-        $resMessage = "";
-        
-        // Update result in DB
-        if(isset($purchaseResultData["transaction"]) && isset($purchaseResultData["transaction"]["succeeded"]))
-        {
-            $succeeded  = $purchaseResultData["transaction"]["succeeded"];
-            $resMessage = $this->MySqlScreening($purchaseResultData["transaction"]["message"]);
-            
-            if($succeeded == "1" || $succeeded == "true" || $succeeded == true)
-            {
-                $query = "UPDATE torder SET date_pay = NOW(), purchase_result = '$resMessage' WHERE id = '$orderId'";
-                
-                $this->ExecuteNonQuery($query);
-            }
-            else
-            {
-                $query = "UPDATE torder SET purchase_result = '$resMessage' WHERE id = '$orderId'";
-                
-                $this->ExecuteNonQuery($query);
-                
-                $this->ShowError(ERROR_CODE_PURCHASE, $resMessage);
-            }
-        }
-        else
-        {
-            $resMessage = "Invalid purchase!";
-            
-            $query = "UPDATE torder SET purchase_result = '$resMessage' WHERE id = '$orderId'";
-                
-            $this->ExecuteNonQuery($query);
-            
-            $this->ShowError(ERROR_CODE_PURCHASE, $resMessage);
-        }
-        */
-        
-        // Send Mail Example
-        /*
-        $subject = "Subject";
-        
-        $values = array(
-                "name"      => $_POST["name"],
-                "email"     => $_POST["email"],
-                "subject"   => $subject,
-                "msg"       => $_POST["msg"],
-            );
-        
-        //                          mailtype      values   send_to      subject   from_name     from_email
-        $res = MailSender::SendMail("contact-us", $values, ADMIN_EMAIL, $subject, DISPLAY_NAME, DISPLAY_EMAIL);
-        $res = MailSender::SendMail("contact-us", $values, ADMIN_EMAIL2, $subject, DISPLAY_NAME, DISPLAY_EMAIL);
-        */
-        
-        /*
-        $orderData = array(
-            "id" => $orderId,
-            "total_price" => $totalPriceCalc,
-            "submit_date" => date("Y-m-d H:i:s"),
-            "message" => $resMessage
-        );
-        
-        return $orderData;
-        */
     }
     
     private function ShowResponseList($data)

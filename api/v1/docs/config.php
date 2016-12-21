@@ -74,7 +74,7 @@ function DocConfigArray()
                     "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
                 ),
                 
-                "order" => array(
+                "sort" => array(
                     "value" => "[priority|name|create]",
                     "type"  => "string", 
                     "descr" => "Сортировка результатов. Варианты сортировок:<br />priority - по приоритету<br />name - по названию<br />create - по дате создания" 
@@ -84,7 +84,7 @@ function DocConfigArray()
             "request_post" => 
                 array(
                     "link" => "unit/",
-                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view","order":"priority"}',
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view","sort":"priority"}',
                     "test_file" => "unit_view.php"
                 ),
             
@@ -125,7 +125,7 @@ function DocConfigArray()
                     "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
                 ),
                 
-                "order" => array(
+                "sort" => array(
                     "value" => "[priority|name|create]",
                     "type"  => "string", 
                     "descr" => "Сортировка результатов. Варианты сортировок:<br />priority - по приоритету<br />name - по названию<br />create - по дате создания" 
@@ -297,7 +297,7 @@ function DocConfigArray()
                     "descr" => "ID типа. Если указан, будут возвращены категории только этого типа."
                 ),
                 
-                "order" => array(
+                "sort" => array(
                     "value" => "[priority|name|create]",
                     "type"  => "string", 
                     "descr" => "Сортировка результатов. Варианты сортировок:<br />priority - по приоритету<br />name - по названию<br />create - по дате создания" 
@@ -495,7 +495,7 @@ function DocConfigArray()
                     "descr" => "ID категории. Если указан, будут возвращены объекты только этой категории."
                 ),
                 
-                "order" => array(
+                "sort" => array(
                     "value" => "[priority|name|amount|price|price_desc|create]",
                     "type"  => "string", 
                     "descr" => "Сортировка результатов. Варианты сортировок:<br />
@@ -512,7 +512,7 @@ function DocConfigArray()
             "request_post" => 
                 array(
                     "link" => "item/",
-                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view","part":"type,category,unit","order":"priority"}',
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view","part":"type,category,unit","sort":"priority"}',
                     "test_file" => "item_view.php"
                 ),
             
@@ -737,7 +737,7 @@ function DocConfigArray()
                     "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
                 ),
                 
-                "order" => array(
+                "sort" => array(
                     "value" => "[priority|name|create]",
                     "type"  => "string", 
                     "descr" => "Сортировка результатов. Варианты сортировок:<br />priority - по приоритету<br />name - по названию<br />create - по дате создания" 
@@ -950,7 +950,7 @@ function DocConfigArray()
                     "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
                 ),
                 
-                "order" => array(
+                "sort" => array(
                     "value" => "[priority|name|create]",
                     "type"  => "string", 
                     "descr" => "Сортировка результатов. Варианты сортировок:<br />priority - по приоритету<br />name - по названию<br />create - по дате создания" 
@@ -960,7 +960,7 @@ function DocConfigArray()
             "request_post" => 
                 array(
                     "link" => "employeetype/",
-                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view","order":"priority"}',
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view","sort":"priority"}',
                     "test_file" => "employeetype_view.php"
                 ),
             
@@ -1007,7 +1007,7 @@ function DocConfigArray()
                     "descr" => "ID типа. Если указан, будут возвращены сотрудники только этого типа."
                 ),
                 
-                "order" => array(
+                "sort" => array(
                     "value" => "[priority|name|create]",
                     "type"  => "string", 
                     "descr" => "Сортировка результатов. Варианты сортировок:<br />priority - по приоритету<br />name - по названию<br />create - по дате создания" 
@@ -1275,7 +1275,7 @@ function DocConfigArray()
                     "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
                 ),
                 
-                "order" => array(
+                "sort" => array(
                     "value" => "[create|name]",
                     "type"  => "string", 
                     "descr" => "Сортировка результатов. Варианты сортировок:<br />create - по дате создания<br />name - по названию" 
@@ -1498,10 +1498,10 @@ function DocConfigArray()
                 "user" => array(
                     "value" => "",
                     "type"  => "int", 
-                    "descr" => "ID пользователя."
+                    "descr" => "ID пользователя. Обязательное поле."
                 ),
                 
-                "order" => array(
+                "sort" => array(
                     "value" => "[priority|name|create]",
                     "type"  => "string", 
                     "descr" => "Сортировка результатов. Варианты сортировок:<br />priority - по приоритету<br />name - по названию<br />create - по дате создания" 
@@ -1654,7 +1654,7 @@ function DocConfigArray()
                     "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
                 ),
                 
-                "order" => array(
+                "sort" => array(
                     "value" => "[create|name]",
                     "type"  => "string", 
                     "descr" => "Сортировка результатов. Варианты сортировок:<br />create - по дате создания<br />name - по названию" 
@@ -1850,7 +1850,7 @@ function DocConfigArray()
                     "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
                 ),
                 
-                "order" => array(
+                "sort" => array(
                     "value" => "[create]",
                     "type"  => "string", 
                     "descr" => "Сортировка результатов. Варианты сортировок:<br />create - по дате создания" 
@@ -1974,7 +1974,7 @@ function DocConfigArray()
                     "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
                 ),
                 
-                "order" => array(
+                "sort" => array(
                     "value" => "[create]",
                     "type"  => "string", 
                     "descr" => "Сортировка результатов. Варианты сортировок:<br />create - по дате создания" 
@@ -2092,7 +2092,7 @@ function DocConfigArray()
                     "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
                 ),
                 
-                "order" => array(
+                "sort" => array(
                     "value" => "[priority|name|create]",
                     "type"  => "string", 
                     "descr" => "Сортировка результатов. Варианты сортировок:<br />priority - по приоритету<br />name - по названию<br />create - по дате создания" 
@@ -2102,7 +2102,7 @@ function DocConfigArray()
             "request_post" => 
                 array(
                     "link" => "dishcategory/",
-                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view","order":"priority"}',
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view","sort":"priority"}',
                     "test_file" => "dishcategory_view.php"
                 ),
             
@@ -2156,7 +2156,7 @@ function DocConfigArray()
                     "descr" => "ID категории. Если указан, будут возвращены объекты только этой категории."
                 ),
                 
-                "order" => array(
+                "sort" => array(
                     "value" => "[priority|name|price|price_desc|create]",
                     "type"  => "string", 
                     "descr" => "Сортировка результатов. Варианты сортировок:<br />
@@ -2172,7 +2172,7 @@ function DocConfigArray()
             "request_post" => 
                 array(
                     "link" => "dish/",
-                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view","part":"category","order":"priority"}',
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view","part":"category","sort":"priority"}',
                     "test_file" => "dish_view.php"
                 ),
             
@@ -2367,10 +2367,10 @@ function DocConfigArray()
                 "dish" => array(
                     "value" => "",
                     "type"  => "int", 
-                    "descr" => "ID товара. Если указан, будут возвращены объекты только этого товара."
+                    "descr" => "ID товара. Если указан, будут возвращены объекты только этого товара. Обязательное поле."
                 ),
                 
-                "order" => array(
+                "sort" => array(
                     "value" => "[priority|name|create]",
                     "type"  => "string", 
                     "descr" => "Сортировка результатов. Варианты сортировок:<br />
@@ -2384,7 +2384,7 @@ function DocConfigArray()
             "request_post" => 
                 array(
                     "link" => "dishitem/",
-                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view","part":"item","order":"priority"}',
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view","part":"item","sort":"priority"}',
                     "test_file" => "dishitem_view.php"
                 ),
             
@@ -2524,7 +2524,53 @@ function DocConfigArray()
             
         ),
         
-        
+        "dishitem_remove" => array(
+            
+            "name" => "Расходники товаров. Remove",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "add",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае удаление (remove). Обязательное поле."
+                ),
+                
+                "id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID удаляемого расходника. Обязательное поле."
+                ),
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "dishitem/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"remove","id":"1"}',
+                    "test_file" => "dishitem_remove.php"
+                ),
+            
+            "response" => '{"success":1}',
+            
+        ),
         
         
         // ====================================================================================================
