@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using static SmartFood.Core.Constants.GeneralConstants;
 
 namespace SmartFood.Forms
 {
@@ -159,13 +160,59 @@ namespace SmartFood.Forms
 
             dataGridViewClients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewClients.AllowUserToAddRows = false;
-            dataGridViewClients.Columns[0].ReadOnly = true;
-            dataGridViewClients.Columns[4].ReadOnly = true;
-            dataGridViewClients.Columns[5].ReadOnly = true;
-            dataGridViewClients.Columns[6].ReadOnly = true;
-            dataGridViewClients.Columns[7].ReadOnly = true;
             dataGridViewClients.RowHeadersVisible = false;
             dataGridViewClients.EditMode = DataGridViewEditMode.EditOnEnter;
+            dataGridViewClients.ReadOnly = true;
+            #endregion
+
+            #region dataGridViewArrivals
+            dataGridViewArrival.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
+            dataGridViewArrival.Columns.Add(UIConstans.NEW_COLUMN_CONSUMBLE, GeneralConstants.CONSUMBLE);
+            dataGridViewArrival.Columns.Add(UIConstans.NEW_COLUMN_SUPPLIER, GeneralConstants.SUPPLIER);
+            dataGridViewArrival.Columns.Add(UIConstans.NEW_COLUMN_EMPLOYEE, GeneralConstants.EMPLOYEE);
+            dataGridViewArrival.Columns.Add(UIConstans.NEW_COLUMN_AMOUNT, GeneralConstants.AMOUNT);
+            dataGridViewArrival.Columns.Add(UIConstans.NEW_COLUMN_PRICE, GeneralConstants.PRICE);
+            dataGridViewArrival.Columns.Add(UIConstans.NEW_COLUMN_DATE, GeneralConstants.DATE);
+
+            dataGridViewArrival.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewArrival.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewArrival.AllowUserToAddRows = false;
+            dataGridViewArrival.RowHeadersVisible = false;
+            dataGridViewArrival.ReadOnly = true;
+            #endregion
+
+            #region dataGridViewWriteOffs
+            dataGridViewWriteOff.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
+            dataGridViewWriteOff.Columns.Add(UIConstans.NEW_COLUMN_CONSUMBLE, GeneralConstants.CONSUMBLE);
+            dataGridViewWriteOff.Columns.Add(UIConstans.NEW_COLUMN_EMPLOYEE, GeneralConstants.EMPLOYEE);
+            dataGridViewWriteOff.Columns.Add(UIConstans.NEW_COLUMN_AMOUNT, GeneralConstants.AMOUNT);
+            dataGridViewWriteOff.Columns.Add(UIConstans.NEW_COLUMN_COMMENT, GeneralConstants.COMMENT);
+            dataGridViewWriteOff.Columns.Add(UIConstans.NEW_COLUMN_DATE, GeneralConstants.DATE);
+
+            dataGridViewWriteOff.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewWriteOff.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewWriteOff.AllowUserToAddRows = false;
+            dataGridViewWriteOff.RowHeadersVisible = false;
+            dataGridViewWriteOff.ReadOnly = true;
+            #endregion
+
+            #region dataGridViewGoods
+            dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
+            dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.NAME);
+            dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_CATEGORY, GeneralConstants.CATEGORY);
+            dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_PRICE, GeneralConstants.PRICE);
+            dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_WEIGHT, GeneralConstants.WEIGHT);
+
+            column = new DataGridViewComboBoxColumn();
+            column.DataSource = new List<string>() { GeneralConstants.YES, GeneralConstants.NO };
+            column.HeaderText = GeneralConstants.VISIBILITY;
+            dataGridViewGoods.Columns.Add(column);
+
+            dataGridViewGoods.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewGoods.AllowUserToAddRows = false;
+            dataGridViewGoods.RowHeadersVisible = false;
+            dataGridViewGoods.EditMode = DataGridViewEditMode.EditOnEnter;
+            dataGridViewGoods.ReadOnly = true;
             #endregion
         }
 
@@ -422,7 +469,51 @@ namespace SmartFood.Forms
             tmpPoint.X = tabPageConsumables.Left + 10;
             tmpPoint.Y = tabPageConsumables.Top + 10;
             dataGridViewGoods.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
+            dataGridViewGoods.CellDoubleClick += DataGridViewGoods_CellDoubleClick;
+            UpdateDataGridViewGoods();
             this.Refresh();
+        }
+
+        private void DataGridViewGoods_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                //ClientDetailsForm modalForm = new ClientDetailsForm(Convert.ToInt32(dataGridViewClients[0, e.RowIndex].Value));
+                //modalForm.StartPosition = FormStartPosition.CenterScreen;
+                //this.Enabled = false;
+                //modalForm.Show();
+            }
+        }
+
+        public void UpdateDataGridViewGoods()
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        dataGridViewGoods.Rows.Clear();
+                        foreach (Good good in GoodsCore.Goods.items)
+                        {
+                            DataGridViewRow row = new DataGridViewRow();
+                            dataGridViewGoods.Rows.Add(good.id, 
+                                good.name, 
+                                GoodsCategoriesCore.GoodsCategories.GetName(good.id_category),
+                                good.price,
+                                good.weight,
+                                Convert.ToBoolean(good.visible) ? GeneralConstants.YES : GeneralConstants.NO);
+                            dataGridViewGoods.CellValueChanged += DataGridViewGoods_CellValueChanged;
+                            updateFlag = true;
+                        }
+                    });
+                }
+                catch { }
+            }).Start();
+        }
+
+        private void DataGridViewGoods_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
         }
 
         private void TabPageAcounts_Enter(object sender, EventArgs e)
@@ -692,11 +783,11 @@ namespace SmartFood.Forms
         {
             Point tmpPoint = new Point();
 
-            tmpPoint.X = tabPageConsumables.Width - buttonArrivial.Width - 10;
+            tmpPoint.X = tabPageConsumables.Width / 2 - 10 - buttonArrivial.Width;
             tmpPoint.Y = tabPageConsumables.Height - buttonArrivial.Height - 10;
             buttonArrivial.Location = tmpPoint;
 
-            tmpPoint.X = buttonArrivial.Location.X - buttonWriteOff.Width - 10;
+            tmpPoint.X = tabPageConsumables.Width - buttonArrivial.Width - 10;
             buttonWriteOff.Location = tmpPoint;
 
             int tmpWidth = tabPageConsumables.Width / 2 - 20;
@@ -707,7 +798,60 @@ namespace SmartFood.Forms
             dataGridViewArrival.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
             tmpPoint.X = tabPageConsumables.Width / 2 + 10;
             dataGridViewWriteOff.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
+            UpdateDataGridViewArrival();
+            UpdateDataGridViewWriteOff();
             this.Refresh();
+        }
+
+        public void UpdateDataGridViewArrival()
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        dataGridViewArrival.Rows.Clear();
+                        foreach (Arrival arrival in ArrivalCore.Arrivals.items)
+                        {
+                            DataGridViewRow row = new DataGridViewRow();
+                            dataGridViewArrival.Rows.Add(arrival.id,
+                                ConsumblesCore.Consumbles.GetName(arrival.id_item),
+                                SuppliersCore.Suppliers.GetName(arrival.id_provider),
+                                EmployeesCore.Emplyees.GetEmployeeFullName(arrival.id_employee),
+                                string.Format("{0} {1}",arrival.amount, ConsumblesCore.Consumbles.GetMeasure(arrival.id_item)),
+                                arrival.price,
+                                arrival.date_create);
+                        }
+                    });
+                }
+                catch { }
+            }).Start();
+        }
+
+        public void UpdateDataGridViewWriteOff()
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        dataGridViewWriteOff.Rows.Clear();
+                        foreach (WriteOff writeoff in WriteOffCore.WriteOffs.items)
+                        {
+                            DataGridViewRow row = new DataGridViewRow();
+                            dataGridViewWriteOff.Rows.Add(writeoff.id,
+                                ConsumblesCore.Consumbles.GetName(writeoff.id_item),
+                                EmployeesCore.Emplyees.GetEmployeeFullName(writeoff.id_employee),
+                                string.Format("{0} {1}", writeoff.amount, ConsumblesCore.Consumbles.GetMeasure(writeoff.id_item)),
+                                writeoff.comment,
+                                writeoff.date_create);
+                        }
+                    });
+                }
+                catch { }
+            }).Start();
         }
 
         private void AdminForm_Move(object sender, EventArgs e)

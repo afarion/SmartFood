@@ -81,6 +81,7 @@
   <ItemGroup>
     <Compile Include="Core\AcountsCore.cs" />
     <Compile Include="Core\AcountTypesCore.cs" />
+    <Compile Include="Core\ArrivalCore.cs" />
     <Compile Include="Core\ClientAddressesCore.cs" />
     <Compile Include="Core\ClientsCore.cs" />
     <Compile Include="Core\Constants\ActionsConstants.cs" />
@@ -90,8 +91,12 @@
     <Compile Include="Core\ConsumbleCategorieCore.cs" />
     <Compile Include="Core\EmployeesCore.cs" />
     <Compile Include="Core\EmployeesTypesCore.cs" />
+    <Compile Include="Core\GoodConsumlesCore.cs" />
+    <Compile Include="Core\GoodsCategoriesCore.cs" />
+    <Compile Include="Core\GoodsCore.cs" />
     <Compile Include="Core\MeasuresCore.cs" />
     <Compile Include="Core\Serialisation\Accounts.cs" />
+    <Compile Include="Core\Serialisation\Arrival.cs" />
     <Compile Include="Core\Serialisation\AuthUserData.cs" />
     <Compile Include="Core\ComboBoxItem.cs" />
     <Compile Include="Core\CoreBase.cs" />
@@ -105,10 +110,15 @@
     <Compile Include="Core\Serialisation\Employees.cs" />
     <Compile Include="Core\Serialisation\EmployesTypes.cs" />
     <Compile Include="Core\Serialisation\ErrorType.cs" />
+    <Compile Include="Core\Serialisation\GoodConsumbles.cs" />
+    <Compile Include="Core\Serialisation\Goods.cs" />
+    <Compile Include="Core\Serialisation\GoodsCategories.cs" />
     <Compile Include="Core\Serialisation\Measures.cs" />
     <Compile Include="Core\Constants\UriPostfix.cs" />
     <Compile Include="Core\Serialisation\Suppliers.cs" />
+    <Compile Include="Core\Serialisation\WriteOff.cs" />
     <Compile Include="Core\SuppliersCore.cs" />
+    <Compile Include="Core\WriteOffCore.cs" />
     <Compile Include="Forms\AcountDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +234,12 @@
     <Compile Include="Forms\GoodDetailsForm.Designer.cs">
       <DependentUpon>GoodDetailsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\NewGoodsConsumble.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewGoodsConsumble.Designer.cs">
+      <DependentUpon>NewGoodsConsumble.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\OrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,6 +307,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GoodDetailsForm.resx">
       <DependentUpon>GoodDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewGoodsConsumble.resx">
+      <DependentUpon>NewGoodsConsumble.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OrderForm.resx">
       <DependentUpon>OrderForm.cs</DependentUpon>

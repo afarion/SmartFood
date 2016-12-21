@@ -41,7 +41,7 @@ namespace SmartFood.Forms
             {
                 ClientsCore.AddClient(textBoxName.Text, textBoxPhone.Text, string.IsNullOrEmpty(textBoxEmeil.Text)?"": textBoxEmeil.Text, string.IsNullOrEmpty(textBoxComment.Text) ? "" : textBoxComment.Text);
                 ClientsCore.GetClients();
-                AdminForm.instance.UpdateDataGridViewClients();
+                AdminForm.instance.UpdateDataGridViewArrival();
                 this.Close();
             }
         }

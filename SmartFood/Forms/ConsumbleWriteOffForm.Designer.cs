@@ -33,12 +33,12 @@
             this.labelName = new System.Windows.Forms.Label();
             this.textBoxCount = new System.Windows.Forms.TextBox();
             this.labelCount = new System.Windows.Forms.Label();
-            this.textBoxCook = new System.Windows.Forms.TextBox();
             this.labelCook = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxComment = new System.Windows.Forms.RichTextBox();
             this.labelReasone = new System.Windows.Forms.Label();
             this.buttonOk = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.comboBoxCook = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // comboBoxName
@@ -74,13 +74,6 @@
             this.labelCount.TabIndex = 9;
             this.labelCount.Text = "Количество/Вес";
             // 
-            // textBoxCook
-            // 
-            this.textBoxCook.Location = new System.Drawing.Point(115, 65);
-            this.textBoxCook.Name = "textBoxCook";
-            this.textBoxCook.Size = new System.Drawing.Size(165, 20);
-            this.textBoxCook.TabIndex = 11;
-            // 
             // labelCook
             // 
             this.labelCook.AutoSize = true;
@@ -90,13 +83,13 @@
             this.labelCook.TabIndex = 12;
             this.labelCook.Text = "Повар Приемщик";
             // 
-            // richTextBox1
+            // richTextBoxComment
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(15, 91);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(265, 54);
-            this.richTextBox1.TabIndex = 13;
-            this.richTextBox1.Text = "";
+            this.richTextBoxComment.Location = new System.Drawing.Point(15, 91);
+            this.richTextBoxComment.Name = "richTextBoxComment";
+            this.richTextBoxComment.Size = new System.Drawing.Size(265, 54);
+            this.richTextBoxComment.TabIndex = 13;
+            this.richTextBoxComment.Text = "";
             // 
             // labelReasone
             // 
@@ -115,6 +108,7 @@
             this.buttonOk.TabIndex = 15;
             this.buttonOk.Text = "Ок";
             this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // buttonCancel
             // 
@@ -126,17 +120,25 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
+            // comboBoxCook
+            // 
+            this.comboBoxCook.FormattingEnabled = true;
+            this.comboBoxCook.Location = new System.Drawing.Point(115, 64);
+            this.comboBoxCook.Name = "comboBoxCook";
+            this.comboBoxCook.Size = new System.Drawing.Size(165, 21);
+            this.comboBoxCook.TabIndex = 17;
+            // 
             // ConsumbleWriteOffForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(289, 181);
+            this.Controls.Add(this.comboBoxCook);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.labelReasone);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.richTextBoxComment);
             this.Controls.Add(this.labelCook);
-            this.Controls.Add(this.textBoxCook);
             this.Controls.Add(this.labelCount);
             this.Controls.Add(this.textBoxCount);
             this.Controls.Add(this.labelName);
@@ -146,7 +148,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ConsumbleWriteOffForm";
-            this.Text = "ConsumbleWriteOffForm";
+            this.Text = "Списание расходника";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ConsumbleWriteOffForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -159,11 +161,11 @@
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.TextBox textBoxCount;
         private System.Windows.Forms.Label labelCount;
-        private System.Windows.Forms.TextBox textBoxCook;
         private System.Windows.Forms.Label labelCook;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBoxComment;
         private System.Windows.Forms.Label labelReasone;
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.ComboBox comboBoxCook;
     }
 }

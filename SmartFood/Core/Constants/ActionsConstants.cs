@@ -47,5 +47,10 @@ namespace SmartFood.Core.Constants
         public const string CLIENT_ID = "id_user";
         public const string DISCOUNT_FIXED = "discount_fixed";
         public const string DISCOUNT_REASONE = "discount_reason";
+        public const string CONSUMBLE_ID = "id_item";
+        public const string SUPPLIER_ID = "id_provider";
+        public const string GOOD_ID = "id_dish";
+        public const string WEIGHT = "weight";
+        public const string CATEGORY = "category";
     }
 }

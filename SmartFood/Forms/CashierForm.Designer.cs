@@ -72,7 +72,7 @@
             // 
             this.SearchOrderTextBox.Location = new System.Drawing.Point(105, 12);
             this.SearchOrderTextBox.Name = "SearchOrderTextBox";
-            this.SearchOrderTextBox.Size = new System.Drawing.Size(243, 20);
+            this.SearchOrderTextBox.Size = new System.Drawing.Size(243, 22);
             this.SearchOrderTextBox.TabIndex = 3;
             // 
             // label
@@ -80,7 +80,7 @@
             this.label.AutoSize = true;
             this.label.Location = new System.Drawing.Point(6, 14);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(93, 13);
+            this.label.Size = new System.Drawing.Size(120, 16);
             this.label.TabIndex = 4;
             this.label.Text = "Номер телефона";
             // 
@@ -127,7 +127,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "CashierForm";
-            this.Text = "Касир";
+            this.Text = "Оператор";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CashierForm_FormClosed);
             this.Shown += new System.EventHandler(this.CashierForm_Shown);
             this.Move += new System.EventHandler(this.CashierForm_Move);
