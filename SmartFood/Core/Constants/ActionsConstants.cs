@@ -51,5 +51,6 @@ namespace SmartFood.Core.Constants
         public const string SUPPLIER_ID = "id_provider";
         public const string GOOD_ID = "id_dish";
         public const string WEIGHT = "weight";
+        public const string CATEGORY = "category";
     }
 }

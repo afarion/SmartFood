@@ -25,8 +25,8 @@ namespace SmartFood.Core
             Dictionary<string, string> param = new Dictionary<string, string>();
             param.Add(RequestFields.ACTION, Actions.GET);
             bool isOk = SendGetRequest<Goods>(UriPostfix.GOODS, param, out goods);
-            foreach (Good good in goods.items)
-                good.consumbles = GoodConsumlesCore.GetGoodConsumles(good.id);
+            //foreach (Good good in goods.items)
+            //    good.consumbles = GoodConsumlesCore.GetGoodConsumles(good.id);
 
             return isOk;
         }

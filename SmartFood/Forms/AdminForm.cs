@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using static SmartFood.Core.Constants.GeneralConstants;
 
 namespace SmartFood.Forms
 {
@@ -193,6 +194,25 @@ namespace SmartFood.Forms
             dataGridViewWriteOff.AllowUserToAddRows = false;
             dataGridViewWriteOff.RowHeadersVisible = false;
             dataGridViewWriteOff.ReadOnly = true;
+            #endregion
+
+            #region dataGridViewGoods
+            dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
+            dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.NAME);
+            dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_CATEGORY, GeneralConstants.CATEGORY);
+            dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_PRICE, GeneralConstants.PRICE);
+            dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_WEIGHT, GeneralConstants.WEIGHT);
+
+            column = new DataGridViewComboBoxColumn();
+            column.DataSource = new List<string>() { GeneralConstants.YES, GeneralConstants.NO };
+            column.HeaderText = GeneralConstants.VISIBILITY;
+            dataGridViewGoods.Columns.Add(column);
+
+            dataGridViewGoods.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewGoods.AllowUserToAddRows = false;
+            dataGridViewGoods.RowHeadersVisible = false;
+            dataGridViewGoods.EditMode = DataGridViewEditMode.EditOnEnter;
+            dataGridViewGoods.ReadOnly = true;
             #endregion
         }
 
@@ -449,7 +469,51 @@ namespace SmartFood.Forms
             tmpPoint.X = tabPageConsumables.Left + 10;
             tmpPoint.Y = tabPageConsumables.Top + 10;
             dataGridViewGoods.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
+            dataGridViewGoods.CellDoubleClick += DataGridViewGoods_CellDoubleClick;
+            UpdateDataGridViewGoods();
             this.Refresh();
+        }
+
+        private void DataGridViewGoods_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                //ClientDetailsForm modalForm = new ClientDetailsForm(Convert.ToInt32(dataGridViewClients[0, e.RowIndex].Value));
+                //modalForm.StartPosition = FormStartPosition.CenterScreen;
+                //this.Enabled = false;
+                //modalForm.Show();
+            }
+        }
+
+        public void UpdateDataGridViewGoods()
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        dataGridViewGoods.Rows.Clear();
+                        foreach (Good good in GoodsCore.Goods.items)
+                        {
+                            DataGridViewRow row = new DataGridViewRow();
+                            dataGridViewGoods.Rows.Add(good.id, 
+                                good.name, 
+                                GoodsCategoriesCore.GoodsCategories.GetName(good.id_category),
+                                good.price,
+                                good.weight,
+                                Convert.ToBoolean(good.visible) ? GeneralConstants.YES : GeneralConstants.NO);
+                            dataGridViewGoods.CellValueChanged += DataGridViewGoods_CellValueChanged;
+                            updateFlag = true;
+                        }
+                    });
+                }
+                catch { }
+            }).Start();
+        }
+
+        private void DataGridViewGoods_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
         }
 
         private void TabPageAcounts_Enter(object sender, EventArgs e)

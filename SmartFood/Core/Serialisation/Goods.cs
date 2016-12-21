@@ -10,6 +10,17 @@ namespace SmartFood.Core.Serialisation
     {
         public int count;
         public List<Good> items;
+
+        public int GetId(string name)
+        {
+            foreach(Good good in items)
+            {
+                if (good.name == name)
+                    return good.id;
+            }
+
+            return -1;
+        }
     }
 
     [Serializable]
@@ -20,7 +31,6 @@ namespace SmartFood.Core.Serialisation
         public string name;
         public double weight;
         public double price;
-        public string category;
         public int visible;
         [NonSerialized]
         public GoodConsumbles consumbles;

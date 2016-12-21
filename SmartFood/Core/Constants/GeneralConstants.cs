@@ -46,41 +46,43 @@ namespace SmartFood.Core.Constants
         public const string CONSUMBLE = "Расходник";
         public const string SUPPLIER = "Поставщик";
         public const string DATE = "Дата";
-    }
+        public const string WEIGHT = "Вес";
 
 
-    public class UIConstans
-    {
-        public const string  NEW_COLUMN_ID = "newColumnID";
-        public const string NEW_COLUMN_NAME = "newColumnName";
-        public const string NEW_COLUMN_PRICE = "newColumnPrice";
-        public const string NEW_COLUMN_MEASURING = "newColumnMeasuring";
-        public const string NEW_COLUMN_AMOUNT= "newColumnAmount";
-        public const string NEW_COLUMN_WASTE = "newColumnWaste";
-        public const string NEW_COLUMN_TYPE = "newColumnType";
-        public const string NEW_COLUMN_CATEGORY = "newColumnCategory";
-        public const string NEW_COLUMN_PHONE = "newColumnPhone";
-        public const string NEW_COLUMN_SKYPE = "newColumnSkypet";
-        public const string NEW_COLUMN_EMEIL = "newColumnEmail";
-        public const string NEW_COLUMN_NOTES = "newColumnNotes";
-        public const string NEW_COLUMN_FIRST_NAME = "newColumnFirstName";
-        public const string NEW_COLUMN_LAST_NAME = "newColumnLastName";
-        public const string NEW_COLUMN_ID_TYPE = "newColumnLastName";
-        public const string NEW_COLUMN_PHONE_EX = "newColumnPhoneEx";
-        public const string NEW_COLUMN_ADRESS = "newColumnAdress";
-        public const string NEW_COLUMN_BIRTHDAY = "newColumnBirthday";
-        public const string NEW_COLUMN_COMMENT = "newColumnComment";
-        public const string NEW_COLUMN_LOGIN = "newColumnLogin";
-        public const string NEW_COLUMN_PASSWORD = "newColumnLogin";
-        public const string NEW_COLUMN_ACOUNT_TYPE = "newColumnAcountType";
-        public const string NEW_COLUMN_EMPLOYEE_TYPE = "newColumnEmplyeeType";
-        public const string NEW_COLUMN_DISCOUNT_FLEX = "newColumnDiscountFlexible";
-        public const string NEW_COLUMN_DISCOUNT_FIXED= "newColumnDiscountFixed";
-        public const string NEW_COLUMN_DISCOUNT_REASONE = "newColumnDiscountReasone";
-        public const string NEW_COLUMN_TOTAL_BALANCE = "newColumnTotalBalance";
-        public const string NEW_COLUMN_CONSUMBLE = "newColumnTotalConsumble";
-        public const string NEW_COLUMN_SUPPLIER = "newColumnTotalSupplier";
-        public const string NEW_COLUMN_EMPLOYEE = "newColumnTotalEmployee";
-        public const string NEW_COLUMN_DATE = "newColumnTotalDate";
+        public class UIConstans
+        {
+            public const string NEW_COLUMN_ID = "newColumnID";
+            public const string NEW_COLUMN_NAME = "newColumnName";
+            public const string NEW_COLUMN_PRICE = "newColumnPrice";
+            public const string NEW_COLUMN_MEASURING = "newColumnMeasuring";
+            public const string NEW_COLUMN_AMOUNT = "newColumnAmount";
+            public const string NEW_COLUMN_WASTE = "newColumnWaste";
+            public const string NEW_COLUMN_TYPE = "newColumnType";
+            public const string NEW_COLUMN_CATEGORY = "newColumnCategory";
+            public const string NEW_COLUMN_PHONE = "newColumnPhone";
+            public const string NEW_COLUMN_SKYPE = "newColumnSkypet";
+            public const string NEW_COLUMN_EMEIL = "newColumnEmail";
+            public const string NEW_COLUMN_NOTES = "newColumnNotes";
+            public const string NEW_COLUMN_FIRST_NAME = "newColumnFirstName";
+            public const string NEW_COLUMN_LAST_NAME = "newColumnLastName";
+            public const string NEW_COLUMN_ID_TYPE = "newColumnLastName";
+            public const string NEW_COLUMN_PHONE_EX = "newColumnPhoneEx";
+            public const string NEW_COLUMN_ADRESS = "newColumnAdress";
+            public const string NEW_COLUMN_BIRTHDAY = "newColumnBirthday";
+            public const string NEW_COLUMN_COMMENT = "newColumnComment";
+            public const string NEW_COLUMN_LOGIN = "newColumnLogin";
+            public const string NEW_COLUMN_PASSWORD = "newColumnLogin";
+            public const string NEW_COLUMN_ACOUNT_TYPE = "newColumnAcountType";
+            public const string NEW_COLUMN_EMPLOYEE_TYPE = "newColumnEmplyeeType";
+            public const string NEW_COLUMN_DISCOUNT_FLEX = "newColumnDiscountFlexible";
+            public const string NEW_COLUMN_DISCOUNT_FIXED = "newColumnDiscountFixed";
+            public const string NEW_COLUMN_DISCOUNT_REASONE = "newColumnDiscountReasone";
+            public const string NEW_COLUMN_TOTAL_BALANCE = "newColumnTotalBalance";
+            public const string NEW_COLUMN_CONSUMBLE = "newColumnTotalConsumble";
+            public const string NEW_COLUMN_SUPPLIER = "newColumnTotalSupplier";
+            public const string NEW_COLUMN_EMPLOYEE = "newColumnTotalEmployee";
+            public const string NEW_COLUMN_DATE = "newColumnTotalDate";
+            public const string NEW_COLUMN_WEIGHT = "newColumnWeight";
+        }
     }
 }
