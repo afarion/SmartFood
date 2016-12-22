@@ -21,6 +21,17 @@ namespace SmartFood.Core.Serialisation
 
             return -1;
         }
+
+        public Good GetGood(string name)
+        {
+            foreach (Good good in items)
+            {
+                if (good.name == name)
+                    return good;
+            }
+
+            return null;
+        }
     }
 
     [Serializable]

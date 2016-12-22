@@ -18,11 +18,11 @@ namespace SmartFood.Core.Serialisation
             return tmpList;
         }
 
-        public int GetID(string typeName)
+        public int GetID(string consumbleName)
         {
             foreach (var item in items)
             {
-                if (item.name == typeName)
+                if (item.name == consumbleName)
                     return item.id;
             }
             return -1;
@@ -46,6 +46,16 @@ namespace SmartFood.Core.Serialisation
                     return MeasuresCore.Measures.GetName(item.id_unit);
             }
             return string.Empty;
+        }
+
+        public Consumble GetConsumble(string consumbleName)
+        {
+            foreach (var item in items)
+            {
+                if (item.name == consumbleName)
+                    return item;
+            }
+            return null;
         }
     }
 

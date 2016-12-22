@@ -1,4 +1,5 @@
 ﻿using SmartFood.Core;
+using SmartFood.Core.Constants;
 using SmartFood.Core.Serialisation;
 using System;
 using System.Collections.Generic;
@@ -31,12 +32,13 @@ namespace SmartFood.Forms
             {
                 Consumbles consumbles = ConsumblesCore.GetConsumbles(ConsumbleCategorieCore.consumbleCategories.GetID(comboBoxCategory.SelectedItem.ToString()));
                 comboBoxConsumbles.DataSource = consumbles.ToList();
-                comboBoxCategory.SelectedIndex = 0;
+                comboBoxConsumbles.SelectedIndex = 0;
+                buttonOk.Enabled = true;
             }
             catch
             {
-                comboBoxCategory.Text = "";
                 comboBoxConsumbles.Text = "";
+                buttonOk.Enabled = false;
             }
         }
 
@@ -50,13 +52,42 @@ namespace SmartFood.Forms
             }
             catch
             {
-                comboBoxConsumbles.Text = "";
+                comboBoxConsumbles.DataSource = null;
+                comboBoxCategory.Text = "";
+                buttonOk.Enabled = false;
             }
         }
 
         private void NewGoodsConsumble_FormClosed(object sender, FormClosedEventArgs e)
         {
             GoodDetailsForm.instance.Enabled = true;
+        }
+
+        private void buttonOk_Click(object sender, EventArgs e)
+        {
+            bool isOk = false;
+            double weight =0;
+            try
+            {
+                weight = Convert.ToDouble(textBoxWeight.Text);
+                isOk = true;
+            }
+            catch
+            {
+                ErrorsViewWrapper.ShowError(ErrorTexts.INCORRECT_WEIGHT);
+            }
+
+            if (isOk)
+            {
+                GoodDetailsForm.instance.AddConsumbleToGrid(comboBoxConsumbles.SelectedItem.ToString(), weight);
+                this.Close();
+            }
+            
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

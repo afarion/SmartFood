@@ -43,6 +43,7 @@
             // 
             // comboBoxName
             // 
+            this.comboBoxName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxName.FormattingEnabled = true;
             this.comboBoxName.Location = new System.Drawing.Point(115, 12);
             this.comboBoxName.Name = "comboBoxName";
@@ -122,6 +123,7 @@
             // 
             // comboBoxCook
             // 
+            this.comboBoxCook.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCook.FormattingEnabled = true;
             this.comboBoxCook.Location = new System.Drawing.Point(115, 64);
             this.comboBoxCook.Name = "comboBoxCook";

@@ -220,6 +220,7 @@
             // 
             // comboBoxVisible
             // 
+            this.comboBoxVisible.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxVisible.FormattingEnabled = true;
             this.comboBoxVisible.Location = new System.Drawing.Point(160, 200);
             this.comboBoxVisible.Margin = new System.Windows.Forms.Padding(2);

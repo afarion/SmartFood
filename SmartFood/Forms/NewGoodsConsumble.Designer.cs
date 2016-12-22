@@ -43,94 +43,109 @@
             // 
             // comboBoxCategory
             // 
+            this.comboBoxCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCategory.FormattingEnabled = true;
-            this.comboBoxCategory.Location = new System.Drawing.Point(189, 42);
+            this.comboBoxCategory.Location = new System.Drawing.Point(142, 34);
+            this.comboBoxCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxCategory.Name = "comboBoxCategory";
-            this.comboBoxCategory.Size = new System.Drawing.Size(315, 24);
+            this.comboBoxCategory.Size = new System.Drawing.Size(237, 21);
             this.comboBoxCategory.TabIndex = 2;
             // 
             // comboBoxType
             // 
+            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Location = new System.Drawing.Point(189, 12);
+            this.comboBoxType.Location = new System.Drawing.Point(142, 10);
+            this.comboBoxType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(315, 24);
+            this.comboBoxType.Size = new System.Drawing.Size(237, 21);
             this.comboBoxType.TabIndex = 1;
             // 
             // comboBoxConsumbles
             // 
+            this.comboBoxConsumbles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxConsumbles.FormattingEnabled = true;
-            this.comboBoxConsumbles.Location = new System.Drawing.Point(189, 72);
+            this.comboBoxConsumbles.Location = new System.Drawing.Point(142, 58);
+            this.comboBoxConsumbles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxConsumbles.Name = "comboBoxConsumbles";
-            this.comboBoxConsumbles.Size = new System.Drawing.Size(315, 24);
+            this.comboBoxConsumbles.Size = new System.Drawing.Size(237, 21);
             this.comboBoxConsumbles.TabIndex = 3;
             // 
             // textBoxWeight
             // 
-            this.textBoxWeight.Location = new System.Drawing.Point(189, 103);
+            this.textBoxWeight.Location = new System.Drawing.Point(142, 84);
+            this.textBoxWeight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxWeight.Name = "textBoxWeight";
-            this.textBoxWeight.Size = new System.Drawing.Size(315, 22);
+            this.textBoxWeight.Size = new System.Drawing.Size(237, 20);
             this.textBoxWeight.TabIndex = 4;
             // 
             // labelType
             // 
             this.labelType.AutoSize = true;
-            this.labelType.Location = new System.Drawing.Point(13, 13);
+            this.labelType.Location = new System.Drawing.Point(10, 11);
+            this.labelType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelType.Name = "labelType";
-            this.labelType.Size = new System.Drawing.Size(112, 16);
+            this.labelType.Size = new System.Drawing.Size(88, 13);
             this.labelType.TabIndex = 6;
             this.labelType.Text = "Тип расходника";
             // 
             // labelCategory
             // 
             this.labelCategory.AutoSize = true;
-            this.labelCategory.Location = new System.Drawing.Point(13, 45);
+            this.labelCategory.Location = new System.Drawing.Point(10, 37);
+            this.labelCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCategory.Name = "labelCategory";
-            this.labelCategory.Size = new System.Drawing.Size(155, 16);
+            this.labelCategory.Size = new System.Drawing.Size(122, 13);
             this.labelCategory.TabIndex = 7;
             this.labelCategory.Text = "Категория расходника";
             // 
             // labelConsumble
             // 
             this.labelConsumble.AutoSize = true;
-            this.labelConsumble.Location = new System.Drawing.Point(13, 80);
+            this.labelConsumble.Location = new System.Drawing.Point(10, 65);
+            this.labelConsumble.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelConsumble.Name = "labelConsumble";
-            this.labelConsumble.Size = new System.Drawing.Size(77, 16);
+            this.labelConsumble.Size = new System.Drawing.Size(61, 13);
             this.labelConsumble.TabIndex = 8;
             this.labelConsumble.Text = "Расходник";
             // 
             // labelWeight
             // 
             this.labelWeight.AutoSize = true;
-            this.labelWeight.Location = new System.Drawing.Point(13, 109);
+            this.labelWeight.Location = new System.Drawing.Point(10, 89);
+            this.labelWeight.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelWeight.Name = "labelWeight";
-            this.labelWeight.Size = new System.Drawing.Size(111, 16);
+            this.labelWeight.Size = new System.Drawing.Size(88, 13);
             this.labelWeight.TabIndex = 9;
             this.labelWeight.Text = "Вес расходника";
             // 
             // buttonOk
             // 
-            this.buttonOk.Location = new System.Drawing.Point(404, 131);
+            this.buttonOk.Location = new System.Drawing.Point(303, 106);
+            this.buttonOk.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(100, 28);
+            this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 5;
             this.buttonOk.Text = "Ок";
             this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(298, 131);
+            this.buttonCancel.Location = new System.Drawing.Point(224, 106);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(100, 28);
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 6;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // NewGoodsConsumble
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 174);
+            this.ClientSize = new System.Drawing.Size(386, 141);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.labelWeight);
@@ -143,6 +158,7 @@
             this.Controls.Add(this.comboBoxCategory);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NewGoodsConsumble";

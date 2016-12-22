@@ -37,10 +37,10 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(332, 382);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAdd.Location = new System.Drawing.Point(249, 310);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(100, 28);
+            this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 2;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -49,34 +49,35 @@
             // dataGridViewConsumbleCategories
             // 
             this.dataGridViewConsumbleCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewConsumbleCategories.Location = new System.Drawing.Point(12, 38);
-            this.dataGridViewConsumbleCategories.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridViewConsumbleCategories.Location = new System.Drawing.Point(9, 31);
+            this.dataGridViewConsumbleCategories.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridViewConsumbleCategories.Name = "dataGridViewConsumbleCategories";
             this.dataGridViewConsumbleCategories.RowTemplate.Height = 28;
-            this.dataGridViewConsumbleCategories.Size = new System.Drawing.Size(416, 342);
+            this.dataGridViewConsumbleCategories.Size = new System.Drawing.Size(312, 278);
             this.dataGridViewConsumbleCategories.TabIndex = 3;
             // 
             // comboBoxConsumbleTypes
             // 
+            this.comboBoxConsumbleTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxConsumbleTypes.FormattingEnabled = true;
-            this.comboBoxConsumbleTypes.Location = new System.Drawing.Point(12, 10);
-            this.comboBoxConsumbleTypes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBoxConsumbleTypes.Location = new System.Drawing.Point(9, 8);
+            this.comboBoxConsumbleTypes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxConsumbleTypes.Name = "comboBoxConsumbleTypes";
-            this.comboBoxConsumbleTypes.Size = new System.Drawing.Size(416, 24);
+            this.comboBoxConsumbleTypes.Size = new System.Drawing.Size(313, 21);
             this.comboBoxConsumbleTypes.TabIndex = 1;
             this.comboBoxConsumbleTypes.SelectionChangeCommitted += new System.EventHandler(this.comboBoxConsumbleTypes_SelectionChangeCommitted);
             // 
             // ConsumbleCategorieForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(442, 420);
+            this.ClientSize = new System.Drawing.Size(332, 341);
             this.Controls.Add(this.comboBoxConsumbleTypes);
             this.Controls.Add(this.dataGridViewConsumbleCategories);
             this.Controls.Add(this.buttonAdd);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ConsumbleCategorieForm";

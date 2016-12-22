@@ -45,94 +45,86 @@
             // 
             // comboBoxName
             // 
+            this.comboBoxName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxName.FormattingEnabled = true;
-            this.comboBoxName.Location = new System.Drawing.Point(153, 15);
-            this.comboBoxName.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxName.Location = new System.Drawing.Point(115, 12);
             this.comboBoxName.Name = "comboBoxName";
-            this.comboBoxName.Size = new System.Drawing.Size(219, 24);
+            this.comboBoxName.Size = new System.Drawing.Size(165, 21);
             this.comboBoxName.TabIndex = 2;
             // 
             // comboBoxSupplier
             // 
+            this.comboBoxSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSupplier.FormattingEnabled = true;
-            this.comboBoxSupplier.Location = new System.Drawing.Point(153, 112);
-            this.comboBoxSupplier.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxSupplier.Location = new System.Drawing.Point(115, 91);
             this.comboBoxSupplier.Name = "comboBoxSupplier";
-            this.comboBoxSupplier.Size = new System.Drawing.Size(219, 24);
+            this.comboBoxSupplier.Size = new System.Drawing.Size(165, 21);
             this.comboBoxSupplier.TabIndex = 3;
             // 
             // textBoxCount
             // 
-            this.textBoxCount.Location = new System.Drawing.Point(153, 48);
-            this.textBoxCount.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxCount.Location = new System.Drawing.Point(115, 39);
             this.textBoxCount.Name = "textBoxCount";
-            this.textBoxCount.Size = new System.Drawing.Size(219, 22);
+            this.textBoxCount.Size = new System.Drawing.Size(165, 20);
             this.textBoxCount.TabIndex = 4;
             // 
             // textBoxPrice
             // 
-            this.textBoxPrice.Location = new System.Drawing.Point(153, 80);
-            this.textBoxPrice.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxPrice.Location = new System.Drawing.Point(115, 65);
             this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(219, 22);
+            this.textBoxPrice.Size = new System.Drawing.Size(165, 20);
             this.textBoxPrice.TabIndex = 5;
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(16, 18);
-            this.labelName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelName.Location = new System.Drawing.Point(12, 15);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(107, 16);
+            this.labelName.Size = new System.Drawing.Size(83, 13);
             this.labelName.TabIndex = 6;
             this.labelName.Text = "Наименование";
             // 
             // labelCount
             // 
             this.labelCount.AutoSize = true;
-            this.labelCount.Location = new System.Drawing.Point(16, 52);
-            this.labelCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCount.Location = new System.Drawing.Point(12, 42);
             this.labelCount.Name = "labelCount";
-            this.labelCount.Size = new System.Drawing.Size(114, 16);
+            this.labelCount.Size = new System.Drawing.Size(90, 13);
             this.labelCount.TabIndex = 7;
             this.labelCount.Text = "Количество/Вес";
             // 
             // labelPrice
             // 
             this.labelPrice.AutoSize = true;
-            this.labelPrice.Location = new System.Drawing.Point(16, 84);
-            this.labelPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPrice.Location = new System.Drawing.Point(12, 68);
             this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(41, 16);
+            this.labelPrice.Size = new System.Drawing.Size(33, 13);
             this.labelPrice.TabIndex = 8;
             this.labelPrice.Text = "Цена";
             // 
             // labelSupplier
             // 
             this.labelSupplier.AutoSize = true;
-            this.labelSupplier.Location = new System.Drawing.Point(16, 116);
-            this.labelSupplier.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelSupplier.Location = new System.Drawing.Point(12, 94);
             this.labelSupplier.Name = "labelSupplier";
-            this.labelSupplier.Size = new System.Drawing.Size(80, 16);
+            this.labelSupplier.Size = new System.Drawing.Size(65, 13);
             this.labelSupplier.TabIndex = 9;
             this.labelSupplier.Text = "Поставщик";
             // 
             // labelCook
             // 
             this.labelCook.AutoSize = true;
-            this.labelCook.Location = new System.Drawing.Point(16, 149);
-            this.labelCook.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCook.Location = new System.Drawing.Point(12, 121);
             this.labelCook.Name = "labelCook";
-            this.labelCook.Size = new System.Drawing.Size(120, 16);
+            this.labelCook.Size = new System.Drawing.Size(97, 13);
             this.labelCook.TabIndex = 11;
             this.labelCook.Text = "Повар Приемщик";
             // 
             // buttonOk
             // 
-            this.buttonOk.Location = new System.Drawing.Point(285, 193);
-            this.buttonOk.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonOk.Location = new System.Drawing.Point(214, 157);
             this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(100, 28);
+            this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 12;
             this.buttonOk.Text = "Ок";
             this.buttonOk.UseVisualStyleBackColor = true;
@@ -140,10 +132,9 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(177, 193);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonCancel.Location = new System.Drawing.Point(133, 157);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(100, 28);
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 13;
             this.buttonCancel.Text = "Отменить";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -151,18 +142,18 @@
             // 
             // comboBoxCook
             // 
+            this.comboBoxCook.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCook.FormattingEnabled = true;
-            this.comboBoxCook.Location = new System.Drawing.Point(153, 144);
-            this.comboBoxCook.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxCook.Location = new System.Drawing.Point(115, 117);
             this.comboBoxCook.Name = "comboBoxCook";
-            this.comboBoxCook.Size = new System.Drawing.Size(219, 24);
+            this.comboBoxCook.Size = new System.Drawing.Size(165, 21);
             this.comboBoxCook.TabIndex = 4;
             // 
             // ConsumbleArrivalForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(388, 225);
+            this.ClientSize = new System.Drawing.Size(291, 183);
             this.Controls.Add(this.comboBoxCook);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOk);
@@ -177,7 +168,6 @@
             this.Controls.Add(this.comboBoxName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ConsumbleArrivalForm";

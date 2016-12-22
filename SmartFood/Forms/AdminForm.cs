@@ -259,7 +259,6 @@ namespace SmartFood.Forms
                         dataGridViewSuppliers.Rows.Clear();
                         foreach (Supplier supplier in SuppliersCore.Suppliers.items)
                         {
-                            DataGridViewRow row = new DataGridViewRow();
                             dataGridViewSuppliers.Rows.Add(supplier.id, supplier.name, supplier.phone, supplier.email, supplier.skype, supplier.notes, Convert.ToBoolean(supplier.visible) ? GeneralConstants.YES : GeneralConstants.NO);
                             dataGridViewSuppliers.CellValueChanged += DataGridViewSuppliers_CellValueChanged; ;
                             updateFlag = true;
@@ -496,7 +495,6 @@ namespace SmartFood.Forms
                         dataGridViewGoods.Rows.Clear();
                         foreach (Good good in GoodsCore.Goods.items)
                         {
-                            DataGridViewRow row = new DataGridViewRow();
                             dataGridViewGoods.Rows.Add(good.id, 
                                 good.name, 
                                 GoodsCategoriesCore.GoodsCategories.GetName(good.id_category),

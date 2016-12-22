@@ -47,28 +47,25 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(187, 10);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxName.Location = new System.Drawing.Point(140, 8);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(315, 22);
+            this.textBoxName.Size = new System.Drawing.Size(237, 20);
             this.textBoxName.TabIndex = 0;
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(13, 16);
-            this.labelName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelName.Location = new System.Drawing.Point(10, 13);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(107, 16);
+            this.labelName.Size = new System.Drawing.Size(83, 13);
             this.labelName.TabIndex = 1;
             this.labelName.Text = "Наименование";
             // 
             // buttonOk
             // 
-            this.buttonOk.Location = new System.Drawing.Point(402, 446);
-            this.buttonOk.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonOk.Location = new System.Drawing.Point(302, 362);
             this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(101, 44);
+            this.buttonOk.Size = new System.Drawing.Size(76, 36);
             this.buttonOk.TabIndex = 4;
             this.buttonOk.Text = "ОК";
             this.buttonOk.UseVisualStyleBackColor = true;
@@ -76,10 +73,9 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(294, 446);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonCancel.Location = new System.Drawing.Point(220, 362);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(100, 44);
+            this.buttonCancel.Size = new System.Drawing.Size(75, 36);
             this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "Отменить";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -87,10 +83,9 @@
             // 
             // buttonAddConsumble
             // 
-            this.buttonAddConsumble.Location = new System.Drawing.Point(13, 446);
-            this.buttonAddConsumble.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonAddConsumble.Location = new System.Drawing.Point(10, 362);
             this.buttonAddConsumble.Name = "buttonAddConsumble";
-            this.buttonAddConsumble.Size = new System.Drawing.Size(107, 44);
+            this.buttonAddConsumble.Size = new System.Drawing.Size(80, 36);
             this.buttonAddConsumble.TabIndex = 6;
             this.buttonAddConsumble.Text = "Добавить Ингридиент";
             this.buttonAddConsumble.UseVisualStyleBackColor = true;
@@ -99,81 +94,77 @@
             // dataGridViewConsumbles
             // 
             this.dataGridViewConsumbles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewConsumbles.Location = new System.Drawing.Point(16, 136);
-            this.dataGridViewConsumbles.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridViewConsumbles.Location = new System.Drawing.Point(12, 110);
             this.dataGridViewConsumbles.Name = "dataGridViewConsumbles";
-            this.dataGridViewConsumbles.Size = new System.Drawing.Size(486, 302);
+            this.dataGridViewConsumbles.Size = new System.Drawing.Size(364, 245);
             this.dataGridViewConsumbles.TabIndex = 7;
             // 
             // labelPrice
             // 
             this.labelPrice.AutoSize = true;
-            this.labelPrice.Location = new System.Drawing.Point(13, 80);
-            this.labelPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPrice.Location = new System.Drawing.Point(10, 65);
             this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(41, 16);
+            this.labelPrice.Size = new System.Drawing.Size(33, 13);
             this.labelPrice.TabIndex = 6;
             this.labelPrice.Text = "Цена";
             // 
             // textBoxPrice
             // 
-            this.textBoxPrice.Location = new System.Drawing.Point(187, 74);
-            this.textBoxPrice.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxPrice.Location = new System.Drawing.Point(140, 60);
             this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(315, 22);
+            this.textBoxPrice.Size = new System.Drawing.Size(237, 20);
             this.textBoxPrice.TabIndex = 2;
             // 
             // comboBoxCategory
             // 
+            this.comboBoxCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCategory.FormattingEnabled = true;
-            this.comboBoxCategory.Location = new System.Drawing.Point(187, 40);
+            this.comboBoxCategory.Location = new System.Drawing.Point(140, 32);
+            this.comboBoxCategory.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxCategory.Name = "comboBoxCategory";
-            this.comboBoxCategory.Size = new System.Drawing.Size(315, 24);
+            this.comboBoxCategory.Size = new System.Drawing.Size(237, 21);
             this.comboBoxCategory.TabIndex = 1;
             // 
             // labelCategory
             // 
             this.labelCategory.AutoSize = true;
-            this.labelCategory.Location = new System.Drawing.Point(13, 48);
-            this.labelCategory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCategory.Location = new System.Drawing.Point(10, 39);
             this.labelCategory.Name = "labelCategory";
-            this.labelCategory.Size = new System.Drawing.Size(76, 16);
+            this.labelCategory.Size = new System.Drawing.Size(60, 13);
             this.labelCategory.TabIndex = 9;
             this.labelCategory.Text = "Категория";
             // 
             // textBoxWeight
             // 
-            this.textBoxWeight.Location = new System.Drawing.Point(187, 104);
-            this.textBoxWeight.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxWeight.Location = new System.Drawing.Point(140, 84);
             this.textBoxWeight.Name = "textBoxWeight";
-            this.textBoxWeight.Size = new System.Drawing.Size(315, 22);
+            this.textBoxWeight.Size = new System.Drawing.Size(237, 20);
             this.textBoxWeight.TabIndex = 3;
             // 
             // labelWeight
             // 
             this.labelWeight.AutoSize = true;
-            this.labelWeight.Location = new System.Drawing.Point(13, 110);
-            this.labelWeight.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelWeight.Location = new System.Drawing.Point(10, 89);
             this.labelWeight.Name = "labelWeight";
-            this.labelWeight.Size = new System.Drawing.Size(32, 16);
+            this.labelWeight.Size = new System.Drawing.Size(26, 13);
             this.labelWeight.TabIndex = 11;
             this.labelWeight.Text = "Вес";
             // 
             // buttonDeleteConsumble
             // 
-            this.buttonDeleteConsumble.Location = new System.Drawing.Point(128, 446);
-            this.buttonDeleteConsumble.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonDeleteConsumble.Location = new System.Drawing.Point(96, 362);
             this.buttonDeleteConsumble.Name = "buttonDeleteConsumble";
-            this.buttonDeleteConsumble.Size = new System.Drawing.Size(107, 44);
+            this.buttonDeleteConsumble.Size = new System.Drawing.Size(80, 36);
             this.buttonDeleteConsumble.TabIndex = 12;
             this.buttonDeleteConsumble.Text = "Удалить Ингридиент";
             this.buttonDeleteConsumble.UseVisualStyleBackColor = true;
+            this.buttonDeleteConsumble.Click += new System.EventHandler(this.buttonDeleteConsumble_Click);
             // 
             // GoodDetailsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 503);
+            this.ClientSize = new System.Drawing.Size(387, 409);
             this.Controls.Add(this.buttonDeleteConsumble);
             this.Controls.Add(this.labelWeight);
             this.Controls.Add(this.textBoxWeight);
@@ -189,7 +180,6 @@
             this.Controls.Add(this.textBoxName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "GoodDetailsForm";
