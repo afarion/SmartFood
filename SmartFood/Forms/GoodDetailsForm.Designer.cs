@@ -42,6 +42,8 @@
             this.textBoxWeight = new System.Windows.Forms.TextBox();
             this.labelWeight = new System.Windows.Forms.Label();
             this.buttonDeleteConsumble = new System.Windows.Forms.Button();
+            this.comboBoxVisble = new System.Windows.Forms.ComboBox();
+            this.labelVisible = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsumbles)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +65,7 @@
             // 
             // buttonOk
             // 
-            this.buttonOk.Location = new System.Drawing.Point(302, 362);
+            this.buttonOk.Location = new System.Drawing.Point(301, 396);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(76, 36);
             this.buttonOk.TabIndex = 4;
@@ -73,7 +75,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(220, 362);
+            this.buttonCancel.Location = new System.Drawing.Point(220, 396);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 36);
             this.buttonCancel.TabIndex = 5;
@@ -83,7 +85,7 @@
             // 
             // buttonAddConsumble
             // 
-            this.buttonAddConsumble.Location = new System.Drawing.Point(10, 362);
+            this.buttonAddConsumble.Location = new System.Drawing.Point(10, 396);
             this.buttonAddConsumble.Name = "buttonAddConsumble";
             this.buttonAddConsumble.Size = new System.Drawing.Size(80, 36);
             this.buttonAddConsumble.TabIndex = 6;
@@ -94,7 +96,7 @@
             // dataGridViewConsumbles
             // 
             this.dataGridViewConsumbles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewConsumbles.Location = new System.Drawing.Point(12, 110);
+            this.dataGridViewConsumbles.Location = new System.Drawing.Point(12, 145);
             this.dataGridViewConsumbles.Name = "dataGridViewConsumbles";
             this.dataGridViewConsumbles.Size = new System.Drawing.Size(364, 245);
             this.dataGridViewConsumbles.TabIndex = 7;
@@ -152,7 +154,7 @@
             // 
             // buttonDeleteConsumble
             // 
-            this.buttonDeleteConsumble.Location = new System.Drawing.Point(96, 362);
+            this.buttonDeleteConsumble.Location = new System.Drawing.Point(96, 396);
             this.buttonDeleteConsumble.Name = "buttonDeleteConsumble";
             this.buttonDeleteConsumble.Size = new System.Drawing.Size(80, 36);
             this.buttonDeleteConsumble.TabIndex = 12;
@@ -160,11 +162,32 @@
             this.buttonDeleteConsumble.UseVisualStyleBackColor = true;
             this.buttonDeleteConsumble.Click += new System.EventHandler(this.buttonDeleteConsumble_Click);
             // 
+            // comboBoxVisble
+            // 
+            this.comboBoxVisble.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxVisble.FormattingEnabled = true;
+            this.comboBoxVisble.Location = new System.Drawing.Point(140, 109);
+            this.comboBoxVisble.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxVisble.Name = "comboBoxVisble";
+            this.comboBoxVisble.Size = new System.Drawing.Size(237, 21);
+            this.comboBoxVisble.TabIndex = 13;
+            // 
+            // labelVisible
+            // 
+            this.labelVisible.AutoSize = true;
+            this.labelVisible.Location = new System.Drawing.Point(10, 117);
+            this.labelVisible.Name = "labelVisible";
+            this.labelVisible.Size = new System.Drawing.Size(63, 13);
+            this.labelVisible.TabIndex = 14;
+            this.labelVisible.Text = "Видимость";
+            // 
             // GoodDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(387, 409);
+            this.ClientSize = new System.Drawing.Size(386, 444);
+            this.Controls.Add(this.labelVisible);
+            this.Controls.Add(this.comboBoxVisble);
             this.Controls.Add(this.buttonDeleteConsumble);
             this.Controls.Add(this.labelWeight);
             this.Controls.Add(this.textBoxWeight);
@@ -206,5 +229,7 @@
         private System.Windows.Forms.TextBox textBoxWeight;
         private System.Windows.Forms.Label labelWeight;
         private System.Windows.Forms.Button buttonDeleteConsumble;
+        private System.Windows.Forms.ComboBox comboBoxVisble;
+        private System.Windows.Forms.Label labelVisible;
     }
 }

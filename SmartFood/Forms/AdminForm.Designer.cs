@@ -89,6 +89,7 @@
             this.tabPageSuppliers = new System.Windows.Forms.TabPage();
             this.dataGridViewSuppliers = new System.Windows.Forms.DataGridView();
             this.buttonAddSupplier = new System.Windows.Forms.Button();
+            this.buttonCopyGood = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPageConsumables.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsumbles)).BeginInit();
@@ -136,7 +137,7 @@
             this.tabPageConsumables.Controls.Add(this.buttonAddConsumble);
             this.tabPageConsumables.Location = new System.Drawing.Point(4, 22);
             this.tabPageConsumables.Name = "tabPageConsumables";
-            this.tabPageConsumables.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageConsumables.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageConsumables.Size = new System.Drawing.Size(1429, 605);
             this.tabPageConsumables.TabIndex = 0;
             this.tabPageConsumables.Text = "Расходники";
@@ -145,7 +146,7 @@
             // buttonConsumbleCategories
             // 
             this.buttonConsumbleCategories.Location = new System.Drawing.Point(61, 575);
-            this.buttonConsumbleCategories.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonConsumbleCategories.Margin = new System.Windows.Forms.Padding(2);
             this.buttonConsumbleCategories.Name = "buttonConsumbleCategories";
             this.buttonConsumbleCategories.Size = new System.Drawing.Size(50, 15);
             this.buttonConsumbleCategories.TabIndex = 5;
@@ -156,7 +157,7 @@
             // buttonConsumbleTypes
             // 
             this.buttonConsumbleTypes.Location = new System.Drawing.Point(7, 576);
-            this.buttonConsumbleTypes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonConsumbleTypes.Margin = new System.Windows.Forms.Padding(2);
             this.buttonConsumbleTypes.Name = "buttonConsumbleTypes";
             this.buttonConsumbleTypes.Size = new System.Drawing.Size(50, 15);
             this.buttonConsumbleTypes.TabIndex = 4;
@@ -190,7 +191,7 @@
             this.tabPageArrivalAndWriteOff.Controls.Add(this.dataGridViewArrival);
             this.tabPageArrivalAndWriteOff.Location = new System.Drawing.Point(4, 22);
             this.tabPageArrivalAndWriteOff.Name = "tabPageArrivalAndWriteOff";
-            this.tabPageArrivalAndWriteOff.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageArrivalAndWriteOff.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageArrivalAndWriteOff.Size = new System.Drawing.Size(1429, 605);
             this.tabPageArrivalAndWriteOff.TabIndex = 1;
             this.tabPageArrivalAndWriteOff.Text = "Приход и Списание";
@@ -239,7 +240,7 @@
             this.tabPageReports.Controls.Add(this.groupBoxCostPrice);
             this.tabPageReports.Location = new System.Drawing.Point(4, 22);
             this.tabPageReports.Name = "tabPageReports";
-            this.tabPageReports.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageReports.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageReports.Size = new System.Drawing.Size(1429, 605);
             this.tabPageReports.TabIndex = 2;
             this.tabPageReports.Text = "Отчеты";
@@ -558,11 +559,12 @@
             // 
             // tabPageGoods
             // 
+            this.tabPageGoods.Controls.Add(this.buttonCopyGood);
             this.tabPageGoods.Controls.Add(this.dataGridViewGoods);
             this.tabPageGoods.Controls.Add(this.buttonAddGood);
             this.tabPageGoods.Location = new System.Drawing.Point(4, 22);
             this.tabPageGoods.Name = "tabPageGoods";
-            this.tabPageGoods.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageGoods.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageGoods.Size = new System.Drawing.Size(1429, 605);
             this.tabPageGoods.TabIndex = 3;
             this.tabPageGoods.Text = "Товары";
@@ -592,7 +594,7 @@
             this.tabPageAcounts.Controls.Add(this.buttonAddAcount);
             this.tabPageAcounts.Location = new System.Drawing.Point(4, 22);
             this.tabPageAcounts.Name = "tabPageAcounts";
-            this.tabPageAcounts.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageAcounts.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageAcounts.Size = new System.Drawing.Size(1429, 605);
             this.tabPageAcounts.TabIndex = 4;
             this.tabPageAcounts.Text = "Акаунты";
@@ -622,7 +624,7 @@
             this.tabPageClients.Controls.Add(this.buttonAddClient);
             this.tabPageClients.Location = new System.Drawing.Point(4, 22);
             this.tabPageClients.Name = "tabPageClients";
-            this.tabPageClients.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageClients.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageClients.Size = new System.Drawing.Size(1429, 605);
             this.tabPageClients.TabIndex = 5;
             this.tabPageClients.Text = "Клиенты";
@@ -652,7 +654,7 @@
             this.tabPageEmployees.Controls.Add(this.buttonAddEmploye);
             this.tabPageEmployees.Location = new System.Drawing.Point(4, 22);
             this.tabPageEmployees.Name = "tabPageEmployees";
-            this.tabPageEmployees.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageEmployees.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageEmployees.Size = new System.Drawing.Size(1429, 605);
             this.tabPageEmployees.TabIndex = 6;
             this.tabPageEmployees.Text = "Сотрудники";
@@ -682,7 +684,7 @@
             this.tabPageSuppliers.Controls.Add(this.buttonAddSupplier);
             this.tabPageSuppliers.Location = new System.Drawing.Point(4, 22);
             this.tabPageSuppliers.Name = "tabPageSuppliers";
-            this.tabPageSuppliers.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageSuppliers.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageSuppliers.Size = new System.Drawing.Size(1429, 605);
             this.tabPageSuppliers.TabIndex = 7;
             this.tabPageSuppliers.Text = "Поставщики";
@@ -705,6 +707,16 @@
             this.buttonAddSupplier.Text = "Добавить";
             this.buttonAddSupplier.UseVisualStyleBackColor = true;
             this.buttonAddSupplier.Click += new System.EventHandler(this.buttonAddSupplier_Click);
+            // 
+            // buttonCopyGood
+            // 
+            this.buttonCopyGood.Location = new System.Drawing.Point(1267, 576);
+            this.buttonCopyGood.Name = "buttonCopyGood";
+            this.buttonCopyGood.Size = new System.Drawing.Size(75, 23);
+            this.buttonCopyGood.TabIndex = 4;
+            this.buttonCopyGood.Text = "Копировать";
+            this.buttonCopyGood.UseVisualStyleBackColor = true;
+            this.buttonCopyGood.Click += new System.EventHandler(this.buttonCopyGood_Click);
             // 
             // AdminForm
             // 
@@ -809,5 +821,6 @@
         private System.Windows.Forms.Button buttonAddSupplier;
         private System.Windows.Forms.Button buttonConsumbleCategories;
         private System.Windows.Forms.Button buttonConsumbleTypes;
+        private System.Windows.Forms.Button buttonCopyGood;
     }
 }

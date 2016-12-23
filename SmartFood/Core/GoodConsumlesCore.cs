@@ -14,7 +14,7 @@ namespace SmartFood.Core
             GoodConsumbles goodConsumbles = null;
             Dictionary<string, string> param = new Dictionary<string, string>();
             param.Add(RequestFields.ACTION, Actions.GET);
-            param.Add(RequestFields.GOOD_ID, goodId.ToString());
+            param.Add(RequestFields.GOOD, goodId.ToString());
             SendGetRequest<GoodConsumbles>(UriPostfix.GOOD_CONSUMBLES, param, out goodConsumbles);
             return goodConsumbles;
         }

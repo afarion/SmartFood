@@ -17,9 +17,42 @@ namespace SmartFood.Forms
     {
         public static GoodDetailsForm instance;
         private static int rowIndex;
+        bool isCopy = false;
+        bool isEdit = false;
+        private int goodID = -1;
         public GoodDetailsForm()
         {
             InitializeComponent();
+            GoodDetailsInit();
+        }
+
+        public GoodDetailsForm(int goodID, bool Copy)
+        {
+            isEdit = !Copy;
+            this.goodID = goodID;
+            InitializeComponent();
+            GoodDetailsInit();
+
+            Good good = GoodsCore.Goods.GetGood(goodID);
+            good.consumbles = GoodConsumlesCore.GetGoodConsumles(goodID);
+            if(isEdit)
+                textBoxName.Text = good.name;
+            textBoxPrice.Text = good.price.ToString();
+            textBoxWeight.Text = good.weight.ToString();
+            comboBoxCategory.SelectedItem = GoodsCategoriesCore.GoodsCategories.GetName(good.id_category);
+            comboBoxVisble.SelectedItem = good.visible == 1 ? GeneralConstants.YES : GeneralConstants.NO;
+
+            foreach (var consumble in good.consumbles.items)
+            {
+                if(isEdit)
+                    dataGridViewConsumbles.Rows.Add(consumble.id, ConsumblesCore.Consumbles.GetName(consumble.id_item), consumble.weight, Convert.ToBoolean(consumble.visible) ? GeneralConstants.YES : GeneralConstants.NO);
+                else
+                    dataGridViewConsumbles.Rows.Add("", ConsumblesCore.Consumbles.GetName(consumble.id_item), consumble.weight, Convert.ToBoolean(consumble.visible) ? GeneralConstants.YES : GeneralConstants.NO);
+            }
+        }
+
+        public void GoodDetailsInit()
+        {
             instance = this;
             comboBoxCategory.DataSource = GoodsCategoriesCore.GoodsCategories.ToList();
             comboBoxCategory.SelectedIndex = 0;
@@ -39,6 +72,8 @@ namespace SmartFood.Forms
             dataGridViewConsumbles.Columns[1].ReadOnly = true;
             dataGridViewConsumbles.EditMode = DataGridViewEditMode.EditOnEnter;
             dataGridViewConsumbles.CellClick += DataGridViewConsumbles_CellClick;
+            comboBoxVisble.DataSource = new List<string>() { GeneralConstants.YES, GeneralConstants.NO };
+            comboBoxVisble.SelectedIndex = 0;
         }
 
         private void DataGridViewConsumbles_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -97,18 +132,28 @@ namespace SmartFood.Forms
             }
             if(isOK)
             {
-               Good good = GoodsCore.AddGood(textBoxName.Text,
-                    GoodsCategoriesCore.GoodsCategories.GetID(comboBoxCategory.SelectedValue.ToString()),
-                    Convert.ToDouble(textBoxWeight.Text),
-                    Convert.ToDouble(textBoxPrice.Text));
-
-                for (int i = 0; i < dataGridViewConsumbles.Rows.Count; i++)
+                if (isEdit)
                 {
-                    DataGridViewCellCollection collection = dataGridViewConsumbles.Rows[i].Cells;
-                    GoodConsumlesCore.AddGoodConsumle(good.id,
-                        ConsumblesCore.Consumbles.GetID(collection[1].Value.ToString()),
-                        Convert.ToDouble(collection[2].Value));
+                    GoodsCore.EditGood(goodID, textBoxName.Text, GoodsCategoriesCore.GoodsCategories.GetID(comboBoxCategory.SelectedItem.ToString()), weight, price, comboBoxVisble.SelectedItem.ToString() == GeneralConstants.YES ? 1 : 0);
                 }
+                else
+                {
+                    Good good = GoodsCore.AddGood(textBoxName.Text,
+                         GoodsCategoriesCore.GoodsCategories.GetID(comboBoxCategory.SelectedValue.ToString()),
+                         Convert.ToDouble(textBoxWeight.Text),
+                         Convert.ToDouble(textBoxPrice.Text), 
+                         comboBoxVisble.SelectedItem.ToString() == GeneralConstants.YES ? 1 : 0);
+
+                    for (int i = 0; i < dataGridViewConsumbles.Rows.Count; i++)
+                    {
+                        DataGridViewCellCollection collection = dataGridViewConsumbles.Rows[i].Cells;
+                        GoodConsumlesCore.AddGoodConsumle(good.id,
+                            ConsumblesCore.Consumbles.GetID(collection[1].Value.ToString()),
+                            Convert.ToDouble(collection[2].Value));
+                    }
+                }
+
+                GoodsCore.GetGoods();
                 AdminForm.instance.UpdateDataGridViewGoods();
                 this.Close();
             }
@@ -143,6 +188,8 @@ namespace SmartFood.Forms
 
         private void buttonDeleteConsumble_Click(object sender, EventArgs e)
         {
+            if (isEdit)
+                GoodConsumlesCore.RemoveGoodConsumle(Convert.ToInt32(dataGridViewConsumbles[0, rowIndex]));
             dataGridViewConsumbles.Rows.RemoveAt(rowIndex);
         }
     }

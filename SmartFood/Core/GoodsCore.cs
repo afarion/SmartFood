@@ -31,7 +31,7 @@ namespace SmartFood.Core
             return isOk;
         }
 
-        public static Good AddGood(string name, int id_category, double weight, double price)
+        public static Good AddGood(string name, int id_category, double weight, double price, int visible)
         {
             Dictionary<string, string> param = new Dictionary<string, string>();
             param.Add(RequestFields.ACTION, Actions.ADD);
@@ -39,6 +39,7 @@ namespace SmartFood.Core
             param.Add(RequestFields.ID_CATEGORY, id_category.ToString());
             param.Add(RequestFields.WEIGHT, weight.ToString());
             param.Add(RequestFields.PRICE, price.ToString());
+            param.Add(RequestFields.VISIBLE, visible.ToString());
             SendEditRequest(UriPostfix.GOODS, param);
             GetGoods();
             return goods.GetGood(name);

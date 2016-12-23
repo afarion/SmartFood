@@ -18,7 +18,8 @@ namespace SmartFood.Forms
     {
         public static AdminForm instance;
         private static bool updateFlag = false;
-
+        private int goodRowSelected = 0;
+        
         public AdminForm()
         {
             InitializeComponent();
@@ -463,24 +464,35 @@ namespace SmartFood.Forms
             tmpPoint.Y = tabPageConsumables.Height - buttonAddGood.Height - 10;
             buttonAddGood.Location = tmpPoint;
 
+            tmpPoint.X = buttonAddGood.Location.X - buttonCopyGood.Width - 10;
+            buttonCopyGood.Location = tmpPoint;
+
             int tmpWidth = tabPageConsumables.Width - 24;
             int tmpHeight = buttonAddGood.Location.Y - buttonAddGood.Height - 20;
             tmpPoint.X = tabPageConsumables.Left + 10;
             tmpPoint.Y = tabPageConsumables.Top + 10;
             dataGridViewGoods.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
             dataGridViewGoods.CellDoubleClick += DataGridViewGoods_CellDoubleClick;
+            dataGridViewGoods.CellClick += DataGridViewGoods_CellClick;
             UpdateDataGridViewGoods();
+            goodRowSelected = 0;
             this.Refresh();
+        }
+
+        private void DataGridViewGoods_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > 0)
+                goodRowSelected = e.RowIndex;
         }
 
         private void DataGridViewGoods_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0 && this.Enabled)
             {
-                //ClientDetailsForm modalForm = new ClientDetailsForm(Convert.ToInt32(dataGridViewClients[0, e.RowIndex].Value));
-                //modalForm.StartPosition = FormStartPosition.CenterScreen;
-                //this.Enabled = false;
-                //modalForm.Show();
+                GoodDetailsForm modalForm = new GoodDetailsForm(Convert.ToInt32(dataGridViewGoods[0, e.RowIndex].Value), false);
+                modalForm.StartPosition = FormStartPosition.CenterScreen;
+                this.Enabled = false;
+                modalForm.Show();
             }
         }
 
@@ -947,6 +959,14 @@ namespace SmartFood.Forms
         private void buttonConsumbleTypes_Click(object sender, EventArgs e)
         {
             ConsumbleTypeForm modalForm = new ConsumbleTypeForm();
+            modalForm.StartPosition = FormStartPosition.CenterScreen;
+            this.Enabled = false;
+            modalForm.Show();
+        }
+
+        private void buttonCopyGood_Click(object sender, EventArgs e)
+        {
+            GoodDetailsForm modalForm = new GoodDetailsForm(Convert.ToInt32(dataGridViewGoods[0, goodRowSelected].Value), true);
             modalForm.StartPosition = FormStartPosition.CenterScreen;
             this.Enabled = false;
             modalForm.Show();

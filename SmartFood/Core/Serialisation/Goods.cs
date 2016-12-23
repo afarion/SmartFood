@@ -31,6 +31,28 @@ namespace SmartFood.Core.Serialisation
             }
 
             return null;
+
+        }
+        public Good GetGood(int id)
+        {
+            foreach (Good good in items)
+            {
+                if (good.id == id)
+                    return good;
+            }
+
+            return null;
+        }
+
+        public string GetName(int id)
+        {
+            foreach (Good good in items)
+            {
+                if (good.id == id)
+                    return good.name;
+            }
+
+            return null;
         }
     }
 
