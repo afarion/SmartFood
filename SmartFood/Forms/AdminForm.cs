@@ -1,4 +1,5 @@
-﻿using SmartFood.Core;
+﻿using DGVPrinterHelper;
+using SmartFood.Core;
 using SmartFood.Core.Constants;
 using SmartFood.Core.Serialisation;
 using System;
@@ -11,6 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using static SmartFood.Core.Constants.GeneralConstants;
+using System.Drawing.Printing;
 
 namespace SmartFood.Forms
 {
@@ -35,26 +37,30 @@ namespace SmartFood.Forms
 
             #region dataGridViewConsumbles
             dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
-            dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.NAME);
+            dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.TITLE);
             dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_PRICE, GeneralConstants.PRICE);
             dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_AMOUNT, GeneralConstants.AMOUNT);
 
             var column = new DataGridViewComboBoxColumn();
             column.HeaderText = GeneralConstants.MEASURING;
+            column.Name = UIConstans.NEW_COLUMN_MEASURING;
             dataGridViewConsumbles.Columns.Add(column);
 
             column = new DataGridViewComboBoxColumn();
             column.HeaderText = GeneralConstants.TYPE;
+            column.Name = UIConstans.NEW_COLUMN_TYPE;
             dataGridViewConsumbles.Columns.Add(column);
 
             column = new DataGridViewComboBoxColumn();            
             column.HeaderText = GeneralConstants.CATEGORY;
+            column.Name = UIConstans.NEW_COLUMN_CATEGORY;
             dataGridViewConsumbles.Columns.Add(column);
 
             dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_WASTE, GeneralConstants.WASTE);
 
             column = new DataGridViewComboBoxColumn();
             column.HeaderText = GeneralConstants.VISIBILITY;
+            column.Name = UIConstans.NEW_COLUMN_VISIBILITY;
             dataGridViewConsumbles.Columns.Add(column);
 
             dataGridViewConsumbles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -64,6 +70,7 @@ namespace SmartFood.Forms
             dataGridViewConsumbles.Columns[3].ReadOnly = true;
             dataGridViewConsumbles.RowHeadersVisible = false;
             dataGridViewConsumbles.EditMode = DataGridViewEditMode.EditOnEnter;
+            checkBoxPrint.Checked = true;
             #endregion
 
             #region dataGridViewSuppliers
@@ -199,7 +206,7 @@ namespace SmartFood.Forms
 
             #region dataGridViewGoods
             dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
-            dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.NAME);
+            dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.TITLE);
             dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_CATEGORY, GeneralConstants.CATEGORY);
             dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_PRICE, GeneralConstants.PRICE);
             dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_WEIGHT, GeneralConstants.WEIGHT);
@@ -214,6 +221,19 @@ namespace SmartFood.Forms
             dataGridViewGoods.RowHeadersVisible = false;
             dataGridViewGoods.EditMode = DataGridViewEditMode.EditOnEnter;
             dataGridViewGoods.ReadOnly = true;
+
+            #endregion
+
+            #region dataGridCostPrice
+            dataGridViewCostPrice.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
+            dataGridViewCostPrice.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.TITLE);
+            dataGridViewCostPrice.Columns.Add(UIConstans.NEW_COLUMN_COST_PRICE, GeneralConstants.COST_PRICE);
+
+            dataGridViewCostPrice.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCostPrice.AllowUserToAddRows = false;
+            dataGridViewCostPrice.RowHeadersVisible = false;
+            dataGridViewCostPrice.ReadOnly = true;
+
             #endregion
         }
 
@@ -576,7 +596,7 @@ namespace SmartFood.Forms
                     AcountTypesCore.GetAcountType(collection[4].Value.ToString()),
                     EmployeesCore.Emplyees.GetID(collection[3].Value.ToString()),
                     collection[2].Value.ToString(),
-                    collection[6].Value.ToString() == GeneralConstants.YES ? "1" : "0");
+                    collection[5].Value.ToString() == GeneralConstants.YES ? "1" : "0");
 
                 dataGridViewAcount.CellValueChanged -= DataGridViewAcount_CellValueChanged;
                 updateFlag = false;
@@ -628,14 +648,17 @@ namespace SmartFood.Forms
 
             tmpPoint.X = buttonAddAllConsumbles.Location.X + buttonAddAllConsumbles.Width + 10;
             tmpWidth = buttonSelectConsumble.Location.X - tmpPoint.X - 10;
-            comboBoxSelectConsumble.Location = tmpPoint;
-            comboBoxSelectConsumble.Width = tmpWidth;
+            comboBoxSelectGood.Location = tmpPoint;
+            comboBoxSelectGood.Width = tmpWidth;
 
             tmpWidth = groupBoxCostPrice.Width - 20;
             tmpHeight = buttonAddAllConsumbles.Location.Y - 30;
             tmpPoint.X = 10;
             tmpPoint.Y = 20;
             dataGridViewCostPrice.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
+
+            comboBoxSelectGood.DataSource = GoodsCore.Goods.ToList();
+            comboBoxSelectGood.SelectedIndex = 0;
             this.Refresh();
         }
 
@@ -646,6 +669,12 @@ namespace SmartFood.Forms
             tmpPoint.X = tabPageConsumables.Width - buttonAddConsumble.Width - 10;
             tmpPoint.Y = tabPageConsumables.Height - buttonAddConsumble.Height - 10;
             buttonAddConsumble.Location = tmpPoint;
+
+            tmpPoint.X = buttonAddConsumble.Location.X - buttonPrintConsumbles.Width - 10;
+            buttonPrintConsumbles.Location = tmpPoint;
+
+            tmpPoint.X = buttonPrintConsumbles.Location.X - checkBoxPrint.Width - 10;
+            checkBoxPrint.Location = tmpPoint;
 
             int tmpWidth = tabPageConsumables.Width - 24;
             int tmpHeight = buttonAddConsumble.Location.Y - buttonAddConsumble.Height - 20;
@@ -703,18 +732,24 @@ namespace SmartFood.Forms
                             cell = new DataGridViewComboBoxCell();
                             foreach (var type in ConsumblesTypesCore.ConsumbleTypes.items)
                             {
-                                if(type.visible!=0)
-                                    cell.Items.Add(type.name);
+                                if (type.visible != 0)
+                                {
+                                    bool hasCategories = true;
+                                    try
+                                    {
+                                        ConsumbleCategorieCore.GetConsumbleCategorie(type.id.ToString());
+                                        if (ConsumbleCategorieCore.consumbleCategories.items.Count == 0)
+                                            hasCategories = false;
+                                    }catch { hasCategories = false; }
+                                    if(hasCategories)
+                                        cell.Items.Add(type.name);
+                                }
                             }
                             cell.Value = ConsumblesTypesCore.ConsumbleTypes.GetName(consumble.id_type);
                             row.Cells.Add(cell);
 
                             cell = new DataGridViewComboBoxCell();
-                            try
-                            {
-                                ConsumbleCategorieCore.consumbleCategories.items.Clear();
-                            }
-                            catch { }
+        
                             ConsumbleCategorieCore.GetConsumbleCategorie(consumble.id_type.ToString());
                             foreach (var consumbleCategorie in ConsumbleCategorieCore.consumbleCategories.items)
                                 cell.Items.Add(consumbleCategorie.name);
@@ -736,7 +771,6 @@ namespace SmartFood.Forms
                             updateFlag = true;
 
                             dataGridViewConsumbles.CellValueChanged += DataGridViewConsumbles_CellValueChanged;
-                            //this.Refresh();
                         }
                     });
                 }
@@ -754,7 +788,7 @@ namespace SmartFood.Forms
                 try
                 {
                     waste = Convert.ToInt32(collection[7].Value);
-                    if (waste < 100 && waste >= 0)
+                    if (waste < 100)
                         correctWaste = true;
                     else
                         ErrorsViewWrapper.ShowError(ErrorTexts.INCORRECT_WASTE);
@@ -970,6 +1004,100 @@ namespace SmartFood.Forms
             modalForm.StartPosition = FormStartPosition.CenterScreen;
             this.Enabled = false;
             modalForm.Show();
+        }
+
+        private void buttonPrintConsumbles_Click(object sender, EventArgs e)
+        {
+            DGVPrinter printer = new DGVPrinter();
+
+            printer.Title = "Остатки";
+
+            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit |
+
+                                          StringFormatFlags.NoClip;
+
+            printer.PageNumbers = true;
+
+            printer.PageNumberInHeader = false;
+
+            printer.PorportionalColumns = true;
+
+            printer.HeaderCellAlignment = StringAlignment.Near;
+
+            printer.Footer = "IT-Food";
+
+            printer.FooterSpacing = 15;
+
+            printer.RowHeight = DGVPrinter.RowHeightSetting.CellHeight;
+
+            printer.PrintDataGridView(CreateDGVPrint());
+        }
+
+        private DataGridView CreateDGVPrint()
+        {
+            DataGridView tmpDGV = new DataGridView();
+            tmpDGV.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
+            tmpDGV.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.TITLE);
+            tmpDGV.Columns.Add(UIConstans.NEW_COLUMN_ACTUAL_AMOUNT, GeneralConstants.ACTUAL_AMOUNT);
+            if (checkBoxPrint.Checked)
+                tmpDGV.Columns.Add(UIConstans.NEW_COLUMN_AMOUNT, GeneralConstants.AMOUNT);
+
+            tmpDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            tmpDGV.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            
+
+            for (int i = 0; i < dataGridViewConsumbles.Rows.Count; i++)
+            {
+                DataGridViewCellCollection collection = dataGridViewConsumbles.Rows[i].Cells;
+                if(Convert.ToDouble(collection[3].Value)>0)
+                {
+                    if (checkBoxPrint.Checked)
+                        tmpDGV.Rows.Add(collection[0].Value, collection[1].Value,"", string.Format("{0} {1}",collection[3].Value.ToString(),collection[4].Value.ToString()));
+                    else
+                        tmpDGV.Rows.Add(collection[0].Value, collection[1].Value,"");
+                }
+            }
+            return tmpDGV;
+
+        }
+
+        private void buttonSelectConsumble_Click(object sender, EventArgs e)
+        {
+            double costPrice = 0;
+            Good good = GoodsCore.Goods.GetGood(comboBoxSelectGood.SelectedItem.ToString());
+            good.consumbles = GoodConsumlesCore.GetGoodConsumles(good.id);
+
+            for(int i=0;i<good.consumbles.items.Count;i++)
+            {
+                Consumble consumble = ConsumblesCore.Consumbles.GetConsumble(good.consumbles.items[i].id_item);
+                costPrice += consumble.price * good.consumbles.items[i].weight;
+            }
+
+            dataGridViewCostPrice.Rows.Add(good.id, good.name, costPrice);
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            dataGridViewCostPrice.Rows.Clear();
+        }
+
+        private void buttonAddAllConsumbles_Click(object sender, EventArgs e)
+        {
+            dataGridViewCostPrice.Rows.Clear();
+
+            foreach(Good good in GoodsCore.Goods.items)
+            {
+                double costPrice = 0;
+                good.consumbles = GoodConsumlesCore.GetGoodConsumles(good.id);
+
+                for (int i = 0; i < good.consumbles.items.Count; i++)
+                {
+                    Consumble consumble = ConsumblesCore.Consumbles.GetConsumble(good.consumbles.items[i].id_item);
+                    costPrice += consumble.price * good.consumbles.items[i].weight;
+                }
+
+                dataGridViewCostPrice.Rows.Add(good.id, good.name, costPrice);
+            }
         }
     }
 }

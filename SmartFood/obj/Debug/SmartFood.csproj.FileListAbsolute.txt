@@ -138,3 +138,5 @@ C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddCli
 C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.AddClientsAddress.resources
 D:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.NewGoodsConsumble.resources
 E:\SmartFood\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.NewGoodsConsumble.resources
+C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.Forms.NewGoodsConsumble.resources
+C:\Users\Irdis\Source\Repos\SmartFood\SmartFood\obj\Debug\SmartFood.csprojResolveAssemblyReference.cache

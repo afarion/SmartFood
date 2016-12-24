@@ -52,6 +52,12 @@ namespace SmartFood.Core
 
         public static bool EditConsumble(string id, string name, string visible, int idType, int idCategory, int idMeasure, int waste)
         {
+            if (idCategory == -1)
+            {
+                ConsumbleCategorieCore.GetConsumbleCategorie(idType.ToString());                
+                idCategory = ConsumbleCategorieCore.consumbleCategories.items[0].id;
+            }
+
             Dictionary<string, string> param = new Dictionary<string, string>();
             param.Add(RequestFields.ACTION, Actions.EDIT);
             param.Add(RequestFields.ID, id);

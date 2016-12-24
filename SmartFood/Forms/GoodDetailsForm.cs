@@ -45,9 +45,9 @@ namespace SmartFood.Forms
             foreach (var consumble in good.consumbles.items)
             {
                 if(isEdit)
-                    dataGridViewConsumbles.Rows.Add(consumble.id, ConsumblesCore.Consumbles.GetName(consumble.id_item), consumble.weight, Convert.ToBoolean(consumble.visible) ? GeneralConstants.YES : GeneralConstants.NO);
+                    dataGridViewConsumbles.Rows.Add(consumble.id, ConsumblesCore.Consumbles.GetName(consumble.id_item), consumble.weight, MeasuresCore.Measures.GetName(ConsumblesCore.Consumbles.GetConsumble(consumble.id_item).id_unit), Convert.ToBoolean(consumble.visible) ? GeneralConstants.YES : GeneralConstants.NO);
                 else
-                    dataGridViewConsumbles.Rows.Add("", ConsumblesCore.Consumbles.GetName(consumble.id_item), consumble.weight, Convert.ToBoolean(consumble.visible) ? GeneralConstants.YES : GeneralConstants.NO);
+                    dataGridViewConsumbles.Rows.Add("", ConsumblesCore.Consumbles.GetName(consumble.id_item), consumble.weight, MeasuresCore.Measures.GetName(ConsumblesCore.Consumbles.GetConsumble(consumble.id_item).id_unit), Convert.ToBoolean(consumble.visible) ? GeneralConstants.YES : GeneralConstants.NO);
             }
         }
 
@@ -58,8 +58,9 @@ namespace SmartFood.Forms
             comboBoxCategory.SelectedIndex = 0;
 
             dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
-            dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.NAME);
+            dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.TITLE);
             dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_WEIGHT, GeneralConstants.WEIGHT);
+            dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_MEASURING, GeneralConstants.MEASURING);
             var column = new DataGridViewComboBoxColumn();
             column.DataSource = new List<string>() { GeneralConstants.YES, GeneralConstants.NO };
             column.HeaderText = GeneralConstants.VISIBILITY;
@@ -70,6 +71,7 @@ namespace SmartFood.Forms
             dataGridViewConsumbles.RowHeadersVisible = false;
             dataGridViewConsumbles.Columns[0].ReadOnly = true;
             dataGridViewConsumbles.Columns[1].ReadOnly = true;
+            dataGridViewConsumbles.Columns[3].ReadOnly = true;
             dataGridViewConsumbles.EditMode = DataGridViewEditMode.EditOnEnter;
             dataGridViewConsumbles.CellClick += DataGridViewConsumbles_CellClick;
             comboBoxVisble.DataSource = new List<string>() { GeneralConstants.YES, GeneralConstants.NO };
@@ -183,7 +185,7 @@ namespace SmartFood.Forms
                 }
             }
             if(!exists)
-                dataGridViewConsumbles.Rows.Add("", consumbleName, weight,GeneralConstants.YES);
+                dataGridViewConsumbles.Rows.Add("", consumbleName, weight, MeasuresCore.Measures.GetName(ConsumblesCore.Consumbles.GetConsumble(consumbleName).id_unit),GeneralConstants.YES);
         }
 
         private void buttonDeleteConsumble_Click(object sender, EventArgs e)
