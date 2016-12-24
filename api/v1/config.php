@@ -397,7 +397,7 @@ function GetConfigArray()
         
             "table" => "tuseraddress",
             
-            "log_table" => "tuseraddress_log",
+            //"log_table" => "tuseraddress_log",
             
             "permission" => array( 
                 //          view    edit    add     remove
@@ -770,7 +770,7 @@ function GetConfigArray()
                 "create"        => "torderdish.id",
             ),
             
-            "add_callback" => "add_orderdish",
+            "add_postprocessing" => "add_orderdish",
             
             "edit_callback" => "edit_orderdish",
         ),
@@ -789,7 +789,10 @@ function GetConfigArray()
             
             "insert"    => array( "code" => 31,     "status_code" => 400,   "message" => "Insert object error" ),
             "amount"    => array( "code" => 32,     "status_code" => 400,   "message" => "Not enough amount" ),
-            
+            "discount"  => array( "code" => 33,     "status_code" => 400,   "message" => "Invalid discount" ),
+            "status"    => array( "code" => 34,     "status_code" => 400,   "message" => "Can't set this status" ),
+            "courier"   => array( "code" => 35,     "status_code" => 400,   "message" => "Courier is not set" ),
+                        
             "sid"       => array( "code" => 50,     "status_code" => 401,   "message" => "Wrong user sid" ),
             "perm"      => array( "code" => 51,     "status_code" => 403,   "message" => "You do not have permission for this action" ),
             
