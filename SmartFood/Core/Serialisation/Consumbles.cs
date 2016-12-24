@@ -57,6 +57,16 @@ namespace SmartFood.Core.Serialisation
             }
             return null;
         }
+
+        public Consumble GetConsumble(int id)
+        {
+            foreach (var item in items)
+            {
+                if (item.id == id)
+                    return item;
+            }
+            return null;
+        }
     }
 
     [Serializable]

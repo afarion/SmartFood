@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -89,6 +90,7 @@
     <Compile Include="Core\Constants\GeneralConstants.cs" />
     <Compile Include="Core\ConsumblesCore.cs" />
     <Compile Include="Core\ConsumbleCategorieCore.cs" />
+    <Compile Include="Core\DGVPrinter.cs" />
     <Compile Include="Core\EmployeesCore.cs" />
     <Compile Include="Core\EmployeesTypesCore.cs" />
     <Compile Include="Core\GoodConsumlesCore.cs" />

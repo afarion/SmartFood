@@ -11,6 +11,15 @@ namespace SmartFood.Core.Serialisation
         public int count;
         public List<Good> items;
 
+        public List<string> ToList()
+        {
+            List<string> tmpList = new List<string>();
+            foreach (var item in items)
+                tmpList.Add(item.name);
+
+            return tmpList;
+        }
+
         public int GetId(string name)
         {
             foreach(Good good in items)

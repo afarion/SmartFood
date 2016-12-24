@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageConsumables = new System.Windows.Forms.TabPage();
+            this.checkBoxPrint = new System.Windows.Forms.CheckBox();
+            this.buttonPrintConsumbles = new System.Windows.Forms.Button();
             this.buttonConsumbleCategories = new System.Windows.Forms.Button();
             this.buttonConsumbleTypes = new System.Windows.Forms.Button();
             this.dataGridViewConsumbles = new System.Windows.Forms.DataGridView();
@@ -72,9 +74,10 @@
             this.dataGridViewCostPrice = new System.Windows.Forms.DataGridView();
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonAddAllConsumbles = new System.Windows.Forms.Button();
-            this.comboBoxSelectConsumble = new System.Windows.Forms.ComboBox();
+            this.comboBoxSelectGood = new System.Windows.Forms.ComboBox();
             this.buttonSelectConsumble = new System.Windows.Forms.Button();
             this.tabPageGoods = new System.Windows.Forms.TabPage();
+            this.buttonCopyGood = new System.Windows.Forms.Button();
             this.dataGridViewGoods = new System.Windows.Forms.DataGridView();
             this.buttonAddGood = new System.Windows.Forms.Button();
             this.tabPageAcounts = new System.Windows.Forms.TabPage();
@@ -89,7 +92,6 @@
             this.tabPageSuppliers = new System.Windows.Forms.TabPage();
             this.dataGridViewSuppliers = new System.Windows.Forms.DataGridView();
             this.buttonAddSupplier = new System.Windows.Forms.Button();
-            this.buttonCopyGood = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPageConsumables.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsumbles)).BeginInit();
@@ -131,6 +133,8 @@
             // 
             // tabPageConsumables
             // 
+            this.tabPageConsumables.Controls.Add(this.checkBoxPrint);
+            this.tabPageConsumables.Controls.Add(this.buttonPrintConsumbles);
             this.tabPageConsumables.Controls.Add(this.buttonConsumbleCategories);
             this.tabPageConsumables.Controls.Add(this.buttonConsumbleTypes);
             this.tabPageConsumables.Controls.Add(this.dataGridViewConsumbles);
@@ -142,6 +146,26 @@
             this.tabPageConsumables.TabIndex = 0;
             this.tabPageConsumables.Text = "Расходники";
             this.tabPageConsumables.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxPrint
+            // 
+            this.checkBoxPrint.AutoSize = true;
+            this.checkBoxPrint.Location = new System.Drawing.Point(1111, 581);
+            this.checkBoxPrint.Name = "checkBoxPrint";
+            this.checkBoxPrint.Size = new System.Drawing.Size(151, 17);
+            this.checkBoxPrint.TabIndex = 7;
+            this.checkBoxPrint.Text = "Печатать с количеством";
+            this.checkBoxPrint.UseVisualStyleBackColor = true;
+            // 
+            // buttonPrintConsumbles
+            // 
+            this.buttonPrintConsumbles.Location = new System.Drawing.Point(1267, 575);
+            this.buttonPrintConsumbles.Name = "buttonPrintConsumbles";
+            this.buttonPrintConsumbles.Size = new System.Drawing.Size(75, 23);
+            this.buttonPrintConsumbles.TabIndex = 6;
+            this.buttonPrintConsumbles.Text = "Печать";
+            this.buttonPrintConsumbles.UseVisualStyleBackColor = true;
+            this.buttonPrintConsumbles.Click += new System.EventHandler(this.buttonPrintConsumbles_Click);
             // 
             // buttonConsumbleCategories
             // 
@@ -505,7 +529,7 @@
             this.groupBoxCostPrice.Controls.Add(this.dataGridViewCostPrice);
             this.groupBoxCostPrice.Controls.Add(this.buttonClear);
             this.groupBoxCostPrice.Controls.Add(this.buttonAddAllConsumbles);
-            this.groupBoxCostPrice.Controls.Add(this.comboBoxSelectConsumble);
+            this.groupBoxCostPrice.Controls.Add(this.comboBoxSelectGood);
             this.groupBoxCostPrice.Controls.Add(this.buttonSelectConsumble);
             this.groupBoxCostPrice.Location = new System.Drawing.Point(370, 7);
             this.groupBoxCostPrice.Name = "groupBoxCostPrice";
@@ -524,12 +548,13 @@
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(6, 563);
+            this.buttonClear.Location = new System.Drawing.Point(7, 563);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(75, 23);
             this.buttonClear.TabIndex = 3;
             this.buttonClear.Text = "Очистить";
             this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // buttonAddAllConsumbles
             // 
@@ -539,14 +564,16 @@
             this.buttonAddAllConsumbles.TabIndex = 2;
             this.buttonAddAllConsumbles.Text = "Добавить все";
             this.buttonAddAllConsumbles.UseVisualStyleBackColor = true;
+            this.buttonAddAllConsumbles.Click += new System.EventHandler(this.buttonAddAllConsumbles_Click);
             // 
-            // comboBoxSelectConsumble
+            // comboBoxSelectGood
             // 
-            this.comboBoxSelectConsumble.FormattingEnabled = true;
-            this.comboBoxSelectConsumble.Location = new System.Drawing.Point(182, 565);
-            this.comboBoxSelectConsumble.Name = "comboBoxSelectConsumble";
-            this.comboBoxSelectConsumble.Size = new System.Drawing.Size(497, 21);
-            this.comboBoxSelectConsumble.TabIndex = 1;
+            this.comboBoxSelectGood.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSelectGood.FormattingEnabled = true;
+            this.comboBoxSelectGood.Location = new System.Drawing.Point(182, 565);
+            this.comboBoxSelectGood.Name = "comboBoxSelectGood";
+            this.comboBoxSelectGood.Size = new System.Drawing.Size(497, 21);
+            this.comboBoxSelectGood.TabIndex = 1;
             // 
             // buttonSelectConsumble
             // 
@@ -556,6 +583,7 @@
             this.buttonSelectConsumble.TabIndex = 0;
             this.buttonSelectConsumble.Text = "Добавить";
             this.buttonSelectConsumble.UseVisualStyleBackColor = true;
+            this.buttonSelectConsumble.Click += new System.EventHandler(this.buttonSelectConsumble_Click);
             // 
             // tabPageGoods
             // 
@@ -569,6 +597,16 @@
             this.tabPageGoods.TabIndex = 3;
             this.tabPageGoods.Text = "Товары";
             this.tabPageGoods.UseVisualStyleBackColor = true;
+            // 
+            // buttonCopyGood
+            // 
+            this.buttonCopyGood.Location = new System.Drawing.Point(1267, 576);
+            this.buttonCopyGood.Name = "buttonCopyGood";
+            this.buttonCopyGood.Size = new System.Drawing.Size(75, 23);
+            this.buttonCopyGood.TabIndex = 4;
+            this.buttonCopyGood.Text = "Копировать";
+            this.buttonCopyGood.UseVisualStyleBackColor = true;
+            this.buttonCopyGood.Click += new System.EventHandler(this.buttonCopyGood_Click);
             // 
             // dataGridViewGoods
             // 
@@ -708,16 +746,6 @@
             this.buttonAddSupplier.UseVisualStyleBackColor = true;
             this.buttonAddSupplier.Click += new System.EventHandler(this.buttonAddSupplier_Click);
             // 
-            // buttonCopyGood
-            // 
-            this.buttonCopyGood.Location = new System.Drawing.Point(1267, 576);
-            this.buttonCopyGood.Name = "buttonCopyGood";
-            this.buttonCopyGood.Size = new System.Drawing.Size(75, 23);
-            this.buttonCopyGood.TabIndex = 4;
-            this.buttonCopyGood.Text = "Копировать";
-            this.buttonCopyGood.UseVisualStyleBackColor = true;
-            this.buttonCopyGood.Click += new System.EventHandler(this.buttonCopyGood_Click);
-            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -734,6 +762,7 @@
             this.Move += new System.EventHandler(this.AdminForm_Move);
             this.tabControl.ResumeLayout(false);
             this.tabPageConsumables.ResumeLayout(false);
+            this.tabPageConsumables.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsumbles)).EndInit();
             this.tabPageArrivalAndWriteOff.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWriteOff)).EndInit();
@@ -795,7 +824,7 @@
         private System.Windows.Forms.DataGridView dataGridViewCostPrice;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Button buttonAddAllConsumbles;
-        private System.Windows.Forms.ComboBox comboBoxSelectConsumble;
+        private System.Windows.Forms.ComboBox comboBoxSelectGood;
         private System.Windows.Forms.Button buttonSelectConsumble;
         private System.Windows.Forms.TextBox textBoxDiffForThisMonth;
         private System.Windows.Forms.Label labelDiffForThisMonth;
@@ -822,5 +851,7 @@
         private System.Windows.Forms.Button buttonConsumbleCategories;
         private System.Windows.Forms.Button buttonConsumbleTypes;
         private System.Windows.Forms.Button buttonCopyGood;
+        private System.Windows.Forms.CheckBox checkBoxPrint;
+        private System.Windows.Forms.Button buttonPrintConsumbles;
     }
 }

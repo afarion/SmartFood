@@ -23,7 +23,7 @@ namespace SmartFood
 
             comboBoxRole.Items.Add(new ComboBoxItem(Convert.ToInt64(EAcountType.Admin), AcountTypesCore.Types[EAcountType.Admin]));
             comboBoxRole.Items.Add(new ComboBoxItem(Convert.ToInt64(EAcountType.Operator), AcountTypesCore.Types[EAcountType.Operator]));
-            comboBoxRole.Items.Add(new ComboBoxItem(Convert.ToInt64(EAcountType.Cook), AcountTypesCore.Types[EAcountType.Cook]));
+            //comboBoxRole.Items.Add(new ComboBoxItem(Convert.ToInt64(EAcountType.Cook), AcountTypesCore.Types[EAcountType.Cook]));
             comboBoxRole.SelectedIndex = 0;
             this.KeyPreview = true;
             this.KeyDown += LoginForm_KeyDown;

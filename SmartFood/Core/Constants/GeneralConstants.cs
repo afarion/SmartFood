@@ -18,6 +18,7 @@ namespace SmartFood.Core.Constants
         public const string COOK = "Повар";
         public const string PRICE = "Цена";
         public const string AMOUNT = "Количество";
+        public const string ACTUAL_AMOUNT = "На складе";
         public const string WASTE = "Процент отхода";
         public const string MEASURING = "Единица";
         public const string CATEGORY = "Категория";
@@ -47,6 +48,7 @@ namespace SmartFood.Core.Constants
         public const string SUPPLIER = "Поставщик";
         public const string DATE = "Дата";
         public const string WEIGHT = "Вес";
+        public const string COST_PRICE = "Себестоимость";
 
 
         public class UIConstans
@@ -56,6 +58,7 @@ namespace SmartFood.Core.Constants
             public const string NEW_COLUMN_PRICE = "newColumnPrice";
             public const string NEW_COLUMN_MEASURING = "newColumnMeasuring";
             public const string NEW_COLUMN_AMOUNT = "newColumnAmount";
+            public const string NEW_COLUMN_ACTUAL_AMOUNT = "newColumnActualAmount";
             public const string NEW_COLUMN_WASTE = "newColumnWaste";
             public const string NEW_COLUMN_TYPE = "newColumnType";
             public const string NEW_COLUMN_CATEGORY = "newColumnCategory";
@@ -83,6 +86,8 @@ namespace SmartFood.Core.Constants
             public const string NEW_COLUMN_EMPLOYEE = "newColumnTotalEmployee";
             public const string NEW_COLUMN_DATE = "newColumnTotalDate";
             public const string NEW_COLUMN_WEIGHT = "newColumnWeight";
+            public const string NEW_COLUMN_VISIBILITY = "newColumnVisibilty";
+            public const string NEW_COLUMN_COST_PRICE = "newColumnCostPrice";
         }
     }
 }
