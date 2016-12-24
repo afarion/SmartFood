@@ -40,7 +40,7 @@
             // textBoxName
             // 
             this.textBoxName.Location = new System.Drawing.Point(85, 31);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(228, 20);
             this.textBoxName.TabIndex = 2;
@@ -51,16 +51,16 @@
             this.labelName.Location = new System.Drawing.Point(2, 34);
             this.labelName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(29, 13);
+            this.labelName.Size = new System.Drawing.Size(83, 13);
             this.labelName.TabIndex = 2;
-            this.labelName.Text = "Имя";
+            this.labelName.Text = "Наименование";
             // 
             // comboBoxType
             // 
             this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxType.FormattingEnabled = true;
             this.comboBoxType.Location = new System.Drawing.Point(85, 8);
-            this.comboBoxType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxType.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxType.Name = "comboBoxType";
             this.comboBoxType.Size = new System.Drawing.Size(228, 21);
             this.comboBoxType.TabIndex = 1;
@@ -78,7 +78,7 @@
             // buttonOK
             // 
             this.buttonOK.Location = new System.Drawing.Point(237, 51);
-            this.buttonOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonOK.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 3;
@@ -89,7 +89,7 @@
             // buttonCancel
             // 
             this.buttonCancel.Location = new System.Drawing.Point(159, 51);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 4;
@@ -110,7 +110,7 @@
             this.Controls.Add(this.textBoxName);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddConsumbleCategorieForm";

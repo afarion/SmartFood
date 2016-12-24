@@ -27,7 +27,7 @@ namespace SmartFood.Forms
             DownloadConsumbleTypes();
             instance = this;
             dataGridViewConsumbleCategories.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
-            dataGridViewConsumbleCategories.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.NAME);
+            dataGridViewConsumbleCategories.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.TITLE);
             var column = new DataGridViewComboBoxColumn();
             column.DataSource = new List<string>() { GeneralConstants.YES, GeneralConstants.NO };
             column.HeaderText = GeneralConstants.VISIBILITY;

@@ -37,7 +37,7 @@ namespace SmartFood.Forms
 
             #region dataGridViewConsumbles
             dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
-            dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.NAME);
+            dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.TITLE);
             dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_PRICE, GeneralConstants.PRICE);
             dataGridViewConsumbles.Columns.Add(UIConstans.NEW_COLUMN_AMOUNT, GeneralConstants.AMOUNT);
 
@@ -206,7 +206,7 @@ namespace SmartFood.Forms
 
             #region dataGridViewGoods
             dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
-            dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.NAME);
+            dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.TITLE);
             dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_CATEGORY, GeneralConstants.CATEGORY);
             dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_PRICE, GeneralConstants.PRICE);
             dataGridViewGoods.Columns.Add(UIConstans.NEW_COLUMN_WEIGHT, GeneralConstants.WEIGHT);
@@ -226,7 +226,7 @@ namespace SmartFood.Forms
 
             #region dataGridCostPrice
             dataGridViewCostPrice.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
-            dataGridViewCostPrice.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.NAME);
+            dataGridViewCostPrice.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.TITLE);
             dataGridViewCostPrice.Columns.Add(UIConstans.NEW_COLUMN_COST_PRICE, GeneralConstants.COST_PRICE);
 
             dataGridViewCostPrice.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -788,7 +788,7 @@ namespace SmartFood.Forms
                 try
                 {
                     waste = Convert.ToInt32(collection[7].Value);
-                    if (waste < 100 && waste >= 0)
+                    if (waste < 100)
                         correctWaste = true;
                     else
                         ErrorsViewWrapper.ShowError(ErrorTexts.INCORRECT_WASTE);
@@ -1037,7 +1037,7 @@ namespace SmartFood.Forms
         {
             DataGridView tmpDGV = new DataGridView();
             tmpDGV.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
-            tmpDGV.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.NAME);
+            tmpDGV.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.TITLE);
             tmpDGV.Columns.Add(UIConstans.NEW_COLUMN_ACTUAL_AMOUNT, GeneralConstants.ACTUAL_AMOUNT);
             if (checkBoxPrint.Checked)
                 tmpDGV.Columns.Add(UIConstans.NEW_COLUMN_AMOUNT, GeneralConstants.AMOUNT);

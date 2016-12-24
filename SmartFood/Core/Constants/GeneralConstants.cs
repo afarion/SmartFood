@@ -9,6 +9,7 @@ namespace SmartFood.Core.Constants
     {
         public const string ID = "ID";
         public const string NAME = "Имя";
+        public const string TITLE = "Наименование";
         public const string YES = "Да";
         public const string NO = "Нет";
         public const string VISIBILITY = "Видимость";

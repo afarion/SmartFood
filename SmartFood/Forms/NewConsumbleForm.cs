@@ -56,7 +56,7 @@ namespace SmartFood.Forms
                 try
                 {
                     waste = Convert.ToInt32(textBoxWaste.Text);
-                    if (waste < 100 && waste>=0)
+                    if (waste < 100)
                         correctWaste = true;
                     else
                         ErrorsViewWrapper.ShowError(ErrorTexts.INCORRECT_WASTE);
