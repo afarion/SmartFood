@@ -9,6 +9,13 @@ define("LOG_REQUESTS",      true);
 
 define("AUTH_TABLE",        "tadmin");
 
+define("ORDER_STATUS_NEW",          1);
+define("ORDER_STATUS_READY",        2);
+define("ORDER_STATUS_DELIVERY",     3);
+define("ORDER_STATUS_COMPLETED",    4);
+define("ORDER_STATUS_CANCELED",     5);
+define("ORDER_STATUS_REFUSED",      6);
+
 class SmartFoodApi
 {
     private $config;
@@ -217,12 +224,18 @@ class SmartFoodApi
                 $this->OnOrderEdit($method, $request);
                 break;
                 
-            case "add_orderdish":
-                $this->OnOrderDishAdd($method, $request);
-                break;
-                
             case "edit_orderdish":
                 $this->OnOrderDishEdit($method, $request);
+                break;
+        }
+    }
+    
+    private function ExecutePostProcessing($name, $method, $request, $id)
+    {
+        switch($name)
+        {
+            case "add_orderdish":
+                $this->OnOrderDishAdd($method, $request, $id);
                 break;
         }
     }
@@ -230,25 +243,335 @@ class SmartFoodApi
     private function OnOrderAdd($method, $request)
     {
         //Update user address
-        
-        //Update discount
-        
-        
+        $this->UpdateUserAddress($request["id_user"], $request["address"]);        
     }
     
     private function OnOrderEdit($method, $request)
     {
+        if(!isset($request["id"]))
+            $this->ShowError("request");
+            
+        $idOrder = intval($request["id"]);
         
+        if($idOrder <= 0)
+            $this->ShowError("request");
+            
+        $methodConfig = $this->config[$method];
+        
+        $table = $methodConfig["table"];
+        
+        $idUser = 0;
+            
+        if(isset($request["id_user"]))
+            $idUser = $request["id_user"];
+        else
+            $idUser = $this->GetValueByQuery("SELECT id_user FROM $table WHERE id=$idOrder", "id_user");
+        
+        //Update user address
+        if(isset($request["address"]) && trim($request["address"]) != "")
+        {
+            $this->UpdateUserAddress($idUser, $request["address"]);  
+        }
+        
+        $pickup = 0;
+            
+        if(isset($request["pickup"]))
+            $pickup = $request["pickup"];
+        else
+            $pickup = $this->GetValueByQuery("SELECT pickup FROM $table WHERE id=$idOrder", "pickup");
+            
+        $courier = 0;
+            
+        if(isset($request["id_courier"]))
+            $courier = $request["id_courier"];
+        else
+            $courier = $this->GetValueByQuery("SELECT id_courier FROM $table WHERE id=$idOrder", "id_courier");
+        
+        //Update discount and price
+        $this->UpdateDiscountAndPrice($idOrder, $idUser, $pickup);
+        
+        //Update status
+        if(isset($request["id_status"]))
+        {
+            $this->UpdateOrderStatus($idOrder, $request["id_status"], $request["user_id"], $courier);  
+        }
     }
     
-    private function OnOrderDishAdd($method, $request)
+    private function OnOrderDishAdd($method, $request, $idItem)
     {
+        $orderTable = $this->config["order"]["table"];
+        
+        $orderDishTable = $this->config["orderdish"]["table"];
+        
+        $dishTable = $this->config["dish"]["table"];
+        
         //Check in warehouse
+        
+        //Update item price
+        $idOrder = intval($request["id_order"]);
+        
+        $quantity = 1;
+        if(isset($request["quantity"]))
+            $quantity = $request["quantity"];
+            
+        $idDish = intval($request["id_dish"]);
+        
+        $dishPrice = $this->GetValueByQuery("SELECT price FROM $dishTable WHERE id=$idDish", "price");
+        
+        $dishPrice = floatval($dishPrice);
+        
+        $itemTotalPrice = $dishPrice * $quantity;
+        
+        //$query = "UPDATE $orderDishTable SET price='$dishPrice', "
+        
+        //Update order price
+        $idUser = 0;
+            
+        if(isset($request["id_user"]))
+            $idUser = $request["id_user"];
+        else
+            $idUser = $this->GetValueByQuery("SELECT id_user FROM $orderTable WHERE id=$idOrder", "id_user");
+        
+        $pickup = 0;
+            
+        if(isset($request["pickup"]))
+            $pickup = $request["pickup"];
+        else
+            $pickup = $this->GetValueByQuery("SELECT pickup FROM $orderTable WHERE id=$idOrder", "pickup");
+        
+        $this->UpdateDiscountAndPrice($idOrder, $idUser, $pickup);
+    }
+    
+    private function UpdateDishItemPrice($quantity, $idDish )
+    {
+        
     }
     
     private function OnOrderDishEdit($method, $request)
     {
+        //Check in warehouse
         
+        //Update item price
+        
+        //Update order price
+    }
+    
+    private function UpdateUserAddress($id_user, $address)
+    {
+        if(intval($id_user) <= 0 || trim($address) == "")
+            return;
+        
+        $id_user = $this->FormatField($id_user, "int");
+        $address = $this->FormatField($address, "text");
+        
+        $useraddressTable = $this->config["useraddress"]["table"];
+        
+        $query = "INSERT INTO $useraddressTable (id_user,address) VALUES ($id_user, $address) ON DUPLICATE KEY UPDATE priority=priority+1, visible=1";
+        $this->ExecuteNonQuery($query);
+    }
+    
+    private function UpdateDiscountAndPrice($idOrder, $idUser, $pickup)
+    {
+        $idOrder = intval($idOrder);
+        $idUser = intval($idUser);
+        
+        $orderTable = $this->config["order"]["table"];
+        
+        $orderDishTable = $this->config["orderdish"]["table"];
+        
+        $userTable = $this->config["user"]["table"];
+        
+        $orderData = $this->GetValuesByQuery("SELECT id, price, discount, result_price FROM $orderTable WHERE id=$idOrder");
+        
+        $itemsData = $this->GetRowsByQuery("SELECT id, total_price FROM $orderDishTable WHERE id_order=$idOrder AND visible>0");
+        
+        $totalPrice = 0;
+        
+        foreach($itemsData as $item)
+        {
+            $totalPrice += floatval($item["total_price"]);
+        }
+        
+        $userData = $this->GetValuesByQuery("SELECT id, discount_stored, discount_fixed FROM $userTable WHERE id=$idUser");
+        
+        $discountStored = intval($userData["discount_stored"]);
+        $discountFixed  = intval($userData["discount_fixed"]);
+        
+        $discountTotal = max($discountStored, $discountFixed);
+        
+        if($pickup > 0)
+            $discountTotal += 10;
+            
+        if($discountTotal >= 100 || $discountTotal < 0)
+            $this->ShowError("discount");
+            
+        $newPrice = floatval($totalPrice * ( (100-$discountTotal) / 100 ));
+        
+        $query = "UPDATE $orderTable SET price='$totalPrice', discount='$discountTotal', result_price='$newPrice' WHERE id=$idOrder";
+        
+        $this->ExecuteNonQuery($query);
+        
+        $this->TryToExecuteLog("order", array("price" => $totalPrice, "discount" => $discountTotal, "result_price" => $newPrice), $idOrder, 2, array("price" => $orderData["price"], "discount" => $orderData["discount"], "result_price" => $orderData["result_price"]));
+    }
+    
+    private function UpdateOrderStatus($idOrder, $idStatus, $idAdmin, $idCourier)
+    {
+        $idOrder = intval($idOrder);
+        $idStatus = intval($idStatus);
+        
+        $orderTable = $this->config["order"]["table"];
+        
+        $orderData = $this->GetValuesByQuery("SELECT id, id_status FROM $orderTable WHERE id=$idOrder");
+        
+        $oldStatus = intval($orderData["id_status"]);
+        
+        if($oldStatus == $idStatus)
+            return;
+            
+        switch($idStatus)
+        {
+            case ORDER_STATUS_READY:
+                if($oldStatus != ORDER_STATUS_NEW)
+                    $this->ShowError("status");
+                
+                $this->OrderToOutlay($idOrder, $idAdmin);
+                break;
+                
+            case ORDER_STATUS_DELIVERY:
+                if($oldStatus != ORDER_STATUS_READY)
+                    $this->ShowError("status");
+            
+                if($idCourier <= 0)
+                    $this->ShowError("courier");
+                break;
+                
+            case ORDER_STATUS_COMPLETED:
+                if($oldStatus != ORDER_STATUS_READY && $oldStatus != ORDER_STATUS_DELIVERY)
+                    $this->ShowError("status");
+            
+                $this->StoreOrderTotalBalance($idOrder);
+                break;
+                
+            case ORDER_STATUS_CANCELED:
+                if($oldStatus != ORDER_STATUS_NEW)
+                    $this->ShowError("status");
+            
+                break;
+                
+            case ORDER_STATUS_REFUSED:
+                if($oldStatus != ORDER_STATUS_READY && $oldStatus != ORDER_STATUS_DELIVERY)
+                    $this->ShowError("status");
+                
+                break;
+                
+            default:
+                $this->ShowError("status");
+                break;
+        }
+    }
+    
+    private function StoreOrderTotalBalance($idOrder)
+    {
+        $idOrder = intval($idOrder);
+        
+        $orderTable = $this->config["order"]["table"];
+        
+        $orderData = $this->GetValuesByQuery("SELECT id, id_user, result_price FROM $orderTable WHERE id=$idOrder");
+        
+        $idUser = intval($orderData["id_user"]);
+        
+        $resultPrice = $orderData["result_price"];
+        
+        $userTable = $this->config["user"]["table"];
+        
+        $userData = $this->GetValuesByQuery("SELECT total_balance, discount_stored FROM $userTable WHERE id=$idUser");
+        
+        $userBalance = $userData["total_balance"];
+        
+        $newBalance = $userBalance + $resultPrice;
+        
+        $discountStored = $this->GetDiscountStored($newBalance);
+        
+        $query = "UPDATE $userTable SET total_balance='$newBalance', discount_stored='$discountStored' WHERE id=$idUser";
+        
+        $this->ExecuteNonQuery($query);
+        
+        $this->TryToExecuteLog("user", array("total_balance" => $newBalance, "discount_stored" => $discountStored), $idUser, 2, array("total_balance" => $userBalance, "discount_stored" => $userData["discount_stored"]));
+    }
+    
+    private function GetDiscountStored($balance)
+    {
+        $query = "SELECT from_balance, discount FROM tdiscountstored ORDER BY discount";
+        
+        $rows = $this->GetRowsByQuery($query);
+        
+        $discount = 0;
+        
+        foreach($rows as $item)
+        {
+            if(floatval($balance) < floatval($item["from_balance"]))
+                break;
+                
+            $discount = $item["discount"];
+        }
+        
+        return $discount;
+    }
+    
+    private function OrderToOutlay($idOrder, $idAdmin)
+    {
+        $idOrder = intval($idOrder);
+        $idAdmin = intval($idAdmin);
+        
+        $orderTable = $this->config["order"]["table"];
+        
+        $orderDishTable = $this->config["orderdish"]["table"];
+        
+        $dishitemTable = $this->config["dishitem"]["table"];
+        
+        $itemTable = $this->config["item"]["table"];
+        
+        $outlayTable = $this->config["outlay"]["table"];
+        
+        $itemsData = $this->GetRowsByQuery("SELECT id, id_dish, quantity FROM $orderDishTable WHERE id_order=$idOrder AND visible>0");
+        
+        $query = "SELECT $orderDishTable.quantity as quantity, 
+                         $dishitemTable.weight as weight, 
+                         $dishitemTable.id_item as id_item,
+                         $itemTable.amount as amount,
+                         $itemTable.waste_pct as waste_pct
+                    FROM $dishitemTable 
+                         LEFT JOIN $orderDishTable ON $dishitemTable.id_dish = $orderDishTable.id
+                         LEFT JOIN $itemTable ON $dishitemTable.id_item = $itemTable.id
+                    WHERE $orderDishTable.id_order = $idOrder";
+                    
+        $outlayData = $this->GetRowsByQuery($query);
+        
+        foreach($outlayData as $item)
+        {
+            $itemId     = intval($item["id_item"]);
+            $quantity   = intval($item["quantity"]);
+            $weight     = floatval($item["weight"]);
+            $amount     = floatval($item["amount"]);
+            $wastePct   = intval($item["waste_pct"]);
+            
+            $totalWeight = $weight * $quantity;
+            
+            $fullWeight = ($totalWeight * 100) / (100 - $wastePct);
+            
+            $waste = $fullWeight - $totalWeight;
+            
+            $newAmount = $amount - $fullWeight;
+            
+            $query = "INSERT INTO $outlayTable (id_item, id_admin, id_order, amount, waste) VALUES ($itemId, $idAdmin, $idOrder, $totalWeight, $waste)";
+            $this->ExecuteNonQuery($query);
+            
+            $query = "UPDATE $itemTable SET amount = $newAmount WHERE id = $itemId";
+        
+            $this->ExecuteNonQuery($query);
+            
+            $this->TryToExecuteLog("item", array("amount" => $newAmount), $itemId, 4, array("amount" => $amount));
+        }
     }
     
     private function UpdatePurchase($method, $request)
@@ -361,6 +684,9 @@ class SmartFoodApi
             $this->ShowError("insert");
         
         $this->TryToExecuteLog($method, $request, $newId, 1);
+        
+        if(isset($methodConfig["add_postprocessing"]))
+            $this->ExecutePostProcessing($methodConfig["add_postprocessing"], $method, $request, $newId);
         
         $response = array("success" => $newId);
         
