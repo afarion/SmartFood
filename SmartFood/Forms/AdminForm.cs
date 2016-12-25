@@ -1036,14 +1036,12 @@ namespace SmartFood.Forms
         private DataGridView CreateDGVPrint()
         {
             DataGridView tmpDGV = new DataGridView();
-            tmpDGV.Columns.Add(UIConstans.NEW_COLUMN_ID, GeneralConstants.ID);
             tmpDGV.Columns.Add(UIConstans.NEW_COLUMN_NAME, GeneralConstants.TITLE);
             tmpDGV.Columns.Add(UIConstans.NEW_COLUMN_ACTUAL_AMOUNT, GeneralConstants.ACTUAL_AMOUNT);
             if (checkBoxPrint.Checked)
                 tmpDGV.Columns.Add(UIConstans.NEW_COLUMN_AMOUNT, GeneralConstants.AMOUNT);
 
-            tmpDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            tmpDGV.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            tmpDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             
 
             for (int i = 0; i < dataGridViewConsumbles.Rows.Count; i++)
@@ -1052,9 +1050,9 @@ namespace SmartFood.Forms
                 if(Convert.ToDouble(collection[3].Value)>0)
                 {
                     if (checkBoxPrint.Checked)
-                        tmpDGV.Rows.Add(collection[0].Value, collection[1].Value,"", string.Format("{0} {1}",collection[3].Value.ToString(),collection[4].Value.ToString()));
+                        tmpDGV.Rows.Add(collection[1].Value,"", string.Format("{0} {1}",collection[3].Value.ToString(),collection[4].Value.ToString()));
                     else
-                        tmpDGV.Rows.Add(collection[0].Value, collection[1].Value,"");
+                        tmpDGV.Rows.Add(collection[1].Value,"");
                 }
             }
             return tmpDGV;
