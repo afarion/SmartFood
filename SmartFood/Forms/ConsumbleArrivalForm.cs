@@ -18,7 +18,11 @@ namespace SmartFood.Forms
         {
             InitializeComponent();
             comboBoxType.DataSource = ConsumblesTypesCore.ConsumbleTypes.ToList();
-            comboBoxType.SelectedIndex = 0;
+            try
+            {
+                comboBoxType.SelectedIndex = 0;
+            }
+            catch { }
             comboBoxType.SelectedIndexChanged += ComboBoxType_SelectedIndexChanged;
 
             comboBoxCategory.SelectedIndexChanged += ComboBoxCategory_SelectedIndexChanged;
@@ -26,8 +30,11 @@ namespace SmartFood.Forms
             ComboBoxCategory_SelectedIndexChanged(this, null);
 
             comboBoxSupplier.DataSource = SuppliersCore.Suppliers.ToList();
-            comboBoxConsumbles.SelectedIndex = 0;
-
+            try
+            {
+                comboBoxConsumbles.SelectedIndex = 0;
+            }
+            catch { }
             foreach (var employee in EmployeesCore.Emplyees.items)
             {
                 if (employee.id_type == 2 || employee.id_type == 4)

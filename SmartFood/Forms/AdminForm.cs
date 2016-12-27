@@ -658,7 +658,8 @@ namespace SmartFood.Forms
             dataGridViewCostPrice.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
 
             comboBoxSelectGood.DataSource = GoodsCore.Goods.ToList();
-            comboBoxSelectGood.SelectedIndex = 0;
+            if(GoodsCore.Goods.count > 0)
+                comboBoxSelectGood.SelectedIndex = 0;
             this.Refresh();
         }
 
@@ -691,6 +692,90 @@ namespace SmartFood.Forms
             buttonConsumbleCategories.Location = tmpPoint;
 
             this.Refresh();
+        }
+
+        public void AddConsumbleToGrid(string ConsumbleName)
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        ConsumblesCore.GetConsumbles();
+                        Consumble consumble = ConsumblesCore.Consumbles.GetConsumble(ConsumbleName);
+
+                        DataGridViewRow row = new DataGridViewRow();
+                        row.Cells.Add(new DataGridViewTextBoxCell()
+                        {
+                            Value = consumble.id
+                        });
+                        row.Cells.Add(new DataGridViewTextBoxCell()
+                        {
+                            Value = consumble.name
+                        });
+                        row.Cells.Add(new DataGridViewTextBoxCell()
+                        {
+                            Value = consumble.price
+                        });
+                        row.Cells.Add(new DataGridViewTextBoxCell()
+                        {
+                            Value = consumble.amount
+                        });
+
+                        DataGridViewComboBoxCell cell = new DataGridViewComboBoxCell();
+                        foreach (var measure in MeasuresCore.Measures.items)
+                            cell.Items.Add(measure.name);
+                        cell.Value = MeasuresCore.Measures.GetName(consumble.id_unit);
+                        row.Cells.Add(cell);
+
+                        cell = new DataGridViewComboBoxCell();
+                        foreach (var type in ConsumblesTypesCore.ConsumbleTypes.items)
+                        {
+                            if (type.visible != 0)
+                            {
+                                bool hasCategories = true;
+                                try
+                                {
+                                    ConsumbleCategorieCore.GetConsumbleCategorie(type.id.ToString());
+                                    if (ConsumbleCategorieCore.consumbleCategories.items.Count == 0)
+                                        hasCategories = false;
+                                }
+                                catch { hasCategories = false; }
+                                if (hasCategories)
+                                    cell.Items.Add(type.name);
+                            }
+                        }
+                        cell.Value = ConsumblesTypesCore.ConsumbleTypes.GetName(consumble.id_type);
+                        row.Cells.Add(cell);
+
+                        cell = new DataGridViewComboBoxCell();
+
+                        ConsumbleCategorieCore.GetConsumbleCategorie(consumble.id_type.ToString());
+                        foreach (var consumbleCategorie in ConsumbleCategorieCore.consumbleCategories.items)
+                            cell.Items.Add(consumbleCategorie.name);
+                        cell.Value = ConsumbleCategorieCore.consumbleCategories.GetName(consumble.id_category);
+                        row.Cells.Add(cell);
+
+                        row.Cells.Add(new DataGridViewTextBoxCell()
+                        {
+                            Value = consumble.waste_pct
+                        });
+
+                        cell = new DataGridViewComboBoxCell();
+                        cell.Items.Add(GeneralConstants.YES);
+                        cell.Items.Add(GeneralConstants.NO);
+                        cell.Value = Convert.ToBoolean(consumble.visible) ? GeneralConstants.YES : GeneralConstants.NO;
+                        row.Cells.Add(cell);
+
+                        dataGridViewConsumbles.Rows.Add(row);
+                        updateFlag = true;
+
+                        dataGridViewConsumbles.CellValueChanged += DataGridViewConsumbles_CellValueChanged;
+                    });
+                }
+                catch { }
+            }).Start();
         }
 
         public void UpdateDataGridViewConsumbles()
