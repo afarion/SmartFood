@@ -27,7 +27,7 @@ namespace SmartFood.Core
             return SendGetRequest<WriteOffs>(UriPostfix.WRITEOFF, param, out writeOffs);
         }
 
-        public static bool AddWriteOff(int consumble_id, int employee_id, double amont, string comment)
+        public static int AddWriteOff(int consumble_id, int employee_id, double amont, string comment)
         {
             Dictionary<string, string> param = new Dictionary<string, string>();
             param.Add(RequestFields.ACTION, Actions.ADD);
@@ -35,7 +35,7 @@ namespace SmartFood.Core
             param.Add(RequestFields.ID_EMPLOYEE, employee_id.ToString());
             param.Add(RequestFields.AMOUNT, amont.ToString());
             param.Add(RequestFields.COMMENT, comment);
-            return SendEditRequest(UriPostfix.WRITEOFF, param);
+            return SendEditRequestID(UriPostfix.WRITEOFF, param);
         }
     }
 }

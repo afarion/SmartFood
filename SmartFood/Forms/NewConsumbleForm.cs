@@ -74,7 +74,7 @@ namespace SmartFood.Forms
                                                 0,
                                                 price,
                                                 waste);                    
-                    AdminForm.instance.UpdateDataGridViewConsumbles();
+                    AdminForm.instance.AddConsumbleToGrid(textBoxName.Text);
                     this.Close();
                 }
             }

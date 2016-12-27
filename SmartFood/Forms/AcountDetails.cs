@@ -18,7 +18,7 @@ namespace SmartFood.Forms
             InitializeComponent();
             comboBoxEmploye.DataSource = EmployeesCore.Emplyees.ToList();
             comboBoxEmploye.SelectedIndex = 0;
-            comboBoxRole.DataSource = EmployeesTypesCore.EmployeesTypes.ToList();
+            comboBoxRole.DataSource = AcountTypesCore.ToList();
             comboBoxRole.SelectedIndex = 0;
 
         }
@@ -40,7 +40,7 @@ namespace SmartFood.Forms
                 ErrorsViewWrapper.ShowError(ErrorTexts.ENTER_LOGIN_AND_PASSWORD);
             else
             {
-                AcountsCore.AddAcount(textBoxLogin.Text,
+              int id = AcountsCore.AddAcount(textBoxLogin.Text,
                     AcountTypesCore.GetAcountType(comboBoxRole.SelectedValue.ToString()),
                     EmployeesCore.Emplyees.GetID(comboBoxEmploye.SelectedValue.ToString()),
                     textBoxPassword.Text);

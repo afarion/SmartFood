@@ -38,7 +38,7 @@ namespace SmartFood.Forms
                 ErrorsViewWrapper.ShowError(ErrorTexts.ENTER_FULL_NAME);
             else
             {
-                EmployeesCore.AddEmplyee(textBoxFirstName.Text,
+              int id =  EmployeesCore.AddEmplyee(textBoxFirstName.Text,
                     textBoxSourname.Text,
                     EmployeesTypesCore.EmployeesTypes.GetID(comboBoxPosition.SelectedItem.ToString()).ToString(),
                     textBoxPhone1.Text,
@@ -48,7 +48,7 @@ namespace SmartFood.Forms
                     textBoxSkype.Text,
                     dateTimePicker1.Value.ToString("yyyy-MM-dd"),
                     textBoxComment.Text);
-                AdminForm.instance.UpdateDataGridViewEmployees();
+                AdminForm.instance.AddEmployeeToDataGrid(id);
                 this.Close();
             }
         }
