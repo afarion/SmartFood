@@ -516,6 +516,29 @@ namespace SmartFood.Forms
             }
         }
 
+        public void AddGoodToGrid(Good good)
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        dataGridViewGoods.Rows.Add(good.id,
+                            good.name,
+                            GoodsCategoriesCore.GoodsCategories.GetName(good.id_category),
+                            good.price,
+                            good.weight,
+                            Convert.ToBoolean(good.visible) ? GeneralConstants.YES : GeneralConstants.NO);
+                        dataGridViewGoods.CellValueChanged += DataGridViewGoods_CellValueChanged;
+                        updateFlag = true;
+
+                    });
+                }
+                catch { }
+            }).Start();
+        }
+
         public void UpdateDataGridViewGoods()
         {
             new Thread(() =>

@@ -137,6 +137,9 @@ namespace SmartFood.Forms
                 if (isEdit)
                 {
                     GoodsCore.EditGood(goodID, textBoxName.Text, GoodsCategoriesCore.GoodsCategories.GetID(comboBoxCategory.SelectedItem.ToString()), weight, price, comboBoxVisble.SelectedItem.ToString() == GeneralConstants.YES ? 1 : 0);
+                    GoodsCore.GetGoods();
+                    AdminForm.instance.UpdateDataGridViewGoods();
+                    this.Close();
                 }
                 else
                 {
@@ -153,11 +156,11 @@ namespace SmartFood.Forms
                             ConsumblesCore.Consumbles.GetID(collection[1].Value.ToString()),
                             Convert.ToDouble(collection[2].Value));
                     }
-                }
 
-                GoodsCore.GetGoods();
-                AdminForm.instance.UpdateDataGridViewGoods();
-                this.Close();
+                    GoodsCore.GetGoods();
+                    AdminForm.instance.AddGoodToGrid(good);
+                    this.Close();
+                }
             }
         }
 
