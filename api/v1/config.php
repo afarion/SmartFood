@@ -671,6 +671,33 @@ function GetConfigArray()
             ),
         ),
         
+        "orderstatus" => array(
+        
+            "table" => "torderstatus",
+            
+            "permission" => array( 
+                //          view    edit    add     remove
+                1 => array( true,   false,  false,  false),  //Администратор
+                2 => array( true,   false,  false,  false),  //Оператор
+                3 => array( true,   false,  false,  false),  //Повар
+            ),
+        
+            "part" => array(
+                "id"    => array( "field" => "id",      "type" => "key",    "required" => true ),
+                "name"  => array( "field" => "name",    "type" => "text",   "required" => true ),
+            ),
+            
+            "show_only" => array(
+                "visible > 0"
+            ),
+        
+            "sort" => array(
+                "priority"  => "torderstatus.priority desc, torderstatus.id",
+                "name"      => "torderstatus.name",
+                "create"    => "torderstatus.id",
+            ),
+        ),
+        
         "order" => array(
         
             "table" => "torder",
@@ -705,7 +732,7 @@ function GetConfigArray()
             
             "fields" => array(
                 "id_user"           => array( "type" => "int",      "default" => false,     "editable" => false ),
-                "id_admin"          => array( "type" => "int",      "default" => false,     "editable" => false ),
+                "id_admin"          => array( "type" => "int",      "default" => false,     "editable" => true ),
                 "id_courier"        => array( "type" => "int",      "default" => 0,         "editable" => true ),
                 "id_status"         => array( "type" => "int",      "default" => 1,         "editable" => true ),
                 //"id_payform"        => array( "type" => "int",      "default" => false,   "editable" => true ),
@@ -752,6 +779,7 @@ function GetConfigArray()
                 "price"         => array( "field" => "price",       "type" => "price",  "required" => true ),
                 "total_price"   => array( "field" => "total_price", "type" => "price",  "required" => true ),
                 "visible"       => array( "field" => "visible",     "type" => "int",    "required" => true ),
+                "dish"          => array( "field" => "id_dish",     "type" => "table",  "required" => false, "join" => array("tdish", "name", "id") ),
             ),
             
             "fields" => array(
@@ -772,7 +800,7 @@ function GetConfigArray()
             
             "add_postprocessing" => "add_orderdish",
             
-            "edit_callback" => "edit_orderdish",
+            "edit_postprocessing" => "edit_orderdish",
         ),
         
         "errors" => array(

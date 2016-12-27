@@ -2572,6 +2572,472 @@ function DocConfigArray()
             
         ),
         
+        // ====================================================================================================
+        // ORDER STATUS
+    
+        "orderstatus" => array(
+            
+            "name" => "Статусы заказа. View",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "view",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
+                ),
+                
+                "sort" => array(
+                    "value" => "[priority|name|create]",
+                    "type"  => "string", 
+                    "descr" => "Сортировка результатов. Варианты сортировок:<br />priority - по приоритету<br />name - по названию<br />create - по дате создания" 
+                ),
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "orderstatus/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view","sort":"priority"}',
+                    "test_file" => "orderstatus_view.php"
+                ),
+            
+            "response" => '{"count":6,"items":[{"id":"1","name":"\u041f\u0440\u0438\u043d\u044f\u0442"},{"id":"2","name":"\u0413\u043e\u0442\u043e\u0432"},{"id":"3","name":"\u0414\u043e\u0441\u0442\u0430\u0432\u043a\u0430"},{"id":"4","name":"\u0417\u0430\u0432\u0435\u0440\u0448\u0435\u043d"},{"id":"5","name":"\u041e\u0442\u043c\u0435\u043d\u0435\u043d"},{"id":"6","name":"\u041e\u0442\u043a\u0430\u0437"}]}',
+            
+        ),
+        
+        // ====================================================================================================
+        // ORDER
+        
+        "order_view" => array(
+            
+            "name" => "Заказы. View",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "view",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
+                ),
+                
+                "user" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID клиента. Если указан, будут возвращены объекты заказы только этого клиента."
+                ),
+                
+                "admin" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID оператора. Если указан, будут возвращены заказы, принятые этим оператором."
+                ),
+                
+                "courier" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID курьера. Если указан, будут возвращены заказы, доставленные этим курьером."
+                ),
+                
+                "sort" => array(
+                    "value" => "[create|compleate]",
+                    "type"  => "string", 
+                    "descr" => "Сортировка результатов. Варианты сортировок:<br />
+                                &#8226; create - по дате создания<br />
+                                &#8226; compleate - по дате завершения" 
+                ),
+                
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "order/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view","sort":"create"}',
+                    "test_file" => "order_view.php"
+                ),
+            
+            "response" => '{"count":1,"items":[{"id":"1","id_user":"1","id_admin":"4","id_courier":"0","id_status":"1","price":"750.00","discount":"60","result_price":"300.00","pickup":"1","deliver_on_time":"0000-00-00 00:00:00","address":"\u0410\u0434\u0440\u0435\u0441 1","date_create":"2016-12-27 18:59:24","date_compleate":null,"date_pay":null,"visible":"1"}]}',
+            
+        ),
+        
+        "order_add" => array(
+            
+            "name" => "Заказы. Add",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "add",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае добавление (add). Обязательное поле."
+                ),
+                
+                "id_user" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID клиента. Обязательное поле."
+                ),
+                
+                "id_courier" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID курьера."
+                ),
+                
+                "pickup" => array(
+                    "value" => "0 или 1 ",
+                    "type"  => "flag",
+                    "descr" => "Самовывоз."
+                ),
+                
+                "deliver_on_time" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Доставка на время. Формат: YYYY-MM-DD hh:mm:ss"
+                ),
+                
+                "address" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Адрес клиента."
+                ),
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "order/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"add","id_user":"1"}',
+                    "test_file" => "order_add.php"
+                ),
+            
+            "response" => '{"success":1}',
+            
+        ),
+        
+        "order_edit" => array(
+            
+            "name" => "Заказы. Edit",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "edit",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае редактирование (edit). Обязательное поле."
+                ),
+                
+                "id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID редактируемого заказа. Обязательное поле."
+                ),
+                
+                "id_courier" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID курьера."
+                ),
+                
+                "id_status" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID статуса заказа."
+                ),
+                
+                "pickup" => array(
+                    "value" => "0 или 1 ",
+                    "type"  => "flag",
+                    "descr" => "Самовывоз."
+                ),
+                
+                "deliver_on_time" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Доставка на время. Формат: YYYY-MM-DD hh:mm:ss"
+                ),
+                
+                "address" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Адрес клиента."
+                ),
+                
+                "visible" => array(
+                    "value" => "0 или 1 ",
+                    "type"  => "flag", 
+                    "descr" => "Видимость заказа."
+                ),
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "order/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"edit","id":"1","id_status":"2"}',
+                    "test_file" => "order_edit.php"
+                ),
+            
+            "response" => '{"success":1}',
+            
+        ),
+        
+        // ====================================================================================================
+        // ORDER DISH
+        
+        "orderdish_view" => array(
+            
+            "name" => "Товары заказа. View",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "view",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае просмотр (view). Обязательное поле."
+                ),
+                
+                "part" => array(
+                    "value" => "[dish]",
+                    "type"  => "string", 
+                    "descr" => "Дополнительные поля, перечисленые через запятую. Если указаны, будут добавлены в ответ.<br />
+                                &#8226; dish - название товара" 
+                ),
+                
+                "order" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID заказа. Будут возвращены товары этого заказа. Обязательное поле."
+                ),
+                
+                "sort" => array(
+                    "value" => "[priority|create]",
+                    "type"  => "string", 
+                    "descr" => "Сортировка результатов. Варианты сортировок:<br />
+                                &#8226; priority - по приоритету<br />
+                                &#8226; create - по дате создания" 
+                ),
+                
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "orderdish/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"view","sort":"priority"}',
+                    "test_file" => "orderdish_view.php"
+                ),
+            
+            "response" => '{"count":3,"items":[{"id":"1","id_order":"1","id_dish":"1","quantity":"3","price":"120.00","total_price":"360.00","visible":"1","dish":"\u0421\u0443\u043f\u0435\u0440 \u043f\u0443\u043f\u0435\u0440 \u043c\u0435\u0433\u0430 \u043c\u0430\u043a\u0441\u0438 \u0433\u0438\u0433\u0430 \u0411\u0443\u0440\u0433\u0435\u0440"},{"id":"2","id_order":"1","id_dish":"2","quantity":"1","price":"135.00","total_price":"270.00","visible":"1","dish":"\u0411\u0443\u0440\u0433\u0435\u0440 \u0432\u0442\u043e\u0440\u043e\u0439"},{"id":"3","id_order":"1","id_dish":"5","quantity":"1","price":"120.00","total_price":"120.00","visible":"1","dish":"\u041a\u043e\u043f\u0438\u044f \u0431\u0443\u0440\u0433\u0435\u0440\u04302"}]}',
+            
+        ),
+        
+        "orderdish_add" => array(
+            
+            "name" => "Товары заказа. Add",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "add",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае добавление (add). Обязательное поле."
+                ),
+                
+                "id_order" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID заказа. Обязательное поле."
+                ),
+                
+                "id_dish" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID товара. Обязательное поле."
+                ),
+                
+                "quantity" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Колличество. По умолчанию 1."
+                ),
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "orderdish/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"add","id_order":"1","id_dish":"1","quantity":"2"}',
+                    "test_file" => "orderdish_add.php"
+                ),
+            
+            "response" => '{"success":1}',
+            
+        ),
+        
+        "orderdish_edit" => array(
+            
+            "name" => "Товары заказа. Edit",
+            
+            "properties" => array(
+                
+                "user_id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID пользователя. Обязательное поле."
+                ),
+                
+                "user_type" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Тип пользователя. Обязательное поле.<br />1 - Администратор<br />2 - Оператор<br />3 - Повар"
+                ),
+                
+                "user_sid" => array(
+                    "value" => "",
+                    "type"  => "string", 
+                    "descr" => "Session ID, полученный при аутентификации. Обязательное поле."
+                ),
+                
+                "action" => array(
+                    "value" => "edit",
+                    "type"  => "string", 
+                    "descr" => "Совершаемое действие, в данном случае редактирование (edit). Обязательное поле."
+                ),
+                
+                "id" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "ID редактируемого товара. Обязательное поле."
+                ),
+                
+                "quantity" => array(
+                    "value" => "",
+                    "type"  => "int", 
+                    "descr" => "Колличество."
+                ),
+                
+                "visible" => array(
+                    "value" => "0 или 1 ",
+                    "type"  => "flag", 
+                    "descr" => "Видимость товара."
+                ),
+            ),
+            
+            "request_post" => 
+                array(
+                    "link" => "orderdish/",
+                    "params" => '{"user_id":"1","user_type":"1","user_sid":"9a3ef3a7cc8e17d613c7e43b87b5433d5da8ccb9","action":"edit","id":"1","weight":"150"}',
+                    "test_file" => "orderdish_edit.php"
+                ),
+            
+            "response" => '{"success":1}',
+            
+        ),
+        
         
         // ====================================================================================================
         // ERRORS
