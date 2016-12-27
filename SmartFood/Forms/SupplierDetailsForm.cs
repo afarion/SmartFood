@@ -35,9 +35,9 @@ namespace SmartFood.Forms
                 ErrorsViewWrapper.ShowError(ErrorTexts.ENTER_NAME);
             else
             {
-                SuppliersCore.AddSuplier(textBoxCompanyName.Text, textBoxPhone1.Text, textBoxEmeil.Text, textBoxSkype.Text, textBoxNotes.Text);
+                int id = SuppliersCore.AddSuplier(textBoxCompanyName.Text, textBoxPhone1.Text, textBoxEmeil.Text, textBoxSkype.Text, textBoxNotes.Text);
                 SuppliersCore.GetSuppliers();
-                AdminForm.instance.UpdateDataGridViewSuppliers();
+                AdminForm.instance.AddSupplierToDataGrid(id);
                 this.Close();
             }
         }

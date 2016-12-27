@@ -269,6 +269,24 @@ namespace SmartFood.Forms
             this.Refresh();
         }
 
+        public void AddSupplierToDataGrid(int id)
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        Supplier supplier = SuppliersCore.Suppliers.GetSupplier(id);
+                        dataGridViewSuppliers.Rows.Add(supplier.id, supplier.name, supplier.phone, supplier.email, supplier.skype, supplier.notes, Convert.ToBoolean(supplier.visible) ? GeneralConstants.YES : GeneralConstants.NO);
+                        dataGridViewSuppliers.CellValueChanged += DataGridViewSuppliers_CellValueChanged; ;
+                        updateFlag = true;
+                    });
+                }
+                catch { }
+            }).Start();
+        }
+
         public void UpdateDataGridViewSuppliers()
         {
             new Thread(() =>
@@ -326,6 +344,26 @@ namespace SmartFood.Forms
             dataGridViewEmployees.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
             UpdateDataGridViewEmployees();
             this.Refresh();
+        }
+
+        public void AddEmployeeToDataGrid(int id)
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        EmployeesCore.GetEmplyees();
+                        Employee employee = EmployeesCore.Emplyees.GetEmployee(id);
+                        DataGridViewRow row = new DataGridViewRow();
+                        dataGridViewEmployees.Rows.Add(employee.id, employee.first_name, employee.last_name, EmployeesTypesCore.EmployeesTypes.GetName(employee.id_type), employee.phone, employee.phone_ex, employee.skype, employee.address, employee.email, employee.birthday, employee.comment, Convert.ToBoolean(employee.visible) ? GeneralConstants.YES : GeneralConstants.NO);
+                        dataGridViewEmployees.CellValueChanged += DataGridViewEmployees_CellValueChanged;
+                        updateFlag = true;
+                    });
+                }
+                catch { }
+            }).Start();
         }
 
         public void UpdateDataGridViewEmployees()
@@ -403,6 +441,71 @@ namespace SmartFood.Forms
                 this.Enabled = false;
                 modalForm.Show();
             }
+        }
+
+        public void AddClientToGrid(int id)
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        Client client = ClientsCore.Clients.GetClint(id);
+
+                        DataGridViewRow row = new DataGridViewRow();
+                        row.Cells.Add(new DataGridViewTextBoxCell()
+                        {
+                            Value = client.id
+                        });
+                        row.Cells.Add(new DataGridViewTextBoxCell()
+                        {
+                            Value = client.name
+                        });
+                        row.Cells.Add(new DataGridViewTextBoxCell()
+                        {
+                            Value = client.phone
+                        });
+                        row.Cells.Add(new DataGridViewTextBoxCell()
+                        {
+                            Value = client.email
+                        });
+                        row.Cells.Add(new DataGridViewTextBoxCell()
+                        {
+                            Value = client.discount_stored
+                        });
+                        row.Cells.Add(new DataGridViewTextBoxCell()
+                        {
+                            Value = client.total_balance
+                        });
+                        row.Cells.Add(new DataGridViewTextBoxCell()
+                        {
+                            Value = client.discount_fixed
+                        });
+                        row.Cells.Add(new DataGridViewTextBoxCell()
+                        {
+                            Value = client.discount_reason
+                        });
+                        row.Cells.Add(new DataGridViewTextBoxCell()
+                        {
+                            Value = client.comment
+                        });
+
+                        DataGridViewComboBoxCell cell = new DataGridViewComboBoxCell();
+                        cell.Items.Add(GeneralConstants.YES);
+                        cell.Items.Add(GeneralConstants.NO);
+                        cell.Value = Convert.ToBoolean(client.visible) ? GeneralConstants.YES : GeneralConstants.NO;
+                        row.Cells.Add(cell);
+                        row.ReadOnly = true;
+
+                        dataGridViewClients.Rows.Add(row);
+                        updateFlag = true;
+
+                        dataGridViewClients.CellValueChanged += DataGridViewClients_CellValueChanged;
+                    });
+                }
+                catch { }
+            }).Start();
         }
 
         public void UpdateDataGridViewClients()
@@ -584,6 +687,26 @@ namespace SmartFood.Forms
             dataGridViewAcount.SetBounds(tmpPoint.X, tmpPoint.Y, tmpWidth, tmpHeight);
             UpdateDataGridViewAcounts();
             this.Refresh();
+        }
+
+        public void AddAccountToGrid(int id)
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        AcountsCore.GetAcounts();
+                        Account account = AcountsCore.Acounts.GetAccount(id);
+                        DataGridViewRow row = new DataGridViewRow();
+                        dataGridViewAcount.Rows.Add(account.id, account.login, GeneralConstants.PASSWORD_MASC, EmployeesCore.Emplyees.GetEmployeeFullName(account.id_employee), AcountTypesCore.GetAcountType(account.id_type), Convert.ToBoolean(account.visible) ? GeneralConstants.YES : GeneralConstants.NO);
+                        dataGridViewAcount.CellValueChanged += DataGridViewAcount_CellValueChanged;
+                        updateFlag = true;
+                    });
+                }
+                catch { }
+            }).Start();
         }
 
         public void UpdateDataGridViewAcounts()
@@ -955,6 +1078,30 @@ namespace SmartFood.Forms
             this.Refresh();
         }
 
+        public void AddArrivalToGrid(int id)
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        Arrival arrival = ArrivalCore.Arrivals.GetArrival(id);
+                        DataGridViewRow row = new DataGridViewRow();
+                        dataGridViewArrival.Rows.Add(arrival.id,
+                            ConsumblesCore.Consumbles.GetName(arrival.id_item),
+                            SuppliersCore.Suppliers.GetName(arrival.id_provider),
+                            EmployeesCore.Emplyees.GetEmployeeFullName(arrival.id_employee),
+                            string.Format("{0} {1}", arrival.amount, ConsumblesCore.Consumbles.GetMeasure(arrival.id_item)),
+                            arrival.price,
+                            arrival.date_create);
+
+                    });
+                }
+                catch { }
+            }).Start();
+        }
+
         public void UpdateDataGridViewArrival()
         {
             new Thread(() =>
@@ -975,6 +1122,29 @@ namespace SmartFood.Forms
                                 arrival.price,
                                 arrival.date_create);
                         }
+                    });
+                }
+                catch { }
+            }).Start();
+        }
+
+        public void AddWriteOffToForm(int id)
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        WriteOff writeoff = WriteOffCore.WriteOffs.GetWriteOff(id);
+                        DataGridViewRow row = new DataGridViewRow();
+                        dataGridViewWriteOff.Rows.Add(writeoff.id,
+                            ConsumblesCore.Consumbles.GetName(writeoff.id_item),
+                            EmployeesCore.Emplyees.GetEmployeeFullName(writeoff.id_employee),
+                            string.Format("{0} {1}", writeoff.amount, ConsumblesCore.Consumbles.GetMeasure(writeoff.id_item)),
+                            writeoff.comment,
+                            writeoff.date_create);
+
                     });
                 }
                 catch { }

@@ -39,9 +39,9 @@ namespace SmartFood.Forms
                 ErrorsViewWrapper.ShowError(ErrorTexts.ENTER_PHONE);
             else
             {
-                ClientsCore.AddClient(textBoxName.Text, textBoxPhone.Text, string.IsNullOrEmpty(textBoxEmeil.Text)?"": textBoxEmeil.Text, string.IsNullOrEmpty(textBoxComment.Text) ? "" : textBoxComment.Text);
+                int id = ClientsCore.AddClient(textBoxName.Text, textBoxPhone.Text, string.IsNullOrEmpty(textBoxEmeil.Text)?"": textBoxEmeil.Text, string.IsNullOrEmpty(textBoxComment.Text) ? "" : textBoxComment.Text);
                 ClientsCore.GetClients();
-                AdminForm.instance.UpdateDataGridViewArrival();
+                AdminForm.instance.AddClientToGrid(id);
                 this.Close();
             }
         }

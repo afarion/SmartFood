@@ -28,7 +28,7 @@ namespace SmartFood.Core
         }
 
 
-        public static bool AddArrival(int consumble_id, int supplier_id, int employee_id, double amont, double price)
+        public static int AddArrival(int consumble_id, int supplier_id, int employee_id, double amont, double price)
         {
             Dictionary<string, string> param = new Dictionary<string, string>();
             param.Add(RequestFields.ACTION, Actions.ADD);
@@ -37,7 +37,7 @@ namespace SmartFood.Core
             param.Add(RequestFields.ID_EMPLOYEE, employee_id.ToString());
             param.Add(RequestFields.AMOUNT, amont.ToString());
             param.Add(RequestFields.PRICE, price.ToString());
-            return SendEditRequest(UriPostfix.ARRIVALS, param);
+            return SendEditRequestID(UriPostfix.ARRIVALS, param);
         }
     }
 }

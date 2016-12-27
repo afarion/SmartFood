@@ -27,7 +27,7 @@ namespace SmartFood.Core
             return SendGetRequest<Suppliers>(UriPostfix.SUPPLIERS, param, out suppliers);
         }
 
-        public static bool AddSuplier(string name, string phone = "", string emeil = "", string skype = "", string notes = "")
+        public static int AddSuplier(string name, string phone = "", string emeil = "", string skype = "", string notes = "")
         {
             Dictionary<string, string> param = new Dictionary<string, string>();
             param.Add(RequestFields.ACTION, Actions.ADD);
@@ -36,7 +36,7 @@ namespace SmartFood.Core
             param.Add(RequestFields.EMEIL, emeil);
             param.Add(RequestFields.SKYPE, skype);
             param.Add(RequestFields.NOTES, notes);
-            return SendEditRequest(UriPostfix.SUPPLIERS, param);
+            return SendEditRequestID(UriPostfix.SUPPLIERS, param);
         }
 
         public static bool EditSuplier(string id, string name, string phone, string emeil, string skype, string notes, string visible)

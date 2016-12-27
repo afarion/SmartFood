@@ -26,7 +26,7 @@ namespace SmartFood.Core
             param.Add(RequestFields.ACTION, Actions.GET);
             return SendGetRequest<Accounts>(UriPostfix.ACOUNTS, param, out acounts);
         }
-        public static bool AddAcount(string login, int id_type, int id_employee, string pass)
+        public static int AddAcount(string login, int id_type, int id_employee, string pass)
         {
             Dictionary<string, string> param = new Dictionary<string, string>();
             param.Add(RequestFields.ACTION, Actions.ADD);
@@ -34,7 +34,7 @@ namespace SmartFood.Core
             param.Add(RequestFields.ID_TYPE, id_type.ToString());
             param.Add(RequestFields.ID_EMPLOYEE, id_employee.ToString());
             param.Add(RequestFields.PASSWORD, pass);
-            return SendEditRequest(UriPostfix.ACOUNTS, param);
+            return SendEditRequestID(UriPostfix.ACOUNTS, param);
         }
 
         public static bool EditAcount(string id, string login, int id_type, int id_employee, string pass, string visible)

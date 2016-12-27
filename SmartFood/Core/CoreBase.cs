@@ -86,6 +86,36 @@ namespace SmartFood.Core
             }
         }
 
+        public static int SendEditRequestID(string uriPostfix, Dictionary<string, string> param)
+        {
+            try
+            {
+                param.Add(RequestFields.USER_ID, loggedUserID.ToString());
+                param.Add(RequestFields.USER_TYPE, loggedUserTYPE.ToString());
+                param.Add(RequestFields.USER_SID, loggedUserSID.ToString());
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(apiUri + uriPostfix);
+                FormUrlEncodedContent content = new FormUrlEncodedContent(param);
+                HttpResponseMessage response = client.PostAsync(apiUri + uriPostfix, content).Result;
+                string resultContent = response.Content.ReadAsStringAsync().Result;
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    ResultSuccess res = new JavaScriptSerializer().Deserialize<ResultSuccess>(resultContent);
+                    return res.success;
+                }
+                else
+                {
+                    ProcessErrors(response);
+                    return -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorsViewWrapper.ShowError(ErrorTexts.AUTORITHATION_FAILED + ex.Message);
+                return -1;
+            }
+        }
+
         public static void SendAuthRequest(string uriPostfix, Dictionary<string, string> param)
         {
             try

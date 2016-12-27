@@ -40,6 +40,17 @@ namespace SmartFood.Core.Serialisation
             }
             return string.Empty;
         }
+
+        public Account GetAccount(int id)
+        {
+            foreach (Account account in items)
+            {
+                if (account.id == id)
+                    return account;
+            }
+
+            return null;
+        }
     }
 
     [Serializable]

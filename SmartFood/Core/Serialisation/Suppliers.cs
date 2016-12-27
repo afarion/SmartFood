@@ -38,6 +38,16 @@ namespace SmartFood.Core.Serialisation
             }
             return string.Empty;
         }
+
+        public Supplier GetSupplier(int id)
+        {
+            foreach (var item in items)
+            {
+                if (item.id == id)
+                    return item;
+            }
+            return null;
+        }
     }
 
     [Serializable]

@@ -10,7 +10,19 @@ namespace SmartFood.Core.Serialisation
     {
         public int count;
         public List<Arrival> items;
+
+        public Arrival GetArrival(int id)
+        {
+            foreach (Arrival arrival in items)
+            {
+                if (arrival.id == id)
+                    return arrival;
+            }
+
+            return null;
+        }
     }
+
 
     [Serializable]
     public class Arrival

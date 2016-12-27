@@ -119,14 +119,14 @@ namespace SmartFood.Forms
                 }
                 if (isOK)
                 {
-                    ArrivalCore.AddArrival(ConsumblesCore.Consumbles.GetID(comboBoxConsumbles.SelectedItem.ToString()),
+                   int id = ArrivalCore.AddArrival(ConsumblesCore.Consumbles.GetID(comboBoxConsumbles.SelectedItem.ToString()),
                         SuppliersCore.Suppliers.GetID(comboBoxSupplier.SelectedItem.ToString()),
                         EmployeesCore.Emplyees.GetID(comboBoxCook.SelectedItem.ToString()),
                         count,
                         price);
                     ArrivalCore.GetArrivals();
                     ConsumblesCore.GetConsumbles();
-                    AdminForm.instance.UpdateDataGridViewArrival();
+                    AdminForm.instance.AddArrivalToGrid(id);
                     AdminForm.instance.UpdateDataGridViewConsumbles();
                     this.Close();
                 }

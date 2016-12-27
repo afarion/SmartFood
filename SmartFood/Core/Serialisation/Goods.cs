@@ -40,7 +40,6 @@ namespace SmartFood.Core.Serialisation
             }
 
             return null;
-
         }
         public Good GetGood(int id)
         {

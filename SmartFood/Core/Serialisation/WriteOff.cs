@@ -10,6 +10,17 @@ namespace SmartFood.Core.Serialisation
     {
         public int count;
         public List<WriteOff> items;
+
+        public WriteOff GetWriteOff(int id)
+        {
+            foreach (WriteOff writeOff in items)
+            {
+                if (writeOff.id == id)
+                    return writeOff;
+            }
+
+            return null;
+        }
     }
     [Serializable]
     public class WriteOff

@@ -117,6 +117,7 @@
     <Compile Include="Core\Serialisation\GoodsCategories.cs" />
     <Compile Include="Core\Serialisation\Measures.cs" />
     <Compile Include="Core\Constants\UriPostfix.cs" />
+    <Compile Include="Core\Serialisation\ResultSuccess.cs" />
     <Compile Include="Core\Serialisation\Suppliers.cs" />
     <Compile Include="Core\Serialisation\WriteOff.cs" />
     <Compile Include="Core\SuppliersCore.cs" />
