@@ -322,38 +322,69 @@ class SmartFoodApi
         
         $itemTotalPrice = $dishPrice * $quantity;
         
-        //$query = "UPDATE $orderDishTable SET price='$dishPrice', "
+        $query = "UPDATE $orderDishTable SET price='$dishPrice', total_price='$itemTotalPrice'";
+        
+        $this->ExecuteNonQuery($query);
         
         //Update order price
-        $idUser = 0;
-            
-        if(isset($request["id_user"]))
-            $idUser = $request["id_user"];
-        else
-            $idUser = $this->GetValueByQuery("SELECT id_user FROM $orderTable WHERE id=$idOrder", "id_user");
+        $orderData = $this->GetValueByQuery("SELECT id_user, pickup FROM $orderTable WHERE id=$idOrder");
         
-        $pickup = 0;
-            
-        if(isset($request["pickup"]))
-            $pickup = $request["pickup"];
-        else
-            $pickup = $this->GetValueByQuery("SELECT pickup FROM $orderTable WHERE id=$idOrder", "pickup");
+        $idUser = intval($orderData["id_user"]);
+        
+        $pickup = intval($orderData["pickup"]);
         
         $this->UpdateDiscountAndPrice($idOrder, $idUser, $pickup);
     }
     
-    private function UpdateDishItemPrice($quantity, $idDish )
-    {
-        
-    }
-    
     private function OnOrderDishEdit($method, $request)
     {
+        $orderTable = $this->config["order"]["table"];
+        
+        $orderDishTable = $this->config["orderdish"]["table"];
+        
+        $dishTable = $this->config["dish"]["table"];
+        
         //Check in warehouse
         
         //Update item price
+        $idItem = intval($request["id_item"]);
+        
+        $idOrder = $this->GetValueByQuery("SELECT id_order FROM $orderDishTable WHERE id=$idItem", "id_order");
+        
+        $idOrder = intval($idOrder);
+        
+        $quantity = 1;
+        if(isset($request["quantity"]))
+            $quantity = $request["quantity"];
+        else
+            $quantity = $this->GetValueByQuery("SELECT quantity FROM $orderDishTable WHERE id=$idItem", "quantity");
+            
+        $idDish = 0;
+        if(isset($request["id_dish"]))
+            $idDish = $request["id_dish"];
+        else
+            $idDish = $this->GetValueByQuery("SELECT id_dish FROM $orderDishTable WHERE id=$idItem", "id_dish");
+        
+        $idDish = intval($idDish);
+        
+        $dishPrice = $this->GetValueByQuery("SELECT price FROM $dishTable WHERE id=$idDish", "price");
+        
+        $dishPrice = floatval($dishPrice);
+        
+        $itemTotalPrice = $dishPrice * $quantity;
+        
+        $query = "UPDATE $orderDishTable SET price='$dishPrice', total_price='$itemTotalPrice'";
+        
+        $this->ExecuteNonQuery($query);
         
         //Update order price
+        $orderData = $this->GetValueByQuery("SELECT id_user, pickup FROM $orderTable WHERE id=$idOrder");
+        
+        $idUser = intval($orderData["id_user"]);
+        
+        $pickup = intval($orderData["pickup"]);
+        
+        $this->UpdateDiscountAndPrice($idOrder, $idUser, $pickup);
     }
     
     private function UpdateUserAddress($id_user, $address)
