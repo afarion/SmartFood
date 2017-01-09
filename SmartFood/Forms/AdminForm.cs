@@ -970,7 +970,22 @@ namespace SmartFood.Forms
                                     {
                                         ConsumbleCategorieCore.GetConsumbleCategorie(type.id.ToString());
                                         if (ConsumbleCategorieCore.consumbleCategories.items.Count == 0)
+                                        {
                                             hasCategories = false;
+                                        }
+                                        else
+                                        {
+                                            bool haveVisible = false;
+                                            foreach (ConsumbleCategorie categorie in ConsumbleCategorieCore.consumbleCategories.items)
+                                            {
+                                                if (categorie.visible == 1)
+                                                {
+                                                    haveVisible = true;
+                                                    break;
+                                                }
+                                                hasCategories = haveVisible;
+                                            }
+                                        }
                                     }catch { hasCategories = false; }
                                     if(hasCategories)
                                         cell.Items.Add(type.name);
@@ -1013,44 +1028,58 @@ namespace SmartFood.Forms
         {
             if (updateFlag)
             {
-                DataGridViewCellCollection collection = dataGridViewConsumbles.Rows[e.RowIndex].Cells;
-                int waste = 0;
-                bool correctWaste = false;
-                try
+                new Thread(() =>
                 {
-                    waste = Convert.ToInt32(collection[7].Value);
-                    if (waste < 100)
-                        correctWaste = true;
-                    else
-                        ErrorsViewWrapper.ShowError(ErrorTexts.INCORRECT_WASTE);
-                }
-                catch
-                {
-                    ErrorsViewWrapper.ShowError(ErrorTexts.INCORRECT_WASTE);
-                }
-                if (correctWaste)
-                {
-                    ConsumbleCategorieCore.GetConsumbleCategorie(ConsumblesTypesCore.ConsumbleTypes.GetID(collection[5].Value.ToString()).ToString());
-                    ConsumblesCore.EditConsumble(collection[0].Value.ToString(),
-                        collection[1].Value.ToString(),
-                        collection[8].Value.ToString() == GeneralConstants.YES ? "1" : "0",
-                        ConsumblesTypesCore.ConsumbleTypes.GetID(collection[5].Value.ToString()),
-                        ConsumbleCategorieCore.consumbleCategories.GetID(collection[6].Value.ToString()),
-                        MeasuresCore.Measures.GetID(collection[4].Value.ToString()),
-                        Convert.ToInt32(collection[7].Value));
-                    int selectColumn = e.ColumnIndex;
-                    int selectedRow = e.RowIndex;
-                    ConsumblesCore.GetConsumbles();
                     try
                     {
-                        dataGridViewConsumbles.CurrentCell = dataGridViewConsumbles.Rows[selectedRow].Cells[selectColumn];
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            updateFlag = false;
+                            DataGridViewCellCollection collection = dataGridViewConsumbles.Rows[e.RowIndex].Cells;
+                            int waste = 0;
+                            bool correctWaste = false;
+                            try
+                            {
+                                waste = Convert.ToInt32(collection[7].Value);
+                                if (waste < 100)
+                                    correctWaste = true;
+                                else
+                                    ErrorsViewWrapper.ShowError(ErrorTexts.INCORRECT_WASTE);
+                            }
+                            catch
+                            {
+                                ErrorsViewWrapper.ShowError(ErrorTexts.INCORRECT_WASTE);
+                            }
+                            if (correctWaste)
+                            {
+                                ConsumblesCore.EditConsumble(collection[0].Value.ToString(),
+                                collection[1].Value.ToString(),
+                                collection[8].Value.ToString() == GeneralConstants.YES ? "1" : "0",
+                                ConsumblesTypesCore.ConsumbleTypes.GetID(collection[5].Value.ToString()),
+                                ConsumbleCategorieCore.consumbleCategories.GetID(collection[6].Value.ToString()),
+                                MeasuresCore.Measures.GetID(collection[4].Value.ToString()),
+                                Convert.ToInt32(collection[7].Value));
+                                int selectColumn = e.ColumnIndex;
+                                int selectedRow = e.RowIndex;
+                                if (e.ColumnIndex == 5)
+                                {
+                                    ConsumbleCategorieCore.GetConsumbleCategorie(ConsumblesTypesCore.ConsumbleTypes.GetID(collection[5].Value.ToString()).ToString());
+                                    DataGridViewComboBoxCell cell = ((DataGridViewComboBoxCell)dataGridViewConsumbles[e.ColumnIndex + 1, e.RowIndex]);
+
+                                    cell.DataSource = ConsumbleCategorieCore.consumbleCategories.ToList();
+                                    cell.Value = ConsumbleCategorieCore.consumbleCategories.items[0].name;
+                                }
+                                try
+                                {
+                                    dataGridViewConsumbles.CurrentCell = dataGridViewConsumbles.Rows[selectedRow].Cells[selectColumn];
+                                }
+                                catch { }
+                            }
+                            updateFlag = true;
+                        });
                     }
                     catch { }
-                }
-                dataGridViewConsumbles.CellValueChanged -= DataGridViewConsumbles_CellValueChanged;
-                updateFlag = false;
-                dataGridViewConsumbles.Rows.Clear();
-                UpdateDataGridViewConsumbles();
+                }).Start();
             }
         }
 

@@ -8,7 +8,7 @@ namespace SmartFood.Core.Constants
     public class ErrorTexts
     {
         public static string AUTORITHATION_FAILED = "Авторизация не удалась. Ошибка: ";
-        public const string ERROR = "Ошибка";
+        public const string ERROR = "Ошибка ";
         public const string ATTENTION = "Внимание";
         public const string ANOTHER_DEVICE_LOGGED = "С вашего аккаунта был выполнен вход с другого устройства. Приложение будет закрыто";
         public const string AUTHORITHATION_FAILED = "Ошибка авторизации";

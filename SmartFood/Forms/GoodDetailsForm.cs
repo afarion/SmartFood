@@ -20,6 +20,7 @@ namespace SmartFood.Forms
         bool isCopy = false;
         bool isEdit = false;
         private int goodID = -1;
+        bool update = true;
         public GoodDetailsForm()
         {
             InitializeComponent();
@@ -76,6 +77,21 @@ namespace SmartFood.Forms
             dataGridViewConsumbles.CellClick += DataGridViewConsumbles_CellClick;
             comboBoxVisble.DataSource = new List<string>() { GeneralConstants.YES, GeneralConstants.NO };
             comboBoxVisble.SelectedIndex = 0;
+            dataGridViewConsumbles.CellValueChanged += DataGridViewConsumbles_CellValueChanged;
+        }
+
+        private void DataGridViewConsumbles_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if(update)
+            {
+                update = false;
+                DataGridViewCellCollection collection = dataGridViewConsumbles.Rows[e.RowIndex].Cells;
+                GoodConsumlesCore.EditGoodConsumle(
+                    Convert.ToInt32(collection[0].Value),
+                    Convert.ToDouble(collection[2].Value.ToString().Replace('.',',')),
+                    collection[4].Value.ToString() == GeneralConstants.YES ? 1 : 0);
+                update = true;
+            }
         }
 
         private void DataGridViewConsumbles_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -139,6 +155,14 @@ namespace SmartFood.Forms
                     GoodsCore.EditGood(goodID, textBoxName.Text, GoodsCategoriesCore.GoodsCategories.GetID(comboBoxCategory.SelectedItem.ToString()), weight, price, comboBoxVisble.SelectedItem.ToString() == GeneralConstants.YES ? 1 : 0);
                     GoodsCore.GetGoods();
                     AdminForm.instance.UpdateDataGridViewGoods();
+                    for (int i = 0; i < dataGridViewConsumbles.Rows.Count; i++)
+                    {
+                        DataGridViewCellCollection collection = dataGridViewConsumbles.Rows[i].Cells;
+                        if(collection[0].Value.ToString() == "")
+                        GoodConsumlesCore.AddGoodConsumle(goodID,
+                            ConsumblesCore.Consumbles.GetID(collection[1].Value.ToString()),
+                            Convert.ToDouble(collection[2].Value));
+                    }
                     this.Close();
                 }
                 else
@@ -194,7 +218,7 @@ namespace SmartFood.Forms
         private void buttonDeleteConsumble_Click(object sender, EventArgs e)
         {
             if (isEdit)
-                GoodConsumlesCore.RemoveGoodConsumle(Convert.ToInt32(dataGridViewConsumbles[0, rowIndex]));
+                GoodConsumlesCore.RemoveGoodConsumle(Convert.ToInt32(dataGridViewConsumbles[0, rowIndex].Value));
             dataGridViewConsumbles.Rows.RemoveAt(rowIndex);
         }
     }

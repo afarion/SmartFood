@@ -97,6 +97,7 @@
     <Compile Include="Core\GoodsCategoriesCore.cs" />
     <Compile Include="Core\GoodsCore.cs" />
     <Compile Include="Core\MeasuresCore.cs" />
+    <Compile Include="Core\OrderCore.cs" />
     <Compile Include="Core\Serialisation\Accounts.cs" />
     <Compile Include="Core\Serialisation\Arrival.cs" />
     <Compile Include="Core\Serialisation\AuthUserData.cs" />
@@ -117,6 +118,9 @@
     <Compile Include="Core\Serialisation\GoodsCategories.cs" />
     <Compile Include="Core\Serialisation\Measures.cs" />
     <Compile Include="Core\Constants\UriPostfix.cs" />
+    <Compile Include="Core\Serialisation\Orders.cs" />
+    <Compile Include="Core\Serialisation\OrderStatuses.cs" />
+    <Compile Include="Core\OrderStatusesCore.cs" />
     <Compile Include="Core\Serialisation\ResultSuccess.cs" />
     <Compile Include="Core\Serialisation\Suppliers.cs" />
     <Compile Include="Core\Serialisation\WriteOff.cs" />

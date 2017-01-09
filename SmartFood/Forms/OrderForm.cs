@@ -23,6 +23,8 @@ namespace SmartFood.Forms
 
         }
 
+
+
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             CashierForm.instance.Enabled = true;

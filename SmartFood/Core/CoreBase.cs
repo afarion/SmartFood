@@ -52,7 +52,7 @@ namespace SmartFood.Core
             catch (Exception ex)
             {
                 result = default(T);
-                ErrorsViewWrapper.ShowError(ErrorTexts.AUTORITHATION_FAILED + ex.Message);
+                ErrorsViewWrapper.ShowError(ErrorTexts.ERROR + ex.Message);
                 return false;                
             }
         }
@@ -81,7 +81,7 @@ namespace SmartFood.Core
             }
             catch (Exception ex)
             {
-                ErrorsViewWrapper.ShowError(ErrorTexts.AUTORITHATION_FAILED + ex.Message);
+                ErrorsViewWrapper.ShowError(ErrorTexts.ERROR + ex.Message);
                 return false;
             }
         }
@@ -111,7 +111,7 @@ namespace SmartFood.Core
             }
             catch (Exception ex)
             {
-                ErrorsViewWrapper.ShowError(ErrorTexts.AUTORITHATION_FAILED + ex.Message);
+                ErrorsViewWrapper.ShowError(ErrorTexts.ERROR + ex.Message);
                 return -1;
             }
         }

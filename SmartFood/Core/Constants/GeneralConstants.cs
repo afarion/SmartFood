@@ -50,6 +50,13 @@ namespace SmartFood.Core.Constants
         public const string DATE = "Дата";
         public const string WEIGHT = "Вес";
         public const string COST_PRICE = "Себестоимость";
+        public const string COURIER = "Курьер";
+        public const string STATUS = "Статус";
+        public const string SUMM = "Сумма";
+        public const string SUMM_WITH_DISCOUNT = "Сумма со скидкой";
+        public const string DISCOUNT = "Скидка";
+        public const string DATE_ORDER_CREATION = "Когда получили";
+        public const string DATE_ORDER_DELIVERING = "Когда доставили";
 
 
         public class UIConstans
@@ -62,6 +69,8 @@ namespace SmartFood.Core.Constants
             public const string NEW_COLUMN_ACTUAL_AMOUNT = "newColumnActualAmount";
             public const string NEW_COLUMN_WASTE = "newColumnWaste";
             public const string NEW_COLUMN_TYPE = "newColumnType";
+            public const string NEW_COLUMN_STATUS = "newColumnStatus";
+            public const string NEW_COLUMN_COURIER = "newColumnCourier";
             public const string NEW_COLUMN_CATEGORY = "newColumnCategory";
             public const string NEW_COLUMN_PHONE = "newColumnPhone";
             public const string NEW_COLUMN_SKYPE = "newColumnSkypet";
@@ -89,6 +98,11 @@ namespace SmartFood.Core.Constants
             public const string NEW_COLUMN_WEIGHT = "newColumnWeight";
             public const string NEW_COLUMN_VISIBILITY = "newColumnVisibilty";
             public const string NEW_COLUMN_COST_PRICE = "newColumnCostPrice";
+            public const string NEW_COLUMN_SUMM = "newColumnSumm";
+            public const string NEW_COLUMN_SUMM_WITH_DISCOUNT = "newColumnSummDiscount";
+            public const string NEW_COLUMN_DISCOUNT = "newColumnDiscount";
+            public const string NEW_COLUMN_DATE_ORDER_CREATION = "newColumnDateCreate";
+            public const string NEW_COLUMN_DATE_ORDER_DELIVERING = "newColumnDateDelivering";
         }
     }
 }

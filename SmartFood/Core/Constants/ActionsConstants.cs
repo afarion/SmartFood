@@ -53,5 +53,9 @@ namespace SmartFood.Core.Constants
         public const string GOOD = "dish";
         public const string WEIGHT = "weight";
         public const string CATEGORY = "category";
+        public const string COURIER_ID = "id_courier";
+        public const string PICKUP = "pickup";
+        public const string DELIVER_ON_TIME = "deliver_on_time";
+        public const string DATE_FROM = "date_from";
     }
 }

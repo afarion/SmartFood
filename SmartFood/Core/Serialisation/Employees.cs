@@ -20,6 +20,17 @@ namespace SmartFood.Core.Serialisation
             return tmpList;
         }
 
+        public List<string> GetCouriers()
+        {
+            List<string> tmpList = new List<string>();
+            foreach (var item in items)
+            {
+                if (item.id_type == 6)
+                    tmpList.Add(string.Format("{0} {1}", item.last_name, item.first_name));
+            }
+            return tmpList;
+        }
+
         public int GetID(string fullName)
         {
             foreach (var item in items)

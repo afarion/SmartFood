@@ -23,5 +23,7 @@ namespace SmartFood.Core
         public const string GOOD_CONSUMBLES = "dishitem/";
         public const string GOODS = "dish/";
         public const string GOOD_CATEGORIES = "dishcategory/";
+        public const string ORDER_STATUSES = "orderstatus/";
+        public const string ORDERS = "order/";
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CashierForm));
-            this.OrdersGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
             this.CreateOrderButton = new System.Windows.Forms.Button();
             this.buttonSearchOrder = new System.Windows.Forms.Button();
             this.SearchOrderTextBox = new System.Windows.Forms.TextBox();
@@ -37,17 +37,17 @@
             this.OpenOrderButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.SearchGroupBox = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
             this.SearchGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // OrdersGridView
+            // dataGridViewOrders
             // 
-            this.OrdersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.OrdersGridView.Location = new System.Drawing.Point(12, 94);
-            this.OrdersGridView.Name = "OrdersGridView";
-            this.OrdersGridView.Size = new System.Drawing.Size(1428, 527);
-            this.OrdersGridView.TabIndex = 0;
+            this.dataGridViewOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewOrders.Location = new System.Drawing.Point(12, 94);
+            this.dataGridViewOrders.Name = "dataGridViewOrders";
+            this.dataGridViewOrders.Size = new System.Drawing.Size(1428, 527);
+            this.dataGridViewOrders.TabIndex = 0;
             // 
             // CreateOrderButton
             // 
@@ -72,7 +72,7 @@
             // 
             this.SearchOrderTextBox.Location = new System.Drawing.Point(105, 12);
             this.SearchOrderTextBox.Name = "SearchOrderTextBox";
-            this.SearchOrderTextBox.Size = new System.Drawing.Size(243, 22);
+            this.SearchOrderTextBox.Size = new System.Drawing.Size(243, 20);
             this.SearchOrderTextBox.TabIndex = 3;
             // 
             // label
@@ -80,7 +80,7 @@
             this.label.AutoSize = true;
             this.label.Location = new System.Drawing.Point(6, 14);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(120, 16);
+            this.label.Size = new System.Drawing.Size(93, 13);
             this.label.TabIndex = 4;
             this.label.Text = "Номер телефона";
             // 
@@ -122,7 +122,7 @@
             this.ClientSize = new System.Drawing.Size(1452, 645);
             this.Controls.Add(this.SearchGroupBox);
             this.Controls.Add(this.CreateOrderButton);
-            this.Controls.Add(this.OrdersGridView);
+            this.Controls.Add(this.dataGridViewOrders);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -131,7 +131,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CashierForm_FormClosed);
             this.Shown += new System.EventHandler(this.CashierForm_Shown);
             this.Move += new System.EventHandler(this.CashierForm_Move);
-            ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
             this.SearchGroupBox.ResumeLayout(false);
             this.SearchGroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -140,7 +140,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView OrdersGridView;
+        private System.Windows.Forms.DataGridView dataGridViewOrders;
         private System.Windows.Forms.Button CreateOrderButton;
         private System.Windows.Forms.Button buttonSearchOrder;
         private System.Windows.Forms.TextBox SearchOrderTextBox;
