@@ -223,10 +223,6 @@ class SmartFoodApi
             case "edit_order":
                 $this->OnOrderEdit($method, $request);
                 break;
-                
-            case "edit_orderdish":
-                $this->OnOrderDishEdit($method, $request);
-                break;
         }
     }
     
@@ -235,7 +231,11 @@ class SmartFoodApi
         switch($name)
         {
             case "add_orderdish":
-                $this->OnOrderDishAdd($method, $request, $id);
+                $this->OrderDishPostProcessing($method, $request, $id);
+                break;
+                
+            case "edit_orderdish":
+                $this->OrderDishPostProcessing($method, $request, $id);
                 break;
         }
     }
@@ -297,7 +297,7 @@ class SmartFoodApi
         }
     }
     
-    private function OnOrderDishAdd($method, $request, $idItem)
+    private function OrderDishPostProcessing($method, $request, $id)
     {
         $orderTable = $this->config["order"]["table"];
         
@@ -308,13 +308,15 @@ class SmartFoodApi
         //Check in warehouse
         
         //Update item price
-        $idOrder = intval($request["id_order"]);
+        $id = intval($id);
         
-        $quantity = 1;
-        if(isset($request["quantity"]))
-            $quantity = $request["quantity"];
+        $itemData = $this->GetValuesByQuery("SELECT id_order, quantity, id_dish FROM $orderDishTable WHERE id=$id");
+        
+        $idOrder = intval($itemData["id_order"]);
+        
+        $quantity = intval($itemData["quantity"]);
             
-        $idDish = intval($request["id_dish"]);
+        $idDish = intval($itemData["id_dish"]);
         
         $dishPrice = $this->GetValueByQuery("SELECT price FROM $dishTable WHERE id=$idDish", "price");
         
@@ -322,63 +324,12 @@ class SmartFoodApi
         
         $itemTotalPrice = $dishPrice * $quantity;
         
-        $query = "UPDATE $orderDishTable SET price='$dishPrice', total_price='$itemTotalPrice'";
+        $query = "UPDATE $orderDishTable SET price='$dishPrice', total_price='$itemTotalPrice' WHERE id=$id";
         
         $this->ExecuteNonQuery($query);
         
         //Update order price
-        $orderData = $this->GetValueByQuery("SELECT id_user, pickup FROM $orderTable WHERE id=$idOrder");
-        
-        $idUser = intval($orderData["id_user"]);
-        
-        $pickup = intval($orderData["pickup"]);
-        
-        $this->UpdateDiscountAndPrice($idOrder, $idUser, $pickup);
-    }
-    
-    private function OnOrderDishEdit($method, $request)
-    {
-        $orderTable = $this->config["order"]["table"];
-        
-        $orderDishTable = $this->config["orderdish"]["table"];
-        
-        $dishTable = $this->config["dish"]["table"];
-        
-        //Check in warehouse
-        
-        //Update item price
-        $idItem = intval($request["id_item"]);
-        
-        $idOrder = $this->GetValueByQuery("SELECT id_order FROM $orderDishTable WHERE id=$idItem", "id_order");
-        
-        $idOrder = intval($idOrder);
-        
-        $quantity = 1;
-        if(isset($request["quantity"]))
-            $quantity = $request["quantity"];
-        else
-            $quantity = $this->GetValueByQuery("SELECT quantity FROM $orderDishTable WHERE id=$idItem", "quantity");
-            
-        $idDish = 0;
-        if(isset($request["id_dish"]))
-            $idDish = $request["id_dish"];
-        else
-            $idDish = $this->GetValueByQuery("SELECT id_dish FROM $orderDishTable WHERE id=$idItem", "id_dish");
-        
-        $idDish = intval($idDish);
-        
-        $dishPrice = $this->GetValueByQuery("SELECT price FROM $dishTable WHERE id=$idDish", "price");
-        
-        $dishPrice = floatval($dishPrice);
-        
-        $itemTotalPrice = $dishPrice * $quantity;
-        
-        $query = "UPDATE $orderDishTable SET price='$dishPrice', total_price='$itemTotalPrice'";
-        
-        $this->ExecuteNonQuery($query);
-        
-        //Update order price
-        $orderData = $this->GetValueByQuery("SELECT id_user, pickup FROM $orderTable WHERE id=$idOrder");
+        $orderData = $this->GetValuesByQuery("SELECT id_user, pickup FROM $orderTable WHERE id=$idOrder");
         
         $idUser = intval($orderData["id_user"]);
         
@@ -481,24 +432,38 @@ class SmartFoodApi
                     $this->ShowError("status");
             
                 $this->StoreOrderTotalBalance($idOrder);
+                $this->SetOrderCompleateDate($idOrder);
                 break;
                 
             case ORDER_STATUS_CANCELED:
                 if($oldStatus != ORDER_STATUS_NEW)
                     $this->ShowError("status");
             
+                $this->SetOrderCompleateDate($idOrder);
                 break;
                 
             case ORDER_STATUS_REFUSED:
                 if($oldStatus != ORDER_STATUS_READY && $oldStatus != ORDER_STATUS_DELIVERY)
                     $this->ShowError("status");
                 
+                $this->SetOrderCompleateDate($idOrder);
                 break;
                 
             default:
                 $this->ShowError("status");
                 break;
         }
+    }
+    
+    private function SetOrderCompleateDate($idOrder)
+    {
+        $idOrder = intval($idOrder);
+        
+        $orderTable = $this->config["order"]["table"];
+        
+        $query = "UPDATE $orderTable SET date_compleate=NOW() WHERE id=$idOrder";
+        
+        $this->ExecuteNonQuery($query);
     }
     
     private function StoreOrderTotalBalance($idOrder)
@@ -811,6 +776,9 @@ class SmartFoodApi
             $this->ShowError("request");
             
         $this->TryToExecuteLog($method, $request, $id, 2, $oldValuesData);
+        
+        if(isset($methodConfig["edit_postprocessing"]))
+            $this->ExecutePostProcessing($methodConfig["edit_postprocessing"], $method, $request, $id);
         
         $response = array("success" => $id);
         
